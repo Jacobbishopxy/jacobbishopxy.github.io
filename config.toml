@@ -56,7 +56,7 @@ hard_link_static = false
 #
 taxonomies = [
     {name = "tags", feed = true}, # each tag will have its own feed
-    {name = "tags", lang = "fr"}, # you can have taxonomies with the same name in multiple languages
+    {name = "tags", lang = "en"}, # you can have taxonomies with the same name in multiple languages
     {name = "categories", paginate_by = 5},  # 5 items per page for a term
     {name = "authors"}, # Basic definition: no feed or pagination
 ]
