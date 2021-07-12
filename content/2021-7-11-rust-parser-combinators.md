@@ -334,4 +334,138 @@ where
 
 ## Left 和 Right
 
+`pair` 与 `map` 实现了后再写 `left` 和 `right` 就简单多了：
+
+```rs
+fn left<'a, P1, P2, R1, R2>(parser1: P1, parser2: P2) ->
+    impl Parser<'a, R1>
+where
+    P1: Parser<'a, R1>,
+    P2: Parser<'a, R2>,
+{
+    map(pair(parser1, parser2), |(left, _)| left)
+}
+
+fn right<'a, P1, P2, R1, R2>(parser1: P1, parser2: P2) ->
+    impl Parser<'a, R2>
+where
+    P1: Parser<'a, R1>,
+    P2: Parser<'a, R2>,
+{
+    map(pair(parser1, parser2), |(_, right)| right)
+}
+```
+
+我们使用 `pair` 组合子来组合两个 parser 成为一个返回两者元组的 parser，接着我们使用 `map` 组合子从元组中来选择所期望的值。
+
+重写`match_literal`：
+
+```rs
+pub fn match_literal<'a>(expected: &'static str) -> impl Parser<'a, ()> {
+    move |input: &'a str| match input.get(0..expected.len()) {
+        Some(next) if next == expected => Ok((&input[expected.len()..], ())),
+        _ => Err(input),
+    }
+}
+```
+
+对于闭包的入参而言，我们需要显式声明 `&'a str`。对于 `identifier` 而言，我们只需要用 `ParserResult<String>` 替换函数签名的返回类型。
+
+现在的测试，不再需要毫无必要的 `()` 结果了：
+
+```rs
+#[test]
+fn right_combinator() {
+    let tag_opener = right(match_literal("<"), identifier);
+
+    assert_eq!(
+        Ok(("/>", "my-first-element".to_string())),
+        tag_opener.parse("<my-first-element/>")
+    );
+    assert_eq!(Err("oops"), tag_opener.parse("oops"));
+    assert_eq!(Err("!oops"), tag_opener.parse("<!oops"));
+}
+```
+
+## One Or More
+
+现在我们有了 `<`，有了 identifier，接下来需要什么呢？one or more 的 parser（为了应付一个或多个空格等正确的语法结构）！
+
+其实我们在 `identifier` parser 已经做过这样的处理了，但是都是手动实现的。不必惊讶，通用性的实现并不困难。
+
+```rs
+pub fn one_or_more<'a, P, A>(parser: P) -> impl Parser<'a, Vec<A>>
+where
+    P: Parser<'a, A>,
+{
+    move |mut input| {
+        let mut result = Vec::new();
+
+        if let Ok((next_input, first_item)) = parser.parse(input) {
+            input = next_input;
+            result.push(first_item);
+        } else {
+            return Err(input);
+        }
+
+        while let Ok((next_input, next_item)) = parser.parse(input) {
+            input = next_input;
+            result.push(next_item);
+        }
+
+        Ok((input, result))
+    }
+}
+```
+
+首先，我们构建的解析器的返回类型是 A，组合 parser 的返回类型是 Vec -- 任意数量的 A。
+
+代码看起来确实很像 `identifier`。首先我们解析第一个元素，如果不成功返回一个错误。接着我们解析尽可能多的元素，直到解析错误，返回已收集的元素。
+
+那么 zero or more 呢？我们只需要移除第一个元素的解析：
+
+```rs
+fn zero_or_more<'a, P, A>(parser: P) -> impl Parser<'a, Vec<A>>
+where
+    P: Parser<'a, A>,
+{
+    move |mut input| {
+        let mut result = Vec::new();
+
+        while let Ok((next_input, next_item)) = parser.parse(input) {
+            input = next_input;
+            result.push(next_item);
+        }
+
+        Ok((input, result))
+    }
+}
+```
+
+接下来是测试：
+
+```rs
+#[test]
+fn one_or_more_combinator() {
+    let parser = one_or_more(match_literal("ha"));
+    assert_eq!(Ok(("", vec![(), (), ()])), parser.parse("hahaha"));
+    assert_eq!(Err("ahah"), parser.parse("ahah"));
+    assert_eq!(Err(""), parser.parse(""));
+}
+
+#[test]
+fn zero_or_more_combinator() {
+    let parser = zero_or_more(match_literal("ha"));
+    assert_eq!(Ok(("", vec![(), (), ()])), parser.parse("hahaha"));
+    assert_eq!(Ok(("ahah", vec![])), parser.parse("ahah"));
+    assert_eq!(Ok(("", vec![])), parser.parse(""));
+}
+```
+
+注意它们两者的区别：对于 `one_or_more`，查找一个空字符串是错误的，因为它需要为其 sub-parser 查看至少一个元素，而对于 `zero_or_more`，空字符串意味着零状况，也就不是一个错误。
+
+此刻我们有理由开始思考如何抽象这两个函数，因为一个函数完全是另一个函数的拷贝，仅仅只是去掉了一小部分。
+
+## 谓语组合子 Predicate combinator
+
 Under construction...
