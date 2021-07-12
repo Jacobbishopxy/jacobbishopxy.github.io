@@ -9,6 +9,10 @@ tags = ["Rust", "FP", "Note"]
 
 学习笔记：[通过 Rust 学习组合子](https://bodil.lol/parser-combinators/)
 
+组合子的概念在函数式编程中广为人知。而作为系统级的编程语言，Rust 更像是一门面向过程式的语言。因此在 Rust 上使用 FP 技巧并不如天生的那些 FP 语言有优势（大名鼎鼎 Haskell，以及 Scala 等）。例如缺少高阶类型 higher kinded type 支持等。
+
+本文性质为阅读原文的笔记，其实更像是精简后的翻译。阅读原文前需要掌握一定的 FP 技巧，以及熟悉 Rust 语言。
+
 ## XML 风格的标记语言
 
 以下一个简单版本的 XML：
@@ -468,4 +472,128 @@ fn zero_or_more_combinator() {
 
 ## 谓语组合子 Predicate combinator
 
-Under construction...
+我们现在有了解析空格的 `one_or_more` 以及解析属性对 attribute pairs 的 `zero_or_more`。
+
+实际上我们并不是真的像解析空格再解析属性。试想一下，如果没有属性，那么空格便成为了可选的，这样我们将会立刻遇到 `>` 或是 `/>`。如果有一个属性，那么就必须要现有空格。幸运的是如果有多个属性，每个属性之间也必须为空格，因此我们这里真正考察的是一系列的 _zero or more_ 出现 _one or more_ 空格，再紧跟着的是属性。
+
+我们首先需要一个 parser 用于解析单个空格。这里有三种方法。
+
+第一，我们可以笨拙的使用 `match_literal` parser 带有一个字符串仅包含单个空格。为什么笨拙呢？因为空格也代表着换行，tabs，以及很多奇怪的 Unicode 字符渲染而成空格。我们将再次依赖 Rust 标准库，因为 `char` 拥有一个 `is_whitespace` 方法正如 `is_alphabetic` 与 `is_alphanumeric`。
+
+第二，我们可以编写一个 parser 用于消费任何数量的空格字符，通过 `is_whitespace` 谓语的方式更像是早期写的 `identifier` 那样。
+
+第三，我们可以编写一个 parser 名为 `any_char`，只要输入中不再剩余，它返回就单个 `char`。以及一个组合子 `pred`，它接收一个 parser 以及一个谓语函数，并像是这样把它们组合起来：`pred(any_char, |c| c.is_whitespace())`。这样拥有了额外的好处，使得编写最终的 parser 变得简单：属性值的引用字符串。
+
+`any_char` parser 简单直接，但是我们需要注意的是那些 UTF-8 陷阱：
+
+```rs
+fn any_char(input: &str) -> ParseResult<char> {
+    match input.chars().next() {
+        Some(next) => Ok((&input[next.len_utf8()..], next)),
+        _ => Err(input)
+    }
+}
+```
+
+`pred` 组合子同样也不复杂。唤起 `parser`，如果解析成功则对该值调用谓语函数，只有当返回 true 时，我们才真正返回 `success`，否则我们将返回与 parser 失败一样的错误。
+
+```rs
+fn pred<'a, P, A, F>(parser: P, predicate: F) -> impl Parser<'a, A>
+where
+    P: Parser<'a, A>,
+    F: Fn(&A) -> bool,
+{
+    move |input| {
+        if let Ok((next_input, value)) = parser.parse(input) {
+            if predicate(&value) {
+                return Ok((next_input, value));
+            }
+        }
+        Err(input)
+    }
+}
+```
+
+接着是测试：
+
+```rs
+#[test]
+fn predicate_combinator() {
+    let parser = pred(any_char, |c| *c == 'o');
+    assert_eq!(Ok(("mg", 'o')), parser.parse("omg"));
+    assert_eq!(Err("lol"), parser.parse("lol"));
+}
+```
+
+现在 `parser` 和 `pred` 都准备好了，我们可以编写 `whitespace_char` parser 了：
+
+```rs
+fn whitespace_char<'a>() -> impl Parser<'a, char> {
+    pred(any_char, |c| c.is_whitespace())
+}
+```
+
+有了 `whitespace_char` 以后我们便可以表达 _one or more_ 空格，以及它的姊妹概念，_zero or more_ 空格：
+
+```rs
+fn space1<'a>() -> impl Parser<'a, Vec<char>> {
+    one_or_more(whitespace_char())
+}
+
+fn space2<'a>() -> impl Parser<'a, Vec<char>> {
+    zero_or_more(whitespace_char())
+}
+```
+
+## 引用字符串
+
+做了那么多准备工作后，现在是否至少能解析属性呢？当然没问题，我们仅需要确保拥有了所有独立的 parser。处理属性名称的 `identifier` 有了，处理 `=` 号的 `match_literal("=")` 也有了。现在还缺少一个字符串 parser。幸运的是我们已经拥有了所有的组合子：
+
+```rs
+fn quoted_string<'a>() -> impl Parser<'a, String> {
+    map(
+        right(
+            match_literal("\""),
+            left(
+                zero_or_more(pred(any_char, |c| *c != '"')),
+                match_literal("\""),
+            ),
+        ),
+        |chars| chars.into_iter().collect(),
+    )
+}
+```
+
+组合子的嵌套看起来会有点讨厌，不过之后我们将重构它。现在让我们关注函数的本身。
+
+最外层的组合子为 `map`，而它真实开始的地方是第一个引用字符。`map` 包含了一个 `right`，`right` 的第一部分即是我们所寻找的：`match_literal("\"")`，即引用的开头。
+
+`right` 的第二部分则是字符串剩余的部分。它们被放入 `left` 中，我们很快就可以发现 `left` 的 _right_ 参数使我们一直忽视的另一个 `match_literal("\"")` -- 即引号结束。因此 _left_ 才是我们引用的字符串。
+
+使用新的 pred 和 any_char 来获取一个接受除去另一个引号的任何内容的 parser，并将其放入 zero_or_more 中，因此实现如下：
+
+- 一个引号
+- 紧接着是零个或多个元素，它们都不为引号
+- 紧接着是另一个引号
+
+在 `right` 和 `left` 之间，我们丢弃结果值中的引号，并获得引用的字符串。
+
+这个返回并不是一个字符串。还记得 `zero_or_more` 的返回么？是一个 `Vec<A>`，其中 `A` 是内部 parser 的返回值的类型。对于 `any_char` 而言则是 `char`。因此这里我们拿到的是 `Vec<char>`。这便是 `map` 所带来的：它将一个 `Vec<Char>` 转换成一个 `String`，借由 `Iterator<Item = char>` 迭代器所构建出 `String`，因此我们可以简单的使用上 `vec_of_chars.into_iter().collect()`，以及感谢类型接口的力量，我们拥有了 `String`。
+
+接下来编写测试：
+
+```rs
+#[test]
+fn quoted_string_parser() {
+    assert_eq!(
+        Ok(("", "Hello Joe!".to_string())),
+        quoted_string().parse("\"Hello Joe!\"")
+    );
+}
+```
+
+这下子终于可以解析属性了。
+
+## 解析属性
+
+to be done...
