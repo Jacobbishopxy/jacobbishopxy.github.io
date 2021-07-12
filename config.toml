@@ -191,6 +191,10 @@ name = "Tags"
 url = "tags"
 
 [[extra.menu]]
+name = "Archives"
+url = "archives"
+
+[[extra.menu]]
 name = "About"
 url = "about"
 
