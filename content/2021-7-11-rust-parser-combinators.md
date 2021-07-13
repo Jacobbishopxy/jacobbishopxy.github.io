@@ -733,7 +733,7 @@ impl<'a, Output> BoxedParser<'a, Output> {
 }
 
 impl<'a, Output> Parser<'a, Output> for BoxedParser<'a, Output> {
-    fn parse(&self, input: &'a str) -> crate::step2::ParseResult<'a, Output> {
+    fn parse(&self, input: &'a str) -> ParseResult<'a, Output> {
         self.parser.parse(input)
     }
 }
@@ -819,16 +819,161 @@ zero_or_more(any_char.pred(|c| *c != '"')),
 
 ```rs
 fn single_element<'a>() -> impl Parser<'a, Element> {
-    left(element_start(), match_literal("/>")).map(|(name, attributes)| Element {
-        name,
-        attributes,
-        children: vec![],
-    })
+    left(element_start(), match_literal("/>"))
+        .map(|(name, attributes)| Element {
+            name,
+            attributes,
+            children: vec![],
+        })
 }
 ```
 
 这样我们就打包好了 `map` 和 `pred` 方法 -- 并且我们获取了更好的语法！
 
 ## 带子元素的情况
+
+现在让我们编写父子元素的 parser。基本与 `single_element` 一致，除了结尾用的是一个 `>` 而不是 `/>`。它同样遵从 _zero or more_ 子元素以及一个关闭标签，但是我们首先需要解析真实的起始标签：
+
+```rs
+fn open_element<'a>() -> impl Parser<'a, Element> {
+    left(element_start(), match_literal(">"))
+        .map(|(name, attributes)| Element {
+            name,
+            attributes,
+            children: vec![],
+        })
+}
+```
+
+现在那么我们怎么获取子元素呢？它们既可以是单元素也可以是另一个父子元素，并且有 _zero or more_ 个它们。我们又 `zero_or_more` 组合子，但是我们如何使用它呢？有一个还未解决的是多选项（multiple choice）parser：一个既可以处理单元素又可以处理父子元素的 parser。
+
+为了达到这个目标，我们需要一个组合子可以顺序的尝试两种 parser：如果第一个 parser 成功，便使用它并返回其结果；如果失败并不返回错误而是带着输入去尝试第二个 parser，如果还是失败了那么返回错误，这就意味着两个 parser 都失败了。
+
+```rs
+fn either<'a, P1, P2, A>(parser1: P1, parser2: P2) ->
+    impl Parser<'a, A>
+where
+    P1: Parser<'a, A>,
+    P2: Parser<'a, A>,
+{
+    move |input| match parser1.parse(input) {
+        ok @ Ok(_) => ok,
+        Err(_) => parser2.parse(input),
+    }
+}
+```
+
+这便允许我们声明一个 parser `element` 作用于匹配一个单元素或一个父子元素（暂时还是使用 `open_element` 来表示它，我们将在拥有 `element` 后处理子元素）。
+
+```rs
+fn element<'a>() -> impl Parser<'a, Element> {
+    either(single_element(), open_element())
+}
+```
+
+现在让我们为关闭标签添加一个 parser。它拥有一个有意思的性质是需要匹配起始标签，这就意味着 parser 需要知道起始标签的名称。这不就正是函数参数的用处吗？
+
+```rs
+pub fn close_element<'a>(expected_name: String) -> impl Parser<'a, String> {
+    right(match_literal("</"), left(identifier, match_literal(">")))
+        .pred(move |name| name == &expected_name)
+}
+```
+
+现在让我们把它们都组合一下：
+
+```rs
+fn parent_element<'a>() -> impl Parser<'a, Element> {
+    pair(
+        open_element(),
+        left(zero_or_more(element()), close_element(…oops)),
+    )
+}
+```
+
+啊我们怎么给 `close_element` 传参呢？我认为还缺少最后一种组合子。
+
+很接近了。一旦我们解决完了最后一个问题使得 `parent_element` 可以正常工作，我们便可以用崭新的 `parent_element` 来替换掉 `element` parser 的 `open_element`，这样我们就有了完整的 XML 解析器了。
+
+还记得之前说过的之后再回到 `and_then` 吗？就是这里！这个 `and_then` 组合子实际上就是我们需要的：它是一个对当前 parser 接受其返回并生产一个新 parser 的函数。它有点像 `pair`，除了不是仅仅接收两个返回值于一个元组中，我们通过一个函数把他们串联起来。我们知道 `and_then` 可以作用于 `Result` 以及 `Option` 上，但是它们仅仅维护一些数据，因为它们并没有做额外的事情。
+
+那么现在我们来实现它：
+
+```rs
+pub fn and_then<'a, P, F, A, B, NextP>(parser: P, f: F) ->
+    impl Parser<'a, B>
+where
+    P: Parser<'a, A>,
+    NextP: Parser<'a, B>,
+    F: Fn(A) -> NextP,
+{
+    move |input| match parser.parse(input) {
+        Ok((next_input, result)) => f(result).parse(next_input),
+        Err(err) => Err(err),
+    }
+}
+```
+
+检查类型，这里有大量的类型变量，不过我们知道 `P`，作为输入的 parser，其返回值类型为 `A`。而函数 `F`，`map` 函数是 `A` 至 `B` 的映射，它们最大的区别就是输入 `and_then` 的函数是一个从 `A` 至新 parser `NextP` 的映射，其返回的类型是 `B`。最终返回的类型是 `B`，因此我们可以假设任何从 `NextP` 出来的结果都是最终结果。
+
+代码有一点点复杂：起始时运行 input parser，如果它失败了，那么便结束，如果成功我们就对其结果（类型 `A`）调用 `f` 函数，其输出为 `f(result)` 即一个新的 parser，并带有类型 `B` 的返回值。接着我们再次运行这个 parser 就可以直接返回结果了。如果失败了，那么便在此失败，如果成功了我们便会得到类型 `B` 的结果。
+
+让我们把 `and_then` 也加在 `Parser` trait 上，因为它与 `map` 类似，完全提高了可读性。
+
+```rs
+fn and_then<F, NextParser, NewOutput>(self, f: F) ->
+    BoxedParser<'a, NewOutput>
+where
+    Self: Sized + 'a,
+    Output: 'a,
+    NewOutput: 'a,
+    NextParser: Parser<'a, NewOutput> + 'a,
+    F: Fn(Output) -> NextParser + 'a,
+{
+    BoxedParser::new(and_then(self, f))
+}
+```
+
+那么改写一下 `pair`：
+
+```rs
+fn pair<'a, P1, P2, R1, R2>(parser1: P1, parser2: P2) ->
+    impl Parser<'a, (R1, R2)>
+where
+    P1: Parser<'a, R1> + 'a,
+    P2: Parser<'a, R2> + 'a,
+    R1: 'a + Clone,
+    R2: 'a,
+{
+    parser1.and_then(move |result1| parser2.map(move |result2| (result1.clone(), result2)))
+}
+```
+
+这看起来很简洁，但是有一个问题：`parser2.map()` 消费了 `parser2` 来创建被包裹的 parser，而该函数是一个 `Fn`，不是 `FnOnce`，所以它不被允许去消费 `parser2`，仅仅只能获取引用。
+
+在 Rust 中我们所能做的就是使用函数来惰性（lazily）生成 right 的 `close_element` parser。
+
+使用 `and_then` 可以构建 right 版本的 `close_element`。
+
+```rs
+pub fn parent_element<'a>() -> impl Parser<'a, Element> {
+    open_element().and_then(|el| {
+        left(zero_or_more(element()), close_element(el.name.clone()))
+            .map(move |children| {
+                let mut el = el.clone();
+                el.children = children;
+                el
+            })
+    })
+}
+```
+
+现在看起来变得更加复杂了，因为 `and_then` 必须跟在 `open_element()` 之后，也就是我们找到元素名字的地方并使其进入 `close_element`。这就意味着在 `open_element` 之后的所有 parser 必须在 `and_then` 闭包之中进行构建。此外因为闭包现在是 `open_element` 的 `Element` 结果的唯一接收者，我们返回的 parser 也必须将信息一直向前传递。
+
+在里面的闭包中，也就是我们 `map` 生成 parser 的闭包，带有一个从外部闭包 `Element` 的引用（`el`）。我们必须 `clone()` 它，因为我们是在一个 `Fn` 内部因此只有一个它的引用。我们拿着内部 parser（`Vec<Element>` 子元素）的结果并将它们添加至拷贝的 `Element` 中，作为我们最终的返回。
+
+现在我们需要做的是返回 `element` parser 并确保我们把 `open_element` 替换成 `parent_element`，这样它就可以解析整个元素结构了！
+
+## Are You Going To Say The M Word Or Do I Have To?
 
 to be done...
