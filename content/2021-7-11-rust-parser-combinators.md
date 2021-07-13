@@ -13,6 +13,10 @@ tags = ["Rust", "FP", "Note"]
 
 本文性质为阅读原文的笔记，其实更像是精简后的翻译。阅读原文前需要掌握一定的 FP 技巧，以及熟悉 Rust 语言。
 
+**目录：**
+
+[TOC]
+
 ## XML 风格的标记语言
 
 以下一个简单版本的 XML：
@@ -945,7 +949,10 @@ where
     R1: 'a + Clone,
     R2: 'a,
 {
-    parser1.and_then(move |result1| parser2.map(move |result2| (result1.clone(), result2)))
+    parser1.and_then(
+        move |result1| parser2
+            .map(move |result2| (result1.clone(), result2))
+    )
 }
 ```
 
@@ -974,6 +981,106 @@ pub fn parent_element<'a>() -> impl Parser<'a, Element> {
 
 现在我们需要做的是返回 `element` parser 并确保我们把 `open_element` 替换成 `parent_element`，这样它就可以解析整个元素结构了！
 
-## Are You Going To Say The M Word Or Do I Have To?
+## 是你讲那个 M 词还是由我来讲呢？
 
-to be done...
+还记得我们谈过的 `map` 模式在 Haskell 中是被称之为一个函子 functor 吗？
+
+`and_then` 模式是另一个在 Rust 中常见的模式，通常来说与 `map` 伴生。在 `Iterator` 上它被称为 `flat_map`，而其实它与 `and_then` 是一样的。
+
+这个美丽的单词就是“单子（monad）”。如果你拥有一个 `Thing<A>`，那么你的一个 `and_then` 函数就允许你传递一个从 `A` 转换至 `Thing<B>` 的函数，因此你就拥有了一个新的 `Thing<B>`，这便是单子 monad。
+
+这个函数可能会被立马调用，正如当你有一个 `Option<A>`，我们已经知道了它是一个 `Some(A)` 或是一个 `None`，因此直接应用此函数的话，如果是一个 `Some(A)`，那么返回的便是 `Some(B)`。
+
+这个函数也可以被惰性的调用。例如如果你有一个 `Future<A>`，它在等待结果，`and_then` 不是立刻调用函数并创建 `Future<B>`，而是创建一个 `Future<B>` 其中包含了 `Future<A>` 以及等待 `Future<A>` 结束的函数。
+
+尽管拥有函子 functor，Rust 的类型系统展示还没有能力来表达单子 monad，所以我们只需要知道这个模式被称为 monad 即可。
+
+## 空格，Redux
+
+最后一件事。我们需要一个 parser 能够解析一些 XML，但是在处理空格方面还是不太让人满意。随机的空格是被允许在标签之间，这样就可以随意的在标签插入分行。
+
+```rs
+fn whitespace_wrap<'a, P, A>(parser: P) -> impl Parser<'a, A>
+where
+    P: Parser<'a, A>,
+{
+    right(space0(), left(parser, space0()))
+}
+```
+
+如果我们包裹了 `element`，它会忽略所有在 `element` 周围的空格，这就意味着我们可以随意的添加任意行数与缩进了。
+
+```rs
+fn element<'a>() -> impl Parser<'a, Element> {
+    whitespace_wrap(either(single_element(), parent_element()))
+}
+```
+
+## 终于完成了
+
+我认为我们做到了！最后再写一个综合测试来庆祝一下。
+
+```rs
+#[test]
+fn xml_parser() {
+    let doc = r#"
+        <top label="Top">
+            <semi-bottom label="Bottom"/>
+            <middle>
+                <bottom label="Another bottom"/>
+            </middle>
+        </top>"#;
+    let parsed_doc = Element {
+        name: "top".to_string(),
+        attributes: vec![("label".to_string(), "Top".to_string())],
+        children: vec![
+            Element {
+                name: "semi-bottom".to_string(),
+                attributes: vec![
+                    ("label".to_string(), "Bottom".to_string())
+                ],
+                children: vec![],
+            },
+            Element {
+                name: "middle".to_string(),
+                attributes: vec![],
+                children: vec![Element {
+                    name: "bottom".to_string(),
+                    attributes: vec![
+                        ("label".to_string(), "Another bottom".to_string())
+                    ],
+                    children: vec![],
+                }],
+            },
+        ],
+    };
+    assert_eq!(Ok(("", parsed_doc)), element().parse(doc));
+}
+```
+
+以及一个错误匹配了闭合标记的错误测试：
+
+```rs
+#[test]
+fn mismatched_closing_tag() {
+    let doc = r#"
+        <top>
+            <bottom/>
+        </middle>"#;
+    assert_eq!(Err("</middle>"), element().parse(doc));
+}
+```
+
+好消息是它返回了不匹配的闭合标签作为错误结果。坏消息是它没有真正的提到问题是因为不匹配的闭合标签，仅仅只有错误的地点。不过比什么都没有好，平心而论即使有了错误信息，它还是糟糕的。转换它成为一个能提供优秀信息的错误可能需要另一篇文章来解决了。
+
+还是让我们聚焦好消息：我们通过 parser 组合子的方式编写一个解析器！我们知道了一个 parser 既可以构成函子又可以构成单子，所以现在的你就可以用令人畏惧的范畴论知识在聚会上给人留下深刻印象了！
+
+最重要的是，我们现在知道解析器组合子是如何从头开始工作的。 现在没有人能阻止我们！
+
+## 额外的资源
+
+[nom](https://github.com/Geal/nom)
+
+[combine](https://github.com/Marwes/combine)
+
+[Programming in Haskell](http://www.cs.nott.ac.uk/~pszgmh/pih.html)
