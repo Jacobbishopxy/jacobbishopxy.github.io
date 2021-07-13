@@ -230,7 +230,7 @@ where
 实际上，我们可以简化一下该函数，因为 `map` 其实是一个通用模式，它已经被 `Result` 实现过了：
 
 ```rs
-pub fn map<P, F, A, B>(parser: P, map_fn: F) ->
+fn map<P, F, A, B>(parser: P, map_fn: F) ->
     impl Fn(&str) -> Result<(&str, B), &str>
 where
     P: Fn(&str) -> Result<(&str, A), &str>,
@@ -365,7 +365,7 @@ where
 重写`match_literal`：
 
 ```rs
-pub fn match_literal<'a>(expected: &'static str) -> impl Parser<'a, ()> {
+fn match_literal<'a>(expected: &'static str) -> impl Parser<'a, ()> {
     move |input: &'a str| match input.get(0..expected.len()) {
         Some(next) if next == expected => Ok((&input[expected.len()..], ())),
         _ => Err(input),
@@ -398,7 +398,7 @@ fn right_combinator() {
 其实我们在 `identifier` parser 已经做过这样的处理了，但是都是手动实现的。不必惊讶，通用性的实现并不困难。
 
 ```rs
-pub fn one_or_more<'a, P, A>(parser: P) -> impl Parser<'a, Vec<A>>
+fn one_or_more<'a, P, A>(parser: P) -> impl Parser<'a, Vec<A>>
 where
     P: Parser<'a, A>,
 {
@@ -595,5 +595,240 @@ fn quoted_string_parser() {
 这下子终于可以解析属性了。
 
 ## 解析属性
+
+我们现在可以解析空格，标识符，`=` 号以及引用字符串。终于集齐了所有的 parser 了。
+
+首先，让我们为一对属性编写一个 parser。我们将要以 `Vec<(String, String)>` 存储它们，这很像是需要 `(String, String)` 输入 `zero_or_more` 组合子的一个 parser。让我们看一下如何构建它。
+
+```rs
+fn attribute_pair<'a>() -> impl Parser<'a, (String, String)> {
+    pair(identifier, right(match_literal("="), quoted_string()))
+}
+```
+
+总结一下：我们已经拥有了处理一对值的 parser，`pair`，因此我们通过 `identifier` parser 生产一个 `String`，以及一个带有 `=` 号的 `right`，用于处理不需要保留的值，然后用 `quoted_string` parser，获取另一个 `String`。
+
+现在让我们结合 `zero_or_more` 来构建 vector -- 不过也不要忘记它们之间的空格。
+
+```rs
+fn attributes<'a>() -> impl Parser<'a, Vec<(String, String)>> {
+    zero_or_more(right(space1(), attribute_pair()))
+}
+```
+
+zero or more 出现在这些情况：one or more 空格字符，接着一个属性对（attribute pair）。使用 `right` 来丢弃空格并保存属性对。
+
+测试一下：
+
+```rs
+#[test]
+fn attribute_parser() {
+    assert_eq!(
+        Ok((
+            "",
+            vec![
+                ("one".to_string(), "1".to_string()),
+                ("two".to_string(), "2".to_string())
+            ]
+        )),
+        attributes().parse(" one=\"1\" two=\"2\"")
+    );
+}
+```
+
+## 很接近了
+
+现在已经很接近我们的目标了，因为我们的类型也快速的接近了 NP 完整性。我们现在仅需要处理两种类型的元素标签：单个元素，和父子元素。
+
+现在让我们从单个元素开始，看一下我们是否可以通过一些组合子的结合来获取 `(String, Vec<(String, String)>)` 类型的答案。
+
+```rs
+fn element_start<'a>() -> impl Parser<'a, (String, Vec<(String, String)>)> {
+    right(match_literal("<"), pair(identifier, attributes()))
+}
+```
+
+有了它我们便可以为单个元素编写一个 parser 了。
+
+```rs
+fn single_element<'a>() -> impl Parser<'a, Element> {
+    map(
+        left(element_start(), match_literal("/>")),
+        |(name, attributes)| Element {
+            name,
+            attributes,
+            children: vec![],
+        },
+    )
+}
+```
+
+测试：
+
+```rs
+#[test]
+fn single_element_parser() {
+    assert_eq!(
+        Ok((
+            "",
+            Element {
+                name: "div".to_string(),
+                attributes: vec![("class".to_string(), "float".to_string())],
+                children: vec![]
+            }
+        )),
+        single_element().parse("<div class=\"float\"/>")
+    );
+}
+```
+
+`single_element` 的返回类型太复杂了，以至于编译器要处理很长时间。我们现在不能再忽略这个问题了。
+
+## 超越无限 To Infinity And Beyond
+
+如果你尝试过在 Rust 中编写一个递归类型，你或许就直到这个小问题的答案了。
+
+一个类似这样的枚举：
+
+```rs
+enum List<A> {
+    Cons(A, List<A>),
+    Nil,
+}
+```
+
+rustc 会很敏感的告诉你递归类型 `List<A>` 是无限大的，因此我们需要为这个无线大的数组分配内存。
+
+很多语言中，对于类型系统而言，无限大的数组并不是一个问题。而 Rust 中，我们需要分配内存，或者说是在构建类型是就必须决定它们的大小，因此当类型无限大时，因为这大小也是无限的。
+
+解决方案会有一点不直接。因为我们知道指针的大小，因此无论指针指向哪里，我们的 `List::Cons` 都是固定大小的。为此我们需要让值分配在堆上，Rust 里使用 `Box`：
+
+```rs
+enum List<A> {
+    Cons(A, Box<List<A>>),
+    Nil,
+}
+```
+
+`Box` 另一个有趣的特性是其包含的类型都是抽象的。这就意味着不再需要复杂的 parser 函数类型，而是通过非常简洁的 `Box<dyn Parser<'a, A>>` 来处理类型。
+
+听起来很棒，那么这样做的坏处呢？我们可能会因为必须遵循该指针而失去一两个指令周期，也可能让编译器失去了一些优化 parser 的机会。
+
+现在让我们用 _boxed_ 来实现 `Parser` 函数：
+
+```rs
+struct BoxedParser<'a, Output> {
+    parser: Box<dyn Parser<'a, Output> + 'a>,
+}
+
+impl<'a, Output> BoxedParser<'a, Output> {
+    fn new<P>(parser: P) -> Self
+    where
+        P: Parser<'a, Output> + 'a,
+    {
+        BoxedParser {
+            parser: Box::new(parser),
+        }
+    }
+}
+
+impl<'a, Output> Parser<'a, Output> for BoxedParser<'a, Output> {
+    fn parse(&self, input: &'a str) -> crate::step2::ParseResult<'a, Output> {
+        self.parser.parse(input)
+    }
+}
+```
+
+我们创造了新的类型 `BoxedParser` 用于存储 parser 函数。那么正如之前所说的，这就意味着把 parser 放置进堆上，用解引用的方式获取它，这可能会花费我们几个宝贵的纳秒，所以实际上可能需要推迟使用 `box`。只需将一些更常用的组合子放进 `box` 就足够了。
+
+## 展示自己的机会（BoxedParser）
+
+等一下，这么做很可能会带来另外的问题。因为组合子是独立的函数，当我们嵌套的数量比较多时，代码的可读性就会变差。回忆一下 `quoted_string` parser：
+
+```rs
+fn quoted_string<'a>() -> impl Parser<'a, String> {
+    map(
+        right(
+            match_literal("\""),
+            left(
+                zero_or_more(pred(any_char, |c| *c != '"')),
+                match_literal("\""),
+            ),
+        ),
+        |chars| chars.into_iter().collect(),
+    )
+}
+```
+
+如果将这些组合子的方法在 parser 上使用而不是使用这样的独立函数，那么可读性就会变得更好。如果我们在 `Parser` trait 上以方法的形式声明我们的组合子呢？
+
+这样做的问题在于我们会丢失返回类型使用 `impl Trait` 的能力，因为 `impl Trait` 不能在 trait 中声明（Rust 2018 版次不行，听说下一个版次就可以了？）。
+
+而现在的 `BoxedParser`，虽然不能声明一个 trait 方法并返回 `impl Parser<'a, A>`，但是完全可以声明一个返回 `BoxedParser<'a, A>` 的 trait。
+
+最棒的地方在于甚至可以声明带有默认实现的 trait，因此我们不需要为每个已经实现了 `Parser` 的类型，再次去实现所有的组合子。
+
+让我们通过拓展 `Parser` trait 来尝试一下 `map` 组合子：
+
+```rs
+trait Parser<'a, Output> {
+    fn parse(&self, input: &'a str) -> ParseResult<'a, Output>;
+
+    fn map<F, NewOutput>(self, map_fn: F) -> BoxedParser<'a, NewOutput>
+    where
+        Self: Sized + 'a,
+        Output: 'a,
+        NewOutput: 'a,
+        F: Fn(Output) -> NewOutput + 'a,
+    {
+        BoxedParser::new(map(self, map_fn))
+    }
+}
+```
+
+一大堆的 `'a`，但是唉，它们都是必须的。幸运的是我们仍然可以复用旧的组合子函数，同时作为额外的好处，我们不仅仅获得了更棒的语法，通过自动的打包它们，我们同样的也去除了暴露的 `impl Trait` 类型。
+
+现在让我们稍微增强一下我们的 `quoted_string` parser：
+
+```rs
+fn quoted_string<'a>() -> impl Parser<'a, String> {
+    right(
+        match_literal("\""),
+        left(
+            zero_or_more(pred(any_char, |c| *c != '"')),
+            match_literal("\""),
+        ),
+    )
+    .map(|chars| chars.into_iter().collect())
+}
+```
+
+可以很明显的看到在 `right()` 上调用了 `.map()`。 我们也可以以同样的方式处理 `pair`， `left` 和 `right`，但是这三个我认为作为函数保留它们会更好一些，因为它们反映了 `pair` 输出类型的结构。当然了你完全也可以把它们全部加入 trait 中。
+
+另一个候选者是 `pred`。让我们在 `Parser` trait 中添加这个定义。
+
+那么 `quoted_string` 中的 `pred` 调用就可以这么改写：
+
+```rs
+zero_or_more(any_char.pred(|c| *c != '"')),
+```
+
+可读性变强了，而对于 `zero_or_more` 而言，保留原有写法更好一些，因为它读起来就像谓语那样“零个或多个 `any_char` 应用了以下的 predicate”。当然了如果你愿意的话不管是 `zero_or_more` 还是 `one_or_more` 都可以放进 trait 中。
+
+除了重写 `quoted_string`，让我们把 `single_element` 中的 `map` 也修改一下：
+
+```rs
+fn single_element<'a>() -> impl Parser<'a, Element> {
+    left(element_start(), match_literal("/>")).map(|(name, attributes)| Element {
+        name,
+        attributes,
+        children: vec![],
+    })
+}
+```
+
+这样我们就打包好了 `map` 和 `pred` 方法 -- 并且我们获取了更好的语法！
+
+## 带子元素的情况
 
 to be done...
