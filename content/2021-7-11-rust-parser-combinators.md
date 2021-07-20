@@ -15,7 +15,30 @@ tags = ["Rust", "FP", "Note"]
 
 **目录：**
 
-[TOC]
+- <a href="#XML 风格的标记语言">XML 风格的标记语言</a>
+- <a href="#定义 Parser">定义 Parser</a>
+- <a href="#第一个 Parser">第一个 Parser</a>
+- <a href="#一个 Parser 构造器">一个 Parser 构造器</a>
+- <a href="#测试 Parser">测试 Parser</a>
+- <a href="#泛用性更高的 Parser">泛用性更高的 Parser</a>
+- <a href="#组合子 Combinators">组合子 Combinators</a>
+- <a href="#函子 Functor">函子 Functor</a>
+- <a href="#Trait 出场">Trait 出场</a>
+- <a href="#Left 和 Right">Left 和 Right</a>
+- <a href="#One Or More">One Or More</a>
+- <a href="#谓语组合子 Predicate combinator">谓语组合子 Predicate combinator</a>
+- <a href="#引用字符串">引用字符串</a>
+- <a href="#解析属性">解析属性</a>
+- <a href="#很接近了">很接近了</a>
+- <a href="#超越无限 To Infinity And Beyond">超越无限 To Infinity And Beyond</a>
+- <a href="#展示自己的机会 BoxedParser">展示自己的机会 BoxedParser</a>
+- <a href="#带子元素的情况">带子元素的情况</a>
+- <a href="#是你讲那个 M 词还是由我来讲呢">是你讲那个 M 词还是由我来讲呢</a>
+- <a href="#空格 Redux">空格 Redux</a>
+- <a href="#终于完成了">终于完成了</a>
+- <a href="#额外的资源">额外的资源</a>
+
+<div id="XML 风格的标记语言"/>
 
 ## XML 风格的标记语言
 
@@ -38,6 +61,8 @@ struct Element {
 }
 ```
 
+<div id="定义 Parser"/>
+
 ## 定义 Parser
 
 Parsing 意为从流数据中获取结构的一个过程。Parser 则是梳理该结构的工具。
@@ -58,6 +83,8 @@ Fn(&str) -> Result<(&str, Element), &str>
 
 使用 `&[u8]`（字节切片，如果只使用 ASCII 码可视为字符）作为输入类型，可能会更加的简洁。尤其是因为字符串切片与其他类型切片大有不同 -- 特别是你不可以通过类似 `input[0]` 这样下标的方式来索引，而是需要使用另一个切片 `input[0..1]`。另一方面使用字节切片来解析字符串会少了很多有效的方法。
 
+<div id="第一个 Parser"/>
+
 ## 第一个 Parser
 
 编写一个字母 `a` 的 Parser。该 Parser 解析字符串切片的首元素，若为 'a' 则结果为 'a' 之后的所有切片的成功返回，反之则是包含自身的错误返回。
@@ -70,6 +97,8 @@ fn the_letter_a(input: &str) -> Result<(&str, ()), &str> {
     }
 }
 ```
+
+<div id="一个 Parser 构造器"/>
 
 ## 一个 Parser 构造器
 
@@ -88,6 +117,8 @@ fn match_literal(expected: &'static str) ->
 }
 ```
 
+<div id="测试 Parser"/>
+
 ## 测试 Parser
 
 ```rs
@@ -102,6 +133,8 @@ fn literal_parser() {
     assert_eq!(Err("Hello Mike!"), parse_joe("Hello Mike!"));
 }
 ```
+
+<div id="泛用性更高的 Parser"/>
 
 ## 泛用性更高的 Parser
 
@@ -160,6 +193,8 @@ fn identifier_parser() {
 }
 ```
 
+<div id="组合子 Combinators"/>
+
 ## 组合子 Combinators
 
 现在我们可以解析初始字符 `<`，同样也可以解析之后的 identifier，但是我们需要有序的解析。因此下一步就是编写另一个 parser 构造函数，不同的是接收两个 parser 作为输入并返回一个新的 parser，其功能是有序的进行解析。换言之，一个 parser combinator，因为它组合两个 parser 称为一个新的 parser。
@@ -207,6 +242,8 @@ fn pair_combinator() {
 
 它看起来没问题！但是再看看返回类型：`((), String)`。很明显我们只关注到了返回右边的值，即 `String`。这种情况很常见 —— 有些解析器只匹配输入中的模式，而不产生值，因此可以安全地忽略它们的输出。为了适应这种模式，我们将要使用 `pair` 组合子来编写两个其它的组合子：`left`，它丢弃第一个 parser 的返回并仅返回第二个 parser 的结果，与之相反的是 `right`，它是以上例子所希望使用的类型而不是 `pair` -- 即丢弃了左值 `()` 并保留 `String`。
 
+<div id="函子 Functor"/>
+
 ## 函子 Functor
 
 进一步的研究之前，介绍一下另一个组合子，它可以使编写变得更轻松：`map`。
@@ -246,6 +283,8 @@ where
 ```
 
 这种模式在 Haskell 中被称之为一个“函子” functor，同时它拥有数学上的兄弟，范畴论 category theory。如果有一个类型 `A`，以及一个 `map` 函数可以接收一个 `A` 转换为 `B` 的函数，那么这便是一个函子。在 Rust 中可以经常见到它，例如 `Option`，`Result`，`Iterator` 甚至是 `Future`，只不过它们没有被显式的被称为函子。原因也很简单：你不能如同 Rust 的类型系统那样，真正的去表达一个函子，因为 Rust 缺少高阶类型 Higher kinded types，不过这就是另一件事儿了。
+
+<div id="Trait 出场"/>
 
 ## Trait 出场
 
@@ -340,6 +379,8 @@ where
 
 `Result` 的 `and_then` 方法与 `map` 类似，不同的是该映射函数不返回新的类型传入 `Result`，而是一个新结合好的 `Result`。之后会再讲 `and_then`，现在让我们看看 `left` 和 `right` 的组合子如何实现。
 
+<div id="Left 和 Right"/>
+
 ## Left 和 Right
 
 `pair` 与 `map` 实现了后再写 `left` 和 `right` 就简单多了：
@@ -394,6 +435,8 @@ fn right_combinator() {
     assert_eq!(Err("!oops"), tag_opener.parse("<!oops"));
 }
 ```
+
+<div id="One Or More"/>
 
 ## One Or More
 
@@ -474,6 +517,8 @@ fn zero_or_more_combinator() {
 
 此刻我们有理由开始思考如何抽象这两个函数，因为一个函数完全是另一个函数的拷贝，仅仅只是去掉了一小部分。
 
+<div id="谓语组合子 Predicate combinator"/>
+
 ## 谓语组合子 Predicate combinator
 
 我们现在有了解析空格的 `one_or_more` 以及解析属性对 attribute pairs 的 `zero_or_more`。
@@ -549,6 +594,8 @@ fn space2<'a>() -> impl Parser<'a, Vec<char>> {
 }
 ```
 
+<div id="引用字符串"/>
+
 ## 引用字符串
 
 做了那么多准备工作后，现在是否至少能解析属性呢？当然没问题，我们仅需要确保拥有了所有独立的 parser。处理属性名称的 `identifier` 有了，处理 `=` 号的 `match_literal("=")` 也有了。现在还缺少一个字符串 parser。幸运的是我们已经拥有了所有的组合子：
@@ -598,6 +645,8 @@ fn quoted_string_parser() {
 
 这下子终于可以解析属性了。
 
+<div id="解析属性"/>
+
 ## 解析属性
 
 我们现在可以解析空格，标识符，`=` 号以及引用字符串。终于集齐了所有的 parser 了。
@@ -639,6 +688,8 @@ fn attribute_parser() {
     );
 }
 ```
+
+<div id="很接近了"/>
 
 ## 很接近了
 
@@ -687,6 +738,8 @@ fn single_element_parser() {
 ```
 
 `single_element` 的返回类型太复杂了，以至于编译器要处理很长时间。我们现在不能再忽略这个问题了。
+
+<div id="超越无限 To Infinity And Beyond"/>
 
 ## 超越无限 To Infinity And Beyond
 
@@ -745,7 +798,9 @@ impl<'a, Output> Parser<'a, Output> for BoxedParser<'a, Output> {
 
 我们创造了新的类型 `BoxedParser` 用于存储 parser 函数。那么正如之前所说的，这就意味着把 parser 放置进堆上，用解引用的方式获取它，这可能会花费我们几个宝贵的纳秒，所以实际上可能需要推迟使用 `box`。只需将一些更常用的组合子放进 `box` 就足够了。
 
-## 展示自己的机会（BoxedParser）
+<div id="展示自己的机会 BoxedParser"/>
+
+## 展示自己的机会 BoxedParser
 
 等一下，这么做很可能会带来另外的问题。因为组合子是独立的函数，当我们嵌套的数量比较多时，代码的可读性就会变差。回忆一下 `quoted_string` parser：
 
@@ -833,6 +888,8 @@ fn single_element<'a>() -> impl Parser<'a, Element> {
 ```
 
 这样我们就打包好了 `map` 和 `pred` 方法 -- 并且我们获取了更好的语法！
+
+<div id="带子元素的情况"/>
 
 ## 带子元素的情况
 
@@ -981,6 +1038,8 @@ pub fn parent_element<'a>() -> impl Parser<'a, Element> {
 
 现在我们需要做的是返回 `element` parser 并确保我们把 `open_element` 替换成 `parent_element`，这样它就可以解析整个元素结构了！
 
+<div id="是你讲那个 M 词还是由我来讲呢"/>
+
 ## 是你讲那个 M 词还是由我来讲呢？
 
 还记得我们谈过的 `map` 模式在 Haskell 中是被称之为一个函子 functor 吗？
@@ -995,7 +1054,9 @@ pub fn parent_element<'a>() -> impl Parser<'a, Element> {
 
 尽管拥有函子 functor，Rust 的类型系统展示还没有能力来表达单子 monad，所以我们只需要知道这个模式被称为 monad 即可。
 
-## 空格，Redux
+<div id="空格 Redux"/>
+
+## 空格 Redux
 
 最后一件事。我们需要一个 parser 能够解析一些 XML，但是在处理空格方面还是不太让人满意。随机的空格是被允许在标签之间，这样就可以随意的在标签插入分行。
 
@@ -1015,6 +1076,8 @@ fn element<'a>() -> impl Parser<'a, Element> {
     whitespace_wrap(either(single_element(), parent_element()))
 }
 ```
+
+<div id="终于完成了"/>
 
 ## 终于完成了
 
@@ -1076,6 +1139,8 @@ fn mismatched_closing_tag() {
 还是让我们聚焦好消息：我们通过 parser 组合子的方式编写一个解析器！我们知道了一个 parser 既可以构成函子又可以构成单子，所以现在的你就可以用令人畏惧的范畴论知识在聚会上给人留下深刻印象了！
 
 最重要的是，我们现在知道解析器组合子是如何从头开始工作的。 现在没有人能阻止我们！
+
+<div id="额外的资源"/>
 
 ## 额外的资源
 
