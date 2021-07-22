@@ -589,7 +589,7 @@ fn space1<'a>() -> impl Parser<'a, Vec<char>> {
     one_or_more(whitespace_char())
 }
 
-fn space2<'a>() -> impl Parser<'a, Vec<char>> {
+fn space0<'a>() -> impl Parser<'a, Vec<char>> {
     zero_or_more(whitespace_char())
 }
 ```

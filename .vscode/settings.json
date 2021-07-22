@@ -1,3 +1,9 @@
 {
-  "cSpell.words": ["combinators", "combinator"]
+  "cSpell.words": [
+    "GRPC",
+    "Rustc",
+    "combinator",
+    "combinators",
+    "microservices"
+  ]
 }
