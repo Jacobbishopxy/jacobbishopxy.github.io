@@ -4,6 +4,7 @@
     "Rustc",
     "combinator",
     "combinators",
-    "microservices"
+    "microservices",
+    "rustup"
   ]
 }
