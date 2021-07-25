@@ -191,4 +191,4 @@ github = "Jacobbishopxy"
 
 # To add disqus comments
 [extra.commenting]
-disqus = "Jacob"
+#disqus = "Jacob"

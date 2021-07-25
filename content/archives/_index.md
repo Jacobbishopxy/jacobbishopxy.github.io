@@ -1,6 +1,16 @@
 +++
 title = "Archives"
 description = "Read listing and etc."
-sort_by = "date"
-paginate_by = 5
 +++
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+{% aligncenter() %}
+
+TODO: a new HTML template design is still under conceiving
+
+{% end %}
