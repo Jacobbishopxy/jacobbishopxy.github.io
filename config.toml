@@ -2,14 +2,14 @@
 base_url = "https://jacobbishopxy.github.io"
 
 # The site title and description; used in feeds by default.
-title = "Jacob's Blog"
+title = "Jacob's Domain"
 description = "Sharing interesting things"
 
 # The default language; used in feeds.
 default_language = "en"
 
 # The site theme to use.
-theme = "tale-zola"
+theme = "DeepThought"
 
 # For overriding the default output directory `public`, set it to another value (e.g.: "docs")
 output_dir = "public"
@@ -88,7 +88,7 @@ highlight_theme = "base16-ocean-dark"
 
 # When set to "true", emoji aliases translated to their corresponding
 # Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)
-render_emoji = false
+render_emoji = true
 
 # Whether external links are to be opened in a new tab
 # If this is true, a `rel="noopener"` will always automatically be added for security reasons
@@ -159,46 +159,36 @@ include_content = true
 
 
 [extra]
-# Put all your custom variables here
-author = "Jacob Xie"
-timeformat = "%B %e, %Y"
 
-[extra.expressions]
-home = "Home"              # The homepage's name
-pinned = "Pinned"          # On the header of the post list
-written_by = "Written by"  # Like: Written by Aaran Xu
-on = "on"                  # Like: on May 3, 2021
-top = "Top"                # Go to the top of the page in the post
-tags = "Tags"              # In the page of Tags
+navbar_items = [
+ { code = "en", nav_items = [
+  { url = "$BASE_URL/", name = "Home" },
+  { url = "$BASE_URL/posts", name = "Posts" },
+  { url = "$BASE_URL/docs", name = "Docs" },
+  { url = "$BASE_URL/archives", name = "Archives" },
+  { url = "$BASE_URL/tags", name = "Tags" },
+  { url = "$BASE_URL/categories", name = "Categories" },
+ ]},
+]
 
-# disqus comments block
-disqus_discussion = "Discussion and feedback"
+# Add links to favicon, you can use https://realfavicongenerator.net/ to generate favicon for your site
+[extra.favicon]
+favicon_16x16 = "/icons/favicon-16x16.png"
+favicon_32x32 = "/icons/favicon-32x32.png"
+apple_touch_icon = "/icons/apple-touch-icon.png"
+safari_pinned_tab = "/icons/safari-pinned-tab.svg"
+webmanifest = "/icons/site.webmanifest"
 
-# The contents of the 404 page
-p404 = "404: Page not found"
-p404_info = "Oops! We can't seem to find the page you are looking for."
-p404_back_home_start = "Let's"
-p404_back_home_with_link = "head back home"
-p404_back_home_end = "."
+# Author details
+[extra.author]
+name = "Jacob Xie"
+avatar = "/images/avatar.png"
 
-# Menu items
-[[extra.menu]]
-name = "Posts"
-url = "/"
+# Social links
+[extra.social]
+email = "jacobbishopxy@gmail.com"
+github = "Jacobbishopxy"
 
-[[extra.menu]]
-name = "Tags"
-url = "tags"
-
-[[extra.menu]]
-name = "Archives"
-url = "archives"
-
-[[extra.menu]]
-name = "About"
-url = "about"
-
-[extra.footer]
-start_year = "2021"  # start year of the site
-end_year = "2021"    # end year of the site
-info = "Who drives me forward like fate? The myself striding on my back."
+# To add disqus comments
+[extra.commenting]
+disqus = "Jacob"

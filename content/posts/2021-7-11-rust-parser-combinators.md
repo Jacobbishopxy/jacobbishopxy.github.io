@@ -3,7 +3,8 @@ title = "Rust Parser Combinators"
 date = 2021-07-11
 
 [taxonomies]
-tags = ["Rust", "FP", "Note"]
+categories = ["Read"]
+tags = ["Rust", "FP"]
 
 +++
 

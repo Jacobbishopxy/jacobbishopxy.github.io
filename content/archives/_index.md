@@ -1,6 +1,6 @@
 +++
 title = "Archives"
-template = "base.html"
+description = "Read listing and etc."
+sort_by = "date"
+paginate_by = 5
 +++
-
-Under construction...
