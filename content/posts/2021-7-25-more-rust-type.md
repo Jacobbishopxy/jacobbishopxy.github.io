@@ -7,9 +7,13 @@ date = 2021-07-25
 categories = ["Read"]
 tags = ["Rust"]
 
+[extra]
+toc = true
 +++
 
 Study note from [Untapped potential in Rust's type system](https://www.jakobmeier.ch/blogging/Untapped-Rust.html).
+
+## Warm up
 
 > Types are a very abstract concept.
 
@@ -66,7 +70,7 @@ pub struct TypeId {
 }
 ```
 
-Well, it only works for `'static` right now, and I don't think it could help us for now. But the author amazed me by using `Box<dyn>` syntax which creates trait objects, so that type can be compared by `TypeId` (full code):
+Well :thinking:, it only works for `'static` right now, and I thought it could not help us for now. But the author amazed me by using `Box<dyn>` syntax to create trait objects, so that a type can be compared by `TypeId` (full code):
 
 > ```rs
 > use core::any::{Any, TypeId};
@@ -102,7 +106,7 @@ Well, it only works for `'static` right now, and I don't think it could help us 
 > }
 > ```
 
-Here the `Any` trait provides a `type_id()` method, which is the key. Another function used to remove first rectangle from a vector:
+Here the `Any` trait provides a `type_id()` method, which is the key of identification. Similarly, the author provides another function that can be used for removing the first rectangle from a vector:
 
 > ```rs
 > use core::any::{Any, TypeId};
@@ -130,5 +134,297 @@ Here the `Any` trait provides a `type_id()` method, which is the key. Another fu
 >    rectangle_as_unknown_shape.downcast().ok()
 > }
 > ```
+
+The difference between these two functions `count_rectangles` and `remove_first_rectangle` is there input argument. Not only the type's mutability but also the `dyn` trait object. For the second function, we can't use `dyn Shape` to replace `dyn Any`, because `Shape` trait doesn't have `downcast` method.
+
+Here is the definition of `downcast`:
+
+````rs
+impl<A: Allocator> Box<dyn Any, A> {
+    #[inline]
+    #[stable(feature = "rust1", since = "1.0.0")]
+    /// Attempt to downcast the box to a concrete type.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::any::Any;
+    ///
+    /// fn print_if_string(value: Box<dyn Any>) {
+    ///     if let Ok(string) = value.downcast::<String>() {
+    ///         println!("String ({}): {}", string.len(), string);
+    ///     }
+    /// }
+    ///
+    /// let my_string = "Hello World".to_string();
+    /// print_if_string(Box::new(my_string));
+    /// print_if_string(Box::new(0i8));
+    /// ```
+    pub fn downcast<T: Any>(self) -> Result<Box<T, A>, Self> {
+        if self.is::<T>() {
+            unsafe {
+                let (raw, alloc): (*mut dyn Any, _) = Box::into_raw_with_allocator(self);
+                Ok(Box::from_raw_in(raw as *mut T, alloc))
+            }
+        } else {
+            Err(self)
+        }
+    }
+}
+````
+
+That is to say, with `downcast`, we can 'transform' an `Any` type to some specific type.
+
+## Heterogenous Collection
+
+However, directly passing `Box<dyn Any>` around is not always a good idea.
+
+> To avoid manual downcasting on the caller side, it can be hidden behind a generic function.
+
+And here is an example, in where I made some changes, from the author's original code:
+
+```rs
+use std::{
+    any::{Any, TypeId},
+    collections::HashMap,
+};
+
+fn main() {
+    // Before
+    let mut collection = HeteroCollection::default();
+    collection.set("name", "Jakob");
+    collection.set("language", "Rust");
+    collection.set("dominant hand", DominantHand::Right);
+
+    let _name = collection.get::<&'static str>("name");
+    let _language = collection.get::<&'static str>("language");
+    let _dominant_hand = collection.get::<DominantHand>("dominant hand");
+
+    println!("{:#?}", collection);
+
+    // After
+    let mut collection = SingletonCollection::default();
+    collection.set(Name("Jakob"));
+    collection.set(Language("Rust"));
+    collection.set(DominantHand::Right);
+
+    let _name = collection.get::<Name>().0;
+    let _language = collection.get::<Language>().0;
+    let _dominant_hand = collection.get::<DominantHand>();
+
+    println!("{:#?}", collection);
+}
+
+// Use string as key
+#[derive(Default, Debug)]
+struct HeteroCollection {
+    data: HashMap<&'static str, Box<dyn Any>>,
+}
+
+impl HeteroCollection {
+    pub fn get<T: 'static>(&self, key: &'static str) -> Option<&T> {
+        let unknown_output: &Box<dyn Any> = self.data.get(key)?;
+        unknown_output.downcast_ref()
+    }
+
+    pub fn set<T: 'static>(&mut self, key: &'static str, value: T) {
+        self.data.insert(key, Box::new(value));
+    }
+}
+
+// Use `TypeId` as key
+#[derive(Default, Debug)]
+struct SingletonCollection {
+    data: HashMap<TypeId, Box<dyn Any>>,
+}
+
+impl SingletonCollection {
+    pub fn get<T: Any>(&self) -> &T {
+        self.data[&TypeId::of::<T>()]
+            .downcast_ref()
+            .as_ref()
+            .unwrap()
+    }
+
+    pub fn set<T: Any>(&mut self, value: T) {
+        self.data.insert(TypeId::of::<T>(), Box::new(value));
+    }
+}
+
+// For completeness: Type Definitions
+struct Name(&'static str);
+struct Language(&'static str);
+pub enum DominantHand {
+    Left,
+    Right,
+    Both,
+    Neither,
+    Unknown,
+    Other,
+}
+```
+
+The well printed result:
+
+```t
+HeteroCollection {
+    data: {
+        "name": Any { .. },
+        "dominant hand": Any { .. },
+        "language": Any { .. },
+    },
+}
+SingletonCollection {
+    data: {
+        TypeId {
+            t: 16692126412618073318,
+        }: Any { .. },
+        TypeId {
+            t: 13748357137106968353,
+        }: Any { .. },
+        TypeId {
+            t: 13740187421581971802,
+        }: Any { .. },
+    },
+}
+```
+
+Clearly, the difference between these two structs is hashmap's key type: one is string and the other is `TypeId`. However, they work quit differently:
+
+> the type-key must be known at compile-time, whereas the string could be determined at runtime.
+
+Amazing, isn't it? Not until I read an article about [taxonomy](https://en.wikipedia.org/wiki/Taxonomy), I realize this is actually solving a classic categorization problem.
+
+In rust, there are three ways to achieve a categorizing design. The first one is to use Type & Trait, and this is done before compile, which means first of all we describe concrete types, and use trait to conclude them. The second one is `Type<T: Trait>`, and the last one is using Enum.
+
+Let's look at the first method, and I use World of Warcrafts' role as an example:
+
+```rs
+fn main() {
+    attack_command(Rogue);
+}
+
+struct Rogue;
+
+struct Warrior;
+
+pub trait Melee {
+    fn base_attack(&self) -> usize;
+}
+
+impl Melee for Rogue {
+    fn base_attack(&self) -> usize {
+        5
+    }
+}
+
+impl Melee for Warrior {
+    fn base_attack(&self) -> usize {
+        10
+    }
+}
+
+fn attack_command<T: Melee>(role: T) {
+    println!("hit: {:?} pts", role.base_attack())
+}
+```
+
+The next demand is to implement `upcast` and `downcast`, which means a concrete type turns to a trait object and a trait object turns to a concrete type, respectively. A normal way to handle this problem is add `downcast` support to a trait, for example:
+
+```rs
+use std::any::Any;
+
+fn main() {
+    let foo = Warrior.as_any_ref();
+    let bar = foo.downcast_ref::<Warrior>();
+    println!("{:?}", bar);
+}
+
+#[derive(Debug)]
+struct Warrior;
+
+pub trait Melee {
+    fn base_attack(&self) -> usize;
+
+    fn as_any_ref(&self) -> &dyn Any;
+
+    fn as_any_mut(&mut self) -> &mut dyn Any;
+}
+
+impl Melee for Warrior {
+    fn base_attack(&self) -> usize {
+        10
+    }
+
+    fn as_any_ref(&self) -> &dyn Any {
+        self
+    }
+
+    fn as_any_mut(&mut self) -> &mut dyn Any {
+        self
+    }
+}
+```
+
+Ta-da! Simple and strait forward! And what about the second method? What exactly is a `Type<T: Trait>`?
+
+```rs
+fn main() {
+    let warrior = Warrior {
+        role: Melee,
+        attack: Box::new(Attack1),
+    };
+
+    println!("{:?}", warrior.attack.base_attack());
+
+    let rogue = Rogue {
+        role: Melee,
+        attack: Attack2,
+    };
+
+    println!("{:?}", rogue.attack.base_attack());
+}
+
+// Common parts
+pub struct Melee;
+
+pub trait Attack {
+    fn base_attack(&self) -> usize;
+}
+
+// Case #1:
+pub struct Warrior {
+    pub role: Melee, // inherit from parent
+    pub attack: Box<dyn Attack>,
+}
+
+// Case #2:
+pub struct Rogue<T: Attack> {
+    pub role: Melee, // inherit from parent
+    pub attack: T,
+}
+
+// implementation of warrior's attack
+struct Attack1;
+
+impl Attack for Attack1 {
+    fn base_attack(&self) -> usize {
+        10
+    }
+}
+
+// implementation of rogue's attack
+struct Attack2;
+
+impl Attack for Attack2 {
+    fn base_attack(&self) -> usize {
+        5
+    }
+}
+```
+
+No doubt, with `Box` case #1 works for runtime, and case #2 only suitable before compile. For the third method using enum is quite the same as case #2, which means they are all `Sized` so that categorizing only works before compile. Anyway, let's move on and see what dynamic type can do for us.
+
+## Type-Oriented
 
 to be continue...
