@@ -17,7 +17,7 @@ Study note from [Untapped potential in Rust's type system](https://www.jakobmeie
 
 > Types are a very abstract concept.
 
-In most of the languages, types are things used to describe variables' form, and some languages like Haskell, types are elements which have been endowed by black magic. As the author says, the whole Haskell program seems like written in the type system itself, and what I've learned from Scala functional programing has the same idea. Be short, it is basically implementing some functional trait for a type, for example a `F[_]` who implemented `def map` can be treaded as a Functor (actually more complected than this).
+In most of the languages, types are things used to describe variables' form, and some languages like Haskell, types are elements which have been endowed by black magic. As the author mentioned, the whole Haskell program seems like written in the type system itself, and what I've learned from Scala functional programing has the same idea. Be short, it is basically implementing some functional trait for a type, for example a `F[_]` who implemented `def map` can be treaded as a Functor (actually more complected than this).
 
 Type has more meanings in Rust. With ownership system, we have immutable `&` and mutable `&mut` reference type, and we also have lifetime type such as `'static`. But these are types working in compile time, which is not enough for runtime.
 
@@ -426,5 +426,190 @@ impl Attack for Attack2 {
 No doubt, with `Box` case #1 works for runtime, and case #2 only suitable before compile. For the third method using enum is quite the same as case #2, which means they are all `Sized` so that categorizing only works before compile. Anyway, let's move on and see what dynamic type can do for us.
 
 ## Type-Oriented
+
+Then we come to the second part, use these techs in the real world.
+
+> What I’m going to show you could be described as object-oriented message passing with the twist that types are used as object addresses and also for dynamic dispatch.
+
+The purpose of using singleton objects with dynamic dispatch is to solve borrowing issue when a variable is sharable, especially sharable among threads. The normal way to handle this issue is to use `Rc<RefCell>` in sync env or `Arc<RefCell>` in async env.
+
+Let's take a look the full code the author provides us. A little bit too long, so I collapsed it here:
+
+<details>
+<summary>Click to expand</summary>
+
+```rs
+struct MyObject {
+   counter: u32,
+}
+
+struct MethodA;
+
+struct MethodBWithArguments {
+   text: String,
+}
+
+impl MyObject {
+   fn method_a(&mut self, _arg: MethodA) {
+       self.counter += 1;
+       println!(
+           "Object invoked a method {} times. This time without an argument.",
+           self.counter
+       );
+   }
+
+   fn method_b(&mut self, arg: MethodBWithArguments) {
+       self.counter += 1;
+       println!(
+           "Object invoked a method {} times. This time with argument: {}",
+           self.counter, arg.text
+       );
+   }
+}
+
+fn main() {
+   /* registration */
+   let obj = MyObject { counter: 0 };
+   my_library::register_object(obj);
+   my_library::register_method(MyObject::method_a);
+   my_library::register_method(MyObject::method_b);
+
+   /* invocations */
+   my_library::invoke::<MyObject, _>(MethodA);
+   my_library::invoke::<MyObject, _>(MethodBWithArguments {
+       text: "Hello World!".to_owned(),
+   });
+
+   /* Output */
+   // ...
+}
+
+mod my_library {
+   use std::{
+       any::{Any, TypeId},
+       collections::HashMap,
+   };
+
+   // Assume `register_object` and `register_method` are called on it
+   pub struct Nut {
+       // states
+       objects: HashMap<TypeId, Box<dyn Any>>,
+       // methods
+       methods: HashMap<(TypeId, TypeId), Box<dyn FnMut(&mut Box<dyn Any>, Box<dyn Any>)>>,
+   }
+
+   impl Nut {
+       // use for storing states
+       pub fn register_object<OBJECT>(&mut self, obj: OBJECT)
+       where
+           OBJECT: Any,
+       {
+           let key = TypeId::of::<OBJECT>();
+           let boxed_obj = Box::new(obj);
+           self.objects.insert(key, boxed_obj);
+       }
+
+       // 1. Look up the object.
+       // 2. Look up the method.
+       // 3. Call the method with the object and the invocation argument.
+       pub fn invoke<OBJECT, ARGUMENT>(&mut self, arg: ARGUMENT)
+       where
+           OBJECT: Any,
+           ARGUMENT: Any,
+       {
+           let object_key = TypeId::of::<OBJECT>();
+           let method_key = (TypeId::of::<OBJECT>(), TypeId::of::<ARGUMENT>());
+           if let Some(obj) = self.objects.get_mut(&object_key) {
+               if let Some(method) = self.methods.get_mut(&method_key) {
+                   method(obj, Box::new(arg));
+               }
+           }
+       }
+
+       // use for storing objects' methods
+       pub fn register_method<OBJECT, ARGUMENT, FUNCTION>(&mut self, mut method: FUNCTION)
+       where
+           FUNCTION: FnMut(&mut OBJECT, ARGUMENT) + 'static,
+           ARGUMENT: Any,
+           OBJECT: Any,
+       {
+           let key = (TypeId::of::<OBJECT>(), TypeId::of::<ARGUMENT>());
+           let wrapped_method =
+               Box::new(move |any_obj: &mut Box<dyn Any>, any_args: Box<dyn Any>| {
+                   let obj: &mut OBJECT = any_obj.downcast_mut().expect("Type conversion failed");
+                   let args: ARGUMENT = *any_args.downcast().expect("Type conversion failed");
+                   method(obj, args)
+               });
+           self.methods.insert(key, wrapped_method);
+       }
+   }
+
+   // The real nuts code has absolutely no unsafe code.
+   // But just for readability, global data is stored as mutable static in this example.
+   static mut NUT: Option<Nut> = None;
+   fn get_nut() -> &'static mut Nut {
+       unsafe {
+           NUT.get_or_insert_with(|| Nut {
+               objects: HashMap::new(),
+               methods: HashMap::new(),
+           })
+       }
+   }
+
+   pub fn register_object(obj: impl Any) {
+       get_nut().register_object(obj);
+   }
+   pub fn register_method<OBJECT, ARGUMENT, FUNCTION>(method: FUNCTION)
+   where
+       FUNCTION: FnMut(&mut OBJECT, ARGUMENT) + 'static,
+       ARGUMENT: Any,
+       OBJECT: Any,
+   {
+       get_nut().register_method(method);
+   }
+   pub fn invoke<OBJECT, ARGUMENT>(method_call: ARGUMENT)
+   where
+       OBJECT: Any,
+       ARGUMENT: Any,
+   {
+       get_nut().invoke::<OBJECT, ARGUMENT>(method_call);
+   }
+}
+```
+
+</details>
+</br>
+
+One thing that we should know before moving on is a `'static` bound. According to [this post](https://stackoverflow.com/a/48018183/8163324):
+
+> 1. If explicitly given, use that lifetime.
+>
+> 1. Otherwise, it is inferred from the inner trait. For example, `Box<Any>` is `Box<Any + 'static>` because `Any: 'static`.
+>
+> 1. If the trait doesn't have an appropriate lifetime, it is inferred from the outer type. For example, `&'a >Fn()` is `&'a (Fn() + 'a)`.
+>
+> 1. If that even failed, it falls back to `'static` (for a function signature) or an anonymous lifetime (for a function body).
+
+If we don't have the `'static` bound right after the `FnMut`, we'll see a compile error as following:
+
+```terminal
+   Compiling more-rust-type v0.1.0 (***)
+error[E0310]: the parameter type `FUNCTION` may not live long enough
+   --> more-rust-type/src/bin/type_oriented.rs:102:38
+    |
+89  |         pub fn register_method<OBJECT, ARGUMENT, FUNCTION>(&mut self, mut method: FUNCTION)
+    |                                                  -------- help: consider adding an explicit lifetime bound...: `FUNCTION: 'static`
+...
+102 |             self.methods.insert(key, wrapped_method);
+    |                                      ^^^^^^^^^^^^^^ ...so that the type `[closure@more-rust-type/src/bin/type_oriented.rs:97:26: 101:18]` will meet its required lifetime bounds
+
+For more information about this error, try `rustc --explain E0310`.
+error: could not compile `more-rust-type` due to previous error
+The terminal process "cargo 'run', '--package', 'more-rust-type', '--bin', 'type_oriented'" failed to launch (exit code: 101).
+```
+
+Learn more about the library [Nuts](https://github.com/jakmeier/nuts) written by the author.
+
+## Generalizing TypeId
 
 to be continue...
