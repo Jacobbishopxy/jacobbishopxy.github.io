@@ -183,6 +183,9 @@ However, directly passing `Box<dyn Any>` around is not always a good idea.
 
 And here is an example, in where I made some changes, from the author's original code:
 
+<details>
+<summary>Click to expand</summary>
+
 ```rs
 use std::{
     any::{Any, TypeId},
@@ -263,6 +266,9 @@ pub enum DominantHand {
     Other,
 }
 ```
+
+</details>
+</br>
 
 The well printed result:
 
@@ -580,7 +586,7 @@ mod my_library {
 </details>
 </br>
 
-One thing that we should know before moving on is a `'static` bound. According to [this post](https://stackoverflow.com/a/48018183/8163324):
+One thing that we should know before moving on is to be clear about a `'static` bound. According to [this post](https://stackoverflow.com/a/48018183/8163324):
 
 > 1. If explicitly given, use that lifetime.
 >
@@ -608,7 +614,17 @@ error: could not compile `more-rust-type` due to previous error
 The terminal process "cargo 'run', '--package', 'more-rust-type', '--bin', 'type_oriented'" failed to launch (exit code: 101).
 ```
 
-Learn more about the library [Nuts](https://github.com/jakmeier/nuts) written by the author.
+Which is saying as a trait, `FUNCTION` should live longer than the whole `Nut` struct. It's actually a function who will be registered into a `Nut` instance, and this function is defined before compilation, so giving it a `'static` lifetime bound is therefore very appropriate.
+
+We can learn several things from the code.
+
+- First, `Nut` is a struct holds two `HashMap`, one for object instances, whose key is a unique `TypeId`, and if you register a same type of object twice, the first one will be overrode (which mentioned by the author: "The global storage keeps only one object of each type."); another field is used for storing object's methods, so that we can invoke these methods by specifying object's type and their argument in the future. Moreover, each time invoking a method, object's type should be provided as type param to the `invoke` function. Otherwise, library would not know which object's method user is calling. This is quite like calling iterator `.collect()` method from the standard library (user should explicitly announce the type they wish to convert).
+
+- Second, inside `methods` field, `Box<dyn FnMut(&mut Box<dyn Any>, Box<dyn Any>)>` is used as method's signature. `FnMut` is more general than `Fn`, because it allows arguments' mutation. Furthermore, `&mut Box<dyn Any>` is used as input argument type, and `Box<dyn Any>` as output. Notice, since input argument type is `&mut Box<dyn Any>`, all the registered methods should be written as `fn method_x(&mut self, arg: ...)`, and signature like `fn method_y(&self, arg: ...)` is not allowed to registration.
+
+- Last, the `invoke` function: using `OBJECT` type argument to find out the object instance, and finding out its registered method, then finally calling the method with object instance and argument instance.
+
+Although the code solved general heterogenous storage and method calling at the time, it is still cumbersome and rough for a library crate. But no worry! Please learn more about the 'real' library [Nuts](https://github.com/jakmeier/nuts) written by the author.
 
 ## Generalizing TypeId
 
