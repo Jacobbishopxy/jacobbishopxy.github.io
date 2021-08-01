@@ -35,7 +35,7 @@ Alright, here comes the part that is not taught in THE BOOK. The author introduc
 >     // Get the type ID using a value of that type.
 >     let t0 = one_hundred.type_id();
 >     // Get the type ID directly.
->     let t1 = TypeId::od::<u32>();
+>     let t1 = TypeId::of::<u32>();
 >
 >     assert_eq!(t0, t1);
 > }
@@ -628,4 +628,172 @@ Although the code solved general heterogenous storage and method calling at the 
 
 ## Generalizing TypeId
 
-to be continue...
+In the previous two sections, the author has shown us how type IDs are useful within a single binary, and now we are going to seek things beyond the binary boundary, which means the type is totally not known at compile time.
+
+Wait a minute, so I know the `TypeId` is actually a private `u64`, and it's given by compiler, but what effects its generation? I made a test according to the article, which says:
+
+> - Renaming the struct
+> - Renaming fields
+> - Moving the definition to another module
+> - Syntax changes (e.g. `MyType{}` to `MyType`)
+
+And these changes will not change the `TypeId`:
+
+> - Changing the type of a field
+> - Adding methods in an `impl` block or through a `#[derice(...)]`
+
+<details>
+<summary>Click to expand the test code</summary>
+
+1. Renaming the struct
+
+   ```rs
+   fn main() {
+       struct S1;
+
+       println!("{:?}", TypeId::of::<S1>());
+       // TypeId { t: 15705126685411935490 }
+   }
+   ```
+
+   ```rs
+   fn main() {
+       struct S2;
+
+       println!("{:?}", TypeId::of::<S3>());
+       // TypeId { t: 8903374546367185742 }
+   }
+   ```
+
+1. Renaming fields
+
+   ```rs
+   fn main() {
+       struct S {
+           _v1: usize,
+       }
+
+       println!("{:?}", TypeId::of::<S>());
+       // TypeId { t: 5679131806921150377 }
+   }
+   ```
+
+   ```rs
+   fn main() {
+       struct S {
+           _v2: usize,
+       }
+
+       println!("{:?}", TypeId::of::<S>());
+       // TypeId { t: 18316776490602311238 }
+   }
+   ```
+
+1. Moving the definition to another module
+
+   ```rs
+   mod M1 {
+   pub struct S;
+   }
+
+   fn main() {
+       use M1::S;
+
+       println!("{:?}", TypeId::of::<S>());
+       // TypeId { t: 89908796858884930 }
+   }
+   ```
+
+   ```rs
+   mod M2 {
+   pub struct S;
+   }
+
+   fn main() {
+       use M1::S;
+
+       println!("{:?}", TypeId::of::<S>());
+       // TypeId { t: 17526344372340483910 }
+   }
+   ```
+
+1. Syntax changes
+
+   ```rs
+   fn main() {
+       struct S;
+
+       println!("{:?}", TypeId::of::<S>());
+       // TypeId { t: 17803636430605880271 }
+   }
+   ```
+
+   ```rs
+   fn main() {
+       struct S {};
+
+       println!("{:?}", TypeId::of::<S>());
+       // TypeId { t: 6576500625851552798 }
+   }
+   ```
+
+1. **(NOT changing TypeId)** Changing the type of a field:
+
+   ```rs
+   struct S1 {
+       v: i32,
+   }
+
+   fn main() {
+       println!("{:?}", TypeId::of::<S1>());
+       // TypeId { t: 3771603622093412445 }
+   }
+   ```
+
+   ```rs
+   struct S1 {
+       v: String,
+   }
+
+   fn main() {
+       println!("{:?}", TypeId::of::<S1>());
+       // TypeId { t: 3771603622093412445 }
+   }
+   ```
+
+1. **(NOT changing TypeId)** Changing the type of a field:
+
+   ```rs
+   struct S1;
+
+   fn main() {
+       println!("{:?}", TypeId::of::<S1>());
+       // TypeId { t: 6307292858813541705 }
+   }
+   ```
+
+   ```rs
+   struct S1;
+
+   impl S1 {
+       fn f() {
+           println!("f()")
+       }
+   }
+
+   fn main() {
+       println!("{:?}", TypeId::of::<S1>());
+       // TypeId { t: 6307292858813541705 }
+   }
+   ```
+
+</details>
+</br>
+
+According to the Rust official documentation:
+
+> While TypeId implements Hash, PartialOrd, and Ord, it is worth noting
+> that the hashes and ordering will vary between Rust releases.
+> Beware of relying on them inside of your code!
+
+Apparently, `TypeId` isn't designed to be used sharing among many binaries. As the author's dream is to accomplish a networked dynamic publish-subscribe system, then implementing an own `TypeId` is therefore very necessary.
