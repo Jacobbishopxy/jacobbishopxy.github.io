@@ -797,3 +797,49 @@ According to the Rust official documentation:
 > Beware of relying on them inside of your code!
 
 Apparently, `TypeId` isn't designed to be used sharing among many binaries. As the author's dream is to accomplish a networked dynamic publish-subscribe system, then implementing an own `TypeId` is therefore very necessary.
+
+So let's take a look on how to produce an Universal type Id.
+
+First create a trait called `UniversalType`, and any type that implement this trait will get a `UniversalTypeId` (same as `TypeId` for any type).
+
+Take a glance of [the implementation](https://github.com/jakmeier/universal-type-id/blob/06fcfb0e122fd32e4383750a17a76b50384c2e3b/uti/src/lib.rs#L10):
+
+> ```rs
+> #[derive(Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord, Debug)]
+> #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+> pub struct UniversalTypeId {
+>     bytes: [u8; MAX_UTI_BYTES],
+> }
+> pub trait UniversalType: Any {
+>     /// Raw bytes which are the result of the universal type hash
+>     const UNIVERSAL_TYPE_ID_BYTES: [u8; MAX_UTI_BYTES];
+>
+>     /// A type id as  a hash over the type name and fields
+>     fn universal_type_id(&self) -> UniversalTypeId {
+>         UniversalTypeId::of::<Self>()
+>     }
+> }
+> ```
+
+After this, a procedure macro is written out for deriving. For more details please visit [the repo](https://github.com/jakmeier/universal-type-id).
+
+And the usage of this crate is pretty simple:
+
+> ```rs
+> #[derive(UniversalType)]
+> struct Person {
+>    name: String,
+>    year: i16,
+> }
+>
+> fn main() {
+>    let uid = UniversalTypeId::of::<Person>();
+>    println!("Numerical value of universal type ID: {}", uid.as_u128());
+> }
+> ```
+
+Apparently, comparing to the previous work, using this `UniversalTypeId` to replace `TypeId` from standard library will give us more accuracy on the expression, such as `HashMap<UniversalTypeId, Box<dyn Any>>` who has the same functionality as `HashMap<TypeId, Box<dyn Any>>`, but is capable to distinguish types deeper. The rest of the work is all about serialize and deserialize since the memory layout of Rust is not stable, and using serialize/deserialize can ensure memory safe.
+
+## My Thoughts
+
+to be continue...
