@@ -21,7 +21,7 @@ This blog is powered by [Zola](https://github.com/getzola/zola). Want to paly wi
 - Make sure `libsass` is installed:
 
   ```sh
-  sudo apt get install libsass-dev
+  sudo apt-get install libsass-dev
   ```
 
 - Use Github cli to clone repo:
@@ -33,6 +33,7 @@ This blog is powered by [Zola](https://github.com/getzola/zola). Want to paly wi
 - Build Rust binary executable:
 
   ```sh
+  cd zola
   cargo build --release
   ```
 
@@ -40,6 +41,24 @@ This blog is powered by [Zola](https://github.com/getzola/zola). Want to paly wi
 
   ```sh
   mv ./target/release/zola ~/.local/bin/zola
+  ```
+
+- (Optional) If `.local/bin` is not in your path:
+
+  ```sh
+  vim ~/.bashrc
+  ```
+
+  and add this line:
+
+  ```.bashrc
+  export PATH=$PATH:~/.local/bin
+  ```
+
+  then:
+
+  ```sh
+  source ~/.bashrc
   ```
 
 - Check installation:

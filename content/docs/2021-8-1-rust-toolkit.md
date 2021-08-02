@@ -33,6 +33,7 @@ tags = ["Rust"]
   ```sh
   sudo apt install pkg-config
   sudo apt install libssl-dev
+  sudo apt install build-essential
   cargo install cargo-update
   ```
 
