@@ -11,6 +11,16 @@ categories = ["Doc"]
 
 Please follow [the official documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
+## Move Ubuntu to another driver
+
+This is an optional step, in case of C driver space insufficient (make sure you have already create directories as following):
+
+```cmd
+wsl --export Ubuntu-20.04 d:\tmp\ubuntu.tar
+wsl --unregister Ubuntu-20.04
+wsl --import Ubuntu-20.04 d:\wsl\Ubuntu-20.04 d:\tmp\ubuntu.tar
+```
+
 ## Modify Windows `settings.json`
 
 To modify Ubuntu's starting directory, we can open Windows terminal, and you'll see **Open JSON file** button, click it and add a new line called `startingDirectory` as below:
@@ -68,6 +78,7 @@ To modify Ubuntu's starting directory, we can open Windows terminal, and you'll 
 
 ```sh
 git config --global user.name <Your name>
+
 git config --global user.email <Your email>
 ```
 
@@ -85,4 +96,21 @@ Add add the line:
 
 ```hosts
 XX.XXX.XXX.XXX  github.com
+```
+
+## Setup Github Cli
+
+A shortcut:
+
+```sh
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+sudo apt-add-repository https://cli.github.com/packages
+sudo apt update
+sudo apt install gh
+```
+
+Then authentication (follow up the indication provided by gh):
+
+```sh
+gh auth login
 ```
