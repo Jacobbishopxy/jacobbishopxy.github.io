@@ -194,9 +194,23 @@ fn main() {
 }
 ```
 
-to be continue...
+The only thing we should notice is that a generic type `T` cannot be impl twice, otherwise overlap will make compiler unhappy.
 
 ## Auto Traits
+
+Auto traits are an inevitable topic, as long as a programmer wants to compose low level codes rather than just calling APIs from other crates. According to the author:
+
+> Prerequisites:
+>
+> - Marker Traits: Marker traits are traits that have no trait items. Their job is to "mark" the implementing type as having some property which is otherwise not possible to represent using the type system.
+> - Auto Traits: Auto traits are traits that get automatically implemented for a type if all of its members also impl the trait. What "members" means depends on the type, for example: fields of a struct, variants of an enum, elements of an array, items of a tuple, and so on.
+> - Unsafe Traits: Traits can be marked unsafe to indicate that impling the trait might require unsafe code.
+
+to be continue...
+
+### Send & Sync
+
+### Sized
 
 ## General Traits
 
