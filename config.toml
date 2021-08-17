@@ -160,6 +160,9 @@ include_content = true
 
 [extra]
 
+katex.enabled = true
+katex.auto_render = true
+
 navbar_items = [
  { code = "en", nav_items = [
   { url = "$BASE_URL/", name = "Home" },

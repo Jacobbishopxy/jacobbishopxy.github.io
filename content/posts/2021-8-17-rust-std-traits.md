@@ -194,7 +194,7 @@ fn main() {
 }
 ```
 
-The only thing we should notice is that a generic type `T` cannot be impl twice, otherwise overlap will make compiler unhappy.
+The only thing we should notice is that a generic type `T` cannot be impl twice or more, otherwise overlap will make compiler unhappy.
 
 ## Auto Traits
 
@@ -206,11 +206,51 @@ Auto traits are an inevitable topic, as long as a programmer wants to compose lo
 > - Auto Traits: Auto traits are traits that get automatically implemented for a type if all of its members also impl the trait. What "members" means depends on the type, for example: fields of a struct, variants of an enum, elements of an array, items of a tuple, and so on.
 > - Unsafe Traits: Traits can be marked unsafe to indicate that impling the trait might require unsafe code.
 
-to be continue...
+Briefly, we can have one of conclusion as below:
+
+$$
+Marker Traits \in Auto Traits
+$$
 
 ### Send & Sync
 
+The book [The Rustonomicon](https://doc.rust-lang.org/nomicon/send-and-sync.html) gives us a preciser explanation of Send & Sync:
+
+> - A type is Send if it is safe to send it to another thread.
+> - A type is Sync if it is safe to share between threads (T is Sync if and only if &T is Send).
+
+We know that almost all primitives are Send and Sync, but still there are exceptions:
+
+> - raw pointers are neither Send nor Sync (because they have no safety guards).
+> - UnsafeCell isn't Sync (and therefore Cell and RefCell aren't).
+> - Rc isn't Send or Sync (because the refcount is shared and unsynchronized).
+
+TODO: example
+
 ### Sized
+
+Alright here is another fundamental trait that builds up the Rust skyscraper, and it should be firmly mastered.
+
+> If a type is Sized that means its size in bytes is known at compile-time and it's possible to put instances of the type on the stack.
+
+Studying Rust is somehow a history of fighting with `Sized`, because new programmer is always being resulted a compile error says "xxx doesn't have size known at compile time". In order to have a completely comprehension on Sizedness, here is another [article](https://github.com/pretzelhammer/rust-blog/blob/master/posts/sizedness-in-rust.md) written by the author that explains it in detail.
+
+Since `Sized` is an auto trait, it is usually implicitly implemented. For example, see the desugar cases:
+
+> ```rs
+> // this generic function...
+> fn func<T>(t: T) {}
+>
+> // ...desugars to...
+> fn func<T: Sized>(t: T) {}
+>
+> // ...which doesn't compile since it doesn't have
+> // a known size so we must put it behind a pointer...
+> fn func<T: ?Sized>(t: &T) {}
+> fn func<T: ?Sized>(t: Box<T>) {}
+> ```
+
+TODO: example
 
 ## General Traits
 
