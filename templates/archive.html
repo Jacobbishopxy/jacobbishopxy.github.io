@@ -1,0 +1,18 @@
+{% extends "index.html" %} {% block content %} {% set section =
+get_section(path="posts/_index.md") %} {% for year, posts in section.pages |
+sort(attribute="date") | reverse | group_by(attribute="year") %}
+
+<section class="archive">
+	<h1 class="title is-2 archive-header">Archives</h1>
+	<h2 class="title">{{ year }}</h2>
+	<ul>
+		{% for post in posts %}
+		<li>
+			<time>{{ post.date | date(format="%d-%h") }}</time>
+			<a href="{{ post.permalink }}">{{ post.title }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</section>
+
+{% endfor %} {% endblock content %}
