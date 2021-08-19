@@ -1,18 +1,45 @@
-{% extends "index.html" %} {% block content %} {% set section =
-get_section(path="posts/_index.md") %} {% for year, posts in section.pages |
-sort(attribute="date") | reverse | group_by(attribute="year") %}
+{% extends "index.html" %} {% block content %}
 
 <section class="archive">
+	{% set section = get_section(path="posts/_index.md") %} {% for year, posts in
+	section.pages | sort(attribute="date") | reverse | group_by(attribute="year")
+	%}
+
 	<h1 class="title is-2 archive-header">Archives</h1>
 	<h2 class="title">{{ year }}</h2>
-	<ul>
-		{% for post in posts %}
-		<li>
-			<time>{{ post.date | date(format="%d-%h") }}</time>
-			<a href="{{ post.permalink }}">{{ post.title }}</a>
-		</li>
-		{% endfor %}
-	</ul>
+
+	<div class="archive-content-child-l">
+		<h2 class="subtitle is-4">Posts</h2>
+		<ul>
+			{% for post in posts %}
+			<li>
+				<time>{{ post.date | date(format="%d-%h") }}</time>
+				<a href="{{ post.permalink }}">{{ post.title }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endfor %}
+
+	<!--  -->
+
+	{% set section = get_section(path="docs/_index.md") %} {% for year, docs in
+	section.pages | sort(attribute="date") | reverse | group_by(attribute="year")
+	%}
+
+	<div class="archive-content-child-r">
+		<h2 class="subtitle is-4">Docs</h2>
+		<ul>
+			{% for doc in docs %}
+			<li>
+				<time>{{ doc.date | date(format="%d-%h") }}</time>
+				<a href="{{ doc.permalink }}">{{ doc.title }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	{% endfor %}
 </section>
 
-{% endfor %} {% endblock content %}
+{% endblock content %}

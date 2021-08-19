@@ -13,7 +13,7 @@ toc = true
 
 ## Intro
 
-Hello everyone :wave:, today I'm going to list several useful and common traits from the Rust standard library. Using [Tour of Rust's Standard Library Traits](https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md) as my reference. I'm not going through all of it, but to pick some of them that I believe is important to me, and to give more enhanced examples for better comprehension.
+Hello everyone :wave:, today I'm going to list several useful and common traits from the Rust standard library. Using [Tour of Rust's Standard Library Traits](https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md) as my reference, I'm not going through all of it, but to pick some of them that I believe is important, and to give some enhanced examples for better comprehension.
 
 ## Trait Basics
 
@@ -26,7 +26,7 @@ According to the article, the major difference between these two types is:
 > - Use associated types when there should only be a single impl of the trait per type.
 > - Use generic types when there can be many possible impls of the trait per type.
 
-That is to say, with associated types a type can only impl it once (otherwise causes compile error). Here is an example that is commonly occurred in my code:
+That is to say, with associated types a type can only impl it once (otherwise causes compile error). These might be confusing, but don't worry, here is an example that is commonly occurred in my use case:
 
 ```rs
 use std::str::Bytes;
@@ -95,7 +95,7 @@ impl<'a> Biz<Bytes<'a>> for XML {
 }
 ```
 
-Apparently, `BizError` should not use generic type, since it is the only possible 'Error' in the project, while `String`, `Vec<u8>` and `Bytes<'a>` should not use associate type, because they are related to business logic.
+Apparently, `BizError` should not use generic type, since it is the only possible 'Error' in the project, while `String`, `Vec<u8>` and `Bytes<'a>` should not belong to associate type, since they are highly related to business logic.
 
 ### Generic Blanket Impls
 
@@ -249,6 +249,8 @@ Since `Sized` is an auto trait, it is usually implicitly implemented. For exampl
 > fn func<T: ?Sized>(t: &T) {}
 > fn func<T: ?Sized>(t: Box<T>) {}
 > ```
+
+Additionally, `?Sized` is treated as a type which can either be Sized or Unsized, and it is the only 'relaxed bound (rather than constrains the type parameter)' in Rust.
 
 TODO: example
 
