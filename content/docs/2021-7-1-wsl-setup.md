@@ -25,7 +25,7 @@ wsl --import Ubuntu-20.04 d:\wsl\Ubuntu-20.04 d:\tmp\ubuntu.tar
 
 To modify Ubuntu's starting directory, we can open Windows terminal, and you'll see **Open JSON file** button, click it and add a new line called `startingDirectory` as below:
 
-```settings.json
+```json
 {
     "guid": ...,
     "hidden": false,
@@ -45,7 +45,7 @@ To modify Ubuntu's starting directory, we can open Windows terminal, and you'll 
 
 1. Inside your file (please modify the username):
 
-   ```wsl.conf
+   ```conf
    # Set default user, otherwise sign as root
    [user]
    default=<username>
@@ -94,7 +94,7 @@ vim /etc/hosts
 
 Add add the line:
 
-```hosts
+```sh
 XX.XXX.XXX.XXX  github.com
 ```
 

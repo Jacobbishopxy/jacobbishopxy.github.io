@@ -598,7 +598,7 @@ One thing that we should know before moving on is to be clear about a `'static` 
 
 If we don't have the `'static` bound right after the `FnMut`, we'll see a compile error as following:
 
-```terminal
+```txt
    Compiling more-rust-type v0.1.0 (***)
 error[E0310]: the parameter type `FUNCTION` may not live long enough
    --> more-rust-type/src/bin/type_oriented.rs:102:38
