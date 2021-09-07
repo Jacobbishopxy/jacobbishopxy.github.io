@@ -16,9 +16,16 @@ tags = ["Rust"]
   curl https://sh.rustup.rs -sSf | sh
   ```
 
-- Proxy: `~/.cargo/config`
+- [Optional] Toolchain and rustup proxy image: `~/.bashrc`
 
-  ```config
+  ```txt
+  export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+  export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+  ```
+
+- [Optional] Cargo proxy image: `~/.cargo/config`
+
+  ```txt
   [source.crates-io]
   replace-with = 'rsproxy'
 

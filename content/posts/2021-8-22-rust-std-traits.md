@@ -435,7 +435,7 @@ Dimension { x: 1, y: 3, z: 5 }
 
 ## Operator Traits
 
-Thx to the author for listing out all of possible operator traits:
+Thx to the author for listing out all operator traits:
 
 > | Trait(s)            | Category   | Operator(s)          | Description                  |
 > | ------------------- | ---------- | -------------------- | ---------------------------- |
@@ -470,6 +470,193 @@ Thx to the author for listing out all of possible operator traits:
 > | `Index`             | other      | `[]`                 | immutable index              |
 > | `IndexMut`          | other      | `[]`                 | mutable index                |
 > | `RangeBounds`       | other      | `..`                 | range                        |
+
+### Comparison Traits
+
+#### PartialEq & Eq
+
+`#[derive(PartialEq)]` is a very common use case of `PartialEq`. Moreover, an advanced use case is to impl `PartialEq` between two type, in other words, comparison between two different types is achievable.
+
+> Generally, we should only impl equality between different types if they contain the same kind of data and the only difference between the types is how they represent the data or how they allow interacting with the data.
+
+A simple example to illustrate comparison between two types -- comparing `area` between `Circle` and `Square`:
+
+```rs
+fn main() {
+    let foo = Square::new(4.0, 3.14);
+    let bar = Circle::new(2.0);
+
+    println!("{:?}", foo == bar);
+}
+
+#[derive(PartialEq)]
+struct Circle {
+    radius: f32,
+}
+
+impl Circle {
+    fn new(r: f32) -> Self {
+        Circle { radius: r }
+    }
+
+    fn area(&self) -> f32 {
+        self.radius * self.radius * 3.14
+    }
+}
+
+#[derive(PartialEq)]
+struct Square {
+    length: f32,
+    width: f32,
+}
+
+impl Square {
+    fn new(l: f32, w: f32) -> Self {
+        Square {
+            length: l,
+            width: w,
+        }
+    }
+
+    fn area(&self) -> f32 {
+        self.length * self.width
+    }
+}
+
+impl PartialEq<Circle> for Square {
+    fn eq(&self, other: &Circle) -> bool {
+        self.area() == other.area()
+    }
+}
+```
+
+Pretty clear hah, so what about `Eq`?
+
+> `Eq` is a marker trait and a subtrait of `PartialEq<Self>`.
+
+Let's see another example under `Hash` topic that illustrates how `PartialEq`, `Eq` and `Hash` work together.
+
+#### Hash
+
+In order to having a customized "Hashable" struct, I made a verbose example that illustrates how to cling `PartialEq`, `Eq` and `Hash` together. Details in comments:
+
+```rs
+use std::{collections::HashSet, fmt::Debug, hash::Hash};
+
+fn main() {
+    let d1 = Dudu(1);
+    let d2 = Dada { v: 1 };
+    let d3 = Dada { v: 2 };
+
+    let foo = Biz {
+        key: 0,
+        val: Box::new(d1), // Dudu
+    };
+
+    let bar = Biz {
+        key: 0,
+        val: Box::new(d2), // Dada
+    };
+
+    let quz = Biz {
+        key: 0,
+        val: Box::new(d3), // Dada
+    };
+
+    let mut collection = HashSet::new();
+
+    collection.insert(foo);
+    collection.insert(bar);
+
+    // notice here, `foo` and `bar` are treated as a same value, since their val has
+    // the same `.id()` result, so hashMap won't be updated
+    println!("{:?}", collection); // {Biz { key: 0, val: > 1 < }}
+
+    collection.insert(quz);
+
+    // hashMap has been updated, because `quz`'s `val` has a different `.id()` result
+    println!("{:?}", collection); // {Biz { key: 0, val: > 1 < }, Biz { key: 0, val: > 2 < }}
+}
+
+// mock trait, we will use it to create a trait object
+trait MockT {
+    // the only way to identify a trait object is by this method (of cuz this is mocking)
+    fn id(&self) -> usize;
+}
+
+// impl `PartialEq`
+impl PartialEq for dyn MockT {
+    fn eq(&self, other: &Self) -> bool {
+        self.id() == other.id()
+    }
+}
+
+// impl `Eq`, marker trait
+impl Eq for dyn MockT {}
+
+// for println
+impl Debug for dyn MockT {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "> {} <", self.id())
+    }
+}
+
+// mocking a business logic struct, which consist of a key of `i32` and a val of trait object.
+#[derive(Eq, Debug)]
+struct Biz {
+    key: i32,
+    val: Box<dyn MockT>,
+}
+
+impl PartialEq for Biz {
+    fn eq(&self, other: &Self) -> bool {
+        // again, calling `.id()` method is the only way to discern trait objects
+        self.key == other.key && self.val.id() == other.val.id()
+    }
+}
+
+// impl `Hash` so that later on, we can use `Biz` in `HashMap` or `HashSet`
+impl Hash for Biz {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        state.write_i32(self.key);
+        state.write_usize(self.val.id());
+    }
+}
+
+// concrete struct #1 who impled `MockT`
+struct Dudu(usize);
+
+impl MockT for Dudu {
+    fn id(&self) -> usize {
+        self.0
+    }
+}
+
+// concrete struct #2 who impled `MockT`
+struct Dada {
+    v: usize,
+}
+
+impl MockT for Dada {
+    fn id(&self) -> usize {
+        self.v
+    }
+}
+```
+
+#### PartialOrd & Ord
+
+TODO: example
+
+### Arithmetic Traits
+
+TODO: example
+
+### Closure Traits
+
+TODO: example
+
+### Other Traits
 
 TODO: example
 

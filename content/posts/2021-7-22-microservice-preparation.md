@@ -1,5 +1,5 @@
 +++
-title = "RGGRRM [0]"
+title = "Microservice Preparation"
 description = "React + Golang + Grpc + Rust + Redis + Mongo"
 date = 2021-07-22
 
@@ -8,8 +8,6 @@ categories = ["Post"]
 tags = ["Js", "Go", "Grpc", "Rust"]
 
 +++
-
-# React + Golang + Grpc + Rust + Redis + Mongo, a microservices demo [0]
 
 {{ image(src="/images/rustgo.jpg", alt="Rust + Go", height="250px") }}
 
