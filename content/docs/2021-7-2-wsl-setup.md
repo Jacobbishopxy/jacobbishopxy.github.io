@@ -1,7 +1,7 @@
 +++
 title="WSL setup"
 description="Setup WSL on Windows"
-date=2021-07-01
+date=2021-07-02
 
 [taxonomies]
 categories = ["Doc"]

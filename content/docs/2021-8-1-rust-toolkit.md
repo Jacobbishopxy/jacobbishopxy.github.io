@@ -16,14 +16,14 @@ tags = ["Rust"]
   curl https://sh.rustup.rs -sSf | sh
   ```
 
-- [Optional] Toolchain and rustup proxy image: `~/.bashrc`
+- [Optional] Toolchain and rustup mirrors: `~/.bashrc`
 
   ```txt
   export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
   export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
   ```
 
-- [Optional] Cargo proxy image: `~/.cargo/config`
+- [Optional] Cargo mirrors: `~/.cargo/config`
 
   ```txt
   [source.crates-io]
