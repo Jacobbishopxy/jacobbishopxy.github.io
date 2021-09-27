@@ -473,7 +473,7 @@ Thx to the author for listing out all operator traits:
 
 ### Comparison Traits
 
-#### PartialEq & Eq
+#### PartialEq & Eq {#PartialEqNEq}
 
 `#[derive(PartialEq)]` is a very common use case of `PartialEq`. Moreover, an advanced use case is to impl `PartialEq` between two type, in other words, comparison between two different types is achievable.
 
@@ -536,7 +536,7 @@ Pretty clear hah, so what about `Eq`?
 
 Let's see another example under `Hash` topic that illustrates how `PartialEq`, `Eq` and `Hash` work together.
 
-#### Hash
+#### Hash {#Hash}
 
 In order to having a customized "Hashable" struct, I made a verbose example that illustrates how to cling `PartialEq`, `Eq` and `Hash` together. Details in comments:
 
@@ -646,13 +646,186 @@ impl MockT for Dada {
 
 #### PartialOrd & Ord
 
-TODO: example
+Generally, `PartialOrd` is used for type comparison, whereas comparison between two different types is eligible as well. Let us first take a glimpse at the `PartialOrd` trait (simplified and documentations removed):
+
+> ```rs
+> pub trait PartialOrd<Rhs: ?Sized = Self>: PartialEq<Rhs> {
+>     fn partial_cmp(&self, other: &Rhs) -> Option<Ordering>;
+>
+>     fn lt(&self, other: &Rhs) -> bool;
+>
+>     fn le(&self, other: &Rhs) -> bool;
+>
+>     fn gt(&self, other: &Rhs) -> bool;
+>
+>     fn ge(&self, other: &Rhs) -> bool;
+> }
+> ```
+
+The `Rhs` generic type parameter, which denotes a short for "right hand side", has a `?Sized` trait bound for the implementor type itself. Although directly deriving `PartialOrd` to a custom type is the common use case, we might want custom implementation occasionally. Take `Circle` and `Square` (defined in [PartialEq & Eq](#PartialEqNEq)) as an example to see comparison between two custom types:
+
+```rs
+
+// ... `Circle` and `Square` are defined in 'PartialEq & Eq' section
+
+impl PartialOrd<Circle> for Square {
+    fn partial_cmp(&self, other: &Circle) -> Option<Ordering> {
+        let x = self.area();
+        let y = other.area();
+
+        if x == y {
+            return Some(Ordering::Equal);
+        }
+
+        if x > y {
+            Some(Ordering::Greater)
+        } else {
+            Some(Ordering::Less)
+        }
+    }
+}
+
+fn main() {
+    let foo = Square::new(4.0, 3.14);
+    let bar = Circle::new(2.0);
+
+    println!("{:?}", foo > bar);    // false
+}
+```
+
+Moving on to the `Ord` trait.
+
+> `Ord` is a subtrait of `Eq` and `PartialOrd<Self>`.
+
+The example I gave is then not suitable for `Ord`, because what we implemented is `impl PartialOrd<Circle> for Square`, which implies the generic type in `PartialOrd` is `Square` instead of `Circle` (as `Self`). Despite of this we can still use dynamic dispatching to write an example. Take `MockT` trait from above ([MockT](#Hash)), here I simplified the code and add `impl PartialOrd` and `impl Ord` to `MockT` trait:
+
+```rs
+use std::{cmp::Ordering, fmt::Debug};
+
+fn main() {
+    let d1 = Dudu(2);
+    let d2 = Dada { v: 3 };
+    let d3 = Dada { v: 1 };
+
+    let mut collection: Vec<Box<dyn MockT>> = vec![Box::new(d1), Box::new(d2), Box::new(d3)];
+
+    println!("{:?}", collection); // [> 2 <, > 3 <, > 1 <]
+
+    collection.sort();
+
+    println!("{:?}", collection); // [> 1 <, > 2 <, > 3 <]
+}
+
+// mock trait, we will use it to create a trait object
+trait MockT {
+    // the only way to identify a trait object is by this method (of cuz this is mocking)
+    fn id(&self) -> usize;
+}
+
+// impl `PartialEq`
+impl PartialEq for dyn MockT {
+    fn eq(&self, other: &Self) -> bool {
+        self.id() == other.id()
+    }
+}
+
+// impl `PartialOrd`
+impl PartialOrd for dyn MockT {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        let x = self.id();
+        let y = other.id();
+
+        if x == y {
+            return Some(Ordering::Equal);
+        }
+
+        if x > y {
+            Some(Ordering::Greater)
+        } else {
+            Some(Ordering::Less)
+        }
+    }
+}
+
+// impl `Ord`
+impl Ord for dyn MockT {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        match self.id().cmp(&other.id()) {
+            Ordering::Equal => self.cmp(other),
+            ordering => ordering,
+        }
+    }
+}
+
+// impl `Eq`, marker trait
+impl Eq for dyn MockT {}
+
+// for println
+impl Debug for dyn MockT {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "> {} <", self.id())
+    }
+}
+
+// concrete struct #1 who impled `MockT`
+struct Dudu(usize);
+
+impl MockT for Dudu {
+    fn id(&self) -> usize {
+        self.0
+    }
+}
+
+// concrete struct #2 who impled `MockT`
+struct Dada {
+    v: usize,
+}
+
+impl MockT for Dada {
+    fn id(&self) -> usize {
+        self.v
+    }
+}
+```
+
+Above we made a demo for trait object ordering, its main idea is to sort dynamic types in an array, such as `Vec` and `VecDeque`.
 
 ### Arithmetic Traits
 
-TODO: example
+Thx again:
+
+> | Trait(s)       | Category   | Operator(s) | Description               |
+> | -------------- | ---------- | ----------- | ------------------------- |
+> | `Add`          | arithmetic | `+`         | addition                  |
+> | `AddAssign`    | arithmetic | `+=`        | addition assignment       |
+> | `BitAnd`       | arithmetic | `&`         | bitwise AND               |
+> | `BitAndAssign` | arithmetic | `&=`        | bitwise assignment        |
+> | `BitXor`       | arithmetic | `^`         | bitwise XOR               |
+> | `BitXorAssign` | arithmetic | `^=`        | bitwise XOR assignment    |
+> | `Div`          | arithmetic | `/`         | division                  |
+> | `DivAssign`    | arithmetic | `/=`        | division assignment       |
+> | `Mul`          | arithmetic | `\*`        | multiplication            |
+> | `MulAssign`    | arithmetic | `\*=`       | multiplication assignment |
+> | `Neg`          | arithmetic | `-`         | unary negation            |
+> | `Not`          | arithmetic | `!`         | unary logical negation    |
+> | `Rem`          | arithmetic | `%`         | remainder                 |
+> | `RemAssign`    | arithmetic | `%=`        | remainder assignment      |
+> | `Shl`          | arithmetic | `<<`        | left shift                |
+> | `ShlAssign`    | arithmetic | `<<=`       | left shift assignment     |
+> | `Shr`          | arithmetic | `>>`        | right shift               |
+> | `ShrAssign`    | arithmetic | `>>=`       | right shift assignment    |
+> | `Sub`          | arithmetic | `-`         | subtraction               |
+> | `SubAssign`    | arithmetic | `-=`        | subtraction assignment    |
+
+Since all the arithmetic traits' implementation are alike to comparison traits, further elaboration is omitted here.
 
 ### Closure Traits
+
+> | Trait(s) | Category | Operator(s) | Description                  |
+> | -------- | -------- | ----------- | ---------------------------- |
+> | `Fn`     | closure  | `(...args)` | immutable closure invocation |
+> | `FnMut`  | closure  | `(...args)` | mutable closure invocation   |
+> | `FnOnce` | closure  | `(...args)` | one-time closure invocation  |
 
 TODO: example
 
