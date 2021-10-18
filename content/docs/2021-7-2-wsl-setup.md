@@ -98,7 +98,7 @@ Add add the line:
 XX.XXX.XXX.XXX  github.com
 ```
 
-## Setup Github Cli
+## Setup Github Cli (Debian/Ubuntu)
 
 A shortcut:
 
@@ -114,3 +114,27 @@ Then authentication (follow up the indication provided by gh):
 ```sh
 gh auth login
 ```
+
+## Setup Github Cli (CentOS)
+
+1. Install [DNF](https://opensource.com/article/18/8/guide-yum-dnf):
+
+   ```sh
+   sudo yum install epel-release
+   sudo yum install dnf
+   dnf --version
+   ```
+
+1. Using DNF to install `gh`:
+
+   ```sh
+   sudo dnf install 'dnf-command(config-manager)'
+   sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+   sudo dnf install gh
+   ```
+
+1. Authentication:
+
+   ```sh
+   gh auth login
+   ```
