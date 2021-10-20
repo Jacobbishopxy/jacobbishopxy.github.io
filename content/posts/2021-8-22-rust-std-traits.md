@@ -827,6 +827,16 @@ Since all the arithmetic traits' implementation are alike to comparison traits, 
 > | `FnMut`  | closure  | `(...args)` | mutable closure invocation   |
 > | `FnOnce` | closure  | `(...args)` | one-time closure invocation  |
 
+As mentioned:
+
+> The only types we can create which impl these traits are closures.
+
+And as THE BOOK says:
+
+> Things that impl `FnOnce` can mutate and consume (take ownership of) the values they close over when they run, and so can only be run once.
+> Things that impl `FnMut` can mutate the values they close over when they run, but not consume them.
+> Things that impl `Fn` can only immutably borrow variables when they run.
+
 TODO: example
 
 ### Other Traits
@@ -846,11 +856,100 @@ TODO: example
 
 ### From & Into
 
-TODO: example
+Simple and useful:
+
+```rs
+use std::convert::TryFrom;
+
+enum JsonValue {
+    Number(f64),
+    Integer(i64),
+    String(String),
+}
+
+impl From<f64> for JsonValue {
+    fn from(v: f64) -> Self {
+        JsonValue::Number(v)
+    }
+}
+
+impl From<f32> for JsonValue {
+    fn from(v: f32) -> Self {
+        JsonValue::Number(v.into())
+    }
+}
+
+impl From<i32> for JsonValue {
+    fn from(v: i32) -> Self {
+        JsonValue::Integer(v.into())
+    }
+}
+
+impl From<i16> for JsonValue {
+    fn from(v: i16) -> Self {
+        JsonValue::Integer(v.into())
+    }
+}
+
+impl From<i8> for JsonValue {
+    fn from(v: i8) -> Self {
+        JsonValue::Integer(v.into())
+    }
+}
+
+impl From<&str> for JsonValue {
+    fn from(v: &str) -> Self {
+        JsonValue::String(v.to_owned())
+    }
+}
+
+impl From<String> for JsonValue {
+    fn from(v: String) -> Self {
+        JsonValue::String(v)
+    }
+}
+
+enum MyError {
+    ParseError,
+}
+
+impl TryFrom<JsonValue> for String {
+    type Error = MyError;
+
+    fn try_from<'a>(value: JsonValue) -> Result<Self, Self::Error> {
+        match value {
+            JsonValue::String(s) => Ok(s),
+            _ => Err(MyError::ParseError),
+        }
+    }
+}
+
+impl TryFrom<JsonValue> for i64 {
+    type Error = MyError;
+
+    fn try_from(value: JsonValue) -> Result<Self, Self::Error> {
+        match value {
+            JsonValue::Integer(f) => Ok(f),
+            _ => Err(MyError::ParseError),
+        }
+    }
+}
+
+impl TryFrom<JsonValue> for f64 {
+    type Error = MyError;
+
+    fn try_from(value: JsonValue) -> Result<Self, Self::Error> {
+        match value {
+            JsonValue::Number(f) => Ok(f),
+            _ => Err(MyError::ParseError),
+        }
+    }
+}
+```
 
 ### TryFrom & TryInto
 
-TODO: example
+Please see example above.
 
 ### FromStr
 

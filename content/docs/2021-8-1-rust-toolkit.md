@@ -16,14 +16,26 @@ tags = ["Rust"]
   curl https://sh.rustup.rs -sSf | sh
   ```
 
-- [Optional] Toolchain and rustup mirrors: `~/.bashrc`
+- [Optional] Toolchain and rustup mirrors: `vim ~/.bashrc` then `source ~/.bashrc`
 
   ```txt
   export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
   export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
   ```
 
-- [Optional] Cargo mirrors: `~/.cargo/config`
+  or
+
+  ```txt
+  export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+  ```
+
+  or
+
+  ```txt
+  RUSTUP_DIST_SERVER=https://mirrors.sjtug.sjtu.edu.cn/rust-static/
+  ```
+
+- [Optional] Cargo mirrors: `vim ~/.cargo/config`
 
   ```txt
   [source.crates-io]
@@ -31,16 +43,30 @@ tags = ["Rust"]
 
   [source.rsproxy]
   registry = "https://rsproxy.cn/crates.io-index"
+
+  [source.tuna]
+  registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+
+  [source.ustc]
+  registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+
+  [source.sjtu]
+  registry = "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index"
   ```
 
 ## Cargo
 
+Prerequisites for Ubuntu:
+
+```sh
+sudo apt install pkg-config
+sudo apt install libssl-dev
+sudo apt install build-essential
+```
+
 - [cargo-update](https://crates.io/crates/cargo-update): checking and applying updates to installed executables
 
   ```sh
-  sudo apt install pkg-config
-  sudo apt install libssl-dev
-  sudo apt install build-essential
   cargo install cargo-update
   ```
 
