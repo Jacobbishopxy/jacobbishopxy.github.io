@@ -15,3 +15,17 @@ tags = []
 ## File
 
 - [filebrowser](https://github.com/filebrowser/filebrowser): provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit your files.
+
+## GUI
+
+- [egui](https://github.com/emilk/egui): an easy-to-use immediate mode GUI in pure Rust
+
+## Cloud
+
+- [Databend](https://github.com/datafuselabs/databend): An elastic and reliable Cloud Data Warehouse, offers Blazing Fast Query and combines Elasticity, Simplicity, Low cost of the Cloud, built to make the Data Cloud easy
+
+## Misc
+
+- [Lemmy](https://github.com/LemmyNet/lemmy): A link aggregator / Reddit clone for the fediverse.
+
+- [Gobang](https://github.com/TaKO8Ki/gobang): A cross-platform TUI database management tool written in Rust.
