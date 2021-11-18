@@ -854,7 +854,7 @@ TODO: example
 
 ## Conversion Traits
 
-### From & Into
+### From/Into & TryFrom/TryInto
 
 Simple and useful:
 
@@ -947,11 +947,18 @@ impl TryFrom<JsonValue> for f64 {
 }
 ```
 
-### TryFrom & TryInto
-
-Please see example above.
-
 ### FromStr
+
+First of all, let's look at the `FromStr` trait:
+
+```rust
+trait FromStr {
+    type Err;
+    fn from_str(s: &str) -> Result<Self, Self::Err>;
+}
+```
+
+That is to say, it is a trait that is implemented by types that can be constructed from a `&str`.
 
 TODO: example
 
