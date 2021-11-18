@@ -34,14 +34,14 @@ To make things clear, let's start with an assumption: In a runtime environment, 
 Suppose we have some strings like `[MYSQL:BOOLEAN]` and `[POSTGRES:CHAR]`, and we want to parse them into a `DbType` enum and a `ValueType` enum respectively. First, we need to define these two enum:
 
 ```rust
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub(crate) enum DbType {
     Mysql,
     Postgres,
     Sqlite,
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub(crate) enum ValueType {
     Bool,
     U8,
@@ -63,8 +63,9 @@ And then, we want a `FromStr` trait for each of these enum, which will be used t
 ```rust
 #[derive(Debug)]
 pub(crate) enum ParsingError {
-    InvalidDbType,
-    InvalidDataType,
+    InvalidDbType(String),
+    InvalidDataType(String, String),
+    ParsingError(String),
 }
 
 impl FromStr for DbType {
@@ -75,7 +76,7 @@ impl FromStr for DbType {
             "MYSQL" => Ok(DbType::Mysql),
             "POSTGRES" => Ok(DbType::Postgres),
             "SQLITE" => Ok(DbType::Sqlite),
-            _ => Err(ParsingError::InvalidDbType),
+            _ => Err(ParsingError::InvalidDbType(s.to_string())),
         }
     }
 }
@@ -222,6 +223,7 @@ fn test_get_types() {
         get_types("[MYSQL:BOOLEAN]").unwrap(),
         ("", ("MYSQL", "BOOLEAN"))
     );
+
     assert_eq!(
         get_types("[POSTGRES:DOUBLE PRECISION]").unwrap(),
         ("", ("POSTGRES", "DOUBLE PRECISION"))
@@ -229,6 +231,149 @@ fn test_get_types() {
 }
 ```
 
-Sadly, it throws an error at the second assertion, because there has a space between `DOUBLE` and `PRECISION`.
+Sadly, it throws an error at the second assertion, because there has a space between `DOUBLE` and `PRECISION`. Let's fix this by using [`space0`](https://docs.rs/nom/7.1.0/nom/character/complete/fn.space0.html) and [`alpha0`](https://docs.rs/nom/7.1.0/nom/character/complete/fn.alpha0.html). By doing this we can have a sequential parser like `alpha1, space0, alpha0`, and combine them into a single parser. We can use a `separated_pair` again, and this time, we don't really need to separated them but just [`recognize`](https://docs.rs/nom/7.1.0/nom/combinator/fn.recognize.html) this pattern. So here comes out the version 2:
 
-...to be done
+```rust
+fn get_types2(input: &str) -> IResult<&str, (&str, &str)> {
+    let sql_type = |s| alpha1(s);
+    let data_type = |s| recognize(separated_pair(alpha1, space0, alpha0))(s);
+
+    let ctn = separated_pair(sql_type, tag(":"), data_type);
+    let mut par = delimited(tag("["), ctn, tag("]"));
+
+    par(input)
+}
+```
+
+This time I add another assertion to the unit test:
+
+```rust
+#[test]
+fn test_get_types2() {
+    assert_eq!(
+        get_types2("[MYSQL:BOOLEAN]").unwrap(),
+        ("", ("MYSQL", "BOOLEAN"))
+    );
+
+    assert_eq!(
+        get_types2("[POSTGRES:DOUBLE PRECISION]").unwrap(),
+        ("", ("POSTGRES", "DOUBLE PRECISION"))
+    );
+
+    assert_eq!(
+        get_types2("[SQLITE:CHAR(N)]").unwrap(),
+        ("", ("SQLITE", "CHAR(N)"))
+    );
+}
+```
+
+No... It failed again. Because the third assertion has a `(N)` in it. So what about completely ignore the chars between `:` and `]`? [`take_until`](https://docs.rs/nom/7.1.0/nom/bytes/complete/fn.take_until.html)
+
+```rust
+fn get_types3(input: &str) -> IResult<&str, (&str, &str)> {
+    let sql_type = |s| alpha1(s);
+    let data_type = |s| take_until("]")(s);
+    let ctn = separated_pair(sql_type, tag(":"), data_type);
+    let mut par = delimited(tag("["), ctn, tag("]"));
+
+    par(input)
+}
+```
+
+And the unit test:
+
+```rust
+#[test]
+fn test_get_types3() {
+    assert_eq!(
+        get_types3("[MYSQL:BOOLEAN]").unwrap(),
+        ("", ("MYSQL", "BOOLEAN"))
+    );
+
+    assert_eq!(
+        get_types3("[POSTGRES:DOUBLE PRECISION]").unwrap(),
+        ("", ("POSTGRES", "DOUBLE PRECISION"))
+    );
+
+    assert_eq!(
+        get_types3("[SQLITE:CHAR(N)]").unwrap(),
+        ("", ("SQLITE", "CHAR(N)"))
+    );
+}
+```
+
+Eventually it works..., but it's still not the best way to do it (I may update this part later, but it's time to move on).
+
+After few attempts on the parsing 'alchemy', we finally move on to the final part `from_str_to_type`:
+
+```rust
+
+fn from_str_to_type(input: &str) -> Result<(DbType, ValueType), ParsingError> {
+    match get_types3(input) {
+        Ok((_, (db_type, data_type))) => match db_type.parse::<DbType>() {
+            Ok(dt) => {
+                let rvt = match dt {
+                    DbType::Mysql => {
+                        MYSQL_TMAP
+                            .get(data_type)
+                            .ok_or(ParsingError::InvalidDataType(
+                                "MYSQL".to_string(),
+                                data_type.to_string(),
+                            ))
+                    }
+                    DbType::Postgres => {
+                        POSTGRES_TMAP
+                            .get(data_type)
+                            .ok_or(ParsingError::InvalidDataType(
+                                "POSTGRES".to_string(),
+                                data_type.to_string(),
+                            ))
+                    }
+                    DbType::Sqlite => {
+                        SQLITE_TMAP
+                            .get(data_type)
+                            .ok_or(ParsingError::InvalidDataType(
+                                "SQLITE".to_string(),
+                                data_type.to_string(),
+                            ))
+                    }
+                };
+
+                match rvt {
+                    Ok(vt) => Ok((dt, vt.clone())),
+                    Err(_) => Err(ParsingError::InvalidDataType(
+                        db_type.to_string(),
+                        data_type.to_string(),
+                    )),
+                }
+            }
+            Err(_) => Err(ParsingError::InvalidDbType(db_type.to_string())),
+        },
+        _ => Err(ParsingError::ParsingError(input.to_string())),
+    }
+}
+```
+
+The final unit test:
+
+```rust
+#[test]
+fn test_cvt() {
+    assert_eq!(
+        from_str_to_type("[MYSQL:BOOLEAN]").unwrap(),
+        (DbType::Mysql, ValueType::Bool)
+    );
+
+    assert_eq!(
+        from_str_to_type("[POSTGRES:DOUBLE PRECISION]").unwrap(),
+        (DbType::Postgres, ValueType::F64)
+    );
+
+    assert_eq!(
+        from_str_to_type("[SQLITE:CHAR(N)]").unwrap(),
+        (DbType::Sqlite, ValueType::String)
+    );
+}
+```
+
+Hula! We're done! We have been through a whole process of converting a string to a tuple of `(DbType, ValueType)`, and at the moment, we've tried several different parsing methods (progressively updating). The full code is in my [Github page](https://github.com/Jacobbishopxy/jotting/blob/master/src/taste_nom/database_types_nom.rs), and you have my sincere appreciation for your pull PRs. That's all for today, until next time!
