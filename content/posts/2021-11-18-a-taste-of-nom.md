@@ -251,6 +251,7 @@ fn get_types3(input: &str) -> IResult<&str, (&str, &str)> {
     let data_type_1 = |s| recognize(separated_pair(alpha1, space1, alpha1))(s);
     let data_type_2 = |s| alpha1(s);
     let data_type = |s| alt((data_type_1, data_type_2))(s);
+
     let ctn = separated_pair(sql_type, tag(":"), data_type);
     let mut par = delimited(tag("["), ctn, tag("]"));
 
@@ -304,6 +305,7 @@ So what about completely ignore the chars between `:` and `]`? [`take_until`](ht
 fn get_types4(input: &str) -> IResult<&str, (&str, &str)> {
     let sql_type = |s| alpha1(s);
     let data_type = |s| take_until("]")(s);
+
     let ctn = separated_pair(sql_type, tag(":"), data_type);
     let mut par = delimited(tag("["), ctn, tag("]"));
 
@@ -437,7 +439,6 @@ fn from_str_to_type(input: &str) -> Result<(DbType, ValueType), ParsingError> {
 The final unit test:
 
 ```rust
-#[test]
 #[test]
 fn test_cvt() {
     assert_eq!(

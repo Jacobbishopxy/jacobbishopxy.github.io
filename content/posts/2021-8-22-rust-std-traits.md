@@ -958,15 +958,47 @@ trait FromStr {
 }
 ```
 
-That is to say, it is a trait that is implemented by types that can be constructed from a `&str`.
-
-TODO: example
+That is to say, any types who implemented this trait can be constructed from a `&str`. A complex example I've provided is in [this article](https://jacobbishopxy.github.io/posts/a-taste-of-nom/), in which I used `nom`, a parser combinator, to parse complex string structure.
 
 ### AsRef & AsMut
+
+Take a look at their signature:
+
+```rust
+trait AsRef<T: ?Sized> {
+    fn as_ref(&self) -> &T;
+}
+
+trait AsMut<T: ?Sized> {
+    fn as_mut(&mut self) -> &mut T;
+}
+```
+
+Both `AsRef` and `AsMut` are similar to `From` or `Into`, instead they do not take ownership but providing reference and mutability respectively.
 
 TODO: example
 
 ### Borrow & BorrowMut
+
+```rust
+trait Borrow<Borrowed>
+where
+    Borrowed: ?Sized,
+{
+    fn borrow(&self) -> &Borrowed;
+}
+
+trait BorrowMut<Borrowed>: Borrow<Borrowed>
+where
+    Borrowed: ?Sized,
+{
+    fn borrow_mut(&mut self) -> &mut Borrowed;
+}
+```
+
+> These traits were invented to solve the very specific problem of looking up `String` keys in `HashSet`s, `HashMap`s, `BTreeSet`s, and `BTreeMap`s using `&str` values.
+>
+> We can view `Borrow<T>` and `BorrowMut<T>` as stricter versions of `AsRef<T>` and `AsMut<T>`, where the returned reference `&T` has equivalent `Eq`, `Hash`, and `Ord` impls to `Self`.
 
 TODO: example
 
