@@ -231,13 +231,26 @@ fn test_get_types() {
 }
 ```
 
-Sadly, it throws an error at the second assertion, because there has a space between `DOUBLE` and `PRECISION`. Let's fix this by using [`space0`](https://docs.rs/nom/7.1.0/nom/character/complete/fn.space0.html) and [`alpha0`](https://docs.rs/nom/7.1.0/nom/character/complete/fn.alpha0.html). By doing this we can have a sequential parser like `alpha1, space0, alpha0`, and combine them into a single parser. We can use a `separated_pair` again, and this time, we don't really need to separated them but just [`recognize`](https://docs.rs/nom/7.1.0/nom/combinator/fn.recognize.html) this pattern. So here comes out the version 2:
+Sadly, it throws an error at the second assertion, because there has a space between `DOUBLE` and `PRECISION`. Let's fix this by using [`space0`](https://docs.rs/nom/7.1.0/nom/character/complete/fn.space0.html) and [`alpha0`](https://docs.rs/nom/7.1.0/nom/character/complete/fn.alpha0.html). By doing this we can have a sequential parser like `alpha1, space0, alpha0`, and combine them into a single parser. We can use a `separated_pair` again, and this time, we don't really need to separated them but just [`recognize`](https://docs.rs/nom/7.1.0/nom/combinator/fn.recognize.html) this pattern. Moreover, after dive deeply into the nom documentation, I found out nom has provided a kind of combinators called 'choice combinators' as well. [`alt`](https://docs.rs/nom/7.1.0/nom/combinator/fn.alt.html) is one of them which can be used to combine two parsers. Take care the order of this combination, if `data_type_1` and `data_type_2` are reversed, the result would not be the same. I'll leave this small issue to you to figure out.
+
+So here comes out the version 2 and 3:
 
 ```rust
 fn get_types2(input: &str) -> IResult<&str, (&str, &str)> {
     let sql_type = |s| alpha1(s);
     let data_type = |s| recognize(separated_pair(alpha1, space0, alpha0))(s);
 
+    let ctn = separated_pair(sql_type, tag(":"), data_type);
+    let mut par = delimited(tag("["), ctn, tag("]"));
+
+    par(input)
+}
+
+fn get_types3(input: &str) -> IResult<&str, (&str, &str)> {
+    let sql_type = |s| alpha1(s);
+    let data_type_1 = |s| recognize(separated_pair(alpha1, space1, alpha1))(s);
+    let data_type_2 = |s| alpha1(s);
+    let data_type = |s| alt((data_type_1, data_type_2))(s);
     let ctn = separated_pair(sql_type, tag(":"), data_type);
     let mut par = delimited(tag("["), ctn, tag("]"));
 
@@ -264,27 +277,7 @@ fn test_get_types2() {
         get_types2("[SQLITE:CHAR(N)]").unwrap(),
         ("", ("SQLITE", "CHAR(N)"))
     );
-}
-```
 
-No... It failed again. Because the third assertion has a `(N)` in it. So what about completely ignore the chars between `:` and `]`? [`take_until`](https://docs.rs/nom/7.1.0/nom/bytes/complete/fn.take_until.html)
-
-```rust
-fn get_types3(input: &str) -> IResult<&str, (&str, &str)> {
-    let sql_type = |s| alpha1(s);
-    let data_type = |s| take_until("]")(s);
-    let ctn = separated_pair(sql_type, tag(":"), data_type);
-    let mut par = delimited(tag("["), ctn, tag("]"));
-
-    par(input)
-}
-```
-
-And the unit test:
-
-```rust
-#[test]
-fn test_get_types3() {
     assert_eq!(
         get_types3("[MYSQL:BOOLEAN]").unwrap(),
         ("", ("MYSQL", "BOOLEAN"))
@@ -299,17 +292,104 @@ fn test_get_types3() {
         get_types3("[SQLITE:CHAR(N)]").unwrap(),
         ("", ("SQLITE", "CHAR(N)"))
     );
+
 }
 ```
 
-Eventually it works..., but it's still not the best way to do it (I may update this part later, but it's time to move on).
+No... It failed again. Because the third and sixth assertions have a `(N)` in it.
+
+So what about completely ignore the chars between `:` and `]`? [`take_until`](https://docs.rs/nom/7.1.0/nom/bytes/complete/fn.take_until.html)
+
+```rust
+fn get_types4(input: &str) -> IResult<&str, (&str, &str)> {
+    let sql_type = |s| alpha1(s);
+    let data_type = |s| take_until("]")(s);
+    let ctn = separated_pair(sql_type, tag(":"), data_type);
+    let mut par = delimited(tag("["), ctn, tag("]"));
+
+    par(input)
+}
+```
+
+And the unit test:
+
+```rust
+#[test]
+fn test_get_types4() {
+    assert_eq!(
+        get_types4("[MYSQL:BOOLEAN]").unwrap(),
+        ("", ("MYSQL", "BOOLEAN"))
+    );
+
+    assert_eq!(
+        get_types4("[POSTGRES:DOUBLE PRECISION]").unwrap(),
+        ("", ("POSTGRES", "DOUBLE PRECISION"))
+    );
+
+    assert_eq!(
+        get_types4("[SQLITE:CHAR(N)]").unwrap(),
+        ("", ("SQLITE", "CHAR(N)"))
+    );
+}
+```
+
+Eventually it works..., but it's still not the best way to do it. Ok, let's take a deep breath and see how we can improve it. Perused sequence combinators, I found [`tuple`](https://docs.rs/nom/7.1.0/nom/sequence/fn.tuple.html) and [`pair`](https://docs.rs/nom/7.1.0/nom/sequence/fn.pair.html) can be used to deconstruct the `CHAR(N)` string. That is to say, firstly, we can use `pair` to deconstruct the `CHAR(N)` string into `CHAR` and `(N)`, and then use `tuple` to deconstruct the `(N)` into `(`, `N` and `)`. One more thing is that I have noticed `dataType` like `FLOAT8` is also legal, so we need to replace `alpha1` by `alphanumeric1`. Consequently, we will have `get_types5` function like this:
+
+```rust
+fn get_types5(input: &str) -> IResult<&str, (&str, &str)> {
+    let sql_type = |s| alpha1(s);
+    let data_type_1 = |s| recognize(separated_pair(alpha1, space1, alpha1))(s);
+    let tpl = |s| tuple((tag("("), alphanumeric1, tag(")")))(s);
+    let pr = |s| pair(alpha1, tpl)(s);
+    let data_type_2 = |s| recognize(pr)(s);
+    let data_type_3 = |s| alphanumeric1(s);
+    let data_type = |s| alt((data_type_1, data_type_2, data_type_3))(s);
+
+    let ctn = separated_pair(sql_type, tag(":"), data_type);
+    let mut par = delimited(tag("["), ctn, tag("]"));
+
+    par(input)
+}
+```
+
+Again, unit test:
+
+```rust
+#[test]
+fn test_get_types5() {
+    assert_eq!(
+        get_types5("[MYSQL:BOOLEAN]").unwrap(),
+        ("", ("MYSQL", "BOOLEAN"))
+    );
+
+    assert_eq!(
+        get_types5("[POSTGRES:DOUBLE PRECISION]").unwrap(),
+        ("", ("POSTGRES", "DOUBLE PRECISION"))
+    );
+
+    assert_eq!(
+        get_types5("[POSTGRES:FLOAT8]").unwrap(),
+        ("", ("POSTGRES", "FLOAT8"))
+    );
+
+    assert_eq!(
+        get_types5("[SQLITE:CHAR(N)]").unwrap(),
+        ("", ("SQLITE", "CHAR(N)"))
+    );
+
+    assert_eq!(
+        get_types5("[MYSQL:TINYINT(1)]").unwrap(),
+        ("", ("MYSQL", "TINYINT(1)"))
+    );
+}
+```
 
 After few attempts on the parsing 'alchemy', we finally move on to the final part `from_str_to_type`:
 
 ```rust
 
 fn from_str_to_type(input: &str) -> Result<(DbType, ValueType), ParsingError> {
-    match get_types3(input) {
+    match get_types5(input) {
         Ok((_, (db_type, data_type))) => match db_type.parse::<DbType>() {
             Ok(dt) => {
                 let rvt = match dt {
@@ -358,6 +438,7 @@ The final unit test:
 
 ```rust
 #[test]
+#[test]
 fn test_cvt() {
     assert_eq!(
         from_str_to_type("[MYSQL:BOOLEAN]").unwrap(),
@@ -370,8 +451,18 @@ fn test_cvt() {
     );
 
     assert_eq!(
+        from_str_to_type("[POSTGRES:FLOAT8]").unwrap(),
+        (DbType::Postgres, ValueType::F64)
+    );
+
+    assert_eq!(
         from_str_to_type("[SQLITE:CHAR(N)]").unwrap(),
         (DbType::Sqlite, ValueType::String)
+    );
+
+    assert_eq!(
+        from_str_to_type("[MYSQL:TINYINT(1)]").unwrap(),
+        (DbType::Mysql, ValueType::Bool)
     );
 }
 ```
