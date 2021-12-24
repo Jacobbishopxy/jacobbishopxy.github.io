@@ -11,14 +11,19 @@ tags = []
 ## Graph
 
 - [RAWGraphs](https://github.com/rawgraphs/rawgraphs-app): an open web tool to create custom vector-based visualizations on top of the amazing d3.js library.
+- [Plectica](https://www.plectica.com/): a visual mapping tool that helps individuals and teams organize, explain, and collaborate on complex information.
 
 ## File
 
-- [filebrowser](https://github.com/filebrowser/filebrowser): provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit your files.
+- [Filebrowser](https://github.com/filebrowser/filebrowser): provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit your files.
+
+## Database
+
+- [Gobang](https://github.com/TaKO8Ki/gobang): A cross-platform TUI database management tool written in Rust.
 
 ## GUI
 
-- [egui](https://github.com/emilk/egui): an easy-to-use immediate mode GUI in pure Rust
+- [Egui](https://github.com/emilk/egui): an easy-to-use immediate mode GUI in pure Rust
 
 ## Cloud
 
@@ -27,5 +32,3 @@ tags = []
 ## Misc
 
 - [Lemmy](https://github.com/LemmyNet/lemmy): A link aggregator / Reddit clone for the fediverse.
-
-- [Gobang](https://github.com/TaKO8Ki/gobang): A cross-platform TUI database management tool written in Rust.
