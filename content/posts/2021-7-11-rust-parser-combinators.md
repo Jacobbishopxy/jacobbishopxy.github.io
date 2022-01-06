@@ -12,7 +12,7 @@ toc = true
 
 +++
 
-# 学习笔记：[通过 Rust 学习组合子](https://bodil.lol/parser-combinators/)
+**学习笔记：[通过 Rust 学习组合子](https://bodil.lol/parser-combinators/)**
 
 组合子的概念在函数式编程中广为人知。而作为系统级的编程语言，Rust 更像是一门面向过程式的语言。因此在 Rust 上使用 FP 技巧并不如天生的那些 FP 语言有优势（大名鼎鼎 Haskell，以及 Scala 等）。例如缺少高阶类型 higher kinded type 支持等。
 

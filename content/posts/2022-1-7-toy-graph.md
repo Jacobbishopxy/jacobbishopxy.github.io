@@ -5,7 +5,7 @@ date = 2022-01-07
 
 [taxonomies]
 categories = ["Post"]
-tags = ["Rust"]
+tags = ["Rust", "Mongo"]
 
 +++
 
