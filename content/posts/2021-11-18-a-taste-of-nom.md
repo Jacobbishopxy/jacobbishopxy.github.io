@@ -468,4 +468,4 @@ fn test_cvt() {
 }
 ```
 
-Hula! We're done! We have been through a whole process of converting a string to a tuple of `(DbType, ValueType)`, and at the moment, we've tried several different parsing methods (progressively updating). The full code is in my [Github page](https://github.com/Jacobbishopxy/jotting/blob/master/src/taste_nom/database_types_nom.rs), and you have my sincere appreciation for your pull PRs. That's all for today, until next time!
+Hula! We're done! We have been through a whole process of converting a string to a tuple of `(DbType, ValueType)`, and at the moment, we've tried several different parsing methods (progressively updating). The full code is in my [Github page](https://github.com/Jacobbishopxy/jotting/blob/master/jotting/src/taste_nom/database_types_nom.rs), and you have my sincere appreciation for your pull PRs. That's all for today, until next time!
