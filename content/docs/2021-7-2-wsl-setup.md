@@ -98,6 +98,30 @@ Add add the line:
 XX.XXX.XXX.XXX  github.com
 ```
 
+## Generate SSH key and add to GitHub
+
+Execute the following command:
+
+```sh
+ssh-keygen -t rsa
+```
+
+Copy the public key to your [GitHub account](https://github.com/settings/keys):
+
+```sh
+cat ~/.ssh/id_rsa.pub
+```
+
+### Issues may occur
+
+- [GitHub Error: Key already in use](https://stackoverflow.com/questions/21160774/github-error-key-already-in-use)
+
+  for short:
+
+  ```sh
+  ssh -T -ai ~/.ssh/id_rsa git@github.com
+  ```
+
 ## Setup Github Cli (Debian/Ubuntu)
 
 A shortcut:
@@ -114,6 +138,8 @@ Then authentication (follow up the indication provided by gh):
 ```sh
 gh auth login
 ```
+
+Visit [Github Token page](https://github.com/settings/tokens) and generate a new token. Copy this token to the terminal when `? Paste your authentication token:` occurs.
 
 ## Setup Github Cli (CentOS)
 
