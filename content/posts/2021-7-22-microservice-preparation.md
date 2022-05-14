@@ -21,7 +21,7 @@ Before we start, I have to mention that due to my job requirement, which is alwa
 
 ### WSL
 
-Please check [my previous post](https://jacobbishopxy.github.io/docs/2021-7-1-wsl-setup/).
+Please check [my previous post](@/docs/2021-7-2-wsl-setup.md).
 
 ### VsCode
 
