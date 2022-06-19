@@ -4,7 +4,7 @@ description = "Study note in Chinese"
 date = 2021-07-11
 
 [taxonomies]
-categories = ["Read"]
+categories = ["Note"]
 tags = ["Rust", "FP"]
 
 [extra]

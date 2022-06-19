@@ -1,6 +1,6 @@
 +++
 title = "A taste of NOM (II)"
-description = "Parser combinator "
+description = "Parser combinator revisit"
 date = 2022-05-15
 
 [taxonomies]

@@ -185,7 +185,7 @@ webmanifest = "/icons/site.webmanifest"
 # Author details
 [extra.author]
 name = "Jacob Xie"
-avatar = "/images/avatar.png"
+avatar = "/images/avatar.jpg"
 
 # Social links
 [extra.social]
