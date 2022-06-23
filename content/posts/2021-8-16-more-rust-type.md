@@ -4,7 +4,7 @@ description = "Study note"
 date = 2021-08-16
 
 [taxonomies]
-categories = ["Read"]
+categories = ["Note"]
 tags = ["Rust"]
 
 [extra]
