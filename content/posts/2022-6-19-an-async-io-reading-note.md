@@ -67,3 +67,25 @@ This post is a study note based on video: [Async I/O in Depth: State Machines, E
 - Limited in event scope (kinds of events)
 
 - Memory overhead and performance bottlenecks
+
+## epoll()
+
+- Single threaded and uses epoll family of system calls
+
+- In terms of architecture, this is very similar to poll()
+
+- Avoids the scalability issue and need to maintain a large list of file descriptors in user space and pass them every time to poll()
+
+- Avoids having to iterate over all file descriptors after polling to check the current state to see which ones are ready or in the state you need
+
+- Calling epoll_wait will include a pointer to an events buffer
+
+  - Buffer is filled with return information about file descriptors of interest that have some events available
+
+  - Can be tuned to return max_events on each iteration
+
+## State machine
+
+A state is a description of a status of a system that is waiting to execute a transition. A transition is a set of actions to be executed when a condition is fulfilled or when an event is received.
+
+A state machine will therefore model behavior consisting of a finite number of states wherein based on the current state and given input, a machine will perform some set of computation and produce an output and transition into a new state.

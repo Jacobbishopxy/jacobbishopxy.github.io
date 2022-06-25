@@ -1,11 +1,14 @@
 {
 	"cSpell.words": [
-		"GRPC",
-		"Rustc",
-		"Rustonomicon",
 		"combinator",
 		"combinators",
+		"epoll",
+		"GRPC",
+		"kqueue",
 		"microservices",
-		"rustup"
+		"Rustc",
+		"Rustonomicon",
+		"rustup",
+		"syscall"
 	]
 }
