@@ -5,13 +5,13 @@ title = "Jacob's Domain"
 {{ br() }}
 
 {% aligncenter() %}
-My name is Jacob Xie, and I'm a fullstack and data engineer.
+My name is Jacob Xie, and I'm a fullstack developer also a data engineer.
 {% end %}
 
 {{ br() }}
 {{ br() }}
 
-<div class="column is-8 is-offset-4">
+<div class="column is-8 is-offset-4 sc_poem_font">
 
 芦叶满汀州，寒沙带浅流。
 
