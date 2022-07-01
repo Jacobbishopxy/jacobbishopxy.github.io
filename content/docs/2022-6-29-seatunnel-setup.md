@@ -8,11 +8,9 @@ categories = ["Doc"]
 tags = []
 +++
 
-## SeaTunnel Setup
-
 SeaTunnel standalone mode setup.
 
-### Spark
+## Spark
 
 Choose a spark version from [here](https://dlcdn.apache.org/spark) to download, for instance (currently SeaTunnel only accepts Spark 2.0):
 
@@ -109,7 +107,7 @@ sudo service ssh restart            # to pickup recent changes
 ssh localhost
 ```
 
-### SeaTunnel
+## SeaTunnel
 
 Download SeaTunnel:
 
@@ -129,7 +127,15 @@ cd "apache-seatunnel-incubating-${version}"
 --config ./config/spark.batch.conf.template
 ```
 
-### References
+## Docker
+
+[A simple docker demo](https://github.com/Jacobbishopxy/dockerfile/tree/master/sea-tunnel)
+
+## Use case
+
+WIP
+
+## References
 
 - [install spark on ubuntu](https://phoenixnap.com/kb/install-spark-on-ubuntu)
 - [spark manual](https://spark.apache.org/docs/latest/spark-standalone.html#installing-spark-standalone-to-a-cluster)
