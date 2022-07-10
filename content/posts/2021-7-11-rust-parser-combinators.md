@@ -1,6 +1,6 @@
 +++
-title = "Rust Parser Combinators"
-description = "Study note in Chinese"
+title = "Rust 组合子"
+description = "学习笔记"
 date = 2021-07-11
 
 [taxonomies]
