@@ -5,7 +5,7 @@ date=2022-07-03
 
 [taxonomies]
 categories = ["Doc"]
-tags = []
+tags = ["k8s"]
 +++
 
 Docker desktop setup Kubernetes as a dev environment.
