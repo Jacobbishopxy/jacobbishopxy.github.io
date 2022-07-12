@@ -119,14 +119,67 @@ kubectl describe node <insert-node-name-here>
 
 ### 心跳
 
+心跳，由 k8s 节点发送，帮助集群控制各个节点的可用性，以及对于失败做出相应的动作。对于节点而言，有两种形式的心跳：
+
+- 更新节点的 `.status`。
+- 在 `kube-node-lease` 命名空间内租借 lease 对象。每个节点都有一个关联的租借对象。
+
+相比于更新节点的 `.status`，Lease 是一个轻量级的资源。对于大型集群而言，通过 leases 可以减少更新所带来的性能影响。
+
+kubelet 负责创建与更新节点的 `.status`，同时也更新这些节点所关联的 lease。
+
+- kubelet 会在节点状态变化或者配置的时间区间没有更新时，更新节点的 `.status`。默认的节点更新 `.status` 的时间区间为 5 分钟，远比 40 秒的不可获取节点的默认时间要长。
+- kubelet 会每隔 10 秒（默认的更新时间区间）创建并更新 lease 对象。lease 的更新独立与节点 `.status` 的更新。如果 lease 更新失败，kubelet 会使用指数回退机制，从 200 毫秒开始重试，最长重试间隔为 7 秒钟。
+
 ### 节点控制器
+
+节点控制器是 k8s 控制面板中用于在多个层面上进行节点管理的组件。其在节点的生命周期中担任了多个角色。首先是当节点被注册是指定 CIDR 区段（如果开启了 CIDR 分配）。其次是维护控制器的内部节点列表与云服务商所提供的可用机器列表同步。如果在云环境下运行，只要某个节点不健康，节点控制器就会询问云服务节点的虚拟机是否仍然可用。如果不可用，节点控制器会将该节点从节点列表中删除。再者是监控节点的健康状况，负责以下：
+
+- 在节点不可获取的情况下，在节点的 `.status` 中更新 `Ready` 的状态并改为 `Unknown`。
+- 如果节点仍然无法访问，对于不可获取的节点上的所有 Pod 触发 API 发起的驱逐操作。默认情况节点控制器在将节点标记为 `Unknown` 后等待 5 分钟后提交第一个驱逐请求。
 
 ### 资源容量追踪
 
-### 节点的拓扑
+节点对象追踪节点资源容量的信息：比如可用的内存与 CPU 的数量。通过自注册机制生成的节点对象会在注册期间报告自身容量。如果是手动的添加节点，那么也需要手动的设置节点容量。k8s 调度器保证节点上有足够的资源提供给所有的 pod 使用。它会检查节点上所有容器的请求的总和不会超过节点的容量。中的请求包括由 kubelet 启动的所有容器，但不包括容器运行时直接启动的容器，也不包括不受 kubelet 控制的其它进程。
 
 ### 节点的优雅关闭
 
+**特性状态**：`v1.21 [beta]`
+
+kubelet 会尝试检测节点系统的关闭以及终止在节点上运行的 pods，并确保 pods 遵从 pod 终止流程。优雅关闭依赖于 systemd，因为利用了 systemd 的抑制器锁机制，在给定的期限内延迟节点关闭。优雅关闭这个特性受 `GracefulNodeShutdown` 控制门所控制，在 1.21 版本中是默认启用的。注意在默认情况下，下面描述的两个配置选项 `shutdownGracePeriod` 与 `shutdownGracePeriodCriticalPods` 的设置都为 0。因此不会激活节点优雅关闭功能。要激活该功能特性，这两个 kubelet 配置选项要适当配置，并设置为非零值。
+
+在优雅关闭节点的过程中 kubelet 分两个阶段来终止 Pod：
+
+1. 终止在节点上运行的常规 Pod
+1. 终止在节点上运行的关键 Pod
+
+优雅关闭的特性对应两个 `KubeletConfiguration` 选项：
+
+- `shutdownGracePeriod`：指定节点应延迟关闭的总持续时间。改时间为 Pod 优雅终止的时间总和，不区分常规 Pod 或是关键 Pod。
+- `shutdownGracePeriodCriticalPods`：节点关闭期间指定用于终止关键 Pod 的持续时间。该值应该小于 `shutdownGracePeriod`。
+
 ### 节点的非优雅关闭
 
+**特性状态**：`v1.24 [alpha]`
+
+一个节点的关闭可能不会被 kubelet 的节点管理所监控，这有可能是因为命令没有触发 kubelet 使用的抑制器锁机制或是因为一个用户的错误，例如 `shutdownGracePeriod` 和 `shutdownGracePeriodCriticalPods` 没有被正确的配置。
+
+当节点的关闭并没有被 kubelet 管理所监控时，StatefulSet 部分的 pods 会停滞在终止的状态中，并且不能移动至新的节点上。这是因为 kubelet 在关闭的节点上不能删除 pods，因此 StatefulSet 不能创建同名的新 pod。如果 pods 还用到了 volume，那么 VolumeAttachments 也不会在原有节点上被删除，因此这些 pods 所使用的 volumes 也不能被挂载到新的运行的节点上。因此 StatefulSet 上运行的应用程序不能正常工作。如果原来的已关闭节点被恢复，kubelet 将删除 Pod，新的 Pod 将在不同的运行节点上创建。如果原来的已关闭节点没有被恢复，那些在已关闭节点上的 Pod 将永远停滞在终止状态。
+
+为了缓解上述状况，用户可以手动将 `NoExecute` 或者 `NoSchedule` 效果的 `node kubernetes.io/out-of-service` 污点添加到节点上，标记其无法提供服务。如果在 `kube-controller-manager` 上启用了 `NodeOutOfServiceVolumeDetach` 特性门控，并且节点被标记污点，同时如果节点 Pod 上没有设置对应的容忍度，那么这样的 Pod 将会被强制删除，并且 Pod 的 volume 会被立刻分离。这可以让在无法服务的节点上的 Pods 快速在另一个节点上恢复。
+
+在非优雅关闭节点过程中，Pod 分两个阶段终止：
+
+1. 强制删除没有匹配的 `out-of-service` 容忍度的 Pod。
+1. 立刻对此类 Pod 执行分离 volume 操作。
+
 ### 内存交换管理
+
+**特性状态**：`v1.22 [alpha]`
+
+在 1.22 版本之前 k8s 不支持交换内存，如果在一个节点上检查到交换 kubelet 则默认会启动失败。在 1.22 版本之后，可以逐个节点启用交换内存支持。要在节点上启用交换内存，必须启用 kubelet 的 `NodeSwap` 特性门控，同时使用 `--fail-swap-on` 命令行参数或者将 `failSwapOn` 配置设置为 false。用户还可以选择配置 `memorySwap.swapBehavior` 来指定交换内存的方式，例如：
+
+```yaml
+memorySwap:
+  swapBehavior: LimitedSwap
+```
