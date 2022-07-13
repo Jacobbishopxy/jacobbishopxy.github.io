@@ -5,6 +5,7 @@
 		"combinators",
 		"epoll",
 		"GRPC",
+		"Konnectivity",
 		"kqueue",
 		"kube",
 		"kubectl",

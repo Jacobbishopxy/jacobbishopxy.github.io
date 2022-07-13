@@ -74,6 +74,27 @@ To modify Ubuntu's starting directory, we can open Windows terminal, and you'll 
    sudo chmod -R 775 /etc/wsl.conf
    ```
 
+## New user
+
+1. Add user:
+
+   ```sh
+   sudo adduser jacob
+   ```
+
+1. Update sudoers
+
+   ```sh
+   su root
+   vim /etc/sudoers
+   ```
+
+   add a new line:
+
+   ```txt
+   jacob ALL=(ALL) ALL
+   ```
+
 ## Setup Git
 
 ```sh
