@@ -8,6 +8,7 @@
 		"Konnectivity",
 		"kqueue",
 		"kube",
+		"kubeadm",
 		"kubectl",
 		"kubelet",
 		"Kubernetes",
