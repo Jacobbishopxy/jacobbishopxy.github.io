@@ -1,7 +1,7 @@
 +++
 title = "Rancher k8s cluster setup"
-description = "An experimental attempt"
-date = 2022-07-14
+description = "An experimental record"
+date = 2022-07-18
 
 [taxonomies]
 categories = ["Post"]
@@ -19,7 +19,7 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
 - `kubelet`: the component that runs on all of the machines in your cluster and does things like starting pods and containers
 - `kubectl`: the command line util to talk to your cluster
 
-1. config `/etc/hosts` by adding master & workers' IP addresses (optional):
+1. Config `/etc/hosts` by adding master & workers' IP addresses (optional). Here we use four machines for demonstration (master for etcd & control plane, and the rest for worker. Visit [Checklist for Production-Ready Clusters](https://rancher.com/docs/rancher/v2.6/en/cluster-provisioning/production/) for more information):
 
    ```txt
    192.168.50.140 k8s-master
@@ -28,7 +28,7 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
    192.168.50.143 k8s-node3
    ```
 
-1. config machine name (optional):
+1. Config machine name (optional):
 
    ```sh
    ## master
@@ -48,13 +48,19 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
    exec bash
    ```
 
-1. turn off swap:
+1. Set timezone:
+
+   ```sh
+   sudo timedatectl set-timezone Asia/Shanghai
+   ```
+
+1. Turn off swap:
 
    ```sh
    sudo swapoff -a
    ```
 
-1. import gpg key:
+1. Import gpg key. This step is very import especially lacking of a proxy server:
 
    ```sh
    sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg  https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg
@@ -66,7 +72,7 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
    sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg  https://mirrors.tuna.tsinghua.edu.cn/kubernetes/apt/doc/apt-key.gpg
    ```
 
-1. create `/etc/apt/sources.list.d/kubernetes.list`:
+1. Create `/etc/apt/sources.list.d/kubernetes.list`. Another important step of setting up mirrors:
 
    ```sh
    deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
@@ -78,7 +84,7 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
    deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://mirrors.tuna.tsinghua.edu.cn/kubernetes/apt kubernetes-xenial main
    ```
 
-1. install all:
+1. Installation:
 
    ```sh
    sudo apt-get update
@@ -168,21 +174,23 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
 
 ## Rancher
 
-1. start a rancher web server:
+1. Start a rancher web server:
 
    ```sh
    sudo docker run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:stable
    ```
 
-1. visit web `https://192.168.50.140` (according to the host IP)
+1. Visit web `https://192.168.50.140` (according to the host IP)
 
-1. copy `docker logs <container ID> 2>&1 | grep "Bootstrap Password:"` to terminal (get container ID by `docker ps`), by executing this command we will get `Bootstrap Password`, and paste password back to website
+1. Copy `docker logs <container ID> 2>&1 | grep "Bootstrap Password:"` to terminal (get container ID by `docker ps`), by executing this command we will get `Bootstrap Password`, and paste password back to website
 
-1. click `☰` button at the website's top-left, then `Cluster Management`, then `Create` button on the top-right, choose `Custom`
+1. Click `☰` button at the website's top-left, then `Cluster Management`, then `Create` button on the top-right, choose `Custom`
 
-1. after enter your `Cluster Name`, keep everything default, click `Next` and in `Node Options`, select `etcd` and `Control Plane` for `140` and the rest `141`, `142` and `143` as `Worker`. for more details, please visit [Checklist for Production-Ready Clusters](https://rancher.com/docs/rancher/v2.6/en/cluster-provisioning/production/)
+1. After enter your `Cluster Name`, keep everything default, click `Next` and in `Node Options`, select `etcd` and `Control Plane` for `140` and the rest `141`, `142` and `143` as `Worker`.
 
-### Accessing clusters with kubectl
+### Accessing clusters
+
+Accessing clusters with `kubectl`:
 
 1. Log into Rancher. From the Global view, open the cluster that you want to access with kubectl.
 1. Click `Copy KubeConfig to Clipboard` button.
@@ -190,9 +198,27 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
 1. Set global config `echo "export KUBECONFIG=~/.kube/config" >> ~/.bash_profile` and `source ~/.bash_profile`
 1. Now we can use `kubectl version` or `kubectl get nodes` to check whether configuration is successful or not
 
-## Misc
+## Helm
 
-- clear all containers and images when [deployment failed](https://github.com/rancher/rancher/issues/21926):
+Rancher's Helm [document](https://rancher.com/docs/k3s/latest/en/helm/).
+
+While using any `helm` command such as `helm ls`, we may see warnings as following:
+
+```txt
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/xy/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/xy/.kube/config
+```
+
+We can modify permission to solve it. The first line is read and write permission for users in the same group, while the second line is read permission for the rest:
+
+```sh
+chmod g-rw ~/.kube/config
+chmod o-r ~/.kube/config
+```
+
+## Resolutions
+
+- Clear all containers and images when [deployment failed](https://github.com/rancher/rancher/issues/21926):
 
   ```sh
   docker stop $(docker ps -aq)
@@ -219,3 +245,9 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
   ```
 
   Note that calling `rm -rf ...` is very useful, when encounter `etcd connection refused` problem. This usually happened when cached some previous cluster's residual files.
+
+- Failed to bring up Etcd Plane: etcd cluster is unhealthy. [solution](https://blog.csdn.net/xtjatswc/article/details/108558156)
+
+- `node-role.kubernetes.io/controlplane=true:NoSchedule` means no pod will be able to schedule onto this node, unless it has a matching toleration. To remove this taint: `kubectl taint nodes node1 key1=value1:NoSchedule-`. In our case, this taint is normal on the master node, since we only setup one node for `etcd` and `control plane`. Hence, no need to remove this taint.
+
+- `node-role.kubernetes.io/etcd=true:NoExecute` same as above.
