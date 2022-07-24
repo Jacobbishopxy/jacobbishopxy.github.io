@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		
+
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/folio/galleria.folio.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/mapbox-gl@2.1.1/dist/mapbox-gl.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+			rel="stylesheet"
+		/>
+		<link href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;deep-thought.css" rel="stylesheet" />
+
+		<title> Jacob&#x27;s Domain | Basic Markdown Syntax </title>
+
+		 
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+			integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
+			integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-LJ2FmexL77rmGm6SIpxq7y+XA6bkLzGZEgCywzKOZG/ws4va9fUVu2neMjvc3zdv"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+			integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"
+			crossorigin="anonymous"
+			onload="renderMathInElement(document.body, {
+				delimiters: [
+					{left: '$$', right: '$$', display: true},
+					{left: '$', right: '$', display: false},
+					{left: '\\(', right: '\\)', display: false},
+					{left: '\\[', right: '\\]', display: true}
+				]
+			});"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Basic Markdown Syntax</h1>
+					<p class="subtitle"></p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2021-07-01">July 01, 2021</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>11 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>2035 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories&#x2F;doc&#x2F;">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Doc</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							
+						</div>
+					</div>
+					<div class="content mt-2"><p>This article offers a sample of basic Markdown syntax that can be used in Zola content files.</p>
+<!--more-->
+<p>Let's face it: Writing content for the Web is tiresome. WYSIWYG editors help alleviate this task, but they generally result in horrible code, or worse yet, ugly web pages.</p>
+<p><strong>Markdown</strong> is a better way to write <strong>HTML</strong>, without all the complexities and ugliness that usually accompanies it.</p>
+<p>Some of the key benefits are:</p>
+<ol>
+<li>Markdown is simple to learn, with minimal extra characters, so it's also quicker to write content.</li>
+<li>Less chance of errors when writing in Markdown.</li>
+<li>Produces valid XHTML output.</li>
+<li>Keeps the content and the visual display separate, so you cannot mess up the look of your site.</li>
+<li>Write in any text editor or Markdown application you like.</li>
+<li>Markdown is a joy to use!</li>
+</ol>
+<p>Without further delay, let us go over the main elements of Markdown and what the resulting HTML looks like!</p>
+<h1 id="headings">Headings</h1>
+<p>Headings from <code>h1</code> through <code>h6</code> are constructed with a <code>#</code> for each level:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#8fa1b3;"># h1 Heading
+
+## h2 Heading
+
+### h3 Heading
+
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading
+</span></code></pre>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">h1</span><span style="color:#c0c5ce;">&gt;h1 Heading&lt;/</span><span style="color:#bf616a;">h1</span><span style="color:#c0c5ce;">&gt;
+&lt;</span><span style="color:#bf616a;">h2</span><span style="color:#c0c5ce;">&gt;h2 Heading&lt;/</span><span style="color:#bf616a;">h2</span><span style="color:#c0c5ce;">&gt;
+&lt;</span><span style="color:#bf616a;">h3</span><span style="color:#c0c5ce;">&gt;h3 Heading&lt;/</span><span style="color:#bf616a;">h3</span><span style="color:#c0c5ce;">&gt;
+&lt;</span><span style="color:#bf616a;">h4</span><span style="color:#c0c5ce;">&gt;h4 Heading&lt;/</span><span style="color:#bf616a;">h4</span><span style="color:#c0c5ce;">&gt;
+&lt;</span><span style="color:#bf616a;">h5</span><span style="color:#c0c5ce;">&gt;h5 Heading&lt;/</span><span style="color:#bf616a;">h5</span><span style="color:#c0c5ce;">&gt;
+&lt;</span><span style="color:#bf616a;">h6</span><span style="color:#c0c5ce;">&gt;h6 Heading&lt;/</span><span style="color:#bf616a;">h6</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h1 id="comments">Comments</h1>
+<p>Comments should be HTML compatible.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#65737e;">&lt;!--
+This is a comment
+--&gt;
+</span></code></pre>
+<p>Comment below should <strong>NOT</strong> be seen:</p>
+<!--
+This is a comment
+-->
+<h1 id="horizontal-rules">Horizontal Rules</h1>
+<p>The HTML <code>&lt;hr&gt;</code> element is for creating a &quot;thematic break&quot; between paragraph-level elements.
+In Markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
+<ul>
+<li><code>___</code>: three consecutive underscores</li>
+<li><code>---</code>: three consecutive dashes</li>
+<li><code>***</code>: three consecutive asterisks</li>
+</ul>
+<p>The rendered output looks like this:</p>
+<hr />
+<hr />
+<hr />
+<h1 id="body">Body</h1>
+<p>Body written as normal, plain text will be wrapped with <code>&lt;p&gt;&lt;/p&gt;</code> tags in the rendered HTML.</p>
+<p>So this body:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#c0c5ce;">Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus. Et legere ocurreret pri,
+animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his ex,
+soluta officiis concludaturque ei qui, vide sensibus vim ad.
+</span></code></pre>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">&gt;
+  Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus. Et
+  legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis
+  inimicus efficiendi. Labore officiis his ex, soluta officiis concludaturque ei
+  qui, vide sensibus vim ad.
+&lt;/</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre>
+<p>A <strong>line break</strong> can be done with one blank line.</p>
+<h1 id="inline-html">Inline HTML</h1>
+<p>If you need a certain HTML tag (with a class) you can simply use HTML:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">Paragraph in Markdown.
+
+&lt;</span><span style="color:#bf616a;">div </span><span style="color:#d08770;">class</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">class</span><span style="color:#c0c5ce;">&quot;&gt;This is &lt;</span><span style="color:#bf616a;">b</span><span style="color:#c0c5ce;">&gt;HTML&lt;/</span><span style="color:#bf616a;">b</span><span style="color:#c0c5ce;">&gt;&lt;/</span><span style="color:#bf616a;">div</span><span style="color:#c0c5ce;">&gt;
+
+Paragraph in Markdown.
+</span></code></pre><h1 id="emphasis">Emphasis</h1>
+<h2 id="bold">Bold</h2>
+<p>For emphasizing a snippet of text with a heavier font-weight.</p>
+<p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="font-weight:bold;color:#ebcb8b;">**rendered as bold text**
+**rendered as bold text**
+</span></code></pre>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">strong</span><span style="color:#c0c5ce;">&gt;rendered as bold text&lt;/</span><span style="color:#bf616a;">strong</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h2 id="italics">Italics</h2>
+<p>For emphasizing a snippet of text with italics.</p>
+<p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="font-style:italic;color:#b48ead;">_rendered as italicized text_
+_rendered as italicized text_
+</span></code></pre>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">em</span><span style="color:#c0c5ce;">&gt;rendered as italicized text&lt;/</span><span style="color:#bf616a;">em</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h2 id="strikethrough">Strikethrough</h2>
+<p>In <a href="https://github.github.com/gfm/">[GFM]^(GitHub flavored Markdown)</a> you can do strikethroughs.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#c0c5ce;">~~Strike through this text.~~
+</span></code></pre>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">del</span><span style="color:#c0c5ce;">&gt;Strike through this text.&lt;/</span><span style="color:#bf616a;">del</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h1 id="blockquotes">Blockquotes</h1>
+<p>For quoting blocks of content from another source within your document.</p>
+<p>Add <code>&gt;</code> before any text you want to quote:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#d08770;">&gt; </span><span style="font-weight:bold;color:#ebcb8b;">**Fusion Drive**</span><span style="color:#d08770;"> combines a hard drive with a flash storage (solid-state drive) and presents it as a single logical volume with the space of both drives combined.
+</span></code></pre>
+<p>The rendered output looks like this:</p>
+<blockquote>
+<p><strong>Fusion Drive</strong> combines a hard drive with a flash storage (solid-state drive) and presents it as a single logical volume with the space of both drives combined.</p>
+</blockquote>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">blockquote</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">&gt;
+    &lt;</span><span style="color:#bf616a;">strong</span><span style="color:#c0c5ce;">&gt;Fusion Drive&lt;/</span><span style="color:#bf616a;">strong</span><span style="color:#c0c5ce;">&gt; combines a hard drive with a flash storage
+    (solid-state drive) and presents it as a single logical volume with the
+    space of both drives combined.
+  &lt;/</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">&gt;
+&lt;/</span><span style="color:#bf616a;">blockquote</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre>
+<p>Blockquotes can also be nested:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#d08770;">&gt; Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.
+&gt; Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi.
+&gt;
+&gt; &gt; Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor
+&gt; &gt; odio non est accumsan facilisis. Aliquam id turpis in dolor tincidunt mollis ac eu diam.
+</span></code></pre>
+<p>The rendered output looks like this:</p>
+<blockquote>
+<p>Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.
+Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi.</p>
+<blockquote>
+<p>Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor
+odio non est accumsan facilisis. Aliquam id turpis in dolor tincidunt mollis ac eu diam.</p>
+</blockquote>
+</blockquote>
+<h1 id="lists">Lists</h1>
+<h2 id="unordered">Unordered</h2>
+<p>A list of items in which the order of the items does not explicitly matter.</p>
+<p>You may use any of the following symbols to denote bullets for each list item:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#bf616a;">- valid bullet
+
+* valid bullet
+
+- valid bullet
+</span></code></pre>
+<p>For example:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#bf616a;">- Lorem ipsum dolor sit amet
+- Consectetur adipiscing elit
+- Integer molestie lorem at massa
+- Facilisis in pretium nisl aliquet
+- Nulla volutpat aliquam velit
+  - Phasellus iaculis neque
+  - Purus sodales ultricies
+  - Vestibulum laoreet porttitor sem
+  - Ac tristique libero volutpat at
+- Faucibus porta lacus fringilla vel
+- Aenean sit amet erat nunc
+- Eget porttitor lorem
+</span></code></pre>
+<p>The rendered output looks like this:</p>
+<ul>
+<li>Lorem ipsum dolor sit amet</li>
+<li>Consectetur adipiscing elit</li>
+<li>Integer molestie lorem at massa</li>
+<li>Facilisis in pretium nisl aliquet</li>
+<li>Nulla volutpat aliquam velit
+<ul>
+<li>Phasellus iaculis neque</li>
+<li>Purus sodales ultricies</li>
+<li>Vestibulum laoreet porttitor sem</li>
+<li>Ac tristique libero volutpat at</li>
+</ul>
+</li>
+<li>Faucibus porta lacus fringilla vel</li>
+<li>Aenean sit amet erat nunc</li>
+<li>Eget porttitor lorem</li>
+</ul>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">ul</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Lorem ipsum dolor sit amet&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Consectetur adipiscing elit&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Integer molestie lorem at massa&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Facilisis in pretium nisl aliquet&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+    Nulla volutpat aliquam velit
+    &lt;</span><span style="color:#bf616a;">ul</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Phasellus iaculis neque&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Purus sodales ultricies&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Vestibulum laoreet porttitor sem&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Ac tristique libero volutpat at&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+    &lt;/</span><span style="color:#bf616a;">ul</span><span style="color:#c0c5ce;">&gt;
+  &lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Faucibus porta lacus fringilla vel&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Aenean sit amet erat nunc&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Eget porttitor lorem&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+&lt;/</span><span style="color:#bf616a;">ul</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h2 id="ordered">Ordered</h2>
+<p>A list of items in which the order of items does explicitly matter.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#bf616a;">1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+4. Facilisis in pretium nisl aliquet
+5. Nulla volutpat aliquam velit
+6. Faucibus porta lacus fringilla vel
+7. Aenean sit amet erat nunc
+8. Eget porttitor lorem
+</span></code></pre>
+<p>The rendered output looks like this:</p>
+<ol>
+<li>Lorem ipsum dolor sit amet</li>
+<li>Consectetur adipiscing elit</li>
+<li>Integer molestie lorem at massa</li>
+<li>Facilisis in pretium nisl aliquet</li>
+<li>Nulla volutpat aliquam velit</li>
+<li>Faucibus porta lacus fringilla vel</li>
+<li>Aenean sit amet erat nunc</li>
+<li>Eget porttitor lorem</li>
+</ol>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">ol</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Lorem ipsum dolor sit amet&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Consectetur adipiscing elit&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Integer molestie lorem at massa&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Facilisis in pretium nisl aliquet&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Nulla volutpat aliquam velit&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Faucibus porta lacus fringilla vel&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Aenean sit amet erat nunc&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;Eget porttitor lorem&lt;/</span><span style="color:#bf616a;">li</span><span style="color:#c0c5ce;">&gt;
+&lt;/</span><span style="color:#bf616a;">ol</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h2 id="task-lists">Task Lists</h2>
+<p>Task lists allow you to create a list of items with checkboxes. To create a task list, add dashes (<code>-</code>) and brackets with a space (<code>[ ]</code>) before task list items. To select a checkbox, add an x in between the brackets (<code>[x]</code>).</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#bf616a;">- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+</span></code></pre>
+<p>The rendered output looks like this:</p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+Write the press release</li>
+<li><input disabled="" type="checkbox"/>
+Update the website</li>
+<li><input disabled="" type="checkbox"/>
+Contact the media</li>
+</ul>
+<h1 id="code">Code</h1>
+<h2 id="inline-code">Inline Code</h2>
+<p>Wrap inline snippets of code with <code>`</code>.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#c0c5ce;">In this example, </span><span style="color:#a3be8c;">`&lt;section&gt;&lt;/section&gt;`</span><span style="color:#c0c5ce;"> should be wrapped as </span><span style="font-weight:bold;color:#ebcb8b;">**code**</span><span style="color:#c0c5ce;">.
+</span></code></pre>
+<p>The rendered output looks like this:</p>
+<p>In this example, <code>&lt;section&gt;&lt;/section&gt;</code> should be wrapped as <strong>code</strong>.</p>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">&gt;
+  In this example, &lt;</span><span style="color:#bf616a;">code</span><span style="color:#c0c5ce;">&gt;</span><span style="color:#8fa1b3;">&amp;</span><span style="color:#d08770;">lt;</span><span style="color:#c0c5ce;">section</span><span style="color:#8fa1b3;">&amp;</span><span style="color:#d08770;">gt;</span><span style="color:#8fa1b3;">&amp;</span><span style="color:#d08770;">lt;</span><span style="color:#c0c5ce;">/section</span><span style="color:#8fa1b3;">&amp;</span><span style="color:#d08770;">gt;</span><span style="color:#c0c5ce;">&lt;/</span><span style="color:#bf616a;">code</span><span style="color:#c0c5ce;">&gt; should be
+  wrapped with &lt;</span><span style="color:#bf616a;">strong</span><span style="color:#c0c5ce;">&gt;code&lt;/</span><span style="color:#bf616a;">strong</span><span style="color:#c0c5ce;">&gt;.
+&lt;/</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h2 id="indented-code">Indented Code</h2>
+<p>Or indent several lines of code by at least four spaces, as in:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#c0c5ce;">    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+</span></code></pre>
+<p>The rendered output looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code>// Some comments
+line 1 of code
+line 2 of code
+line 3 of code
+</code></pre>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">pre</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">code</span><span style="color:#c0c5ce;">&gt;
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+  &lt;/</span><span style="color:#bf616a;">code</span><span style="color:#c0c5ce;">&gt;
+&lt;/</span><span style="color:#bf616a;">pre</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h1 id="tables">Tables</h1>
+<p>Tables are created by adding pipes as dividers between each cell, and by adding a line of dashes (also separated by bars) beneath the header. Note that the pipes do not need to be vertically aligned.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#c0c5ce;">| Option | Description                                                               |
+| ------ | ------------------------------------------------------------------------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default.    |
+| ext    | extension to be used for dest files.                                      |
+</span></code></pre>
+<p>The rendered output looks like this:</p>
+<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody>
+<tr><td>data</td><td>path to data files to supply the data that will be passed into templates.</td></tr>
+<tr><td>engine</td><td>engine to be used for processing templates. Handlebars is the default.</td></tr>
+<tr><td>ext</td><td>extension to be used for dest files.</td></tr>
+</tbody></table>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">table</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">thead</span><span style="color:#c0c5ce;">&gt;
+    &lt;</span><span style="color:#bf616a;">tr</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">th</span><span style="color:#c0c5ce;">&gt;Option&lt;/</span><span style="color:#bf616a;">th</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">th</span><span style="color:#c0c5ce;">&gt;Description&lt;/</span><span style="color:#bf616a;">th</span><span style="color:#c0c5ce;">&gt;
+    &lt;/</span><span style="color:#bf616a;">tr</span><span style="color:#c0c5ce;">&gt;
+  &lt;/</span><span style="color:#bf616a;">thead</span><span style="color:#c0c5ce;">&gt;
+  &lt;</span><span style="color:#bf616a;">tbody</span><span style="color:#c0c5ce;">&gt;
+    &lt;</span><span style="color:#bf616a;">tr</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;data&lt;/</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;
+        path to data files to supply the data that will be passed into
+        templates.
+      &lt;/</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;
+    &lt;/</span><span style="color:#bf616a;">tr</span><span style="color:#c0c5ce;">&gt;
+    &lt;</span><span style="color:#bf616a;">tr</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;engine&lt;/</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;
+        engine to be used for processing templates. Handlebars is the default.
+      &lt;/</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;
+    &lt;/</span><span style="color:#bf616a;">tr</span><span style="color:#c0c5ce;">&gt;
+    &lt;</span><span style="color:#bf616a;">tr</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;ext&lt;/</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;
+      &lt;</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;extension to be used for dest files.&lt;/</span><span style="color:#bf616a;">td</span><span style="color:#c0c5ce;">&gt;
+    &lt;/</span><span style="color:#bf616a;">tr</span><span style="color:#c0c5ce;">&gt;
+  &lt;/</span><span style="color:#bf616a;">tbody</span><span style="color:#c0c5ce;">&gt;
+&lt;/</span><span style="color:#bf616a;">table</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h1 id="links">Links</h1>
+<h2 id="basic-link">Basic Link</h2>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#d08770;">&lt;https://assemble.io&gt;
+&lt;contact@revolunet.com&gt;
+[Assemble](https://assemble.io)
+</span></code></pre>
+<p>The rendered output looks like this (hover over the link, there is no tooltip):</p>
+<p><a href="https://assemble.io">https://assemble.io</a></p>
+<p><a href="mailto:contact@revolunet.com">contact@revolunet.com</a></p>
+<p><a href="https://assemble.io">Assemble</a></p>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">https://assemble.io</span><span style="color:#c0c5ce;">&quot;&gt;https://assemble.io&lt;/</span><span style="color:#bf616a;">a</span><span style="color:#c0c5ce;">&gt;
+&lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">mailto:contact@revolunet.com</span><span style="color:#c0c5ce;">&quot;&gt;contact@revolunet.com&lt;/</span><span style="color:#bf616a;">a</span><span style="color:#c0c5ce;">&gt;
+&lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">https://assemble.io</span><span style="color:#c0c5ce;">&quot;&gt;Assemble&lt;/</span><span style="color:#bf616a;">a</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h2 id="add-a-title">Add a Title</h2>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#d08770;">[Upstage](https://github.com/upstage/ </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#bf616a;">Visit Upstage!</span><span style="color:#c0c5ce;">&quot;</span><span style="color:#d08770;">)
+</span></code></pre>
+<p>The rendered output looks like this (hover over the link, there should be a tooltip):</p>
+<p><a href="https://github.com/upstage/" title="Visit Upstage!">Upstage</a></p>
+<p>The HTML looks like this:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-html" data-lang="html"><span style="color:#c0c5ce;">&lt;</span><span style="color:#bf616a;">a </span><span style="color:#d08770;">href</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">https://github.com/upstage/</span><span style="color:#c0c5ce;">&quot; </span><span style="color:#d08770;">title</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">Visit Upstage!</span><span style="color:#c0c5ce;">&quot;&gt;Upstage&lt;/</span><span style="color:#bf616a;">a</span><span style="color:#c0c5ce;">&gt;
+</span></code></pre><h2 id="named-anchors">Named Anchors</h2>
+<p>Named anchors enable you to jump to the specified anchor point on the same page. For example, each of these chapters:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#8fa1b3;">## Table of Contents
+
+</span><span style="color:#bf616a;">- </span><span style="color:#d08770;">[Chapter 1](#chapter-1)
+</span><span style="color:#bf616a;">- </span><span style="color:#d08770;">[Chapter 2](#chapter-2)
+</span><span style="color:#bf616a;">- </span><span style="color:#d08770;">[Chapter 3](#chapter-3)
+</span></code></pre>
+<p>will jump to these sections:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#8fa1b3;">## Chapter 1 &lt;a id=&quot;chapter-1&quot;&gt;&lt;/a&gt;
+
+</span><span style="color:#c0c5ce;">Content for chapter one.
+
+</span><span style="color:#8fa1b3;">## Chapter 2 &lt;a id=&quot;chapter-2&quot;&gt;&lt;/a&gt;
+
+</span><span style="color:#c0c5ce;">Content for chapter one.
+
+</span><span style="color:#8fa1b3;">## Chapter 3 &lt;a id=&quot;chapter-3&quot;&gt;&lt;/a&gt;
+
+</span><span style="color:#c0c5ce;">Content for chapter one.
+</span></code></pre><h1 id="footnotes">Footnotes</h1>
+<p>Footnotes allow you to add notes and references without cluttering the body of the document. When you create a footnote, a superscript number with a link appears where you added the footnote reference. Readers can click the link to jump to the content of the footnote at the bottom of the page.</p>
+<p>To create a footnote reference, add a caret and an identifier inside brackets (<code>[^1]</code>). Identifiers can be numbers or words, but they can’t contain spaces or tabs. Identifiers only correlate the footnote reference with the footnote itself — in the output, footnotes are numbered sequentially.</p>
+<p>Add the footnote using another caret and number inside brackets with a colon and text (<code>[^1]: My footnote.</code>). You don’t have to put footnotes at the end of the document. You can put them anywhere except inside other elements like lists, block quotes, and tables.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#c0c5ce;">This is a digital footnote</span><span style="color:#d08770;">[^1]</span><span style="color:#c0c5ce;">.
+This is a footnote with &quot;label&quot;</span><span style="color:#d08770;">[^label]
+
+[^1]: This is a digital footnote
+[^label]: This is a footnote with &quot;label&quot;
+</span></code></pre>
+<p>This is a digital footnote<sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
+<p>This is a footnote with &quot;label&quot;<sup class="footnote-reference"><a href="#label">2</a></sup></p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>This is a digital footnote
+<sup class="footnote-reference"><a href="#label">2</a></sup>: This is a footnote with &quot;label&quot;</p>
+</div>
+<h1 id="images">Images</h1>
+<p>Images have a similar syntax to links but include a preceding exclamation point.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#c0c5ce;">![Minion](https://octodex.github.com/images/minion.png)
+</span></code></pre>
+<p><img src="https://octodex.github.com/images/minion.png" alt="Minion" /></p>
+<p>or:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#c0c5ce;">![Alt text](https://octodex.github.com/images/stormtroopocat.jpg &quot;</span><span style="color:#bf616a;">The Stormtroopocat</span><span style="color:#c0c5ce;">&quot;)
+</span></code></pre>
+<p><img src="https://octodex.github.com/images/stormtroopocat.jpg" alt="Alt text" title="The Stormtroopocat" /></p>
+<p>Like links, images also have a footnote style syntax:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#c0c5ce;">![Alt text][</span><span style="color:#d08770;">id</span><span style="color:#c0c5ce;">]
+</span></code></pre>
+<p><img src="https://octodex.github.com/images/dojocat.jpg" alt="Alt text" title="The Dojocat" /></p>
+<p>With a reference later in the document defining the URL location:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-markdown" data-lang="markdown"><span style="color:#d08770;">[id]: https://octodex.github.com/images/dojocat.jpg </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#bf616a;">The Dojocat</span><span style="color:#c0c5ce;">&quot;
+</span></code></pre></div>
+					<script
+						src="https://utteranc.es/client.js"
+						repo="jacobbishopxy/jacobbishopxy.github.io"
+						issue-term="title"
+						label="comments"
+						theme="github-light"
+						crossorigin="anonymous"
+						async
+					></script>
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-headings"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#headings"
+							>
+								Headings
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-comments"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#comments"
+							>
+								Comments
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-horizontal-rules"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#horizontal-rules"
+							>
+								Horizontal Rules
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-body"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#body"
+							>
+								Body
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-inline-html"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#inline-html"
+							>
+								Inline HTML
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-emphasis"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#emphasis"
+							>
+								Emphasis
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-bold"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#bold"
+									>
+										Bold
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-italics"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#italics"
+									>
+										Italics
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-strikethrough"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#strikethrough"
+									>
+										Strikethrough
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-blockquotes"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#blockquotes"
+							>
+								Blockquotes
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-lists"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#lists"
+							>
+								Lists
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-unordered"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#unordered"
+									>
+										Unordered
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-ordered"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#ordered"
+									>
+										Ordered
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-task-lists"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#task-lists"
+									>
+										Task Lists
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-code"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#code"
+							>
+								Code
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-inline-code"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#inline-code"
+									>
+										Inline Code
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-indented-code"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#indented-code"
+									>
+										Indented Code
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-tables"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#tables"
+							>
+								Tables
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-links"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#links"
+							>
+								Links
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-basic-link"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#basic-link"
+									>
+										Basic Link
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-add-a-title"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#add-a-title"
+									>
+										Add a Title
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-named-anchors"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#named-anchors"
+									>
+										Named Anchors
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-footnotes"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#footnotes"
+							>
+								Footnotes
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-images"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/docs/2021-7-1-markdow-syntax/#images"
+							>
+								Images
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns is-centered">
+			<div class="column is-8">
+				<nav class="level">
+					
+					<div class="level-item has-text-centered">
+						<a
+							class="button is-black is-outlined"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs&#x2F;2021-7-2-wsl-setup&#x2F;"
+						>
+							<span class="icon mr-2">
+								<i class="fas fa-arrow-circle-left"></i>
+							</span>
+							WSL setup
+						</a>
+					</div>
+					   
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+    
+
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1.13/dist/chart.xkcd.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mapbox-gl@2.1.1/dist/mapbox-gl.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/folio/galleria.folio.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+		<script src="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;search_index.en.js"></script>
+		<script src="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;js&#x2F;site.js"></script>
+
+		 
+<script type="text/javascript">
+	const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+	const tocItems = document.querySelectorAll(".toc");
+	const navSections = new Array(tocItems.length);
+
+	tocItems.forEach((el, i) => {
+		let id = el.getAttribute("id").substring(5);
+		navSections[i] = document.getElementById(id);
+	});
+
+	function isVisible(tocIndex) {
+		const current = navSections[tocIndex];
+		const next =
+			tocIndex < tocItems.length - 1
+				? navSections[tocIndex + 1]
+				: document.querySelectorAll("section.section").item(1);
+
+		const c = current.getBoundingClientRect();
+		const n = next.getBoundingClientRect();
+		const h = window.innerHeight || document.documentElement.clientHeight;
+
+		return c.top <= h && n.top - menuBarHeight >= 0;
+	}
+
+	function activateIfVisible() {
+		for (b = true, i = 0; i < tocItems.length; i++) {
+			if (b && isVisible(i)) {
+				tocItems[i].classList.add("is-active");
+				b = false;
+			} else tocItems[i].classList.remove("is-active");
+		}
+	}
+
+	var isTicking = null;
+	window.addEventListener(
+		"scroll",
+		() => {
+			if (!isTicking) {
+				window.requestAnimationFrame(() => {
+					activateIfVisible();
+					isTicking = false;
+				});
+				isTicking = true;
+			}
+		},
+		false
+	);
+</script>
+  
+	</body>
+</html>

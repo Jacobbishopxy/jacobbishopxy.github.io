@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		
+
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/folio/galleria.folio.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/mapbox-gl@2.1.1/dist/mapbox-gl.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+			rel="stylesheet"
+		/>
+		<link href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;deep-thought.css" rel="stylesheet" />
+
+		<title> Jacob&#x27;s Domain | A taste of NOM (II) </title>
+
+		 
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+			integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
+			integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-LJ2FmexL77rmGm6SIpxq7y+XA6bkLzGZEgCywzKOZG/ws4va9fUVu2neMjvc3zdv"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+			integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"
+			crossorigin="anonymous"
+			onload="renderMathInElement(document.body, {
+				delimiters: [
+					{left: '$$', right: '$$', display: true},
+					{left: '$', right: '$', display: false},
+					{left: '\\(', right: '\\)', display: false},
+					{left: '\\[', right: '\\]', display: true}
+				]
+			});"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">A taste of NOM (II)</h1>
+					<p class="subtitle">Parser combinator revisit</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-05-15">May 15, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>7 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>1400 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories&#x2F;post&#x2F;">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Post</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags&#x2F;rust&#x2F;">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Rust</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="intro">Intro</h2>
+<p>Hello everyone! It has been a while since I've written the last blog post, and today's topic is an extension of the previous <a href="https://jacobbishopxy.github.io/posts/a-taste-of-nom-i/">NOM parser combinator</a>. The main idea is to create a custom error type for NOM, and makes it wrapped by a higher level enum type who serves a lib crate. From the previous post, we've learned that each NOM parser or combinator is a generic function who accepts generic types of input <code>I</code>, output <code>O</code> and error type <code>E</code>. Generally, we use the given type <code>IResult&lt;I, O, E&gt;</code> as our function's return type, and which means to let the compiler to determine the error type <code>E</code> for us. While we go deeper into the error type <code>E</code>, we will see that it is actually an enum <code>Err&lt;E&gt;</code> who carries a generic type <code>E</code>, and furthermore, the variant <code>Error(E)</code>, which denotes an recoverable error, should be the most common error type while we are coding. Briefly speaking, in my expectation, once we wrapped the <code>Err&lt;E&gt;</code> into custom error type and makes it to satisfy some requirements (implement several traits), we can use <code>?</code> operation in our functions to handle the error.</p>
+<h2 id="impl">Impl</h2>
+<p>Ok, let's see how the official example works with custom error type:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug)]
+</span><span style="color:#b48ead;">pub struct </span><span style="color:#c0c5ce;">CustomError(String);
+
+</span><span style="color:#b48ead;">impl</span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">&#39;a</span><span style="color:#c0c5ce;">&gt; From&lt;(&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, ErrorKind)&gt; </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">CustomError {
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">error</span><span style="color:#c0c5ce;">: (&amp;&#39;</span><span style="color:#bf616a;">a str</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">ErrorKind</span><span style="color:#c0c5ce;">)) -&gt; </span><span style="color:#b48ead;">Self </span><span style="color:#c0c5ce;">{
+    CustomError(format!(&quot;</span><span style="color:#a3be8c;">error code was: </span><span style="color:#d08770;">{:?}</span><span style="color:#c0c5ce;">&quot;, error))
+  }
+}
+
+</span><span style="color:#b48ead;">impl</span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">&#39;a</span><span style="color:#c0c5ce;">&gt; ParseError&lt;&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">&gt; </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">CustomError {
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from_error_kind</span><span style="color:#c0c5ce;">(_: &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">kind</span><span style="color:#c0c5ce;">: ErrorKind) -&gt; </span><span style="color:#b48ead;">Self </span><span style="color:#c0c5ce;">{
+    CustomError(format!(&quot;</span><span style="color:#a3be8c;">error code was: </span><span style="color:#d08770;">{:?}</span><span style="color:#c0c5ce;">&quot;, kind))
+  }
+
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">append</span><span style="color:#c0c5ce;">(_: &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">kind</span><span style="color:#c0c5ce;">: ErrorKind, </span><span style="color:#bf616a;">other</span><span style="color:#c0c5ce;">: CustomError) -&gt; </span><span style="color:#b48ead;">Self </span><span style="color:#c0c5ce;">{
+    CustomError(format!(&quot;</span><span style="color:#d08770;">{:?}</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">error code was: </span><span style="color:#d08770;">{:?}</span><span style="color:#c0c5ce;">&quot;, other, kind))
+  }
+}
+</span></code></pre>
+<p>Two implementations are required: the former one is a <code>From</code> trait which allows us to convert our custom error type from a tuple, whose first element is the input type <code>I</code> and the second element is an enum <code>ErrorKind</code> indicated which parser returned an error; the latter one is a <code>ParseError</code> trait which is required by the error type of a NOM parser. There are four methods in <code>ParseError&lt;I&gt;</code> trait:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">pub trait </span><span style="color:#c0c5ce;">ParseError&lt;I&gt;: Sized {
+  </span><span style="color:#65737e;">/// Creates an error from the input position and an [ErrorKind]
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from_error_kind</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: I, </span><span style="color:#bf616a;">kind</span><span style="color:#c0c5ce;">: ErrorKind) -&gt; </span><span style="color:#b48ead;">Self</span><span style="color:#c0c5ce;">;
+
+  </span><span style="color:#65737e;">/// Combines an existing error with a new one created from the input
+  /// position and an [ErrorKind]. This is useful when backtracking
+  /// through a parse tree, accumulating error context on the way
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">append</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: I, </span><span style="color:#bf616a;">kind</span><span style="color:#c0c5ce;">: ErrorKind, </span><span style="color:#bf616a;">other</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">Self</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">Self</span><span style="color:#c0c5ce;">;
+
+  </span><span style="color:#65737e;">/// Creates an error from an input position and an expected character
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from_char</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: I, _: </span><span style="color:#b48ead;">char</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">Self </span><span style="color:#c0c5ce;">{
+    </span><span style="color:#b48ead;">Self</span><span style="color:#c0c5ce;">::from_error_kind(input, ErrorKind::Char)
+  }
+
+  </span><span style="color:#65737e;">/// Combines two existing errors. This function is used to compare errors
+  /// generated in various branches of `alt`.
+  </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">or</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">self</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">other</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">Self</span><span style="color:#c0c5ce;">) -&gt; </span><span style="color:#b48ead;">Self </span><span style="color:#c0c5ce;">{
+    other
+  }
+}
+</span></code></pre>
+<p>From above, we know that <code>from_char</code> and <code>or</code> has default implementations, and the rest two methods <code>from_error_kind</code> and <code>append</code> has <code>Self</code> as their return type. Apparently, the easiest way for user to design a custom error type is to convert and save the incoming parameters <code>input: I</code> and <code>kind: ErrorKind</code> as <code>String</code>, which shown above as <code>pub struct CustomError(String)</code>.</p>
+<p>Let's take a closer look on the following functions' signature to see the difference between default error type and custom error type:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">test_with_default_error</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">&gt; {
+  </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)(input)
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">test_with_custom_error</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, CustomError&gt; {
+  </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">abcd</span><span style="color:#c0c5ce;">&quot;)(input)
+}
+</span></code></pre>
+<p>With the custom error, we are explicitly telling the compiler that we want to use the custom error type <code>CustomError</code> instead of the default error type. The next question is how do we use it in our own <code>Result</code> type. First of all, we are going to create an enum type <code>TasteNomError</code> to handle variates errors, and don't forget a <code>From</code> trait for the further implicit conversion:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Error, Debug)]
+</span><span style="color:#b48ead;">pub enum </span><span style="color:#c0c5ce;">TasteNomError {
+    #[</span><span style="color:#bf616a;">error</span><span style="color:#c0c5ce;">(transparent)]
+    CustomNom(nom::Err&lt;CustomError&gt;),
+
+    #[</span><span style="color:#bf616a;">error</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">sql error: {0}</span><span style="color:#c0c5ce;">&quot;)]
+    Sql(String),
+
+    #[</span><span style="color:#bf616a;">error</span><span style="color:#c0c5ce;">(transparent)]
+    ParseInt(#[</span><span style="color:#bf616a;">from</span><span style="color:#c0c5ce;">] std::num::ParseIntError),
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">From&lt;nom::Err&lt;CustomError&gt;&gt; </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">TasteNomError {
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">error</span><span style="color:#c0c5ce;">: nom::Err&lt;CustomError&gt;) -&gt; </span><span style="color:#b48ead;">Self </span><span style="color:#c0c5ce;">{
+        TasteNomError::CustomNom(error)
+    }
+}
+</span></code></pre>
+<p>Here I imported a new dependency <code>thiserror</code>, which is a very useful tool when writing ones own lib crate. For more information, go visit <a href="https://docs.rs/thiserror/latest/thiserror/">thiserror</a>.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-toml" data-lang="toml"><span style="color:#c0c5ce;">[dependencies]
+</span><span style="color:#bf616a;">thiserror </span><span style="color:#c0c5ce;">= &quot;</span><span style="color:#a3be8c;">1</span><span style="color:#c0c5ce;">&quot;
+</span></code></pre>
+<p>For a better demonstration, let's assume a real world problem is turning a Sql connection string <code>&quot;mysql://root:root@localhost:3306/test&quot;</code> into a struct <code>SqlConnInfo</code>:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug, Clone)]
+</span><span style="color:#b48ead;">pub enum </span><span style="color:#c0c5ce;">SqlBuilder {
+    Mysql,
+    Postgres,
+    Sqlite,
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">FromStr </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">SqlBuilder {
+    </span><span style="color:#b48ead;">type </span><span style="color:#c0c5ce;">Err = TasteNomError;
+
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from_str</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">s</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; Result&lt;</span><span style="color:#b48ead;">Self</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Self::</span><span style="color:#c0c5ce;">Err&gt; {
+        </span><span style="color:#b48ead;">match</span><span style="color:#c0c5ce;"> s {
+            &quot;</span><span style="color:#a3be8c;">mysql</span><span style="color:#c0c5ce;">&quot; =&gt; Ok(SqlBuilder::Mysql),
+            &quot;</span><span style="color:#a3be8c;">postgres</span><span style="color:#c0c5ce;">&quot; =&gt; Ok(SqlBuilder::Postgres),
+            &quot;</span><span style="color:#a3be8c;">sqlite</span><span style="color:#c0c5ce;">&quot; =&gt; Ok(SqlBuilder::Sqlite),
+            _ =&gt; Err(TasteNomError::Sql(format!(&quot;</span><span style="color:#a3be8c;">unknown database type: </span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, s))),
+        }
+    }
+}
+
+#[</span><span style="color:#bf616a;">derive</span><span style="color:#c0c5ce;">(Debug)]
+</span><span style="color:#b48ead;">pub struct </span><span style="color:#c0c5ce;">SqlConnInfo {
+    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">driver</span><span style="color:#c0c5ce;">: SqlBuilder,
+    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">username</span><span style="color:#c0c5ce;">: String,
+    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">password</span><span style="color:#c0c5ce;">: String,
+    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">host</span><span style="color:#c0c5ce;">: String,
+    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">port</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">u32</span><span style="color:#c0c5ce;">,
+    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">database</span><span style="color:#c0c5ce;">: String,
+}
+
+</span><span style="color:#b48ead;">impl </span><span style="color:#c0c5ce;">SqlConnInfo {
+    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">new</span><span style="color:#c0c5ce;">(
+        </span><span style="color:#bf616a;">driver</span><span style="color:#c0c5ce;">: SqlBuilder,
+        </span><span style="color:#bf616a;">username</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">,
+        </span><span style="color:#bf616a;">password</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">,
+        </span><span style="color:#bf616a;">host</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">,
+        </span><span style="color:#bf616a;">port</span><span style="color:#c0c5ce;">: </span><span style="color:#b48ead;">u32</span><span style="color:#c0c5ce;">,
+        </span><span style="color:#bf616a;">database</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">,
+    ) -&gt; SqlConnInfo {
+        SqlConnInfo {
+            driver,
+            username: username.</span><span style="color:#96b5b4;">to_owned</span><span style="color:#c0c5ce;">(),
+            password: password.</span><span style="color:#96b5b4;">to_owned</span><span style="color:#c0c5ce;">(),
+            host: host.</span><span style="color:#96b5b4;">to_owned</span><span style="color:#c0c5ce;">(),
+            port,
+            database: database.</span><span style="color:#96b5b4;">to_owned</span><span style="color:#c0c5ce;">(),
+        }
+    }
+}
+</span></code></pre>
+<p>This is quite a simple problem that we only need to split the string into serval parts like this patter <code>&quot;{driver}://{username}:{password}@{host}:{port}/{database}&quot;</code>. Just simply use <code>separated_pair</code> method is enough:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_driver_and_rest</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, (&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">)&gt; {
+    </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alpha1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">://</span><span style="color:#c0c5ce;">&quot;), rest)(input)
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_username_and_rest</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, (&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">)&gt; {
+    </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alphanumeric1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">:</span><span style="color:#c0c5ce;">&quot;), rest)(input)
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_password_and_rest</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, (&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">)&gt; {
+    </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alphanumeric1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">@</span><span style="color:#c0c5ce;">&quot;), rest)(input)
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_host_and_rest</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, (&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">)&gt; {
+    </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alpha1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">:</span><span style="color:#c0c5ce;">&quot;), rest)(input)
+}
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">take_port_and_database</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">input</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, (&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">)&gt; {
+    </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(digit1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">/</span><span style="color:#c0c5ce;">&quot;), rest)(input)
+}
+</span></code></pre>
+<p>And their unit tests:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#c0c5ce;">#[</span><span style="color:#bf616a;">test</span><span style="color:#c0c5ce;">]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">driver_and_rest</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> foo = </span><span style="color:#96b5b4;">take_driver_and_rest</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">mysql://root:root@localhost:3306/test</span><span style="color:#c0c5ce;">&quot;);
+    assert!(foo.</span><span style="color:#96b5b4;">is_ok</span><span style="color:#c0c5ce;">());
+}
+
+#[</span><span style="color:#bf616a;">test</span><span style="color:#c0c5ce;">]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">username_and_rest</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> foo = </span><span style="color:#96b5b4;">take_username_and_rest</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">root:root@localhost:3306/test</span><span style="color:#c0c5ce;">&quot;);
+    assert!(foo.</span><span style="color:#96b5b4;">is_ok</span><span style="color:#c0c5ce;">());
+}
+
+#[</span><span style="color:#bf616a;">test</span><span style="color:#c0c5ce;">]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">password_and_rest</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> foo = </span><span style="color:#96b5b4;">take_password_and_rest</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">root@localhost:3306/test</span><span style="color:#c0c5ce;">&quot;);
+    assert!(foo.</span><span style="color:#96b5b4;">is_ok</span><span style="color:#c0c5ce;">());
+}
+
+#[</span><span style="color:#bf616a;">test</span><span style="color:#c0c5ce;">]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">host_and_rest</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> foo = </span><span style="color:#96b5b4;">take_host_and_rest</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">localhost:3306/test</span><span style="color:#c0c5ce;">&quot;);
+    assert!(foo.</span><span style="color:#96b5b4;">is_ok</span><span style="color:#c0c5ce;">());
+}
+
+#[</span><span style="color:#bf616a;">test</span><span style="color:#c0c5ce;">]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">port_and_db</span><span style="color:#c0c5ce;">() {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> foo = </span><span style="color:#96b5b4;">take_port_and_database</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">3306/test</span><span style="color:#c0c5ce;">&quot;);
+    assert!(foo.</span><span style="color:#96b5b4;">is_ok</span><span style="color:#c0c5ce;">());
+}
+</span></code></pre>
+<p>Now, we can combine them together:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">type </span><span style="color:#c0c5ce;">ResultInfo1&lt;</span><span style="color:#b48ead;">&#39;a</span><span style="color:#c0c5ce;">&gt; = (&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, (&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, (&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, (&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, (&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">)))));
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">get_conn_info1</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">value</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, ResultInfo1, CustomError&gt; {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_port_and_database = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(digit1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">/</span><span style="color:#c0c5ce;">&quot;), alphanumeric1);
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_host_and_rest = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alpha1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">:</span><span style="color:#c0c5ce;">&quot;), f_port_and_database);
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_password_and_rest = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alphanumeric1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">@</span><span style="color:#c0c5ce;">&quot;), f_host_and_rest);
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_username_and_rest = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alphanumeric1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">:</span><span style="color:#c0c5ce;">&quot;), f_password_and_rest);
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> f_driver_and_rest = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alpha1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">://</span><span style="color:#c0c5ce;">&quot;), f_username_and_rest);
+
+    </span><span style="color:#96b5b4;">f_driver_and_rest</span><span style="color:#c0c5ce;">(value)
+}
+</span></code></pre>
+<p>or:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">type </span><span style="color:#c0c5ce;">ResultInfo2&lt;</span><span style="color:#b48ead;">&#39;a</span><span style="color:#c0c5ce;">&gt; = (&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, ((&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">), ((&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">), &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">)));
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">get_conn_info2</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">value</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; IResult&lt;&amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">, ResultInfo2, CustomError&gt; {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_host_and_port = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alpha1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">:</span><span style="color:#c0c5ce;">&quot;), digit1);
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_address_and_database = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(f_host_and_port, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">/</span><span style="color:#c0c5ce;">&quot;), alphanumeric1);
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_username_and_password = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alphanumeric1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">:</span><span style="color:#c0c5ce;">&quot;), alphanumeric1);
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_user_and_rest = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(f_username_and_password, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">@</span><span style="color:#c0c5ce;">&quot;), f_address_and_database);
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> f_driver_and_rest = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alpha1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">://</span><span style="color:#c0c5ce;">&quot;), f_user_and_rest);
+
+    </span><span style="color:#96b5b4;">f_driver_and_rest</span><span style="color:#c0c5ce;">(value)
+}
+</span></code></pre>
+<p>The next thing is to use our own <code>Result&lt;T, TasteNomError&gt;</code> instead of <code>IResult&lt;&amp;str, T, CustomError&gt;</code>. Before we heading further, let's do a little work to make sure that the extracted <code>&amp;str</code> patterns can be converted to <code>SqlConnInfo</code>:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">type </span><span style="color:#c0c5ce;">ConnStrPattern&lt;</span><span style="color:#b48ead;">&#39;a</span><span style="color:#c0c5ce;">&gt; = (
+    &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">,
+    (&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, ((&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">), ((&amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">, &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">), &amp;</span><span style="color:#b48ead;">&#39;a str</span><span style="color:#c0c5ce;">))),
+);
+
+</span><span style="color:#b48ead;">impl</span><span style="color:#c0c5ce;">&lt;</span><span style="color:#b48ead;">&#39;a</span><span style="color:#c0c5ce;">&gt; TryFrom&lt;ConnStrPattern&lt;</span><span style="color:#b48ead;">&#39;a</span><span style="color:#c0c5ce;">&gt;&gt; </span><span style="color:#b48ead;">for </span><span style="color:#c0c5ce;">SqlConnInfo {
+    </span><span style="color:#b48ead;">type </span><span style="color:#c0c5ce;">Error = TasteNomError;
+
+    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">try_from</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">source</span><span style="color:#c0c5ce;">: ConnStrPattern&lt;</span><span style="color:#b48ead;">&#39;a</span><span style="color:#c0c5ce;">&gt;) -&gt; Result&lt;</span><span style="color:#b48ead;">Self</span><span style="color:#c0c5ce;">, </span><span style="color:#b48ead;">Self::</span><span style="color:#c0c5ce;">Error&gt; {
+        </span><span style="color:#b48ead;">let </span><span style="color:#c0c5ce;">(_, (driver, ((username, password), ((host, port), database)))) = source;
+
+        Ok(</span><span style="color:#b48ead;">Self</span><span style="color:#c0c5ce;">::new(
+            SqlBuilder::from_str(driver)?,
+            username,
+            password,
+            host,
+            port.parse::&lt;</span><span style="color:#b48ead;">u32</span><span style="color:#c0c5ce;">&gt;()?,
+            database,
+        ))
+    }
+}
+</span></code></pre>
+<p>Finally, here comes the final step:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">type </span><span style="color:#c0c5ce;">GeneralResult&lt;T&gt; = Result&lt;T, TasteNomError&gt;;
+
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">get_conn_info3</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">value</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str</span><span style="color:#c0c5ce;">) -&gt; GeneralResult&lt;SqlConnInfo&gt; {
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_host_and_port = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">take_until1</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">:</span><span style="color:#c0c5ce;">&quot;), </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">:</span><span style="color:#c0c5ce;">&quot;), digit1);
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_address_and_database = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(f_host_and_port, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">/</span><span style="color:#c0c5ce;">&quot;), alphanumeric1);
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_username_and_password = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alphanumeric1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">:</span><span style="color:#c0c5ce;">&quot;), alphanumeric1);
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> f_user_and_rest = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(f_username_and_password, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">@</span><span style="color:#c0c5ce;">&quot;), f_address_and_database);
+    </span><span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> f_driver_and_rest = </span><span style="color:#96b5b4;">separated_pair</span><span style="color:#c0c5ce;">(alpha1, </span><span style="color:#96b5b4;">tag</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">://</span><span style="color:#c0c5ce;">&quot;), f_user_and_rest);
+
+    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> res = </span><span style="color:#96b5b4;">f_driver_and_rest</span><span style="color:#c0c5ce;">(value)?;
+
+    SqlConnInfo::try_from(res)
+}
+</span></code></pre>
+<p>Thanks to what we did before: <code>impl From&lt;nom::Err&lt;CustomError&gt;&gt; for TasteNomError</code>, which let us to use <code>?</code> operation to convert <code>nom::Err&lt;CustomError&gt;</code> to <code>TasteNomError</code>. after being through all the works, the line <code>let res = f_driver_and_rest(value)?;</code> finally can be compiled!</p>
+<p>Don't forget the unit test:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-rust" data-lang="rust"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">conn_info</span><span style="color:#c0c5ce;">() {
+  </span><span style="color:#b48ead;">const </span><span style="color:#d08770;">CONN1</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str </span><span style="color:#c0c5ce;">= &quot;</span><span style="color:#a3be8c;">mysql://root:root@localhost:3306/test</span><span style="color:#c0c5ce;">&quot;;
+  </span><span style="color:#b48ead;">const </span><span style="color:#d08770;">CONN2</span><span style="color:#c0c5ce;">: &amp;</span><span style="color:#b48ead;">str </span><span style="color:#c0c5ce;">= &quot;</span><span style="color:#a3be8c;">mysql://root:root@127.0.0.1:3306/test</span><span style="color:#c0c5ce;">&quot;;
+
+  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> foo = </span><span style="color:#96b5b4;">get_conn_info3</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">CONN1</span><span style="color:#c0c5ce;">);
+  assert!(foo.</span><span style="color:#96b5b4;">is_ok</span><span style="color:#c0c5ce;">());
+
+  </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> foo = </span><span style="color:#96b5b4;">get_conn_info3</span><span style="color:#c0c5ce;">(</span><span style="color:#d08770;">CONN2</span><span style="color:#c0c5ce;">);
+  assert!(foo.</span><span style="color:#96b5b4;">is_ok</span><span style="color:#c0c5ce;">());
+}
+</span></code></pre>
+<p>The full code is in my Github page <a href="https://github.com/Jacobbishopxy/jotting/blob/master/taste-nom/src/custom_error.rs">custom_error.rs</a> and <a href="https://github.com/Jacobbishopxy/jotting/blob/master/taste-nom/src/database_conn.rs">database_conn.rs</a>, and you are more than welcome to leave a message for me. That's all for today, until next time! 👋</p>
+</div>
+					<script
+						src="https://utteranc.es/client.js"
+						repo="jacobbishopxy/jacobbishopxy.github.io"
+						issue-term="title"
+						label="comments"
+						theme="github-light"
+						crossorigin="anonymous"
+						async
+					></script>
+				</article>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns is-centered">
+			<div class="column is-8">
+				<nav class="level">
+					
+					<div class="level-item has-text-centered">
+						<a
+							class="button is-black is-outlined"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;2022-6-19-an-async-io-reading-note&#x2F;"
+						>
+							<span class="icon mr-2">
+								<i class="fas fa-arrow-circle-left"></i>
+							</span>
+							An async I&#x2F;O reading note
+						</a>
+					</div>
+					 
+					<div class="level-item has-text-centered">
+						<a
+							class="button is-black is-outlined"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;2022-1-7-industrial-io&#x2F;"
+						>
+							Industrial IO<span class="icon ml-2">
+								<i class="fas fa-arrow-circle-right"></i>
+							</span>
+						</a>
+					</div>
+					  
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+    
+
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1.13/dist/chart.xkcd.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mapbox-gl@2.1.1/dist/mapbox-gl.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/folio/galleria.folio.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+		<script src="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;search_index.en.js"></script>
+		<script src="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;js&#x2F;site.js"></script>
+
+		   
+	</body>
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		
+
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/folio/galleria.folio.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/mapbox-gl@2.1.1/dist/mapbox-gl.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+			rel="stylesheet"
+		/>
+		<link href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;deep-thought.css" rel="stylesheet" />
+
+		<title> Jacob&#x27;s Domain | Rancher k8s cluster setup </title>
+
+		 
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+			integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
+			integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-LJ2FmexL77rmGm6SIpxq7y+XA6bkLzGZEgCywzKOZG/ws4va9fUVu2neMjvc3zdv"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+			integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"
+			crossorigin="anonymous"
+			onload="renderMathInElement(document.body, {
+				delimiters: [
+					{left: '$$', right: '$$', display: true},
+					{left: '$', right: '$', display: false},
+					{left: '\\(', right: '\\)', display: false},
+					{left: '\\[', right: '\\]', display: true}
+				]
+			});"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Rancher k8s cluster setup</h1>
+					<p class="subtitle">An experimental record</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-07-18">July 18, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>6 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>1071 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories&#x2F;post&#x2F;">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Post</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags&#x2F;k8s&#x2F;">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="kubectl">Kubectl</h2>
+<p>Install these packages on all of your machines (only needs <code>kubectl</code> if we use rancher):</p>
+<ul>
+<li><code>kubeadm</code>: the command to bootstrap the cluster</li>
+<li><code>kubelet</code>: the component that runs on all of the machines in your cluster and does things like starting pods and containers</li>
+<li><code>kubectl</code>: the command line util to talk to your cluster</li>
+</ul>
+<ol>
+<li>
+<p>Config <code>/etc/hosts</code> by adding master &amp; workers' IP addresses (optional). Here we use four machines for demonstration (master for etcd &amp; control plane, and the rest for worker. Visit <a href="https://rancher.com/docs/rancher/v2.6/en/cluster-provisioning/production/">Checklist for Production-Ready Clusters</a> for more information):</p>
+<pre style="background-color:#2b303b;">
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">192.168.50.140 k8s-master
+</span><span style="color:#c0c5ce;">192.168.50.141 k8s-node1
+</span><span style="color:#c0c5ce;">192.168.50.142 k8s-node2
+</span><span style="color:#c0c5ce;">192.168.50.143 k8s-node3
+</span></code></pre></li>
+<li>
+<p>Config machine name (optional):</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#65737e;">## master
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> hostnamectl set-hostname &quot;</span><span style="color:#a3be8c;">k8s-master</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#96b5b4;">exec</span><span style="color:#c0c5ce;"> bash
+
+</span><span style="color:#65737e;">## node1
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> hostnamectl set-hostname &quot;</span><span style="color:#a3be8c;">k8s-node1</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#96b5b4;">exec</span><span style="color:#c0c5ce;"> bash
+
+</span><span style="color:#65737e;">## node2
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> hostnamectl set-hostname &quot;</span><span style="color:#a3be8c;">k8s-node2</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#96b5b4;">exec</span><span style="color:#c0c5ce;"> bash
+
+</span><span style="color:#65737e;">## node3
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> hostnamectl set-hostname &quot;</span><span style="color:#a3be8c;">k8s-node3</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#96b5b4;">exec</span><span style="color:#c0c5ce;"> bash
+</span></code></pre></li>
+<li>
+<p>Set timezone:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> timedatectl set-timezone Asia/Shanghai
+</span></code></pre></li>
+<li>
+<p>Turn off swap:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> swapoff</span><span style="color:#bf616a;"> -a
+</span></code></pre></li>
+<li>
+<p>Import gpg key. This step is very import especially lacking of a proxy server:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> curl</span><span style="color:#bf616a;"> -fsSLo</span><span style="color:#c0c5ce;"> /usr/share/keyrings/kubernetes-archive-keyring.gpg  https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg
+</span></code></pre>
+<p>or by using tuna source:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> curl</span><span style="color:#bf616a;"> -fsSLo</span><span style="color:#c0c5ce;"> /usr/share/keyrings/kubernetes-archive-keyring.gpg  https://mirrors.tuna.tsinghua.edu.cn/kubernetes/apt/doc/apt-key.gpg
+</span></code></pre></li>
+<li>
+<p>Create <code>/etc/apt/sources.list.d/kubernetes.list</code>. Another important step of setting up mirrors:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">deb </span><span style="color:#b48ead;">[</span><span style="color:#c0c5ce;">signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg</span><span style="color:#b48ead;">]</span><span style="color:#c0c5ce;"> https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
+</span></code></pre>
+<p>or by using tuna source:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">deb </span><span style="color:#b48ead;">[</span><span style="color:#c0c5ce;">signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg</span><span style="color:#b48ead;">]</span><span style="color:#c0c5ce;"> https://mirrors.tuna.tsinghua.edu.cn/kubernetes/apt kubernetes-xenial main
+</span></code></pre></li>
+<li>
+<p>Installation:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> apt-get update
+</span><span style="color:#65737e;"># (instead of using Rancher, manual setup cluster by kubeadm)
+</span><span style="color:#65737e;"># sudo apt-get install -y kubelet kubeadm kubectl
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> apt-get install</span><span style="color:#bf616a;"> -y</span><span style="color:#c0c5ce;"> kubectl
+</span></code></pre></li>
+</ol>
+<h2 id="docker">Docker</h2>
+<ol>
+<li>
+<p>Uninstall old versions</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> apt-get remove docker docker-engine docker.io containerd runc
+</span></code></pre></li>
+<li>
+<p>Update the apt package index and install packages to allow apt to use a repository over HTTPS</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> apt-get update
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> apt-get install \
+</span><span style="color:#c0c5ce;">  ca-certificates \
+</span><span style="color:#c0c5ce;">  curl \
+</span><span style="color:#c0c5ce;">  gnupg \
+</span><span style="color:#c0c5ce;">  lsb-release
+</span></code></pre></li>
+<li>
+<p>Add Docker’s official GPG key</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> mkdir</span><span style="color:#bf616a;"> -p</span><span style="color:#c0c5ce;"> /etc/apt/keyrings
+</span><span style="color:#bf616a;">curl -fsSL</span><span style="color:#c0c5ce;"> https://download.docker.com/linux/ubuntu/gpg | </span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> gpg</span><span style="color:#bf616a;"> --dearmor -o</span><span style="color:#c0c5ce;"> /etc/apt/keyrings/docker.gpg
+</span></code></pre></li>
+<li>
+<p>Set up the repository</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">\
+</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">deb [arch=</span><span style="color:#c0c5ce;">$</span><span style="color:#a3be8c;">(</span><span style="color:#bf616a;">dpkg --print-architecture</span><span style="color:#a3be8c;">) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu </span><span style="color:#96b5b4;">\
+</span><span style="color:#a3be8c;"> </span><span style="color:#c0c5ce;">$</span><span style="color:#a3be8c;">(</span><span style="color:#bf616a;">lsb_release -cs</span><span style="color:#a3be8c;">) stable</span><span style="color:#c0c5ce;">&quot; | </span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</span></code></pre></li>
+<li>
+<p>Install docker engine</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> apt-get update
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+</span></code></pre></li>
+<li>
+<p>Create the docker group if it does not exist</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> groupadd docker
+</span></code></pre></li>
+<li>
+<p>Add your user to the docker group.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> usermod</span><span style="color:#bf616a;"> -aG</span><span style="color:#c0c5ce;"> docker $</span><span style="color:#bf616a;">USER
+</span></code></pre></li>
+<li>
+<p>Run the following command or Logout and login again and run (that doesn't work you may need to reboot your machine first)</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">newgrp</span><span style="color:#c0c5ce;"> docker
+</span></code></pre></li>
+<li>
+<p>Enable docker start on boot</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> systemctl enable docker.service
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> systemctl enable containerd.service
+</span></code></pre>
+<p>or disable:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> systemctl disable docker.service
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> systemctl disable containerd.service
+</span></code></pre></li>
+<li>
+<p>Check if docker can be run without root</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> run hello-world
+</span></code></pre></li>
+</ol>
+<h2 id="rancher">Rancher</h2>
+<ol>
+<li>
+<p>Start a rancher web server:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> docker run</span><span style="color:#bf616a;"> --privileged -d --restart</span><span style="color:#c0c5ce;">=unless-stopped</span><span style="color:#bf616a;"> -p</span><span style="color:#c0c5ce;"> 80:80</span><span style="color:#bf616a;"> -p</span><span style="color:#c0c5ce;"> 443:443 rancher/rancher:stable
+</span></code></pre></li>
+<li>
+<p>Visit web <code>https://192.168.50.140</code> (according to the host IP)</p>
+</li>
+<li>
+<p>Copy <code>docker logs &lt;container ID&gt; 2&gt;&amp;1 | grep &quot;Bootstrap Password:&quot;</code> to terminal (get container ID by <code>docker ps</code>), by executing this command we will get <code>Bootstrap Password</code>, and paste password back to website</p>
+</li>
+<li>
+<p>Click <code>☰</code> button at the website's top-left, then <code>Cluster Management</code>, then <code>Create</code> button on the top-right, choose <code>Custom</code></p>
+</li>
+<li>
+<p>After enter your <code>Cluster Name</code>, keep everything default, click <code>Next</code> and in <code>Node Options</code>, select <code>etcd</code> and <code>Control Plane</code> for <code>140</code> and the rest <code>141</code>, <code>142</code> and <code>143</code> as <code>Worker</code>.</p>
+</li>
+</ol>
+<h3 id="accessing-clusters">Accessing clusters</h3>
+<p>Accessing clusters with <code>kubectl</code>:</p>
+<ol>
+<li>Log into Rancher. From the Global view, open the cluster that you want to access with kubectl.</li>
+<li>Click <code>Copy KubeConfig to Clipboard</code> button.</li>
+<li>Paste the contents into a new file on your local computer. Move the file to ~/.kube/config. (Note: The default location that kubectl uses for the kubeconfig file is ~/.kube/config, but you can use any directory and specify it using the --kubeconfig flag, as in this command: kubectl --kubeconfig /custom/path/kube.config get pods)</li>
+<li>Set global config <code>echo &quot;export KUBECONFIG=~/.kube/config&quot; &gt;&gt; ~/.bash_profile</code> and <code>source ~/.bash_profile</code></li>
+<li>Now we can use <code>kubectl version</code> or <code>kubectl get nodes</code> to check whether configuration is successful or not</li>
+</ol>
+<h2 id="helm">Helm</h2>
+<p>Rancher's Helm <a href="https://rancher.com/docs/k3s/latest/en/helm/">document</a>.</p>
+<p>While using any <code>helm</code> command such as <code>helm ls</code>, we may see warnings as following:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-txt" data-lang="txt"><span style="color:#c0c5ce;">WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/xy/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/xy/.kube/config
+</span></code></pre>
+<p>We can modify permission to solve it. The first line is read and write permission for users in the same group, while the second line is read permission for the rest:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">chmod</span><span style="color:#c0c5ce;"> g-rw </span><span style="color:#bf616a;">~</span><span style="color:#c0c5ce;">/.kube/config
+</span><span style="color:#bf616a;">chmod</span><span style="color:#c0c5ce;"> o-r </span><span style="color:#bf616a;">~</span><span style="color:#c0c5ce;">/.kube/config
+</span></code></pre><h2 id="resolutions">Resolutions</h2>
+<ul>
+<li>
+<p>Clear all containers and images when <a href="https://github.com/rancher/rancher/issues/21926">deployment failed</a>:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-sh" data-lang="sh"><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> stop $(</span><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> ps</span><span style="color:#bf616a;"> -aq</span><span style="color:#c0c5ce;">)
+</span><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> rm $(</span><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> ps</span><span style="color:#bf616a;"> -aq</span><span style="color:#c0c5ce;">)
+</span><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> system prune</span><span style="color:#bf616a;"> -f
+</span><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> volume rm $(</span><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> volume ls</span><span style="color:#bf616a;"> -q</span><span style="color:#c0c5ce;">)
+</span><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> image rm $(</span><span style="color:#bf616a;">docker</span><span style="color:#c0c5ce;"> image ls</span><span style="color:#bf616a;"> -q</span><span style="color:#c0c5ce;">)
+</span><span style="color:#bf616a;">sudo</span><span style="color:#c0c5ce;"> rm</span><span style="color:#bf616a;"> -rf</span><span style="color:#c0c5ce;"> /etc/ceph \
+</span><span style="color:#c0c5ce;">      /etc/cni \
+</span><span style="color:#c0c5ce;">      /etc/kubernetes \
+</span><span style="color:#c0c5ce;">      /opt/cni \
+</span><span style="color:#c0c5ce;">      /opt/rke \
+</span><span style="color:#c0c5ce;">      /run/secrets/kubernetes.io \
+</span><span style="color:#c0c5ce;">      /run/calico \
+</span><span style="color:#c0c5ce;">      /run/flannel \
+</span><span style="color:#c0c5ce;">      /var/lib/calico \
+</span><span style="color:#c0c5ce;">      /var/lib/etcd \
+</span><span style="color:#c0c5ce;">      /var/lib/cni \
+</span><span style="color:#c0c5ce;">      /var/lib/kubelet \
+</span><span style="color:#c0c5ce;">      /var/lib/rancher/rke/log \
+</span><span style="color:#c0c5ce;">      /var/log/containers \
+</span><span style="color:#c0c5ce;">      /var/log/pods \
+</span><span style="color:#c0c5ce;">      /var/run/calico
+</span></code></pre>
+<p>Note that calling <code>rm -rf ...</code> is very useful, when encounter <code>etcd connection refused</code> problem. This usually happened when cached some previous cluster's residual files.</p>
+</li>
+<li>
+<p>Failed to bring up Etcd Plane: etcd cluster is unhealthy. <a href="https://blog.csdn.net/xtjatswc/article/details/108558156">solution</a></p>
+</li>
+<li>
+<p><code>node-role.kubernetes.io/controlplane=true:NoSchedule</code> means no pod will be able to schedule onto this node, unless it has a matching toleration. To remove this taint: <code>kubectl taint nodes node1 key1=value1:NoSchedule-</code>. In our case, this taint is normal on the master node, since we only setup one node for <code>etcd</code> and <code>control plane</code>. Hence, no need to remove this taint.</p>
+</li>
+<li>
+<p><code>node-role.kubernetes.io/etcd=true:NoExecute</code> same as above.</p>
+</li>
+</ul>
+</div>
+					<script
+						src="https://utteranc.es/client.js"
+						repo="jacobbishopxy/jacobbishopxy.github.io"
+						issue-term="title"
+						label="comments"
+						theme="github-light"
+						crossorigin="anonymous"
+						async
+					></script>
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-kubectl"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#kubectl"
+							>
+								Kubectl
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-docker"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#docker"
+							>
+								Docker
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-rancher"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#rancher"
+							>
+								Rancher
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-accessing-clusters"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#accessing-clusters"
+									>
+										Accessing clusters
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-helm"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#helm"
+							>
+								Helm
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-resolutions"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#resolutions"
+							>
+								Resolutions
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns is-centered">
+			<div class="column is-8">
+				<nav class="level">
+					 
+					<div class="level-item has-text-centered">
+						<a
+							class="button is-black is-outlined"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;2022-6-19-an-async-io-reading-note&#x2F;"
+						>
+							An async I&#x2F;O reading note<span class="icon ml-2">
+								<i class="fas fa-arrow-circle-right"></i>
+							</span>
+						</a>
+					</div>
+					  
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+    
+
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1.13/dist/chart.xkcd.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mapbox-gl@2.1.1/dist/mapbox-gl.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/folio/galleria.folio.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+		<script src="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;search_index.en.js"></script>
+		<script src="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;js&#x2F;site.js"></script>
+
+		 
+<script type="text/javascript">
+	const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+	const tocItems = document.querySelectorAll(".toc");
+	const navSections = new Array(tocItems.length);
+
+	tocItems.forEach((el, i) => {
+		let id = el.getAttribute("id").substring(5);
+		navSections[i] = document.getElementById(id);
+	});
+
+	function isVisible(tocIndex) {
+		const current = navSections[tocIndex];
+		const next =
+			tocIndex < tocItems.length - 1
+				? navSections[tocIndex + 1]
+				: document.querySelectorAll("section.section").item(1);
+
+		const c = current.getBoundingClientRect();
+		const n = next.getBoundingClientRect();
+		const h = window.innerHeight || document.documentElement.clientHeight;
+
+		return c.top <= h && n.top - menuBarHeight >= 0;
+	}
+
+	function activateIfVisible() {
+		for (b = true, i = 0; i < tocItems.length; i++) {
+			if (b && isVisible(i)) {
+				tocItems[i].classList.add("is-active");
+				b = false;
+			} else tocItems[i].classList.remove("is-active");
+		}
+	}
+
+	var isTicking = null;
+	window.addEventListener(
+		"scroll",
+		() => {
+			if (!isTicking) {
+				window.requestAnimationFrame(() => {
+					activateIfVisible();
+					isTicking = false;
+				});
+				isTicking = true;
+			}
+		},
+		false
+	);
+</script>
+  
+	</body>
+</html>

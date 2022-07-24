@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jacobbishopxy.github.io/sitemap.xml
