@@ -1,9 +1,11 @@
 {
 	"cSpell.words": [
 		"apiserver",
+		"cadvisor",
 		"combinator",
 		"combinators",
 		"epoll",
+		"finalizers",
 		"GRPC",
 		"Konnectivity",
 		"kqueue",

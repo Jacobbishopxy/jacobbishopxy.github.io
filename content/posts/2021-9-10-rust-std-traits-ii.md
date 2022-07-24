@@ -449,7 +449,118 @@ trait ToOwned {
 
 ### Iterator
 
-TODO: example
+Let's use `TreeNode` as an example, we can implement multiple iteration methods. First, define `TreeNode` struct:
+
+```rust
+#[derive(Debug, PartialEq, Eq, Clone)]
+pub struct TreeNode {
+    pub val: i32,
+    pub left: Option<Rc<RefCell<TreeNode>>>,
+    pub right: Option<Rc<RefCell<TreeNode>>>,
+}
+
+impl TreeNode {
+    pub fn new(val: i32) -> Self {
+        TreeNode {
+            val,
+            left: None,
+            right: None,
+        }
+    }
+}
+```
+
+Next, we need two struct, one for implementing `Iterator` trait and another for `IntoIterator`:
+
+```rust
+use std::cell::RefCell;
+use std::collections::VecDeque;
+use std::rc::Rc;
+
+// impl `Iterator`
+pub struct IntoIteratorLR {
+    que: VecDeque<Rc<RefCell<TreeNode>>>,
+}
+
+impl Iterator for IntoIteratorLR {
+    type Item = i32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.que.is_empty() {
+            None
+        } else {
+            let node = self.que.pop_front().unwrap();
+            if let Some(n) = node.borrow().left.clone() {
+                self.que.push_back(n);
+            }
+            if let Some(n) = node.borrow().right.clone() {
+                self.que.push_back(n);
+            }
+
+            return Some(node.borrow().val);
+        }
+    }
+}
+
+// impl `IntoIterator`
+pub struct TreeNodeByLeftRightLevelOrder(TreeNode);
+
+impl IntoIterator for TreeNodeByLeftRightLevelOrder {
+    type Item = i32;
+    type IntoIter = IntoIteratorLR;
+
+    fn into_iter(self) -> Self::IntoIter {
+        let mut que = VecDeque::new();
+        que.push_back(Rc::new(RefCell::new(self.0)));
+
+        IntoIteratorLR { que }
+    }
+}
+```
+
+Then we can have a new method `iter_left_right_level_order`:
+
+```rust
+impl TreeNode {
+    pub fn iter_left_right_level_order(self) -> IntoIteratorLR {
+        TreeNodeByLeftRightLevelOrder(self).into_iter()
+    }
+}
+```
+
+Finally, our unit test:
+
+```rust
+macro_rules! new_node {
+    ($num:expr) => {
+        Some(Rc::new(RefCell::new(TreeNode::new($num))))
+    };
+}
+
+
+#[test]
+fn level_order_success() {
+    let root = TreeNode {
+        val: 1,
+        left: Some(Rc::new(RefCell::new(TreeNode {
+            val: 2,
+            left: new_node!(3),
+            right: new_node!(4),
+        }))),
+        right: Some(Rc::new(RefCell::new(TreeNode {
+            val: 5,
+            left: new_node!(6),
+            right: new_node!(7),
+        }))),
+    };
+
+    let v = root.iter_left_right_level_order().collect::<Vec<_>>();
+
+    assert_eq!(vec![1, 2, 5, 3, 4, 6, 7], v);
+}
+```
+
+Check [this](https://github.com/Jacobbishopxy/jotting/blob/master/std-traits/src/tree_node_traverse.rs) for more detail (including different ways of iteration).
 
 ### IntoIterator
 
