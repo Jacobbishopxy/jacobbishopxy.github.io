@@ -4,13 +4,13 @@
 	<h1 class="title is-2 center-text">Archives</h1>
 
 	<div class="box-l">
-		<h2 class="subtitle is-4 center-text">Posts</h2>
+		<h2 class="subtitle is-5 center-text">Posts</h2>
 
 		{% set section = get_section(path="posts/_index.md") %} {% for year, posts
 		in section.pages | sort(attribute="date") | reverse |
 		group_by(attribute="year") %}
 
-		<h2 class="subtitle is-4 year-space">{{ year }}</h2>
+		<h2 class="subtitle is-5 year-space">{{ year }}</h2>
 
 		<ul>
 			{% for post in posts %}
@@ -30,13 +30,13 @@
 	<!--  -->
 
 	<div class="box-r">
-		<h2 class="subtitle is-4 center-text">Docs</h2>
+		<h2 class="subtitle is-5 center-text">Docs</h2>
 
 		{% set section = get_section(path="docs/_index.md") %} {% for year, docs in
 		section.pages | sort(attribute="date") | reverse |
 		group_by(attribute="year") %}
 
-		<h2 class="subtitle is-4 year-space">{{ year }}</h2>
+		<h2 class="subtitle is-5 year-space">{{ year }}</h2>
 
 		<ul>
 			{% for doc in docs %}
