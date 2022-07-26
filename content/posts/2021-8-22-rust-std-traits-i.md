@@ -850,6 +850,4 @@ TODO: example
 | `IndexMut`    | other    | `[]`        | mutable index         |
 | `RangeBounds` | other    | `..`        | range                 |
 
-TODO: example
-
-Due to the over length, I've split this post into two parts. Please click the link to see the second part.
+Due to the limited space, I've split this post into two parts. Please click the link below to see the second part.

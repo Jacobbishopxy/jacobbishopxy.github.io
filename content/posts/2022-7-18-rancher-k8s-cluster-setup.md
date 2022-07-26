@@ -93,7 +93,25 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
    sudo apt-get install -y kubectl
    ```
 
+1. Grant permission:
+
+   If we see warnings as following:
+
+   ```txt
+   WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/xy/.kube/config
+   WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/xy/.kube/config
+   ```
+
+   We can modify permission to solve it. The first line is read and write permission for users in the same group, while the second line is read permission for the rest:
+
+   ```sh
+   chmod g-rw ~/.kube/config
+   chmod o-r ~/.kube/config
+   ```
+
 ## Docker
+
+Container runtime.
 
 1. Uninstall old versions
 
@@ -174,6 +192,10 @@ Install these packages on all of your machines (only needs `kubectl` if we use r
 
 ## Rancher
 
+> **Why Rancher?**
+>
+> Rancher is a complete software stack for teams adopting containers. It addresses the operational and security challenges of managing multiple Kubernetes clusters across any infrastructure, while providing DevOps teams with integrated tools for running containerized workloads.
+
 1. Start a rancher web server:
 
    ```sh
@@ -200,21 +222,29 @@ Accessing clusters with `kubectl`:
 
 ## Helm
 
-Rancher's Helm [document](https://rancher.com/docs/k3s/latest/en/helm/).
+> Helm is a tool for managing packages of pre-configured Kubernetes resources. These packages are known as Helm charts.
+>
+> Use Helm to:
+>
+> - Find and use popular software packaged as Kubernetes charts
+> - Share your own applications as Kubernetes charts
+> - Create reproducible builds of your Kubernetes applications
+> - Intelligently manage your Kubernetes manifest files
+> - Manage releases of Helm packages
 
-While using any `helm` command such as `helm ls`, we may see warnings as following:
+Official Helm [document](https://helm.sh/docs/) and Rancher's Helm [document](https://rancher.com/docs/k3s/latest/en/helm/).
 
-```txt
-WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/xy/.kube/config
-WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/xy/.kube/config
-```
+1. Initialize a Helm Chart Repository:
 
-We can modify permission to solve it. The first line is read and write permission for users in the same group, while the second line is read permission for the rest:
+   ```sh
+   helm repo add bitnami https://charts.bitnami.com/bitnami
+   ```
 
-```sh
-chmod g-rw ~/.kube/config
-chmod o-r ~/.kube/config
-```
+   then we can list the charts we can install:
+
+   ```sh
+   helm search repo bitnami
+   ```
 
 ## Resolutions
 
