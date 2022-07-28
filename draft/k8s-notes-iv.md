@@ -20,30 +20,78 @@ k8s 提供若干内置的工作负载资源：
 
 ### Pod
 
-#### Pod 生命周期
+在 k8s 中，*Pods*是可以创建与管理的最小可部署计算单元。
 
+一个*Pod*是一组单个或多个的容器，它们共享存储与网络资源，以及指定的运行容器的方法。一个 Pod 总是并置 co-located 与共同调度 co-scheduled 的，并且运行在共享的上下文中。一个 Pod 是一个“逻辑主机”的模型：它包含了一个或多个相对紧密耦合的应用容器。在非云环境中，相同的物理机或虚拟机上运行的应用类似于在同一逻辑主机上运行的云应用。
+
+除了应用容器，Pod 还可以包含在 Pod 启动期间运行的初始容器 init containers。也可以在集群中支持临时容器 ephemeral containers 时注入调试用的临时性容器。
+
+<!-- #### Pod 生命周期
 #### 初始化容器
-
 #### 干扰
-
 #### 临时容器
+#### Downward API -->
 
-#### Downward API
+#### 什么是 Pod
+
+> **注意：**除了 Docker，k8s 支持很多的容器运行时，而 Docker 是最为熟知的运行时，使用 Docker 的术语描述 Pod 会很有帮助。
+
+一个 Pod 共享的上下文就是一系列的 Linux 命名空间，控制组 cgroups，以及其它隔离技术。在一个 Pod 的上下文中，可能会对应用程序更进一步的子隔离。
+
+根据 Docker 的概念，一个 Pod 类似于一组共享了命名空间与文件系统卷的 Docker 容器。
+
+#### 使用 Pods
+
+以下是一个由一个运行的镜像 `nginx:1.14.2` 构成的 Pod 例子：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.14.2
+      ports:
+        - containerPort: 80
+```
+
+通过一下命令来创建上述的 Pod：
+
+```sh
+kubectl apply -f https://k8s.io/examples/pods/simple-pod.yaml
+```
+
+Pods 通常不会直接被创建而是通过工作负载资源来创建。
+
+##### 工作负载资源管理 pods
+
+##### Pods 如何管理多个容器
+
+#### 通过 Pods 工作
+
+##### Pods 与控制器
+
+##### Pod 模板
+
+#### Pod 更新与替换
+
+#### 资源共享与通讯
+
+#### 容器的特权模式
+
+#### 静态 Pod
+
+#### 容器探针
 
 ### 工作负载资源
 
-#### Deployments
-
+<!-- #### Deployments
 #### ReplicaSet
-
 #### StatefulSets
-
 #### DaemonSet
-
 #### Jobs
-
 #### 已完成 Jobs 的自动清理
-
 #### CronJob
-
-#### ReplicationController
+#### ReplicationController -->
