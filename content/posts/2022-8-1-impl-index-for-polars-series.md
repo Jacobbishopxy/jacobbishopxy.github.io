@@ -11,7 +11,9 @@ tags = ["Rust"]
 
 ## Intro
 
-Today I would like to talk about a small problem I met in my project, and the inspired thoughts through the whole working process. While trying to select data from Series or DataFrame, the intuitive thought is how to make Rust DataFrame's selection similar to Python's DataFrame? For example, we have `iat`, `at`, `iloc` and `loc` methods in pandas' DataFrame, which represents _accessing integer location scalar_, _accessing a single value for a row/column label pair_, _accessing a group of rows and columns by integer position(s)_, and _accessing a group of rows and columns by label(s)_ respectfully. The first idea came to me is that implementing `Index` trait for polars series can approach the same effect as pandas DataFrame does. As a syntactic sugar of `foo.index(index)`, `Index` provide us a simple way to get an indexed of value from a variable.
+Today I would like to talk about a small problem I met in my project, and the inspired thoughts through the whole working process. While trying to select data from Series or DataFrame, the intuitive thought is how to make Rust DataFrame's selection similar to Python's DataFrame? For example, we have `iat`, `at`, `iloc` and `loc` methods in pandas' DataFrame, which represents _accessing integer location scalar_, _accessing a single value for a row/column label pair_, _accessing a group of rows and columns by integer position(s)_, and _accessing a group of rows and columns by label(s)_ respectfully.
+
+The first idea came to me is that implementing `Index` trait for polars series can approach the same effect as pandas DataFrame does. As a syntactic sugar of `foo.index(index)`, `Index` provide us a simple way to get an indexed of value from a variable.
 
 ```rust
 pub trait Index<Idx: ?Sized> {
@@ -108,10 +110,105 @@ That's it. The first part of the design is pretty simple, and the only problem r
 
 ## Impl Index
 
-WIP
+Before moving forward, we need a small review of `polars` crate. There are mainly two methods to get a value from a series: call `.get(index)` method directly on a Series, and from its signature we know the return type is `AnyValue`, whose variants represents different types of data; the second method is unpacking series to `ChunkedArray<T>` by calling `.bool()`, `.i32()` and etc., and by calling `.get(index)` get `T` value. The former method has a runtime cast (`T` -> `AnyValue`), and the latter method has better performance. According to [polars::chunked_array::ChunkedArray](https://docs.rs/polars/latest/polars/chunked_array/struct.ChunkedArray.html):
+
+> Every Series contains a `ChunkedArray<T>`. Unlike Series, ChunkedArray’s are typed. This allows us to apply closures to the data and collect the results to a `ChunkedArray` of the same type `T`.
+>
+> ...
+>
+> Conversion from a `Series` to a `ChunkedArray` is effortless.
+
+One thing is very important but not really a relevant concept to our topic is `ChunkedArray`'s memory layout:
+
+> `ChunkedArray`’s use [Apache Arrow](https://github.com/apache/arrow) as backend for the memory layout. Arrows memory is immutable which makes it possible to make multiple zero copy (sub)-views from a single array.
+
+It gives us a better conceptual view of a `Series`. Now, back to our design. From the two `.get(index)` methods introduced above, we found that neither getting value from a Series directly nor getting value from a ChunkedArray would return a referenced value. In other words, we have to cache this value in somewhere first, which grants it a longer lifetime of existence, or else it will be dropped after the `index` function's scope.
+
+```rust
+struct MySeriesIndexing<'a> {
+    data: &'a Series,
+    cache: Box<dyn MyValueTrait>,
+}
+
+#[allow(dead_code)]
+impl<'a> MySeriesIndexing<'a> {
+    fn new(series: &'a Series) -> Self {
+        Self {
+            data: series,
+            cache: Box::new(Null),
+        }
+    }
+}
+```
+
+Next, the vital part of our design:
+
+```rust
+impl<'a> Index<usize> for MySeriesIndexing<'a> {
+    type Output = MyValue;
+
+    fn index(&self, index: usize) -> &Self::Output {
+        match self.data.dtype() {
+            DataType::Boolean => {
+                // unpack series to `ChunkedArray`
+                let res: Box<dyn MyValueTrait> = match self.data.bool().unwrap().get(index) {
+                    Some(v) => Box::new(v),
+                    None => Box::new(Null),
+                };
+
+                let r = &self.cache as *const Box<dyn MyValueTrait>;
+                let m = r as *mut Box<dyn MyValueTrait>;
+                unsafe {
+                    *m = res;
+                };
+
+                self.cache.as_ref()
+            }
+            DataType::UInt8 => todo!(),
+            DataType::UInt16 => todo!(),
+            DataType::UInt32 => todo!(),
+            DataType::UInt64 => todo!(),
+            DataType::Int8 => todo!(),
+            DataType::Int16 => todo!(),
+            DataType::Int32 => todo!(),
+            DataType::Int64 => {
+                // directly call `.get` method, which has a runtime casting (less efficiency)
+                let res: Box<dyn MyValueTrait> = match self.data.get(index) {
+                    AnyValue::Int64(v) => Box::new(v),
+                    _ => Box::new(Null),
+                };
+
+                let r = &self.cache as *const Box<dyn MyValueTrait>;
+                let m = r as *mut Box<dyn MyValueTrait>;
+                unsafe {
+                    *m = res;
+                };
+
+                self.cache.as_ref()
+            }
+            DataType::Float32 => todo!(),
+            DataType::Float64 => todo!(),
+            DataType::Utf8 => todo!(),
+            _ => unimplemented!(),
+        }
+    }
+}
+
+#[test]
+fn my_series_index_success() {
+    let s = Series::new("funk", [true, false, true, true]);
+
+    let s = MySeriesIndexing::new(&s);
+
+    println!("{:?}", &s[1]);
+    println!("{:?}", &s[3]);
+}
+```
 
 [unsafe code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/unsafe_index.rs)
 
 ## Safe Code
+
+WIP
 
 [code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs)
