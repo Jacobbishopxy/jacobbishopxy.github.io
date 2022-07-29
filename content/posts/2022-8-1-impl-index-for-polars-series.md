@@ -1,5 +1,5 @@
 +++
-title = "Impl Index to polars' Series"
+title = "Impl Index for polars' Series"
 description = "A little"
 date = 2022-08-01
 
@@ -25,9 +25,17 @@ In accordance with the `Index` trait, we know the associate type `Output` is UnS
 
 Instead, we could probably use either static dispatching (impl trait) or dynamic dispatching (dyn trait) as a workaround (or even worse, by using an `Enum` to wrap all types of data just like polars itself does). So the first problem is how do we design our own return type.
 
-The second problem is quit annoying: there is no way to return a reference of `Output`, since neither calling `get` method on a series nor calling conversion methods such as `bool` can give us a reference of value(s). Instead, these methods create new values which only allows us to move their ownership. In other words, the lifetime of `&Self::Output` should live as longer as `&self`, but these values returned by polar's methods have shorter lifetime then `&self`.
+The second problem is quite annoying: there is no way to return a reference of `Output`, since neither calling `get` method on a series nor calling conversion methods such as `bool` can give us a reference of value(s). Instead, these methods create new values which only allows us to move their ownership. In other words, the lifetime of `&Self::Output` should live as longer as `&self`, but these values returned by polar's methods have shorter lifetime then `&self`.
 
 ## Custom Return Type
+
+Designing a custom return type for `Output` is the first thing we should consider. As mentioned above, we need a trait who represents the interface of our own type, and implement this trait to all primitive types and custom type, so that finally we could treat `Output` as a trait object. Obviously, `dyn Trait` is the only way we could use, and we need to choose `&dyn Trait` or `Box<dyn Trait>`, since we cannot use a bare `dyn Trait`.
+
+```rust
+trait MyValueTrait: Debug {
+    fn dtype(&self) -> &'static str;
+}
+```
 
 WIP
 
@@ -35,4 +43,5 @@ WIP
 
 WIP
 
-[Code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs)
+[unsafe code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/unsafe_index.rs)
+[code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs)
