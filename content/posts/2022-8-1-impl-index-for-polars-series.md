@@ -122,7 +122,7 @@ One thing is very important but not really a relevant concept to our topic is `C
 
 > `ChunkedArray`’s use [Apache Arrow](https://github.com/apache/arrow) as backend for the memory layout. Arrows memory is immutable which makes it possible to make multiple zero copy (sub)-views from a single array.
 
-It gives us a better conceptual view of a `Series`. Now, back to our design. From the two `.get(index)` methods introduced above, we found that neither getting value from a Series directly nor getting value from a ChunkedArray would return a referenced value. In other words, we have to cache this value in somewhere first, which grants it a longer lifetime of existence, or else it will be dropped after the `index` function's scope.
+It gives us a better conceptual view of a `Series`. Now, back to our design. From the two `.get(index)` methods introduced above, we found that neither getting value from a Series directly nor getting value from a ChunkedArray would return a referenced value. In other words, we have to cache this value in somewhere first, which grants this value a longer lifetime of existence, or else it will be dropped after the `index` function's scope. Therefore, we need a struct who has at least two fields in which the data refers to the original series and the cached state, who holds the temporary value returned by the `get` method, lives as long as the struct itself.
 
 ```rust
 struct MySeriesIndexing<'a> {
@@ -141,7 +141,7 @@ impl<'a> MySeriesIndexing<'a> {
 }
 ```
 
-Next, the vital part of our design:
+Next is the vital part of our design: implementing `Index` trait for our `MySeriesIndexing`. First and foremost turning a `Series` to a `ChunkedArray` is effortless, thus we can use pattern matching to classify a Series' type, and based on data's type call the conversion function, for example, on `DataType::Boolean` branch, we could use `.bool()` method for conversion. After that, we need to store the temporary value from the ChunkedArray. However, due to `index` function's immutable reference, we cannot mutate the self state without using unsafe code. Accordingly, we can turn `&self.cache` into an immutable raw pointer, and then turn it to a mutable raw pointer, and finally use `unsafe` block to assign the temporary value to this mutable raw pointer. Finally, call `.as_ref()` to turn `&Box<dyn MyValueTrait>` into `&MyValue`.
 
 ```rust
 impl<'a> Index<usize> for MySeriesIndexing<'a> {
@@ -156,11 +156,12 @@ impl<'a> Index<usize> for MySeriesIndexing<'a> {
                     None => Box::new(Null),
                 };
 
+                // turn `cache` into an immutable raw pointer
                 let r = &self.cache as *const Box<dyn MyValueTrait>;
+                // turn immutable raw pointer into a mutable pointer
                 let m = r as *mut Box<dyn MyValueTrait>;
-                unsafe {
-                    *m = res;
-                };
+                // assign result to mutable pointer
+                unsafe { *m = res };
 
                 self.cache.as_ref()
             }
@@ -173,6 +174,8 @@ impl<'a> Index<usize> for MySeriesIndexing<'a> {
             DataType::Int32 => todo!(),
             DataType::Int64 => {
                 // directly call `.get` method, which has a runtime casting (less efficiency)
+                // since we already use pattern matching on `self.data.dtype()`, this case
+                // is only for demonstrating
                 let res: Box<dyn MyValueTrait> = match self.data.get(index) {
                     AnyValue::Int64(v) => Box::new(v),
                     _ => Box::new(Null),
@@ -180,9 +183,7 @@ impl<'a> Index<usize> for MySeriesIndexing<'a> {
 
                 let r = &self.cache as *const Box<dyn MyValueTrait>;
                 let m = r as *mut Box<dyn MyValueTrait>;
-                unsafe {
-                    *m = res;
-                };
+                unsafe { *m = res };
 
                 self.cache.as_ref()
             }
@@ -193,7 +194,11 @@ impl<'a> Index<usize> for MySeriesIndexing<'a> {
         }
     }
 }
+```
 
+And here comes the finally unit test:
+
+```rust
 #[test]
 fn my_series_index_success() {
     let s = Series::new("funk", [true, false, true, true]);
@@ -203,6 +208,13 @@ fn my_series_index_success() {
     println!("{:?}", &s[1]);
     println!("{:?}", &s[3]);
 }
+```
+
+and it gives us:
+
+```txt
+MyValue(false)
+MyValue(true)
 ```
 
 [unsafe code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/unsafe_index.rs)
