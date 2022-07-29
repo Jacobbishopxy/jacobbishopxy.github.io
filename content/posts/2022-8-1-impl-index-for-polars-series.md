@@ -29,19 +29,89 @@ The second problem is quite annoying: there is no way to return a reference of `
 
 ## Custom Return Type
 
-Designing a custom return type for `Output` is the first thing we should consider. As mentioned above, we need a trait who represents the interface of our own type, and implement this trait to all primitive types and custom type, so that finally we could treat `Output` as a trait object. Obviously, `dyn Trait` is the only way we could use, and we need to choose `&dyn Trait` or `Box<dyn Trait>`, since we cannot use a bare `dyn Trait`.
+Designing a custom return type for `Output` is the first thing we should consider. As mentioned above, we need a trait who represents the interface of our own type, and then implement this trait for all primitive types and custom type, so that finally we could treat `Output` as a trait object.
 
 ```rust
 trait MyValueTrait: Debug {
     fn dtype(&self) -> &'static str;
 }
+
+impl MyValueTrait for bool {
+    fn dtype(&self) -> &'static str {
+        "bool"
+    }
+}
+
+impl MyValueTrait for i64 {
+    fn dtype(&self) -> &'static str {
+        "i64"
+    }
+}
+
+#[derive(Debug)]
+struct Null;
+
+impl MyValueTrait for Null {
+    fn dtype(&self) -> &'static str {
+        "null"
+    }
+}
 ```
 
-WIP
+Apparently, in this case, `impl Trait` (static dispatch) is not Sized, for instance we have struct `MyGenericValue<T: MyValueTrait>(T)`, and `MyGenericValue(true)`'s size is not equal to `MyGenericValue(1i64)` (try this `assert_ne!(std::mem::size_of_val(&v1), std::mem::size_of_val(&v2))`). Hence, `dyn Trait` is the only thing left for us.
+
+The next step is to choose `&dyn Trait` or `Box<dyn Trait>`, since we cannot use a bare `dyn Trait`. The former one means a reference, but when implementing `Index`, there is no way to hold the original variable which is also UnSized. For instance, though `&true as &dyn MyValueTrait` and `&1i64 as &dyn MyValueTrait` have the same size, `true` and `1i64` are not the same. As a result, I choose to use a newtype of `Box<dyn MyValueTrait>`:
+
+```rust
+#[derive(Debug)]
+struct MyValue(Box<dyn MyValueTrait>);
+
+impl AsRef<MyValue> for Box<dyn MyValueTrait> {
+    fn as_ref(&self) -> &MyValue {
+        unsafe { std::mem::transmute(self) }
+    }
+}
+
+#[test]
+fn my_value_as_ref() {
+    let dv = Box::new(false) as Box<dyn MyValueTrait>;
+
+    let dvr: &MyValue = dv.as_ref();
+
+    println!("{:?}", dvr);
+}
+```
+
+Do not afraid of the unsafe code, I would replace them all later on. The reason why I use a newtype instead of `Box<dyn MyValueTrait>` directly is the capacity of implementing traits:
+
+```rust
+impl From<bool> for MyValue {
+    fn from(v: bool) -> Self {
+        Self(Box::new(v))
+    }
+}
+
+impl From<i64> for MyValue {
+    fn from(v: i64) -> Self {
+        Self(Box::new(v))
+    }
+}
+
+impl From<Null> for MyValue {
+    fn from(v: Null) -> Self {
+        Self(Box::new(v))
+    }
+}
+```
+
+That's it. The first part of the design is pretty simple, and the only problem remained is the unsafe code which will be solved in the last section.
 
 ## Impl Index
 
 WIP
 
 [unsafe code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/unsafe_index.rs)
+
+## Safe Code
+
 [code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs)
