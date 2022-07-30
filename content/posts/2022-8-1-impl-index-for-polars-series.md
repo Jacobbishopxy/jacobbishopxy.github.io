@@ -31,7 +31,7 @@ The second problem is quite annoying: there is no way to return a reference of `
 
 ## Custom Return Type
 
-Designing a custom return type for `Output` is the first thing we should consider. As mentioned above, we need a trait who represents the interface of our own type, and then implement this trait for all primitive types and custom type, so that finally we could treat `Output` as a trait object.
+Designing a custom return type for `Output` is the first thing we should concern. As mentioned above, we need a trait who represents the interface of our own type, and then implement this trait for all primitive types and custom type, so that finally we could treat `Output` as a trait object.
 
 ```rust
 trait MyValueTrait: Debug {
@@ -84,7 +84,7 @@ fn my_value_as_ref() {
 }
 ```
 
-Do not afraid of the unsafe code, I would replace them all later on. The reason why I use a newtype instead of `Box<dyn MyValueTrait>` directly is the capacity of implementing traits:
+Do not afraid of the unsafe code, I would replace them all later on. In compliance with 'Reinterprets the bits of a value of one type as another type' from the standard library, `std::mem::transmute` copies the bits from one source value into anther, and while newtype itself has the same size as the wrapped value, a `Box<dyn MyValueTrait>` can be regarded as a `MyValue`. This trick is applicable when `&T` wants to be presented as a `&U`, whom will be used later in the `index` function. The reason why I use a newtype instead of `Box<dyn MyValueTrait>` directly is the capacity of implementing traits (due to the orphan rule):
 
 ```rust
 impl From<bool> for MyValue {
@@ -210,17 +210,138 @@ fn my_series_index_success() {
 }
 ```
 
-and it gives us:
+which prints out:
 
 ```txt
 MyValue(false)
 MyValue(true)
 ```
 
-[unsafe code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/unsafe_index.rs)
+All the unsafe code is epitomized right [here](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/unsafe_index.rs), feel free to leave a comment.
 
 ## Safe Code
 
-WIP
+In spite of archiving our goal, the unsafe code is ineluctable. In order to discard all the unsafe code, a little refactor is needed. The first part to deal with is the conversion of &T to &U, which in our case converting `&Box<dyn MyValueTrait>` to `&MyValue`. Fortunately, I found a crate called [ref_cast](https://docs.rs/ref-cast/latest/ref_cast/) who can safely convert `&T` to `&U`, conditionally.
 
-[code](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs)
+> This crate provides a derive macro for generating safe conversions from `&T` to `&U` where the struct `U` contains a single field of type `T`.
+
+By its basic example:
+
+```rust
+use ref_cast::RefCast;
+
+#[derive(RefCast)]
+#[repr(transparent)]
+struct U(String);
+
+fn main() {
+    let s = String::new();
+
+    // Safely cast from `&String` to `&U`.
+    let u = U::ref_cast(&s);
+}
+```
+
+However, we can't just simply refactor our code as `MyValue(Box<dyn MyValueTrait>)`. Remember that the second place we wrote an unsafe code is in the `index` function, in which we tried to turn `&self.cache` into a mutable raw pointer and then dereference it in an unsafe block. As a matter of fact, a safer way to avoid raw pointers and its dereference is to wrap our value by `RefCell`. Eventually, `MyValue` looks like this:
+
+```rust
+#[derive(RefCast)]
+#[repr(transparent)]
+struct MyValue(RefCell<Box<dyn MyValueTrait>>);
+
+impl MyValue {
+    fn dtype(&self) -> &'static str {
+        self.0.borrow().dtype()
+    }
+}
+```
+
+Also its unit test:
+
+```rust
+#[test]
+fn my_value_ref_cast() {
+    let v = RefCell::new(Box::new(true) as Box<dyn MyValueTrait>);
+
+    let res = MyValue::ref_cast(&v);
+
+    assert_eq!(res.dtype(), "bool");
+}
+```
+
+And update `MySeriesIndexing`:
+
+```rust
+struct MySeriesIndexing {
+    data: Series,
+    cache: RefCell<Box<dyn MyValueTrait>>,
+}
+
+impl MySeriesIndexing {
+    fn new(series: Series) -> Self {
+        Self {
+            data: series,
+            cache: RefCell::new(Box::new(Null)),
+        }
+    }
+}
+
+impl Index<usize> for MySeriesIndexing {
+    type Output = MyValue;
+
+    fn index(&self, index: usize) -> &Self::Output {
+        match self.data.dtype() {
+            DataType::Boolean => {
+                let res: Box<dyn MyValueTrait> = match self.data.bool().unwrap().get(index) {
+                    Some(v) => Box::new(v),
+                    None => Box::new(Null),
+                };
+
+                self.cache.replace(res);
+
+                MyValue::ref_cast(&self.cache)
+            }
+            DataType::UInt8 => todo!(),
+            DataType::UInt16 => todo!(),
+            DataType::UInt32 => todo!(),
+            DataType::UInt64 => todo!(),
+            DataType::Int8 => todo!(),
+            DataType::Int16 => todo!(),
+            DataType::Int32 => todo!(),
+            DataType::Int64 => todo!(),
+            DataType::Float32 => todo!(),
+            DataType::Float64 => todo!(),
+            DataType::Utf8 => {
+                let res: Box<dyn MyValueTrait> = match self.data.utf8().unwrap().get(index) {
+                    Some(v) => Box::new(v.to_string()),
+                    None => Box::new(Null),
+                };
+
+                self.cache.replace(res);
+
+                MyValue::ref_cast(&self.cache)
+            }
+            _ => {
+                self.cache.replace(Box::new(Null));
+                MyValue::ref_cast(&self.cache)
+            }
+        }
+    }
+}
+```
+
+**Notice** that I also did some extra work such as impl [Debug](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs#L141-L172) and [PartialEq](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs#L76-L109) for `MyValue`, they are genuinely useful for our unit test. Please follow the link to see more detailed implementation if you are interested.
+
+```rust
+#[test]
+fn my_series_index_success() {
+    let s = Series::new("funk", [true, false, true, true]);
+
+    let s = MySeriesIndexing::new(s);
+
+    assert_eq!(&s[1], &MyValue::new(false));
+    assert_eq!(&s[3], &MyValue::new(true));
+}
+```
+
+The full code is in my Github page [index.rs](https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs). And that's all for today, until next time! :wave:
