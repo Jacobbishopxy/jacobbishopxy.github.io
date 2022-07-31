@@ -225,8 +225,6 @@ We know that almost all primitives are Send and Sync, but still there are except
 > - UnsafeCell isn't Sync (and therefore Cell and RefCell aren't).
 > - Rc isn't Send or Sync (because the refcount is shared and unsynchronized).
 
-TODO: example
-
 ### Sized
 
 Alright here is another fundamental trait that builds up the Rust skyscraper, and it should be firmly mastered.
@@ -251,8 +249,6 @@ Since `Sized` is an auto trait, it is usually implicitly implemented. For exampl
 > ```
 
 Additionally, `?Sized` is treated as a type which can either be Sized or Unsized, and it is the only 'relaxed bound (rather than constrains the type parameter)' in Rust.
-
-TODO: example
 
 ## General Traits
 
