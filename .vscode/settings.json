@@ -1,6 +1,7 @@
 {
 	"cSpell.words": [
 		"apiserver",
+		"autoscaler",
 		"cadvisor",
 		"combinator",
 		"combinators",
