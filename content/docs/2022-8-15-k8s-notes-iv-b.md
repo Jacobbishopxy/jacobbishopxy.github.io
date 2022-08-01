@@ -92,7 +92,7 @@ spec:
 
 1. 运行 `kubectl get deployments` 检查 Deployment 是否被创建。如果 Deployment 仍然在被创建，那么会有以下输出：
 
-   ```terminal
+   ```txt
    NAME               READY   UP-TO-DATE   AVAILABLE   AGE
    nginx-deployment   0/3     0            0           1s
    ```
@@ -109,14 +109,14 @@ spec:
 
    输出类似于：
 
-   ```terminal
+   ```txt
    Waiting for rollout to finish: 2 out of 3 new replicas have been updated...
    deployment "nginx-deployment" successfully rolled out
    ```
 
 1. 几秒过后再次运行 `kubectl get deployments`。输出类似于：
 
-   ```terminal
+   ```txt
    NAME               READY   UP-TO-DATE   AVAILABLE   AGE
    nginx-deployment   3/3     3            3           18s
    ```
@@ -125,7 +125,7 @@ spec:
 
 1. 查看由 Deployment 创建的 ReplicaSet（`rs`），运行 `kubectl get rs`。输出类似于：
 
-   ```terminal
+   ```txt
    NAME                          DESIRED   CURRENT   READY   AGE
    nginx-deployment-75675f5897   3         3         3       18s
    ```
@@ -140,7 +140,7 @@ spec:
 
 1. 查看每个 Pod 所自动创建的标签，运行 `kubectl get pods --show-labels`。输出类似于：
 
-   ```terminal
+   ```txt
    NAME                                READY     STATUS    RESTARTS   AGE       LABELS
    nginx-deployment-75675f5897-7ci7o   1/1       Running   0          18s       app=nginx,pod-template-hash=3123191453
    nginx-deployment-75675f5897-kzszj   1/1       Running   0          18s       app=nginx,pod-template-hash=3123191453
@@ -170,7 +170,7 @@ spec:
 
    将会输出类似于：
 
-   ```terminal
+   ```txt
    deployment.apps/nginx-deployment image updated
    ```
 
@@ -182,7 +182,7 @@ spec:
 
    输出类似于：
 
-   ```terminal
+   ```txt
    deployment.apps/nginx-deployment edited
    ```
 
@@ -194,13 +194,13 @@ spec:
 
    输出类似于：
 
-   ```terminal
+   ```txt
    Waiting for rollout to finish: 2 out of 3 new replicas have been updated...
    ```
 
    或者：
 
-   ```terminal
+   ```txt
    deployment "nginx-deployment" successfully rolled out
    ```
 
@@ -208,14 +208,14 @@ spec:
 
    - 当上线成功，用户可以通过 `kubectl get deployments` 检查 Deployment。输出类似于：
 
-     ```terminal
+     ```txt
      NAME               READY   UP-TO-DATE   AVAILABLE   AGE
      nginx-deployment   3/3     3            3           36s
      ```
 
    - 运行 `kubectl get rs` 查看 Deployment 通过创建新的 ReplicaSet 并将其扩容到 3 个副本并将旧 ReplicaSet 缩容到 0 个副本完成了 Pod 的更新操作，输出类似于：
 
-     ```terminal
+     ```txt
      NAME                          DESIRED   CURRENT   READY   AGE
      nginx-deployment-1564180365   3         3         3       6s
      nginx-deployment-2035384211   0         0         0       36s
@@ -223,7 +223,7 @@ spec:
 
    - 运行 `kubectl get pods` 现在应该只展示新 Pods，输出类似于：
 
-     ```terminal
+     ```txt
      NAME                                READY     STATUS    RESTARTS   AGE
      nginx-deployment-1564180365-khku8   1/1       Running   0          14s
      nginx-deployment-1564180365-nacti   1/1       Running   0          14s
@@ -236,7 +236,7 @@ spec:
 
    - 运行 `kubectl describe deployments` 获取 Deployment 的详细信息，输出类似于：
 
-     ```terminal
+     ```txt
      Name:                   nginx-deployment
      Namespace:              default
      CreationTimestamp:      Thu, 30 Nov 2017 10:56:25 +0000
@@ -302,7 +302,7 @@ spec:
 
   输出类似于：
 
-  ```terminal
+  ```txt
   Waiting for rollout to finish: 1 out of 3 new replicas have been updated...
   ```
 
@@ -316,7 +316,7 @@ spec:
 
   输出类似于：
 
-  ```terminal
+  ```txt
   NAME                          DESIRED   CURRENT   READY   AGE
   nginx-deployment-1564180365   3         3         3       25s
   nginx-deployment-2035384211   0         0         0       36s
@@ -331,7 +331,7 @@ spec:
 
   输出类似于：
 
-  ```terminal
+  ```txt
   NAME                                READY     STATUS             RESTARTS   AGE
   nginx-deployment-1564180365-70iae   1/1       Running            0          25s
   nginx-deployment-1564180365-jbqqo   1/1       Running            0          25s
@@ -344,7 +344,7 @@ spec:
 
 - 通过 `kubectl describe deployment` 获取 Deployment 详细信息，输出类似于：
 
-  ```terminal
+  ```txt
   Name:           nginx-deployment
   Namespace:      default
   CreationTimestamp:  Tue, 15 Mar 2016 14:48:04 -0700
@@ -398,7 +398,7 @@ spec:
 
    输出类似于：
 
-   ```terminal
+   ```txt
    deployments "nginx-deployment"
    REVISION    CHANGE-CAUSE
    1           kubectl apply --filename=https://k8s.io/examples/controllers/nginx-deployment.yaml
@@ -419,7 +419,7 @@ spec:
 
    输出类似于：
 
-   ```terminal
+   ```txt
    deployments "nginx-deployment" revision 2
      Labels:       app=nginx
              pod-template-hash=1159050644
@@ -447,7 +447,7 @@ spec:
 
    输出类似于：
 
-   ```terminal
+   ```txt
    deployment.apps/nginx-deployment rolled back
    ```
 
@@ -461,14 +461,14 @@ spec:
 
    输出类似于：
 
-   ```terminal
+   ```txt
    NAME               READY   UP-TO-DATE   AVAILABLE   AGE
    nginx-deployment   3/3     3            3           30m
    ```
 
 1. 通过 `kubectl describe deployment nginx-deployment` 获取 Deployment 描述，输出类似于：
 
-   ```terminal
+   ```txt
    Name:                   nginx-deployment
    Namespace:              default
    CreationTimestamp:      Sun, 02 Sep 2018 18:17:55 -0500
@@ -522,7 +522,7 @@ kubectl scale deployment/nginx-deployment --replicas=10
 
 输出类似于：
 
-```terminal
+```txt
 deployment.apps/nginx-deployment scaled
 ```
 
@@ -534,7 +534,7 @@ kubectl autoscale deployment/nginx-deployment --min=10 --max=15 --cpu-percent=80
 
 输出类似于：
 
-```terminal
+```txt
 deployment.apps/nginx-deployment scaled
 ```
 
@@ -552,7 +552,7 @@ deployment.apps/nginx-deployment scaled
 
   输出类似于：
 
-  ```terminal
+  ```txt
   NAME                 DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
   nginx-deployment     10        10        10           10          50s
   ```
@@ -565,13 +565,13 @@ deployment.apps/nginx-deployment scaled
 
   输出类似于：
 
-  ```terminal
+  ```txt
   deployment.apps/nginx-deployment image updated
   ```
 
 - 镜像更新开始了一个带有 ReplicaSet `nginx-deployment-1989198191` 的新上线，但是因为上面设置的 `maxUnavailable` 参数阻塞了，通过 `kubectl get rs` 检查上线状态，输出类似于：
 
-  ```terminal
+  ```txt
   NAME                          DESIRED   CURRENT   READY     AGE
   nginx-deployment-1989198191   5         5         0         9s
   nginx-deployment-618515232    8         8         8         1m
@@ -581,14 +581,14 @@ deployment.apps/nginx-deployment scaled
 
 在上面的示例中，3 个副本被添加到旧 ReplicaSet 中，2 个副本被添加到新 ReplicaSet 中。假设新的副本健康，上线过程最终应该将所有副本迁移到新的 ReplicaSet 中。通过 `kubectl get deploy` 可以确认，并输出类似于：
 
-```terminal
+```txt
 NAME                 DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment     15        18        7            8           7m
 ```
 
 上线状态确认了副本是如何被添加到每个 ReplicaSet 的。通过 `kubectl get rs` 输出类似于：
 
-```terminal
+```txt
 NAME                          DESIRED   CURRENT   READY     AGE
 nginx-deployment-1989198191   7         7         0         7m
 nginx-deployment-618515232    11        11        11        7m
@@ -600,33 +600,33 @@ nginx-deployment-618515232    11        11        11        7m
 
 - 例如，一个已经创建了的 Deployment，通过 `kubectl get deploy` 获取其明细，输出类似于：
 
-  ```terminal
+  ```txt
   NAME      DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
   nginx     3         3         3            3           1m
   ```
 
   通过 `kubectl get rs`，输出类似于：
 
-  ```terminal
+  ```txt
   NAME               DESIRED   CURRENT   READY     AGE
   nginx-2142116321   3         3         3         1m
   ```
 
 - 通过 `kubectl rollout pause deployment/nginx-deployment` 命令暂停上线，输出类似于：
 
-  ```terminal
+  ```txt
   deployment.apps/nginx-deployment paused
   ```
 
 - 接着 `kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1` 更新 Deployment 的镜像，输出类似于：
 
-  ```terminal
+  ```txt
   deployment.apps/nginx-deployment image updated
   ```
 
 - 注意没有新的上线过程开始，通过 `kubectl rollout history deployment/nginx-deployment` 检查，输出类似于：
 
-  ```terminal
+  ```txt
   deployments "nginx"
   REVISION  CHANGE-CAUSE
   1   <none>
@@ -634,14 +634,14 @@ nginx-deployment-618515232    11        11        11        7m
 
 - 获取上线状态确认现存的 ReplicaSet 没有变化，通过 `kubectl get rs` 检查，输出类似于：
 
-  ```terminal
+  ```txt
   NAME               DESIRED   CURRENT   READY     AGE
   nginx-2142116321   3         3         3         2m
   ```
 
 - 用户可以根据需要执行很多更新操作，例如通过 `kubectl set resources deployment/nginx-deployment -c=nginx --limits=cpu=200m,memory=512Mi` 更新所需的资源，输出类似于：
 
-  ```terminal
+  ```txt
   deployment.apps/nginx-deployment resource requirements updated
   ```
 
@@ -649,13 +649,13 @@ nginx-deployment-618515232    11        11        11        7m
 
 - 最终，通过 `kubectl rollout resume deployment/nginx-deployment`，恢复 Deployment 上线，并观察新的 ReplicaSet 创建的过程，其中包含了所有应用的所有更新，输出类似于：
 
-  ```terminal
+  ```txt
   deployment.apps/nginx-deployment resumed
   ```
 
 - 通过 `kubectl get rs -w` 观察上线状态，直到其完成，输出类似于：
 
-  ```terminal
+  ```txt
   NAME               DESIRED   CURRENT   READY     AGE
   nginx-2142116321   2         2         2         2m
   nginx-3926361531   2         2         0         6s
@@ -675,7 +675,7 @@ nginx-deployment-618515232    11        11        11        7m
 
 - 通过 `kubectl get rs` 获取最新的上线状态，输出类似于：
 
-  ```terminal
+  ```txt
   NAME               DESIRED   CURRENT   READY     AGE
   nginx-2142116321   0         0         0         2m
   nginx-3926361531   3         3         3         28s
@@ -729,7 +729,7 @@ kubectl rollout status deployment/nginx-deployment
 
 输出类似于：
 
-```terminal
+```txt
 Waiting for rollout to finish: 2 of 3 updated replicas are available...
 deployment "nginx-deployment" successfully rolled out
 ```
