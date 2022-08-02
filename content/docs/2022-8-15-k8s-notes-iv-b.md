@@ -790,31 +790,83 @@ Deployment 对象的名称必须是合法的 DNS 子域名。Deployment 还需�
 
 #### Pod 模板
 
-WIP
+`.spec` 仅需要两个字段 `.spec.template` 与 `.spec.selector`。
+
+`.spec.template` 是一个 Pod 模板。它拥有与 Pod 完全相同的规则，因为是嵌套的，所以不需要 `apiVersion` 或 `kind`。
+
+除了 Pod 需要的字段，Deployment 的 Pod 模板必须指定合适的标签以及合适的重启策略。对于标签而言，确保不要与其它控制器重叠。
+
+只有 `.spec.template.spec.restartPolicy` 等于 `Always` 是允许的，这也是没有指定情况下的默认值。
 
 #### 副本
 
-WIP
+`.spec.replicas` 是一个可选字段，用于指定期望 Pods 的数量。其默认值为 1。
+
+如果你对某个 Deployment 执行了手动扩缩操作（例如通过 `kubectl scale deployment deployment --replicas=X`），之后根据清单对 Deployment 执行了更新操作（例如通过运行 `kubectl apply -f deployment.yaml`），那么通过应用清单完成的更新会覆盖之前手动扩缩的变更。
+
+如果一个 HorizontalPodAutoscaler（或者其他执行水平扩缩操作的类似 API）在管理 Deployment 的扩缩，则不要设置 `.spec.replicas`。
+
+相反的，应该允许 k8s 控制面来自动管理 `.spec.replicas` 字段。
 
 #### 选择符
 
-WIP
+`.spec.selector` 是一个必须字段，用于指定该 Deployment 目标 Pods 的标签选择符。
+
+`.spec.selector` 必须匹配 `.spec.template.metadata.labels`，否则它会被 API 拒绝。
+
+API 版本 `apps/v1`，`.spec.selector` 以及 `.metadata.labels` 不会默认设置为 `.spec.template.metadata.labels`，所以需要明确的进行设置。同时注意 `.spec.selector` 在 Deployment 创建 `apps/v1` 后是不可变的。
+
+Deployment 可能会终结匹配到标签 selector 的 Pods，如果它们的模板不同于 `.spec.template` 或者该 Pods 总数超出 `.spec.replicas`。它也会创建带有 `.spec.template` 的新 Pods，如果 Pods 的总数小于期望值。
+
+> **注意：**
+> 用户不该直接创建与此选择符匹配的 Pods，无论是直接通过另一个 Deployment，或者是另一个控制器例如 ReplicaSet 或者一个 ReplicationController。如果用户这么做了，第一个 Deployment 会认为它创建了这些 Pod。k8s 不会阻止该行为。
+
+如果有多个控制器的选择符发生重叠，则控制器之间会因为冲突而无法正常工作。
 
 #### 策略
 
-WIP
+`.spec.strategy` 用于指定更新旧 Pod 的策略。`.spec.strategy.type` 可以是“重新创建”或者是“滚动更新”，后者是默认值。
+
+##### 重建 Deployment
+
+当 `.spec.strategy.type==Recreate` 时，所有现存的 Pods 会在新的 Pods 创建之前被杀死。
+
+> **注意：**
+> 这只会确保为了升级而创建新 Pod 之前其他 Pod 都已经终止。如果升级一个 Deployment，所有旧版本的 Pod 都会被立刻终止。控制器等待这些 Pod 被成功移除之后才会创建新版本的 Pod。如果手动删除一个 Pod，其生命周期是由 ReplicaSet 控制的，后者会立刻创建一个替换 Pod（即使旧的 Pod 仍然处于 Terminating 状态）。如果用户需要一种“最多 n 个”的 Pod 个数保证，则需要使用 StatefulSet。
+
+##### 滚动更新 Deployment
+
+当 `.spec.strategy.type==RollingUpdate` 时，Deployment 更新 Pods 会以滚动方式更新。用户可以指定 `maxUnavailable` 和 `maxSurge` 来控制滚动更新过程。
+
+###### 最大不可用
+
+`.spec.strategy.rollingUpdate.maxUnavailable` 是一个可选字段，用于指定在更新过程中，最大不可用 Pods 的数量。该值可以是绝对数值（例如 5）或者是期望 Pods 的百分比（例如 10%）。百分比值会转换成绝对数并去除小数部分。如果 `.spec.strategy.rollingUpdate.maxSurge` 为 0，则最大不可用不能为 0。最大不可用默认值为 25%。
+
+###### 最大峰值
+
+`.spec.strategy.rollingUpdate.maxSurge` 是一个可选字段，用于指定可以创建的超出期望 Pod 的数量。该值可以是绝对数值（例如 5）或者是期望 Pods 的百分比（例如 10%）。如果 `.spec.strategy.rollingUpdate.maxUnavailable` 为 0，则最大峰值不可为 0。百分比值会通过向上取整转换为绝对数值。最大峰值默认值为 25%。
 
 #### 进度期限秒数
 
-WIP
+`.spec.progressDeadlineSeconds` 是一个可选字段，用于指定期望 Deployment 在进展失败之前，等待其取得进展的秒数。该报告会在资源状态中体现为 `type: Progressing`，`status: False`，`reason: ProgressDeadlineExceeded`。Deployment 控制器将持续重试 Deployment。之后只要实现了自动回滚，Deployment 控制器将在探测到这样的条件时立刻回滚 Deployment。
+
+如果指定，该值需要大于 `.spec.minReadySeconds` 的值。
 
 #### 最短就绪时间
 
-WIP
+`.spec.minReadySeconds` 是一个可选字段，用于指定新创建的 Pod 在没有任何容器崩溃的情况下最短的就绪时间，只有超出这个时间 Pod 才会被视为可用。该值默认值为 0（即 Pod 在准备就绪后立刻被视为可用）。了解何时 Pod 被视为就绪，请参考容器探针。
 
 #### 修订历史限制
 
-WIP
+Deployment 的修订历史记录存储在它所控制的 ReplicaSet 中。
+
+`.spec.revisionHistoryLimit` 是一个可选字段，用于指定回滚时所需要保留的旧 ReplicaSet 数量。这些旧 ReplicaSet 会消耗 etcd 中的资源，并占用 `kubectl get rs` 的输出。每个 Deployment 修订版本的配置都存储在其 ReplicaSets 中；一旦删除了旧 ReplicaSet，将失去回滚到 Deployment 的对应修订版本的能力。默认系统保留 10 个旧 ReplicaSet，但是其理想值取决于新 Deployment 的频率和稳定性。
+
+更具体的说，此字段设置为 0 意味着将清理所有具有 0 个副本的旧 ReplicaSet。这种情况下，无法撤销新的 Deployment 上线，因为它的修订历史被清除了。
+
+#### 暂停的（Paused）
+
+`.spec.paused` 用于暂停和恢复 Deployment 的可选布尔字段。暂停的 Deployment 和未暂停的 Deployment 的唯一区别在于 Deployment 处于暂停状态时，PodTemplateSpec 的任何修改都不会触发新的上线。Deployment 在创建时是默认不会处于暂停状态。
 
 ## ReplicaSet
 
