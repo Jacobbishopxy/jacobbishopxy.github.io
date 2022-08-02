@@ -245,27 +245,48 @@ Pod 阶段的数量和含义是严格定义的。除了文档中列举的内容�
 | 失败 Failed    | 所有的容器都已终止，并且至少有一个容器是因为失败终止。也就是说，容器以非 0 状态退出或者被系统终止。                              |
 | 未知 Unknown   | 因为某些原因无法取得 Pod 的状态。这种情况通常是因为与 Pod 所在主机通信失败。                                                     |
 
+> **注意：**
+> 当一个 Pod 被删除时，它会在一些 kubectl 命令上显示为 `Terminating`。`Terminating` 状态不是任何一个 Pod 的阶段。 一个 Pod 默认拥有 30 秒的优雅终止。用户可以用 --force 标记来强制终止一个 Pod。
+
 如果某节点死亡或者与集群中其他节点失联，k8s 会采取一种策略，将失去的节点上运行的所有 Pod 的 `phase` 设置为 `Failed`。
 
 ### 容器状态
 
-WIP
+总体而已与 Pod 的阶段一样，k8s 追踪 Pod 中每个容器的状态。用户可以使用容器生命周期钩子用以触发容器内部特定的事件。
 
-#### 等待
+一旦调度器给节点分配了一个 Pod，kubelet 则会开始使用容器运行时为 Pod 创建容器。容器状态有三种性：`Waiting`，`Running` 与 `Terminated`。
 
-WIP
+可以使用 `kubectl describe pod <name-of-pod>` 检查 Pod 的容器状态。输出内容会显示改 Pod 中每个容器的状态。
 
-#### 运行
+每个状态都有特定的意义：
 
-WIP
+{% styledblock(class="color-beige") %}
 
-#### 终结
+等待 Waiting
 
-WIP
+{% end %}
+
+一个容器处于 `Waiting` 状态仍然会执行操作以便完成启动：例如，从镜像仓库中拉取容器镜像，或者是应用 Secret 数据。当使用 `kubectl` 查询带有 `Waiting` 状态容器的 Pod 时，同样也可以看到容器为什么处于当前状态的原因信息汇总。
+
+{% styledblock(class="color-beige") %}
+运行 Running
+{% end %}
+
+`Running` 状态代表着一个容器正在执行并且没有问题。如果有配置过 `postStart` 钩子，那么该回调已经执行且已经完成了。如果使用 `kubectl` 查询带有 `Running` 状态容器的 Pod 时，同样也会看到关于容器进入 `Running` 状态的信息。
+
+{% styledblock(class="color-beige") %}
+终结 Terminated
+{% end %}
+
+`Terminated` 状态的容器已经开始执行，并会正常结束或是以某些原因失败。使用 `kubectl` 查询带有 `Terminated` 状态容器的 Pod 时，同样也会看到容器进入此状态的原因，退出代码以及容器执行期间的开始结束时间。
+
+如果容器配置了 `preStop` 钩子，则该回调会在容器进入 `Terminated` 状态之前执行。
 
 ### 容器重启策略
 
-WIP
+一个 Pod 的 `spec` 有一个 `restartPolicy` 字段，其可选值为 `Always`，`OnFailure` 以及 `Never`。默认值为 `Always`。
+
+`restartPolicy` 应用于该 Pod 中所有的容器。 `restartPolicy` 仅针对同一节点上 kubelet 的容器。Pod 中容器在退出后，kubelet 根据指数回退方式计算重启延时（10s，20s，40s，...），最长延迟为 5 分钟。一旦某容器执行了 10 分钟且没有出现问题，`kubelet` 对该容器的重启回退计时器则会执行重置操作。
 
 ### Pod 状况
 

@@ -736,21 +736,83 @@ deployment "nginx-deployment" successfully rolled out
 
 #### 失败的 Deployment
 
-WIP
+Deployment 在部署最新的 ReplicaSet 时，会遇到阻塞并一直处于未完成的状态。这可能有以下几个因素造成：
+
+- 配额（quota）不足
+- 就绪探测（readiness probe）失败
+- 镜像拉取错误
+- 权限不足
+- 限制范围（limit ranges）
+- 应用程序运行时的配置错误
+
+检测此状况的方法之一是在 Deployment 规约中指定截止时间参数：（`.spec.progressDeadlineSeconds`）。`.spec.progressDeadlineSeconds` 给出的是一个秒数值，Deployment 控制器在（通过 Deployment 状态）标识 Deployment 进展停滞之前，需要等待所给的时长。
+
+以下 `kubectl` 命令设置规约中的 `progressDeadlineSeconds` 使得控制器在 10 分钟后报告 Deployment 没有进展：
+
+```sh
+kubectl patch deployment/nginx-deployment -p '{"spec":{"progressDeadlineSeconds":600}}'
+```
+
+输出类似于：
+
+```txt
+deployment.apps/nginx-deployment patched
+```
+
+一旦超过了截止时间，Deployment 控制器会添加包含下列属性的状况到 Deployment 的 `.status.conditions` 中：
+
+- `type: Progressing`
+- `status: "False"`
+- `reason: ProgressDeadlineExceeded`
+
+这个状况也可能会在较早的时候失败，因而其状态被设为 `"False"`，这是因为 `ReplicaSetCreateError`。一旦 Deployment 上线完成，就不再考虑截止时间。
 
 #### 对失败 Deployment 的操作
 
-WIP
+所有用在已完成的 Deployment 的操作也适用于失败的 Deployment 上。用户可以对其阔缩容，回滚至前一个修订版本，或是需要对 Deployment 的 Pod 模板应用多项调整时将 Deployment 暂停。
 
 ### 清理策略 {#CleanUpPolicy}
 
-WIP
+可以在 Deployment 中设置 `.spec.revisionHistoryLimit` 字段来指定保留该 Deployment 的旧 ReplicaSet。其余的 ReplicaSet 将在后台被垃圾回收。默认情况下，该值为 10。
+
+> **说明：**
+> 显式将此字段设置为 0 将导致 Deployment 的所有历史记录被清空，因此 Deployment 将无法回滚。
 
 ### 金丝雀部署
 
-WIP
+如果要是用 Deployment 向用户子集或服务器子集上线版本，可以遵守资源管理所描述的金丝雀模式，为每个版本创建一个 Deployment。
 
 ### 编写 Deployment 规约
+
+与其它 k8s 配置一样，Deployment 需要 `.apiVersion`，`.kind` 以及 `.metadata` 字段。
+
+Deployment 对象的名称必须是合法的 DNS 子域名。Deployment 还需要 `.spec` 部分。
+
+#### Pod 模板
+
+WIP
+
+#### 副本
+
+WIP
+
+#### 选择符
+
+WIP
+
+#### 策略
+
+WIP
+
+#### 进度期限秒数
+
+WIP
+
+#### 最短就绪时间
+
+WIP
+
+#### 修订历史限制
 
 WIP
 

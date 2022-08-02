@@ -1,5 +1,6 @@
 {
 	"cSpell.words": [
+		"aligncenter",
 		"apiserver",
 		"autoscaler",
 		"cadvisor",
@@ -21,6 +22,7 @@
 		"Rustc",
 		"Rustonomicon",
 		"rustup",
+		"styledblock",
 		"syscall"
 	]
 }
