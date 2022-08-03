@@ -1,6 +1,6 @@
 +++
 title="K8s 笔记 (IV) 下"
-description="工作负载（工作负载资源）"
+description="工作负载（负载资源）"
 date=2022-08-15
 
 [taxonomies]
@@ -13,7 +13,7 @@ toc = true
 
 ## Deployments
 
-一个*Deployment*为 Pods 与 ReplicaSets 提供了声明式的更新。
+一个 Deployment 为 Pods 与 ReplicaSets 提供了声明式的更新。
 
 在一个 Deployment 中用户描述一个*期望的状态*，接着 Deployment 控制器通过速度控制改变现有状态至期望状态。用户可以定义 Deployments 来创建新的 ReplicaSets，或者移除现有的 Deployments 并通过新的 Deployments 继承它们的资源。
 
@@ -512,7 +512,7 @@ spec:
      Normal  ScalingReplicaSet   15s   deployment-controller  Scaled down replica set nginx-deployment-595696685f to 0
    ```
 
-### 缩放 Deployment {#ScalingADeployment}
+### 扩缩 Deployment {#ScalingADeployment}
 
 可以通过以下命令扩展一个 Deployment：
 
@@ -788,7 +788,7 @@ deployment.apps/nginx-deployment patched
 
 Deployment 对象的名称必须是合法的 DNS 子域名。Deployment 还需要 `.spec` 部分。
 
-#### Pod 模板
+#### Pod 模板 {#DeploymentsPodTemplate}
 
 `.spec` 仅需要两个字段 `.spec.template` 与 `.spec.selector`。
 
@@ -870,17 +870,356 @@ Deployment 的修订历史记录存储在它所控制的 ReplicaSet 中。
 
 ## ReplicaSet
 
+ReplicaSet 的目的在于维护组在任何时候都处于运行状态的 Pods 副本的稳定集合。因此它通常用于保障给定数量的且完全相同的 Pods 可用性。
+
+### ReplicaSet 工作原理
+
+ReplicaSet 定义了一些字段，包含用于指定如何获取 Pod 的选择符，需要维护的副本数量，用于指定应该创建多少新 Pods 来达成副本条件的 pod 模板等。ReplicaSet 根据需要创建和删除 Pod 使得副本个数达到期望值，进而体现其存在价值。当 ReplicaSet 需要创建新的 Pod 时，会使用所提供的 Pod 模板。
+
+ReplicaSet 通过 Pods 的 metadata.ownerReferences 字段来连接其 Pods，该字段指定了当前对象被何种资源所拥有。ReplicaSet 所获得的所有 Pods 都在其 ownerReferences 字段中包含了属主 ReplicaSet 的标识信息。通过这个连接 ReplicaSet 才能正确的知道其维护与计划的 Pods 的状态。
+
+ReplicaSet 通过使用其选择符来识别要获取的新 Pods。如果一个 Pod 没有 OwnerReference 或者 OwnerReference 不是一个控制器并且匹配到一个 ReplicaSet 选择符，则该 Pod 立刻被此 ReplicaSet 获得。
+
+### 何时使用 ReplicaSet
+
+ReplicaSet 确保规定数量的 pod 副本可以在任何时候都处于运行状态。然而，Deployment 是更高阶的概念，其用作于管理 ReplicaSets 并为 Pods 提供声明式的更新，以及其它有用的功能。因此，我们建议使用 Deployments 而不是直接使用 ReplicaSets，除非用户需要自定义更新业务流程或根本不需要更新。
+
+这就意味着，用户可能永远不需要操作 ReplicaSet 对象：而是使用 Deployment，并在 spec 部分定义应用。
+
+### 示例 {#ReplicaSetExample}
+
+WIP
+
+### 非模板 Pod 获取
+
+WIP
+
+### 编写 ReplicaSet 清单
+
+WIP
+
+#### Pod 模板编写
+
+WIP
+
+#### Pod 选择符 {#ReplicaSetPodSelector}
+
+WIP
+
+#### Replicas
+
+WIP
+
+### 使用 ReplicaSet
+
+WIP
+
+#### 删除 ReplicaSet 与其 Pods
+
+WIP
+
+#### 仅删除 ReplicaSet
+
+WIP
+
+#### 将 Pod 从 ReplicaSet 中隔离
+
+WIP
+
+#### 扩缩 ReplicaSet
+
+WIP
+
+#### Pod 删除开销
+
+WIP
+
+#### ReplicaSet 作为水平的 Pod 自动扩缩器目标
+
+WIP
+
+### ReplicaSet 替代方案
+
+WIP
+
+#### Deployment（推荐）
+
+WIP
+
+#### 裸 Pod {#AlternativesToReplicaSetBarePods}
+
+WIP
+
+#### Job {#AlternativesToReplicaSetJob}
+
+WIP
+
+#### DaemonSet {#AlternativesToReplicaSetDaemonSet}
+
+WIP
+
+#### ReplicationController {#AlternativesToReplicaSetReplicationController}
+
 WIP
 
 ## StatefulSets
+
+StatefulSet 用于管理带有状态的应用程序的工作负载 API 对象。
+
+管理 Pods 集合的部署和扩缩，并且为这些 Pods 提供*排序与唯一性的保障*。
+
+与 Deployment 类似，StatefulSet 根据相同容器规约管理 Pods。与 Deployment 不同的是，StatefulSet 为每个 Pod 维护了一个有粘性的 ID。这些 Pod 是基于相同的规约来创建的，但是不能互相替换；无论如何调度，每个 Pod 都有一个永久不变的 ID。
+
+如果用户希望使用存储卷为工作负载提供持久储存，可以使用 StatefulSet 作为解决方案的一部分。尽管 StatefulSet 中的单个 Pod 仍然可能出现故障，但持久的 Pod 标识符使得将现有卷与替换已失败 Pod 的新 Pod 相匹配变得更加容易。
+
+### 使用 StatefulSet
+
+StatefulSet 对于需要满足以下一个或多个需求的应用程序很有价值：
+
+- 稳定的，唯一的网络标识符。
+- 稳定的，持久的存储。
+- 有序的，优雅的部署和扩缩。
+- 有序的，自动的滚动更新。
+
+上述需求中，稳定意味着 Pod （重新）调度的整个过程带有持久性质的。如果应用程序不需要任何稳定的标识符或有序的部署，删除或扩缩，则应该使用一组无状态的副本控制器提供的工作负载来部署应用程序，比如 Deployment 或者 ReplicaSet 可能更适合无状态应用部署的需要。
+
+### 限制
+
+WIP
+
+### 组件
+
+WIP
+
+#### Pod 选择符 {#StatefulSetPodSelector}
+
+WIP
+
+#### 卷声明模板
+
+WIP
+
+#### 最短就绪秒数
+
+WIP
+
+### Pod 标识
+
+WIP
+
+#### 有序索引
+
+WIP
+
+#### 稳定的网络 ID
+
+WIP
+
+#### 稳定的存储
+
+WIP
+
+#### Pod 名称标签
+
+WIP
+
+### 部署与扩缩保证
+
+WIP
+
+#### Pod 管理策略
+
+WIP
+
+### 更新策略
+
+WIP
+
+### 滚动更新
+
+WIP
+
+#### 分区滚动更新
+
+WIP
+
+#### 最大不可用 Pod
+
+WIP
+
+#### 强制回滚
+
+WIP
+
+### PersistentVolumeClaim 保留
+
+WIP
+
+#### 副本数
 
 WIP
 
 ## DaemonSet
 
+DaemonSet 确保所有（或者部分）节点运行拷贝的 Pod。当节点被添加到集群时，Pods 也同样的被添加。当节点从集群中移除时，这些 Pods 则被垃圾回收。删除 DaemonSet 将会清理其创建的 Pods。
+
+DaemonSet 的一些典型的用例：
+
+- 在每个节点上运行集群守护进程
+- 在每个节点上运行日志收集守护进程
+- 在每个节点上运行监控守护进程
+
+一种简单的用法是为每种类型的守护进程在所有节点上都启动一个 DaemonSet。一个稍微复杂的用法是为同一种守护进程部署多个 DaemonSet；每个具有不同的标志，并且对不同硬件类型具有不同的内存，CPU 要求。
+
+### 编写 DaemonSet Spec
+
+WIP
+
+#### 创建 DaemonSet
+
+WIP
+
+#### 必须字段
+
+WIP
+
+#### Pod 模板 {#DaemonSetPodTemplate}
+
+WIP
+
+#### Pod 选择符
+
+WIP
+
+#### 仅在某些节点上运行 Pod
+
+WIP
+
+### Daemon Pods 如何被调度
+
+WIP
+
+#### 通过默认调度器调度
+
+WIP
+
+#### 污点和容忍度
+
+WIP
+
+### 与 DaemonSet 通信
+
+WIP
+
+### 更新 DaemonSet
+
+WIP
+
+### DaemonSet 替代方案
+
+WIP
+
+#### init 脚本 {#DaemonSetInitScripts}
+
+WIP
+
+#### 裸 Pod {#DaemonSetBarePods}
+
+WIP
+
+#### 静态 Pod {#DaemonSetStaticPods}
+
+WIP
+
+#### Deployments {#DaemonSetDeployment}
+
 WIP
 
 ## Jobs
+
+WIP
+
+### 运行示例 Job
+
+WIP
+
+### 编写 Job 规约
+
+WIP
+
+#### Pod 模板 {#JobsPodTemplate}
+
+WIP
+
+#### Pod 选择符 {#JobsPodSelector}
+
+WIP
+
+#### Job 并行执行
+
+WIP
+
+#### 完成模式
+
+WIP
+
+### 处理 Pod 和容器失效
+
+WIP
+
+#### Pod 回退失效策略
+
+WIP
+
+### Job 终止与清理
+
+WIP
+
+### 自动清理完成的 Job
+
+WIP
+
+#### 已完成 Job 的 TTL 机制
+
+WIP
+
+### Job 模式
+
+WIP
+
+### 高级用法
+
+WIP
+
+#### 挂起 Job
+
+WIP
+
+#### 可变调度指令
+
+WIP
+
+#### 指定 Pod 选择符
+
+WIP
+
+#### 使用 Finalizer 追踪 Job
+
+WIP
+
+### 替代方案 {#JobsAlternatives}
+
+WIP
+
+#### 裸 Pod {#JobsBarePod}
+
+WIP
+
+#### 副本控制器
+
+WIP
+
+#### 单个 Job 启动控制器 Pod
 
 WIP
 

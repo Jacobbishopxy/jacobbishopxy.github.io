@@ -8,6 +8,7 @@
 		"combinators",
 		"dtype",
 		"epoll",
+		"Finalizer",
 		"finalizers",
 		"GRPC",
 		"Konnectivity",
