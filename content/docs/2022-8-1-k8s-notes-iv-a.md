@@ -261,9 +261,7 @@ Pod 阶段的数量和含义是严格定义的。除了文档中列举的内容�
 每个状态都有特定的意义：
 
 {% styledblock(class="color-beige") %}
-
 等待 Waiting
-
 {% end %}
 
 一个容器处于 `Waiting` 状态仍然会执行操作以便完成启动：例如，从镜像仓库中拉取容器镜像，或者是应用 Secret 数据。当使用 `kubectl` 查询带有 `Waiting` 状态容器的 Pod 时，同样也可以看到容器为什么处于当前状态的原因信息汇总。
@@ -290,43 +288,194 @@ Pod 阶段的数量和含义是严格定义的。除了文档中列举的内容�
 
 ### Pod 状况
 
-WIP
+Pod 的 PodStatus 是一个包含 PodConditions 的数组。其中是 Pod 可能通过的测试：
 
-#### Pod 准备
+- `PodScheduled`：Pod 被调度去一个节点。
+- `ContainersReady`：Pod 中所有容器就绪。
+- `Initialized`：所有 init 容器成功完成。
+- `Ready`：Pod 可以为请求提供服务，并且应该被添加至所有匹配服务的负载均衡池。
 
-WIP
+| 数值               | 描述                                                           |
+| ------------------ | -------------------------------------------------------------- |
+| type               | Pod 状况的名称                                                 |
+| status             | 表明该状况是否适用，可能的值为"True"，"False" 或者 "Unknown"。 |
+| lastProbeTime      | 上次探测 Pod 状况时的时间戳                                    |
+| lastTransitionTime | 上次探测 Pod 转换状态时的时间戳                                |
+| reason             | 机器可读的，驼峰编码的文字，表述上次状况变化的原因             |
+| message            | 人类可读的消息，表明上次状态转换的详细信息                     |
 
-#### Pod 准备的状态
+#### Pod 就绪
 
-WIP
+**特性状态**：`v1.14 [stable]`
+
+用户的应用程序可以注入额外的反馈或者信号至 PodStatus：Pod 就绪（Pod Readiness）。要使用这个特性，可以在 Pod 的 `spec` 设置 `readinessGates` 列表，来为 kubelet 提供一组额外的状况供其评估 Pod 就绪时使用。
+
+就绪门控 Readiness gates 根据 `status.condition` 字段现有的状态决定。如果 k8s 不能发现 Pod 中 `status.conditions` 字段中某一个状况，那么该状况的默认值为 "`False`"。
+
+这里是一个例子：
+
+```yaml
+kind: Pod
+---
+spec:
+  readinessGates:
+    - conditionType: "www.example.com/feature-1"
+status:
+  conditions:
+    - type: Ready # a built in PodCondition
+      status: "False"
+      lastProbeTime: null
+      lastTransitionTime: 2018-01-01T00:00:00Z
+    - type: "www.example.com/feature-1" # an extra PodCondition
+      status: "False"
+      lastProbeTime: null
+      lastTransitionTime: 2018-01-01T00:00:00Z
+  containerStatuses:
+    - containerID: docker://abcd...
+      ready: true
+```
+
+所添加的 Pod 状况名称必须满足 k8s 标签键名格式。
+
+#### Pod 就绪的状态
+
+`kubectl patch` 命令不支持修改对象状态。为 pod 设置 `status.conditions`，应用程序以及 operators 需要使用 `PATCH` 操作。用户可以使用 k8s 客户端库来编写代码为 Pod 就绪设置自定义的 Pod 状况。
+
+对于使用自定义状况而言，Pod 只有满足下列表述才会被评估为就绪：
+
+- Pod 中所有容器都已就绪；
+- `readinessGates` 中的所有状况都为 `True` 值。
+
+当 Pod 容器都已就绪，但至少一个自定义状况没有值或者值为 `False`，kubelet 设置 Pod 的状况为 `ContainersReady`。
 
 ### 容器探针
 
-WIP
+*探针 probe*是 kubelet 用于间断性的诊断容器的工具。kubelet 在容器中执行代码或者发起一个网络请求来执行诊断。
 
 #### 检查机制
 
-WIP
+使用探针检查容器有四种不同的方法。每个探针必须定义下述四种机制的一种：
+
+{% styledblock(class="color-beige font-bold") %}
+exec
+{% end %}
+
+在容器中执行指定的命令。如果命令返回的状态码为 0，那么诊断被视为成功。
+
+{% styledblock(class="color-beige font-bold") %}
+grpc
+{% end %}
+
+使用 gRPC 进行远程过程调用。目标需要实现 gRPC 健康检查。如果响应的状态为 SERVING 那么诊断视为成功。
+
+{% styledblock(class="color-beige font-bold") %}
+httpGet
+{% end %}
+
+对 Pod 的 IP 地址以及特定端口与路径，使用 HTTP GET 请求。如果响应的状态代码大于等于 200 并小于 400，那么诊断视为成功。
+
+{% styledblock(class="color-beige font-bold") %}
+tcpSocket
+{% end %}
+
+对 Pod 的 IP 地址以及特定端口，使用 TCP 检查。如果远程系统（即容器）在连接建立后立刻关闭连接，视为健康。
 
 #### 探测结果
 
-WIP
+每个探针都有以下三个结果之一：
+
+{% styledblock(class="color-beige font-bold") %}
+Success
+{% end %}
+
+容器通过了诊断。
+
+{% styledblock(class="color-beige font-bold") %}
+Failure
+{% end %}
+
+容器没有通过诊断。
+
+{% styledblock(class="color-beige font-bold") %}
+Unknown
+{% end %}
+
+诊断失败（没有执行操作，kubelet 将会进一步检查）
 
 #### 探测类型
 
-WIP
+kubelet 可以选择性的执行和响应三种类型的容器探针：
+
+{% styledblock(class="color-beige font-bold") %}
+存活探针 livenessProbe
+{% end %}
+
+表明容器是否正在运行。如果存活探针失败，kubelet 则会杀死容器，容器受到重启策略影响。如果一个容器没有提供存活探针，默认的状态则是*Success*。
+
+{% styledblock(class="color-beige font-bold") %}
+就绪探针 readinessProbe
+{% end %}
+
+表明容器是否就绪对请求进行响应。如果就绪探针失败，那么端点控制器则会从所有匹配该 Pod 服务的端点列表中，移除该 Pod 的 IP 地址。在初次延迟之前的默认就绪值为*Failure*。如果一个容器没有提供就绪探针，则默认值为*Success*。
+
+{% styledblock(class="color-beige font-bold") %}
+启动探针 startupProbe
+{% end %}
+
+表明容器中的应用是否已经启动。如果提供了启动探针，其余的探针都会被禁用，直到其成功。如果启动探针失败，kubelet 则会杀死容器，容器受到重启策略影响。如果容器没有提供启动探针，则默认值为*Success*。
+
+##### 何时该使用存活探针？
+
+**特性状态**：`v1.0 [stable]`
+
+如果容器中的进程能够在遇到问题或不健康的情况下自行崩溃，则不一定需要存活探针；`kubelet` 将根据 Pod 的 `restartPolicy` 自动执行修复操作。
+
+如果用户希望容器在探测失败时被杀死并重启，那么请指定一个存活探针，并指定 `restartPolicy` 为 `"Always"` 或 `"OnFailure"`。
+
+##### 何时该使用就绪探针？
+
+**特性状态**：`v1.0 [stable]`
+
+如果要尽在探测成功时才开始向 Pod 发送请求流量，请指定就绪探针。这种情况下，就绪探针可能与存货探针相同，但是规约中的就绪探针的存在意味着 Pod 将在启动阶段不接受任何数据，并且只有在探针探测成功后才开始接收数据。
+
+如果用户希望容器能够自行进入维护状态，也可以指定一个就绪探针，检查一个不同于存活探针的就绪端点。
+
+如果用户的应用程序对后端服务有严格的依赖性，则可以同时实现存活探针与就绪探针。当应用程序本身是健康的，存活探针检测通过后，就绪探针会额外检查每个所需的后端服务是否可用。这样可以帮助用户避免将流量导向只能返回错误信息的 Pod。
+
+如果用户的容器需要在启动期间加载大型数据，配置文件或执行迁移，则可以使用启动探针。然而，如果只想区分已经失败的应用和仍在处理其启动数据的应用，则更倾向于使用就绪探针。
+
+> **说明：**
+> 注意如果只想在 Pod 被删除时能够排空请求，则不一定需要使用就绪探针；删除 Pod 时，Pod 会自动将自身置于未就绪状态，无论就绪探针是否存在。等待 Pod 中的容器停止期间，Pod 会一直处于未就绪状态。
+
+##### 何时该使用启动探针？
+
+**特性状态**：`v1.20 [stable]`
+
+Pod 中所包含的容器需要较长时间才能启动好，那么启动探针是有用的。用户不再需要配置一个较长的存活探测时间间隔，只需要设置另一个独立的配置选定对启动期间的容器进行探测，从而允许使用远超出存活时间间隔所允许的时长。
+
+如果容器启动时间通常超出 `initialDelaySeconds + failureThreshold * periodSeconds` 总值，则应该设置一个启动探针，对存活探针所使用的同一端点执行检查。`periodSeconds` 的默认值是 10 秒。用户应该将其 `failureThreshold` 设置的很高，以便容器有充足的时间完成启动，并且避免更改存活探针所使用的默认值。改设置有利于减少死锁的发生。
 
 ### Pod 的终止
 
-WIP
+因为 Pods 代表着运行在集群中节点的进程，当这些进程不再被需要时（不是通过 `KILL` 信号，粗暴的停止并且无法再被清除），允许它们能够优雅的终结是很重要的。
+
+该设计提供用户请求删除并且知道何时进程终结，同时能确保这些删除最终能够完成。当用户请求删除一个 Pod，集群会在 Pod 被强制杀死之前，记录并追踪预期的时间。在存在强制关闭的前提下，kubelet 会尝试优雅的关闭。
+
+通常情况下，容器运行时发送一个 TERM 信号到每个容器的主进程。很多容器运行时都能注意到容器镜像中所定义的 `STOPSIGNAL` 值，发送该信号而不是 TERM。一旦超出了优雅终结的期限，容器运行时会像所有剩余进程发送 KILL 信号，之后 Pod 就会被从 API 服务器上移除。如果 `kubelet` 或者容器运行时的管理服务在等待进程终止期间被重启，集群则会从头开始重试，给予 Pod 完成的优雅终结期限。
 
 #### 强制终止 Pod
 
-WIP
+默认情况下，所有的删除都是优雅的带有 30 秒期限。`kubectl delete` 命令提供 `--grace-period=<seconds>` 选项让用户覆盖该默认值。
+
+设置优雅期间为 `0` 意味着立刻从 API 服务器删除 Pod。如果 Pod 仍然运行在某节点上，强制删除操作会触发 `kubelet` 立刻执行清理操作。
+
+执行强制删除操作时，API 服务器不再等待来自 `kubelet` 的，关于 Pod 已经在原来运行的节点上终止执行的确认消息。API 服务器直接删除 Pod 对象，这样新的与之同名的 Pod 可以被创建。在节点上，被设置立刻终止的 Pod 仍然会在被强行杀死之前获得一些时间期限。
 
 #### 失效 Pod 的垃圾收集
 
-WIP
+对于已失败的 Pod 而言，对应的 API 对象仍然会保留在集群的 API 服务器上，直到用户或者控制器进程显式的删除它。
+
+控制面组件会在 Pod 个数超出所配置的阈值（基于 `kube-controller-manager` 的 `terminated-pod-gc-threshold` 设置）时删除已终止的 Pod（阶段值为 `Succeeded` 或 `Failed`）。这一行为会避免随着时间不断创建和终止 Pod 而引起的资源泄漏问题。
 
 ## Init 容器
 
