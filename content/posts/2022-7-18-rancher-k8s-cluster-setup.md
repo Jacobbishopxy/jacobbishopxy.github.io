@@ -210,7 +210,7 @@ Container runtime.
 
 1. After enter your `Cluster Name`, keep everything default, click `Next` and in `Node Options`, select `etcd` and `Control Plane` for `140` and the rest `141`, `142` and `143` as `Worker`.
 
-### Accessing clusters
+### Accessing Clusters
 
 Accessing clusters with `kubectl`:
 
@@ -248,6 +248,21 @@ Official Helm [document](https://helm.sh/docs/) and Rancher's Helm [document](ht
 
 ## Resolutions
 
+- Docker images mirror (optional):
+
+  execute `vim /etc/docker/daemon.json`, add:
+
+  ```json
+  { "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"] }
+  ```
+
+  then reload services:
+
+  ```sh
+  sudo systemctl daemon-reload
+  sudo systemctl restart docker
+  ```
+
 - Clear all containers and images when [deployment failed](https://github.com/rancher/rancher/issues/21926):
 
   ```sh
@@ -275,6 +290,16 @@ Official Helm [document](https://helm.sh/docs/) and Rancher's Helm [document](ht
   ```
 
   Note that calling `rm -rf ...` is very useful, when encounter `etcd connection refused` problem. This usually happened when cached some previous cluster's residual files.
+
+- `rm: cannot remove '/var/lib/kubelet/pods/<pods-id>': Device or resource busy`
+
+  Simply by `umount` command:
+
+  ```sh
+  sudo umount /var/lib/kubelet/pods/<pods-id>
+  ```
+
+  Or `sudo reboot` then execute commands above
 
 - Failed to bring up Etcd Plane: etcd cluster is unhealthy. [solution](https://blog.csdn.net/xtjatswc/article/details/108558156)
 
