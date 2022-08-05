@@ -62,25 +62,27 @@ spec:
 
 `log-config` 这个 ConfigMap 被挂载为一个卷，其存储在入口 `log_level` 的所有内容被挂载进 Pod 的 `/etc/config/log_level` 路径上。注意这个路径是来源于卷的 `mountPath` 和 `path` 键的 `log_level`。
 
-> **注意：**
->
-> - 用户必须在使用前创建 ConfigMap
-> - 容器使用 ConfigMap 作为 `subPath` 卷挂载不会接收到 ConfigMap 的更新。
-> - 文件形式的文本数据使用 UTF-8 编码。其它的字符编码则使用 `binaryData`。
+{% blockquote_note() %}
+用户必须在使用前创建 ConfigMap。
+容器使用 ConfigMap 作为 `subPath` 卷挂载不会接收到 ConfigMap 的更新。
+文件形式的文本数据使用 UTF-8 编码。其它的字符编码则使用 `binaryData`。
+{% end %}
 
 #### downwardAPI
 
 `downwardAPI` 卷使得 downward API 数据对应用程序可用。这种卷类型挂载一个目录并在纯文本文件中写入请求数据。
 
-> **注意：**
-> 容器使用 downward API 以 `subPath` 卷挂载时，不会接收到字段的更新。
+{% blockquote_note() %}
+容器使用 downward API 以 `subPath` 卷挂载时，不会接收到字段的更新。
+{% end %}
 
 #### emptyDir
 
 当一个 Pod 被分配 到一个节点时，`emptyDir` 卷首次被创建，并且只要该 Pod 运行在节点上，卷就一直存在。正如名称所示，`emptyDir` 卷开始是空的。Pod 中所有的容器可以读写 `emptyDir` 中同样的文件，即使卷可以被挂载在容器里同样或者不同的路径上。无论什么原因 Pod 从节点上被移除时，`emptyDir` 的数据都会被永久删除。
 
-> **注意：**
-> 容器崩溃并不会从节点上移除 Pod。`emptyDir` 卷中的数据在容器崩溃时是安全的。
+{% blockquote_note() %}
+容器崩溃并不会从节点上移除 Pod。`emptyDir` 卷中的数据在容器崩溃时是安全的。
+{% end %}
 
 `emptyDir` 的一些用法：
 
@@ -90,8 +92,9 @@ spec:
 
 根据用户环境的不同，`empty` 卷存储在什么介质上是根据节点决定的，例如磁盘或 SSD，或网络存储。然而如果用户设置 `emptyDir.medium` 字段为 `"Memory"`，k8s 会挂载一个 tmpfs（基于 RAM 的文件系统）。虽然 tmpfs 非常快，但是要注意不像磁盘，tmpfs 会在节点重启时被清除，并且用户写入的所有文件都会计入容器的内存消耗，因此会受到容器内存限制的约束。
 
-> **注意：**
-> 如果 `SizeMemoryBackedVolumes` 特性门控开启，用户可以基于内存提供的卷指定大小。如果未指定大小，则基于内存的卷的大小为 Linux 主机上内存的 50%。
+{% blockquote_note() %}
+如果 `SizeMemoryBackedVolumes` 特性门控开启，用户可以基于内存提供的卷指定大小。如果未指定大小，则基于内存的卷的大小为 Linux 主机上内存的 50%。
+{% end %}
 
 例如：
 
@@ -114,7 +117,7 @@ spec:
 
 #### hostPath
 
-{% blockquote_alert(title="警告：") %}
+{% blockquote_alert() %}
 HostPath 卷存在很多安全风险，最佳做法是尽可能的避免使用 HostPath。当必须使用时，它的范围仅限于所需的文件或目录，并以制度方式挂载。
 
 如果通过 AdmissionPolicy 限制 HostPath 对特定目录的访问，则必须要求 `volumeMounts` 使用 `readOnly` 挂载使策略生效。
@@ -173,8 +176,9 @@ PersistentVolume 的 `volumeMode` 可以被设置为 “Block”（而不是默�
 
 用户可以在 k8s 之外单独运行静态驱动更改本地卷的生命周期管理。请注意，此驱动不支持动态配置。
 
-> **说明：**
-> 如果不使用外部静态驱动来管理卷的生命周期，用户需要手动清理和删除 local 类型的持久卷。
+{% blockquote_note() %}
+如果不使用外部静态驱动来管理卷的生命周期，用户需要手动清理和删除 local 类型的持久卷。
+{% end %}
 
 #### projected
 

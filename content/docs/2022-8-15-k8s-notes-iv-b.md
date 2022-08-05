@@ -775,8 +775,9 @@ deployment.apps/nginx-deployment patched
 
 可以在 Deployment 中设置 `.spec.revisionHistoryLimit` 字段来指定保留该 Deployment 的旧 ReplicaSet。其余的 ReplicaSet 将在后台被垃圾回收。默认情况下，该值为 10。
 
-> **说明：**
-> 显式将此字段设置为 0 将导致 Deployment 的所有历史记录被清空，因此 Deployment 将无法回滚。
+{% blockquote_note() %}
+显式将此字段设置为 0 将导致 Deployment 的所有历史记录被清空，因此 Deployment 将无法回滚。
+{% end %}
 
 ### 金丝雀部署
 
