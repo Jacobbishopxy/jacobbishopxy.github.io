@@ -1,11 +1,12 @@
 {
 	"cSpell.words": [
-		"aligncenter",
 		"apiserver",
 		"autoscaler",
+		"blockquote",
 		"cadvisor",
 		"combinator",
 		"combinators",
+		"configmap",
 		"dtype",
 		"epoll",
 		"Finalizer",
@@ -23,7 +24,6 @@
 		"Rustc",
 		"Rustonomicon",
 		"rustup",
-		"styledblock",
 		"syscall"
 	]
 }

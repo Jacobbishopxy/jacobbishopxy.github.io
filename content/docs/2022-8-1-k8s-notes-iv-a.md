@@ -260,19 +260,19 @@ Pod 阶段的数量和含义是严格定义的。除了文档中列举的内容�
 
 每个状态都有特定的意义：
 
-{% styledblock(class="color-beige") %}
+{% styled_block(class="color-beige") %}
 等待 Waiting
 {% end %}
 
 一个容器处于 `Waiting` 状态仍然会执行操作以便完成启动：例如，从镜像仓库中拉取容器镜像，或者是应用 Secret 数据。当使用 `kubectl` 查询带有 `Waiting` 状态容器的 Pod 时，同样也可以看到容器为什么处于当前状态的原因信息汇总。
 
-{% styledblock(class="color-beige") %}
+{% styled_block(class="color-beige") %}
 运行 Running
 {% end %}
 
 `Running` 状态代表着一个容器正在执行并且没有问题。如果有配置过 `postStart` 钩子，那么该回调已经执行且已经完成了。如果使用 `kubectl` 查询带有 `Running` 状态容器的 Pod 时，同样也会看到关于容器进入 `Running` 状态的信息。
 
-{% styledblock(class="color-beige") %}
+{% styled_block(class="color-beige") %}
 终结 Terminated
 {% end %}
 
@@ -356,25 +356,25 @@ status:
 
 使用探针检查容器有四种不同的方法。每个探针必须定义下述四种机制的一种：
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 exec
 {% end %}
 
 在容器中执行指定的命令。如果命令返回的状态码为 0，那么诊断被视为成功。
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 grpc
 {% end %}
 
 使用 gRPC 进行远程过程调用。目标需要实现 gRPC 健康检查。如果响应的状态为 SERVING 那么诊断视为成功。
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 httpGet
 {% end %}
 
 对 Pod 的 IP 地址以及特定端口与路径，使用 HTTP GET 请求。如果响应的状态代码大于等于 200 并小于 400，那么诊断视为成功。
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 tcpSocket
 {% end %}
 
@@ -384,19 +384,19 @@ tcpSocket
 
 每个探针都有以下三个结果之一：
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 Success
 {% end %}
 
 容器通过了诊断。
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 Failure
 {% end %}
 
 容器没有通过诊断。
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 Unknown
 {% end %}
 
@@ -406,19 +406,19 @@ Unknown
 
 kubelet 可以选择性的执行和响应三种类型的容器探针：
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 存活探针 livenessProbe
 {% end %}
 
 表明容器是否正在运行。如果存活探针失败，kubelet 则会杀死容器，容器受到重启策略影响。如果一个容器没有提供存活探针，默认的状态则是*Success*。
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 就绪探针 readinessProbe
 {% end %}
 
 表明容器是否就绪对请求进行响应。如果就绪探针失败，那么端点控制器则会从所有匹配该 Pod 服务的端点列表中，移除该 Pod 的 IP 地址。在初次延迟之前的默认就绪值为*Failure*。如果一个容器没有提供就绪探针，则默认值为*Success*。
 
-{% styledblock(class="color-beige font-bold") %}
+{% styled_block(class="color-beige font-bold") %}
 启动探针 startupProbe
 {% end %}
 
