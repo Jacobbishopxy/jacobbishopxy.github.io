@@ -11,7 +11,7 @@ My name is Jacob Xie, and I'm a fullstack developer also a data engineer.
 {{ br() }}
 {{ br() }}
 
-<div class="column is-8 is-offset-4 sc_poem_font">
+{% styled_block(class="column is-8 is-offset-4 sc_poem_font") %}
 
 芦叶满汀州，寒沙带浅流。
 
@@ -19,7 +19,7 @@ My name is Jacob Xie, and I'm a fullstack developer also a data engineer.
 
 柳下系船犹未稳，能几日，又中秋。
 
-<br/>
+{{ br() }}
 
 黄鹤断矶头，故人今在否？
 
@@ -27,4 +27,4 @@ My name is Jacob Xie, and I'm a fullstack developer also a data engineer.
 
 欲买桂花同载酒，终不似，少年游。
 
-</div>
+{% end %}
