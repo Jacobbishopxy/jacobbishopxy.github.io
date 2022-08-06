@@ -1,6 +1,6 @@
 +++
 title = "Impl Index for polars' Series"
-description = "A little"
+description = "An experimental attempt"
 date = 2022-08-01
 
 [taxonomies]

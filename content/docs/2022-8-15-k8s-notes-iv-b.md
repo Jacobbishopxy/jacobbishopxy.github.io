@@ -17,8 +17,9 @@ toc = true
 
 在一个 Deployment 中用户描述一个*期望的状态*，接着 Deployment 控制器通过速度控制改变现有状态至期望状态。用户可以定义 Deployments 来创建新的 ReplicaSets，或者移除现有的 Deployments 并通过新的 Deployments 继承它们的资源。
 
-> **注意：**
-> 不要管理由 Deployment 所属的 ReplicaSets。
+{% blockquote_note() %}
+不要管理由 Deployment 所属的 ReplicaSets。
+{% end %}
 
 ### 使用案例
 
@@ -74,7 +75,9 @@ spec:
 
 - `.spec.selector` 字段定义 Deployment 如何寻找 Pods 来管理。在这里，选择在 Pod 模版中定义的标签（`app: nginx`）。不过更复杂的选择规则也是可能得，只要 Pod 模板本身满足所给的规则即可。
 
-  > **说明：** > `spec.selector.matchLabels` 字段是一个键值对映射。在 `matchLabels` 映射中的每个 `{key, value}` 映射等效于 `matchExpressions` 中的一个元素，即其 `key` 字段是 ”key“，`operator` 为 "In"，`values` 数组仅包含 ”value“。在 `matchLabels` 和 `matchExpressions` 中给出的所有条件都必须满足才能匹配。
+  {% blockquote_note() %}
+  `spec.selector.matchLabels` 字段是一个键值对映射。在 `matchLabels` 映射中的每个 `{key, value}` 映射等效于 `matchExpressions` 中的一个元素，即其 `key` 字段是 ”key“，`operator` 为 "In"，`values` 数组仅包含 ”value“。在 `matchLabels` 和 `matchExpressions` 中给出的所有条件都必须满足才能匹配。
+  {% end %}
 
 - `template` 字段包含以下子字段：
 
@@ -151,8 +154,9 @@ spec:
 
 ### 更新 Deployment {#UpdatingADeployment}
 
-> **注意：**
-> Deployment 的上线仅且仅当 Deployment 的 Pod 模板（即 `.spec.template`）被更新时才会被触发，例如标签或模板的镜像被更新。其余的更新，例如扩展 Deployment 不会触发上线过程。
+{% blockquote_note() %}
+Deployment 的上线仅且仅当 Deployment 的 Pod 模板（即 `.spec.template`）被更新时才会被触发，例如标签或模板的镜像被更新。其余的更新，例如扩展 Deployment 不会触发上线过程。
+{% end %}
 
 以下步骤更新 Deployment：
 
@@ -279,8 +283,9 @@ spec:
 
 有时可能需要回滚一个 Deployment；例如当 Deployment 不稳定时导致的循环崩溃。默认情况下，所有的 Deployment 的回滚历史都会保存在系统中使得可以任何时候回滚（可以修改修订版本的历史限制）。
 
-> **注意：**
-> 一个 Deployment 的修订版本会在 Deployment 回滚触发时创建。这意味着只有修改 Deployment Pod 模板（`.spec.template`）改变后，新的修订版本才会被创建。其它的更新，例如扩展 Deployment，不会创建 Deployment 修订版本，因此用户可以同时执行手动缩放或自动缩放。换言之，当回滚到较早的修订版本时，只有 Deployment 的 Pod 模板部分会被回滚。
+{% blockquote_note() %}
+一个 Deployment 的修订版本会在 Deployment 回滚触发时创建。这意味着只有修改 Deployment Pod 模板（`.spec.template`）改变后，新的修订版本才会被创建。其它的更新，例如扩展 Deployment，不会创建 Deployment 修订版本，因此用户可以同时执行手动缩放或自动缩放。换言之，当回滚到较早的修订版本时，只有 Deployment 的 Pod 模板部分会被回滚。
+{% end %}
 
 - 假设在更新 Deployment 时有一个 typo，把镜像的名称写成了 `nginx:1.161` 而不是 `nginx:1.16.1`：
 
@@ -339,8 +344,9 @@ spec:
   nginx-deployment-3066724191-08mng   0/1       ImagePullBackOff   0          6s
   ```
 
-  > **注意：**
-  > Deployment 控制器会自动停止坏的上线过程，并停止扩展新的 ReplicaSet。这是依赖于用户可以指定的 rollingUpdate 参数（`maxUnavailable`）。k8s 默认设置该值为 25%。
+  {% blockquote_note() %}
+  Deployment 控制器会自动停止坏的上线过程，并停止扩展新的 ReplicaSet。这是依赖于用户可以指定的 rollingUpdate 参数（`maxUnavailable`）。k8s 默认设置该值为 25%。
+  {% end %}
 
 - 通过 `kubectl describe deployment` 获取 Deployment 详细信息，输出类似于：
 
@@ -681,8 +687,9 @@ nginx-deployment-618515232    11        11        11        7m
   nginx-3926361531   3         3         3         28s
   ```
 
-> **注意：**
-> 不可以回滚处于暂停状态的 Deployment 除非先恢复它。
+{% blockquote_note() %}
+不可以回滚处于暂停状态的 Deployment 除非先恢复它。
+{% end %}
 
 ### Deployment 状态 {#DeploymentStatus}
 
@@ -819,8 +826,9 @@ API 版本 `apps/v1`，`.spec.selector` 以及 `.metadata.labels` 不会默认�
 
 Deployment 可能会终结匹配到标签 selector 的 Pods，如果它们的模板不同于 `.spec.template` 或者该 Pods 总数超出 `.spec.replicas`。它也会创建带有 `.spec.template` 的新 Pods，如果 Pods 的总数小于期望值。
 
-> **注意：**
-> 用户不该直接创建与此选择符匹配的 Pods，无论是直接通过另一个 Deployment，或者是另一个控制器例如 ReplicaSet 或者一个 ReplicationController。如果用户这么做了，第一个 Deployment 会认为它创建了这些 Pod。k8s 不会阻止该行为。
+{% blockquote_note() %}
+用户不该直接创建与此选择符匹配的 Pods，无论是直接通过另一个 Deployment，或者是另一个控制器例如 ReplicaSet 或者一个 ReplicationController。如果用户这么做了，第一个 Deployment 会认为它创建了这些 Pod。k8s 不会阻止该行为。
+{% end %}
 
 如果有多个控制器的选择符发生重叠，则控制器之间会因为冲突而无法正常工作。
 
@@ -832,8 +840,9 @@ Deployment 可能会终结匹配到标签 selector 的 Pods，如果它们的模
 
 当 `.spec.strategy.type==Recreate` 时，所有现存的 Pods 会在新的 Pods 创建之前被杀死。
 
-> **注意：**
-> 这只会确保为了升级而创建新 Pod 之前其他 Pod 都已经终止。如果升级一个 Deployment，所有旧版本的 Pod 都会被立刻终止。控制器等待这些 Pod 被成功移除之后才会创建新版本的 Pod。如果手动删除一个 Pod，其生命周期是由 ReplicaSet 控制的，后者会立刻创建一个替换 Pod（即使旧的 Pod 仍然处于 Terminating 状态）。如果用户需要一种“最多 n 个”的 Pod 个数保证，则需要使用 StatefulSet。
+{% blockquote_note() %}
+这只会确保为了升级而创建新 Pod 之前其他 Pod 都已经终止。如果升级一个 Deployment，所有旧版本的 Pod 都会被立刻终止。控制器等待这些 Pod 被成功移除之后才会创建新版本的 Pod。如果手动删除一个 Pod，其生命周期是由 ReplicaSet 控制的，后者会立刻创建一个替换 Pod（即使旧的 Pod 仍然处于 Terminating 状态）。如果用户需要一种“最多 n 个”的 Pod 个数保证，则需要使用 StatefulSet。
+{% end %}
 
 ##### 滚动更新 Deployment
 

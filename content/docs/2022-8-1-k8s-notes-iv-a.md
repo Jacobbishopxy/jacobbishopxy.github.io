@@ -201,8 +201,9 @@ Pod 中的容器所看到的系统主机名与 Pod 配置的 `name` 属性值相
 
 `kubelet` 自动尝试为每个静态 Pod 在 k8s 的 API 服务器上创建一个镜像 Pod。这意味着在节点上运行的 Pod 在 API 服务器上是可见的，但是不可以通过 API 服务器来控制。
 
-> **说明：**
-> 静态 Pod 的 `spec` 不能引用其他的 API 对象（例如：ServiceAccount，ConfigMap，Secret 等）。
+{% blockquote_note() %}
+静态 Pod 的 `spec` 不能引用其他的 API 对象（例如：ServiceAccount，ConfigMap，Secret 等）。
+{% end %}
 
 ### 容器探针（probes）
 

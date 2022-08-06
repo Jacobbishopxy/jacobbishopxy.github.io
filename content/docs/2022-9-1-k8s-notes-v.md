@@ -65,25 +65,205 @@ Service 定义的抽象能够解耦这种关联。
 
 ### 定义 Service
 
+k8s 中的 Service 是一个 REST 对象，类似于 Pod。像是所有 REST 对象那样，用户可以 `POST` 一个 Service 的定义至 API 服务用于创建新的实例。Service 对象的名称必须是合法的 RFC 1035 标签名称。
+
+例如一组 Pod，它们对外暴露了 9376 端口，同时还被打上 `app=MyApp` 标签：
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+```
+
+上述规范创建了一个新的名为 “my-service” 的 Service 对象，其代理 TCP 端口 9376 并且具有标签 `app=MyApp` 的 Pod 上。
+
+k8s 为该服务分配一个 IP 地址（有时称为“集群 IP”），该 IP 地址由服务代理使用（详见下述 [VIP 和 Service 代理](@/docs/2022-9-1-k8s-notes-v.md#VirtualIPsAndServiceProxies)）。
+
+Service 选择算符的控制器持续扫描匹配选择算符的 Pods，然后 POSTs 更新至一个名为“my-service”的端点对象。
+
+{% blockquote_note() %}
+一个 Service 可以将接收 port 映射到任意的 targetPort。默认情况下，targetPort 将被设置为与 port 字段相同的值。
+{% end %}
+
+Pods 中定义的 port 拥有名称，用户可以在 Service 的 `targetPort` 属性中引用这些名称。例如，用户可以如下绑定 Service 的 `targetPort` 给 Pod：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app.kubernetes.io/name: proxy
+spec:
+  containers:
+    - name: nginx
+      image: nginx:stable
+      ports:
+        - containerPort: 80
+          name: http-web-svc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app.kubernetes.io/name: proxy
+  ports:
+    - name: name-of-service-port
+      protocol: TCP
+      port: 80
+      targetPort: http-web-svc
+```
+
+即使 Service 中使用同一配置名称混合使用多个 Pod，各 Pod 通过不同的端口号支持相同的网络协议，该功能同样适用。这为 Service 的部署和演化提供了很大的灵活性。例如用户可以在新版本中更改 Pod 中后端软件公开的端口号，而不会破坏客户端。
+
+服务的默认协议是 TCP；用户还可以使用任何其他受支持的协议。
+
+由于许多服务需要公开多个端口，因此 k8s 在服务对象上支持多个端口定义。每个端口定义可以具有相同的 `protocol`，也可以具有不同的协议。
+
+#### 没有选择算符的 Service
+
+因为选择算符的关系 Services 通常抽象了 k8s 的访问，但是当使用相关的端点对象同时没有选择算符时，Service 可以抽象其他类型的后端，包括运算在集群外的。例如：
+
+- 用户希望在生产环境下拥有一个外部的数据库集群，但是在测试环境下使用自身的数据库。
+- 用户希望 Service 指向另一个不同命名空间的 Service 或是在另一集群里的。
+- 用户希望迁移工作负载至 k8s。当评估该方法时，仅在 k8s 中运行一部分后端。
+
+任何这些场景，都能定义没有选择算符的 Service。例如
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+```
+
+由于此服务没有选择算符，因此不会自动创建相应的端点对象。用户可以通过手动添加端点对象，将服务手动映射到运行该服务的网络地址和端口：
+
+```yaml
+apiVersion: v1
+kind: Endpoints
+metadata:
+  # 这里的 name 要与 Service 的名字相同
+  name: my-service
+subsets:
+  - addresses:
+      - ip: 192.0.2.42
+    ports:
+      - port: 9376
+```
+
+Endpoints 对象的名称必须是合法的 DNS 子域名。
+
+当用户为某 Service 创建一个端点对象时，用户需要将新对象的名称设置为与 Service 的名称相同。
+
+#### 超出容量的 Endpoints
+
 WIP
 
-### 虚拟 IP 和 Service 代理
+#### EndpointSlices
+
+WIP
+
+#### 应用协议
+
+WIP
+
+### 虚拟 IP 和 Service 代理 {#VirtualIPsAndServiceProxies}
+
+在 k8s 集群中，每个节点运行一个 `kube-proxy` 进程。`kube-proxy` 负载为 Service 实现了一种 VIP（虚拟 IP）的形式，而不是 `ExternalName` 的形式。
+
+#### 为什么不使用 DNS 轮询
+
+有人会问为什么 k8s 依赖代理将入站流量转发到后端，使用其他方法呢？例如是否可以配置具有多个 A 值（或 IPv6 为 AAAA）的 DNS 记录，并依靠轮询名称解析？
+
+使用服务代理有以下几个原因：
+
+- DNS 实现的历史很久，它不遵守记录 TTL，并且在名称查找结构到期后对其进行缓存。
+- 有些应用程序仅执行一次 DNS 查找，并无限期的缓存结果。
+- 即使应用和库进行了适当的重新解析，DNS 记录上的 TTL 值低或为零也可能会给 DNS 带来高负载，从而使管理变得困难。
+
+#### userspace 代理模式
+
+WIP
+
+#### iptables 代理模式
+
+WIP
+
+#### IPVS 代理模式
 
 WIP
 
 ### 多端口 Service
 
-WIP
+有些服务用户需要公开多个端口。k8s 允许在 Service 对象上配置多个端口定义。为服务使用多个端口时，必须提供所有端口名称消除歧义。例如：
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: MyApp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 9376
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 9377
+```
+
+{% blockquote_note() %}
+与一般的 k8s 名称一样，端口名称只能包含小写字母数字字符和 `-`。端口名称还必须以字母数字字符开头和结尾。
+
+例如，名称 `123-abc` 和 `web` 有效，但是 `123_abc` 和 `-web` 无效。
+{% end %}
 
 ### 选择自己的 IP 地址
 
-WIP
+在 `Service` 创建的请求中，可以通过设置 `spec.clusterIP` 字段来指定自己的集群 IP 地址。比如，希望替换一个已经存在的 DNS 条目，或者遗留系统已经配置了一个固定的 IP 且很难重新配置。
+
+用户选择的 IP 地址必须合法，并且这个 IP 地址在 `service-cluster-ip-range` CIDR 范围内，这对 API 服务器来说是通过一个标识来指定的。如果 IP 地址不合法，API 服务器会返回 HTTP 状态码 422，表示值不合法。
 
 ### 流量策略
+
+#### 外部流量策略
+
+WIP
+
+#### 内部流量策略
 
 WIP
 
 ### 服务发现
+
+k8s 支持两种基本的服务发现模式 -- 环境变量和 DNS。
+
+#### 环境变量
+
+WIP
+
+#### DNS
 
 WIP
 
@@ -107,11 +287,15 @@ WIP
 
 WIP
 
-## 使用拓扑键实现拓扑感知的流量路由
+## Pod 与 Service 的 DNS
+
+k8s 为 Service 和 Pod 创建 DNS 记录。用户可以使用一致的 DNS 名称而非 IP 地址访问 Service。
+
+### 介绍 {#PodsAndDNSForServices-Introduction}
 
 WIP
 
-## Pod 与服务的 DNS
+### Pods {#PodsAndDNSForServices-Pods}
 
 WIP
 
