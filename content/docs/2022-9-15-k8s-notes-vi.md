@@ -275,6 +275,38 @@ WIP
 
 ## 持久卷 Persistent Volumes
 
+### 介绍
+
+存储的管理是一个与计算实例的管理完全不同的问题。PersistentVolume 子系统为用户和管理员提供了一组 API，将存储如何制备的细节从其如何被使用中抽象出来。为了实现这点，引入了两个新的 API 资源：PersistentVolume 和 PersistentVolumeClaim。
+
+**持久卷（PersistentVolume，PV）**是集群中的一块存储，可以由管理员实现制备，或者使用存储类（Storage Class）来动态制备。持久卷是集群资源，就像节点也是集群资源一样。PV 持久卷和普通 Volume 一样，也是使用卷插件来实现的，知识它们拥有独立于任何使用 PV 的 Pod 的生命周期。此 API 对象中记载了存储的实现细节，无论其背后是 NFS，iSCSI 还是特定于云平台的存储系统。
+
+**持久卷申领（PersistentVolumeClaim，PVC）**表达的是用户对存储的请求。概念上与 Pod 类似。Pod 会消耗节点资源，而 PVC 申领会消耗 PV 资源。Pod 可以请求特定数量的资源（CPU 和内存）；同样 PVC 申领也可以请求特定的大小的访问模式（如，可以要求 PV 卷能够以 ReadWriteOnce，ReadOnlyMany 或 ReadWriteMany 模式之一来挂载，详见访问模式）。
+
+尽管 PersistentVolumeClaim 允许用户消耗抽象的存储资源，常见的情况是针对不同的问题用户需要的是具有不同属性（比如性能）的 PersistentVolume 卷。集群管理员需要能够提供不同性质的 PersistentVolume，并且这些 PV 卷之间的差别不仅限于卷大小和访问模式，同时又不能将卷是如何实现的这些细节暴露给用户。为了满足这种需求，就有了**存储类（StorageClass）**资源。
+
+### 卷和申领的生命周期
+
+WIP
+
+### 持久卷的类型
+
+WIP
+
+### 持久卷
+
+WIP
+
+### PersistentVolumeClaims
+
+WIP
+
+### 使用申领作为卷
+
+WIP
+
+### 原始块卷支持
+
 WIP
 
 ## 投射卷 Projected Volumes

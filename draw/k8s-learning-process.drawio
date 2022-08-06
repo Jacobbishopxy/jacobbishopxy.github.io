@@ -1,16 +1,16 @@
 <mxfile host="65bd71144e">
     <diagram id="tqF3wzndgXf5_t41VFMr" name="Page-1">
-        <mxGraphModel dx="3605" dy="2656" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="3603" dy="3045" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="7" value="" style="edgeStyle=none;html=1;sketch=1;" parent="1" source="4" target="6" edge="1">
+                <mxCell id="7" value="" style="edgeStyle=none;html=1;sketch=1;strokeWidth=4;" parent="1" source="4" target="6" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="Kubernetes 学习路径" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;shadow=0;glass=0;strokeWidth=4;" parent="1" vertex="1">
                     <mxGeometry x="-240" y="520" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="" style="edgeStyle=none;html=1;sketch=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="6" target="8" edge="1">
+                <mxCell id="9" value="" style="edgeStyle=none;html=1;sketch=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=4;" parent="1" source="6" target="8" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="100" y="550" as="targetPoint"/>
                     </mxGeometry>
@@ -21,7 +21,7 @@
                 <mxCell id="6" value="组件与对象" style="whiteSpace=wrap;html=1;rounded=1;sketch=1;strokeWidth=4;" parent="1" vertex="1">
                     <mxGeometry y="520" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;sketch=1;" parent="1" source="8" target="16" edge="1">
+                <mxCell id="17" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;sketch=1;strokeWidth=4;" parent="1" source="8" target="16" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="39" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="8" target="36" edge="1">
@@ -50,16 +50,16 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="52" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;" parent="1" source="16" target="51" edge="1">
+                <mxCell id="52" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;strokeWidth=4;" parent="1" source="16" target="51" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="171" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="16" target="170" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="202" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;sketch=1;" edge="1" parent="1" source="16" target="201">
+                <mxCell id="202" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;sketch=1;" parent="1" source="16" target="201" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="204" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="45">
+                <mxCell id="204" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="16" target="45" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="16" value="容器" style="whiteSpace=wrap;html=1;rounded=1;sketch=1;strokeWidth=4;" parent="1" vertex="1">
@@ -90,7 +90,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="54" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;" parent="1" source="51" target="53" edge="1">
+                <mxCell id="54" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;strokeWidth=4;" parent="1" source="51" target="53" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="60" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="51" target="59" edge="1">
@@ -175,7 +175,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="86" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;" parent="1" source="53" target="85" edge="1">
+                <mxCell id="86" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;strokeWidth=4;" parent="1" source="53" target="85" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="53" value="负载资源" style="whiteSpace=wrap;html=1;rounded=1;sketch=1;strokeWidth=4;" parent="1" vertex="1">
@@ -254,7 +254,7 @@
                 <mxCell id="78" value="ReplicationController" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;sketch=1;" parent="1" vertex="1">
                     <mxGeometry x="1030" y="1120" width="150" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="94" value="" style="edgeStyle=none;html=1;sketch=1;" parent="1" source="85" target="93" edge="1">
+                <mxCell id="94" value="" style="edgeStyle=none;html=1;sketch=1;strokeWidth=4;" parent="1" source="85" target="93" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="128" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="85" target="127" edge="1">
@@ -287,7 +287,7 @@
                 <mxCell id="91" value="&lt;ul&gt;&lt;li&gt;限制&lt;/li&gt;&lt;li&gt;组件&lt;/li&gt;&lt;li&gt;标识&lt;/li&gt;&lt;li&gt;部署/扩缩保证&lt;br&gt;&lt;/li&gt;&lt;li&gt;更新策略&lt;/li&gt;&lt;li&gt;滚动更新&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=default;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;rounded=1;sketch=1;spacingLeft=-5;" parent="1" vertex="1">
                     <mxGeometry x="1200" y="950" width="140" height="141.88" as="geometry"/>
                 </mxCell>
-                <mxCell id="96" value="" style="edgeStyle=none;html=1;sketch=1;" parent="1" source="93" target="95" edge="1">
+                <mxCell id="96" value="" style="edgeStyle=none;html=1;sketch=1;strokeWidth=4;" parent="1" source="93" target="95" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="100" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;sketch=1;" parent="1" source="93" target="99" edge="1">
@@ -458,7 +458,7 @@
                 <mxCell id="199" value="&lt;p style=&quot;line-height: 1&quot;&gt;&lt;/p&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;容器探针&lt;/div&gt;&lt;/blockquote&gt;&lt;ul&gt;&lt;li&gt;检查机制：&lt;/li&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;exec&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;grpc&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;httpGet&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;tcpSocket&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;探测结果：&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Success&lt;/li&gt;&lt;li&gt;Failure&lt;/li&gt;&lt;li&gt;Unkown&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;探测类型：&lt;/li&gt;&lt;ul&gt;&lt;li&gt;livenessProbe&lt;/li&gt;&lt;li&gt;readinessProbe&lt;/li&gt;&lt;li&gt;startupProbe&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document;sketch=1;align=left;spacingLeft=-10;" parent="1" vertex="1">
                     <mxGeometry x="1340" y="112.5" width="180" height="300" as="geometry"/>
                 </mxCell>
-                <mxCell id="206" value="组件与对象" style="swimlane;dashed=1;sketch=1;strokeColor=default;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="206" value="组件与对象" style="swimlane;dashed=1;sketch=1;strokeColor=default;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="80" y="640" width="520" height="640" as="geometry">
                         <mxRectangle x="80" y="640" width="90" height="23" as="alternateBounds"/>
                     </mxGeometry>
@@ -563,7 +563,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="207" value="容器" style="swimlane;dashed=1;sketch=1;strokeColor=default;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="207" value="容器" style="swimlane;dashed=1;sketch=1;strokeColor=default;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="670" y="610" width="270" height="370" as="geometry">
                         <mxRectangle x="670" y="610" width="60" height="23" as="alternateBounds"/>
                     </mxGeometry>
@@ -593,10 +593,10 @@
                 <mxCell id="170" value="运行时类" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;sketch=1;" parent="207" vertex="1">
                     <mxGeometry y="218.91000000000008" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="201" value="容器生命周期&lt;br&gt;回调" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;sketch=1;" vertex="1" parent="207">
+                <mxCell id="201" value="容器生命周期&lt;br&gt;回调" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;sketch=1;" parent="207" vertex="1">
                     <mxGeometry y="298.9100000000001" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="208" value="集群架构" style="swimlane;dashed=1;sketch=1;strokeColor=default;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="208" value="集群架构" style="swimlane;dashed=1;sketch=1;strokeColor=default;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="270" width="320" height="480" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" value="节点" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;sketch=1;" parent="208" vertex="1">
