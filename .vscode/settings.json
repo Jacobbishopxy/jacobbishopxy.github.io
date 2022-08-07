@@ -9,6 +9,7 @@
 		"configmap",
 		"dtype",
 		"epoll",
+		"fanout",
 		"Finalizer",
 		"finalizers",
 		"GRPC",
