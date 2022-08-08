@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="tqF3wzndgXf5_t41VFMr" name="Page-1">
-        <mxGraphModel dx="2133" dy="2034" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2721" dy="2286" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -462,7 +462,7 @@
                     <mxGeometry x="1100" y="-47.5" width="180" height="300" as="geometry"/>
                 </mxCell>
                 <mxCell id="206" value="组件与对象" style="swimlane;dashed=1;sketch=1;strokeColor=default;fillColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="-160" y="480" width="520" height="640" as="geometry">
+                    <mxGeometry x="-160" y="480" width="520" height="720" as="geometry">
                         <mxRectangle x="80" y="640" width="90" height="23" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
@@ -472,7 +472,7 @@
                 <mxCell id="15" value="对象" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;sketch=1;" parent="206" vertex="1">
                     <mxGeometry x="0.003921568627447414" y="180" width="122.35294117647058" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="&lt;ul&gt;&lt;li&gt;Spec&lt;/li&gt;&lt;li&gt;状态&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=default;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;rounded=1;sketch=1;spacingLeft=-5;" parent="206" vertex="1">
+                <mxCell id="20" value="&lt;ul&gt;&lt;li&gt;Spec 规约&lt;/li&gt;&lt;li&gt;Status 状态&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=default;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;rounded=1;sketch=1;spacingLeft=-5;" parent="206" vertex="1">
                     <mxGeometry x="163.13725490196077" y="180" width="122.35294117647058" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="21" style="edgeStyle=orthogonalEdgeStyle;html=1;sketch=1;" parent="206" source="15" target="20" edge="1">
@@ -482,13 +482,13 @@
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="448.62745098039215" y="310" as="sourcePoint"/>
                         <Array as="points">
-                            <mxPoint x="142.7450980392157" y="210"/>
-                            <mxPoint x="142.7450980392157" y="290"/>
+                            <mxPoint x="143" y="210"/>
+                            <mxPoint x="143" y="390"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="23" value="&lt;ul&gt;&lt;li&gt;对象管理&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=default;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;rounded=1;sketch=1;spacingLeft=-5;" parent="206" vertex="1">
-                    <mxGeometry x="163.13725490196077" y="260" width="122.35294117647058" height="60" as="geometry"/>
+                    <mxGeometry x="163.13725490196077" y="360" width="122.35294117647058" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" style="edgeStyle=orthogonalEdgeStyle;html=1;sketch=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="206" source="12" target="25" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -550,7 +550,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="164" value="&lt;ul style=&quot;line-height: 1&quot;&gt;&lt;li&gt;命名空间&lt;/li&gt;&lt;li&gt;标签/选择算符&lt;/li&gt;&lt;li&gt;注解&lt;/li&gt;&lt;li&gt;字段选择器&lt;/li&gt;&lt;li&gt;Finalizers&lt;br&gt;&lt;/li&gt;&lt;li&gt;属主与依赖&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=default;fillColor=none;html=1;verticalAlign=middle;overflow=hidden;rounded=1;sketch=1;spacingLeft=-5;" parent="206" vertex="1">
-                    <mxGeometry x="163.13725490196077" y="340" width="122.35294117647058" height="140" as="geometry"/>
+                    <mxGeometry x="163.13725490196077" y="440" width="122.35294117647058" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="165" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;endArrow=classic;endFill=1;" parent="206" source="15" target="164" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -561,17 +561,25 @@
                 <mxCell id="167" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;sketch=1;" parent="206" source="23" target="166" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="306" y="290"/>
+                            <mxPoint x="306" y="390"/>
                             <mxPoint x="306" y="580"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="211" value="&lt;span style=&quot;font-size: 8px&quot;&gt;命名空间&lt;br&gt;k8s 用于支持隔离&lt;br&gt;单个集群中的&lt;br&gt;资源组的抽象&lt;br&gt;&lt;/span&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;rounded=1;sketch=1;" parent="206" vertex="1">
-                    <mxGeometry x="163.14" y="500" width="122.35294117647058" height="80" as="geometry"/>
+                    <mxGeometry x="163.14" y="600" width="122.35294117647058" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="212" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;dashed=1;endArrow=none;endFill=0;entryX=0.504;entryY=0.098;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="206" source="164" target="211" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="224.34000000000003" y="480" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="217" value="&lt;font style=&quot;font-size: 8px&quot;&gt;规约：期望状态&lt;br&gt;状态：当前状态&lt;br&gt;&lt;/font&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;rounded=1;sketch=1;" vertex="1" parent="206">
+                    <mxGeometry x="163.14" y="260" width="122.35294117647058" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="218" value="" style="edgeStyle=orthogonalEdgeStyle;sketch=1;html=1;dashed=1;endArrow=none;endFill=0;entryX=0.499;entryY=0.095;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="206" target="217" source="20">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="224.31241379310347" y="240" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="207" value="容器" style="swimlane;dashed=1;sketch=1;strokeColor=default;fillColor=none;" parent="1" vertex="1">

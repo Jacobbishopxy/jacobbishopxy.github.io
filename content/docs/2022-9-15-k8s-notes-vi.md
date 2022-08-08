@@ -261,7 +261,7 @@ spec:
         path: /var/log/pods
 ```
 
-### 资源
+### 资源 {#Volume-Resource}
 
 `emptyDir` 卷的存储介质（磁盘、SSD 等）是由保存 kubelet 数据的根目录（通常为 `/var/lib/kubelet`）的文件系统的介质来确定的。 k8s 对 `emptyDir` 卷或者 `hostPath` 卷可以消耗的空间没有限制，容器之间或 Pod 之间也没有隔离。
 
@@ -281,13 +281,13 @@ WIP
 
 **持久卷（PersistentVolume，PV）**是集群中的一块存储，可以由管理员实现制备，或者使用存储类（Storage Class）来动态制备。持久卷是集群资源，就像节点也是集群资源一样。PV 持久卷和普通 Volume 一样，也是使用卷插件来实现的，知识它们拥有独立于任何使用 PV 的 Pod 的生命周期。此 API 对象中记载了存储的实现细节，无论其背后是 NFS，iSCSI 还是特定于云平台的存储系统。
 
-**持久卷申领（PersistentVolumeClaim，PVC）**表达的是用户对存储的请求。概念上与 Pod 类似。Pod 会消耗节点资源，而 PVC 申领会消耗 PV 资源。Pod 可以请求特定数量的资源（CPU 和内存）；同样 PVC 申领也可以请求特定的大小的访问模式（如，可以要求 PV 卷能够以 ReadWriteOnce，ReadOnlyMany 或 ReadWriteMany 模式之一来挂载，详见访问模式）。
+**持久卷申领（PersistentVolumeClaim，PVC）**表达的是用户对存储的请求。概念上与 Pod 类似。Pod 会消耗节点资源，而 PVC 会消耗 PV 资源。Pod 可以请求特定数量的资源（CPU 和内存）；同样 PVC 也可以请求特定的大小的访问模式（如，可以要求 PV 能够以 ReadWriteOnce，ReadOnlyMany 或 ReadWriteMany 模式之一来挂载，详见访问模式）。
 
-尽管 PersistentVolumeClaim 允许用户消耗抽象的存储资源，常见的情况是针对不同的问题用户需要的是具有不同属性（比如性能）的 PersistentVolume 卷。集群管理员需要能够提供不同性质的 PersistentVolume，并且这些 PV 卷之间的差别不仅限于卷大小和访问模式，同时又不能将卷是如何实现的这些细节暴露给用户。为了满足这种需求，就有了**存储类（StorageClass）**资源。
+尽管 PersistentVolumeClaim 允许用户消耗抽象的存储资源，常见的情况是针对不同的问题用户需要的是具有不同属性（比如性能）的 PersistentVolume 卷。集群管理员需要能够提供不同性质的 PersistentVolume，并且这些 之间的差别不仅限于卷大小和访问模式，同时又不能将卷是如何实现的这些细节暴露给用户。为了满足这种需求，就有了**存储类（StorageClass）**资源。
 
 ### 卷和申领的生命周期
 
-PV 卷是集群中的资源。PVC 申领是对这些资源的请求，也被用来执行对资源的申领检查。PV 卷和 PVC 申领之前的互动遵循以下生命周期
+PV 是集群中的资源。PVC 是对这些资源的请求，也被用来执行对资源的申领检查。PV 和 PVC 之前的互动遵循以下生命周期
 
 #### 制备 Provisioning
 
@@ -389,33 +389,311 @@ Events:            <none>
 
 #### PersistentVolume 删除保护 finalizer
 
-WIP
+**特性状态**：`v1.23 [alpha]`
+
+可以在 PersistentVolume 上添加终结器 Finalizer，用于确保只有在删除对应的存储后才删除具有 `Delete` 回收策略的 PersistentVolume。
+
+新引入的 `kubernetes.io/pv-controller` 和 `external-provisioner.volume.kubernetes.io/finalizer` 终结器仅会被添加到动态制备的卷上。
+
+终结器 `kubernetes.io/pv-controller` 会被添加到树内插件卷上。例：
+
+```txt
+kubectl describe pv pvc-74a498d6-3929-47e8-8c02-078c1ece4d78
+Name:            pvc-74a498d6-3929-47e8-8c02-078c1ece4d78
+Labels:          <none>
+Annotations:     kubernetes.io/createdby: vsphere-volume-dynamic-provisioner
+                 pv.kubernetes.io/bound-by-controller: yes
+                 pv.kubernetes.io/provisioned-by: kubernetes.io/vsphere-volume
+Finalizers:      [kubernetes.io/pv-protection kubernetes.io/pv-controller]
+StorageClass:    vcp-sc
+Status:          Bound
+Claim:           default/vcp-pvc-1
+Reclaim Policy:  Delete
+Access Modes:    RWO
+VolumeMode:      Filesystem
+Capacity:        1Gi
+Node Affinity:   <none>
+Message:
+Source:
+    Type:               vSphereVolume (a Persistent Disk resource in vSphere)
+    VolumePath:         [vsanDatastore] d49c4a62-166f-ce12-c464-020077ba5d46/kubernetes-dynamic-pvc-74a498d6-3929-47e8-8c02-078c1ece4d78.vmdk
+    FSType:             ext4
+    StoragePolicyName:  vSAN Default Storage Policy
+Events:                 <none>
+```
+
+终结器 `external-provisioner.volume.kubernetes.io/finalizer` 会被添加到 CSI 卷上。例：
+
+```txt
+Name:            pvc-2f0bab97-85a8-4552-8044-eb8be45cf48d
+Labels:          <none>
+Annotations:     pv.kubernetes.io/provisioned-by: csi.vsphere.vmware.com
+Finalizers:      [kubernetes.io/pv-protection external-provisioner.volume.kubernetes.io/finalizer]
+StorageClass:    fast
+Status:          Bound
+Claim:           demo-app/nginx-logs
+Reclaim Policy:  Delete
+Access Modes:    RWO
+VolumeMode:      Filesystem
+Capacity:        200Mi
+Node Affinity:   <none>
+Message:
+Source:
+    Type:              CSI (a Container Storage Interface (CSI) volume source)
+    Driver:            csi.vsphere.vmware.com
+    FSType:            ext4
+    VolumeHandle:      44830fa8-79b4-406b-8b58-621ba25353fd
+    ReadOnly:          false
+    VolumeAttributes:      storage.kubernetes.io/csiProvisionerIdentity=1648442357185-8081-csi.vsphere.vmware.com
+                           type=vSphere CNS Block Volume
+Events:                <none>
+```
+
+为特定的树内卷插件启用 `CSIMigration` 特性将删除 `kubernetes.io/pv-controller` 终结器， 同时添加 `external-provisioner.volume.kubernetes.io/finalizer` 终结器。 同样，禁用 `CSIMigration` 将删除 `external-provisioner.volume.kubernetes.io/finalizer` 终结器， 同时添加 `kubernetes.io/pv-controller` 终结器。
 
 #### 预留 PersistentVolume
 
-WIP
+通过在 PersistentVolumeClaim 中指定 PersistentVolume，可以什么该特定 PV 与 PVC 之间的绑定关系。如果该 PV 存在且未被通过其 `claimRef` 字段预留给 PVC，则该 PV 会和该 PVC 绑定到一起。
+
+绑定操作不会考虑某些卷匹配条件是否满足，包括节点亲和性等。控制面仍然会检查存储类，访问模式和所请求的存储尺寸都是合法的。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: foo-pvc
+  namespace: foo
+spec:
+  storageClassName: "" # 此处须显式设置空字符串，否则会被设置为默认的 StorageClass
+  volumeName: foo-pv
+  ...
+```
+
+此方法无法对 PV 的绑定特权做出任何形式的保证。如果有其它 PVC 可以使用用户所指定的 PV，则用户应该首先预留该 PV。用户可以将 PV 的 `claimRef` 字段设置为相关的 PVC 以确保其它 PVC 不会绑定到该 PV。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: foo-pv
+spec:
+  storageClassName: ""
+  claimRef:
+    name: foo-pvc
+    namespace: foo
+  ...
+```
+
+如果用户想用 `claimPolicy` 属性设置为 `Retain` 的 PV 时，包括希望复用现有的 PV 时，这点很有用。
 
 #### 扩充 PVC
+
+**特性状态**：`v1.11 [beta]`
 
 WIP
 
 ### 持久卷的类型
 
-WIP
+PV 持久卷是用插件的形式来实现的。Kubernetes 目前支持以下插件：
 
-### 持久卷
+- awsElasticBlockStore - AWS 弹性块存储（EBS）
+- azureDisk - Azure Disk
+- azureFile - Azure File
+- cephfs - CephFS volume
+- csi - 容器存储接口 (CSI)
+- fc - Fibre Channel (FC) 存储
+- gcePersistentDisk - GCE 持久化盘
+- glusterfs - Glusterfs 卷
+- hostPath - HostPath 卷 （仅供单节点测试使用；不适用于多节点集群；请尝试使用 local 卷作为替代）
+- iscsi - iSCSI (SCSI over IP) 存储
+- local - 节点上挂载的本地存储设备
+- nfs - 网络文件系统 (NFS) 存储
+- portworxVolume - Portworx 卷
+- rbd - Rados 块设备 (RBD) 卷
+- vsphereVolume - vSphere VMDK 卷
 
-WIP
+### 持久卷 {#PersistentVolume-PersistentVolume}
 
-### PersistentVolumeClaims
+每个 PV 对象都包含 `spec` 和 `status` 部分，分别对应卷的规约和状态。PersistentVolume 对象的名称必须是合法的 DNS 子域。
 
-WIP
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0003
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: slow
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /tmp
+    server: 172.17.0.2
+```
+
+{% blockquote_note() %}
+在集群中使用持久卷存储通常需要一些特定于具体卷类型的辅助程序。上述例子中，PV 是 NFS 类型的，因此需要辅助程序 `/sbin/mount.nfs` 来支持挂载 NFS 文件系统。
+{% end %}
+
+#### 容量
+
+一般而言，每个 PV 都有确定的存储容量。容量属性是使用 PV 对象的 `capacity` 属性来设置的。参考词汇表中的[量纲 Quantity](https://kubernetes.io/docs/reference/glossary/?all=true#term-quantity)词条了解 `capacity` 字段可以接受的单位。
+
+目前，存储大小是可以设置和请求的唯一资源。未来可能会包含 IOPS，吞吐量等属性。
+
+#### 卷模式 {#PersistentVolume-PersistentVolume-VolumeMode}
+
+**特性状态**：`v1.18 [stable]`
+
+针对 PV，k8s 支持两种卷模式 volumeModes：文件系统 Filesystem 和 块 Block。`volumeMode` 是一个可选的 API 参数。如果该参数被省略，默认的卷模式是 `Filesystem`。
+
+`volumeMode` 属性设置为 `Filesystem` 的卷会被 Pod **挂载 Mount**到某个目录。如果卷的存储来自某块设备而该设备目前为空，k8s 会在第一次挂载卷之前在设备上创建文件系统。
+
+用户可以将 `volumeMode` 设置为 `Block`，以便将卷作为原始块设备来使用。这类卷以块的方式交给 Pod 使用，其上没有任何文件系统。这种模式对于为 Pod 提供一种使用最快可能方式来访问卷而言很有帮助，Pod 和卷之间不存在文件系统层。另外 Pod 中运行的应用必须知道如何处理原始块设备。关于如何在 Pod 中使用 `volumeMode: Block` 的卷，可参阅[原始块卷支持](@/docs/2022-9-15-k8s-notes-vi.md#PersistentVolumes-RawBlockVolumeSupport)。
+
+#### 访问模式 {#PersistentVolume-PersistentVolume-AccessMode}
+
+PV 可以用资源提供者所支持的任何方式挂载到宿主系统上。如下所示，提供者（驱动）的能力不同，每个 PV 的访问模式都会设置为对应卷所支持的模式值。例如，NFS 可以支持多个读写客户，但是某个特定的 NFS PV 可能在服务器上只读的方式导出。每个 PV 都会获得自身的访问模式集合，描述的是特定 PV 的能力。
+
+{% styled_block(class="color-beige font-bold") %}
+ReadWriteOnce
+{% end %}
+卷可以被一个节点以读写方式挂载。ReadWriteOnce 访问模式也运行运行在同一节点上的多个 Pod 访问卷。
+
+{% styled_block(class="color-beige font-bold") %}
+ReadOnlyMany
+{% end %}
+卷可以被多个节点以制度方式挂载。
+
+{% styled_block(class="color-beige font-bold") %}
+ReadWriteOnceMany
+{% end %}
+卷可以被多个节点以读写方式挂载。
+
+{% styled_block(class="color-beige font-bold") %}
+ReadWriteOncePod
+{% end %}
+卷可以被单个 Pod 以读写方式挂载。如果想确保整个集群中只有一个 Pod 可以读取或写入该 PVC，请使用 ReadWriteOncePod 访问模式。这只支持 CSI 卷以及需要 k8s 1.22 以上版本。
+
+在命令行接口 CLI 中，访问模式一颗使用一下缩写模式：
+
+- ROX - ReadWriteOnce
+- ROX - ReadOnlyMany
+- RWX - ReadWriteMany
+- RWOP - ReadWriteOncePod
+
+{% blockquote_note() %}
+k8s 使用卷访问模式来匹配 PVC 和 PV。在某些场合下，卷访问模式也会限制 PV 可以挂载的位置。卷访问模式并**不会**在存储已经被挂载的情况下为其实施写保护。即使访问模式设置为 ReadWriteOnce，ReadOnlyMany 或 ReadWriteMany 它们也不会对卷形成限制。例如，即使某个卷创建时设置为 ReadOnlyMany，也无法保证该卷是只读的。如果访问模式设置为 ReadWriteOncePod，则卷会被限制起来并且只能挂载到一个 Pod 上。
+{% end %}
+
+{% blockquote_warn() %}
+每个卷同一时刻只能以一种访问模式挂载，即使该卷能够支持多种访问模式。例如，一个 GCEPersistentDisk 卷可以被某节点以 ReadWriteOnce 模式挂载，或者被多个节点以 ReadOnlyMany 模式挂载，但不可以同时以两种模式挂载。
+{% end %}
+
+#### 类 {#PersistentVolume-PersistentVolume-Class}
+
+每个 PV 可以属于某个类 Class，通过将其 `storageClassName` 属性设置为某个 StorageClass 的名称来指定。特定类的 PV 只能绑定到请求该类存储卷的 PVC。未设置 `storageClassName` 的 PV 没有类设定，只能绑定到那些没有指定特定存储类的 PVC。
+
+#### 阶段 {#PersistentVolume-PersistentVolume-Phase}
+
+每个卷会处于一下阶段 Phase 之一：
+
+- Available 可用 -- 卷是一个空闲资源，尚未绑定到任何申领；
+- Bound 已绑定 -- 该卷以及绑定到某申领；
+- Released 已释放 -- 所绑定的申领已被删除，但是资源尚未被集群回收；
+- Failed 失败 -- 卷的自动回收操作失败。
+
+### PVC {#PersistentVolume-PersistentVolumeClaims}
+
+每个 PVC 对象都有 `spec` 和 `status` 部分，分别对应申领的规约和状态。PVC 对象的名称必须是合法的 DNS 子域名。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: slow
+  selector:
+    matchLabels:
+      release: "stable"
+    matchExpressions:
+      - { key: environment, operator: In, values: [dev] }
+```
+
+#### 访问模式 {#PersistentVolume-PersistentVolumeClaims-AccessMode}
+
+申领在请求具有特定访问模式的存储时，使用与卷相同的[访问模式约定](@/docs/2022-9-15-k8s-notes-vi.md#PersistentVolume-PersistentVolume-AccessMode)。
+
+#### 卷模式 {#PersistentVolume-PersistentVolumeClaims-VolumeMode}
+
+申领使用与[卷相同的约定](@/docs/2022-9-15-k8s-notes-vi.md#PersistentVolume-PersistentVolume-VolumeMode)来表明是将卷作为文件系统还是块设备来使用。
+
+#### 资源 {#PersistentVolume-PersistentVolumeClaims-Resources}
+
+申领和 Pod 一样，也可以请求特定数量的资源。在这个上下文中，请求的资源是存储。卷和申领都是用相同的[资源模型](https://github.com/kubernetes/design-proposals-archive/blob/main/scheduling/resources.md)。
+
+#### 选择算符 {#PersistentVolume-PersistentVolumeClaims-Selector}
+
+申领可以设置[标签选择算符](@/docs/2022-7-10-k8s-notes-i.md#Objects-LabelsAndSelectors)来进一步过滤卷集合。只有标签与选择算符想匹配的卷能够绑定到申领上。选择算符包含两个字段：
+
+- `matchLabels` - 卷必须包含带有此值的标签
+- `matchExpressions` - 通过设定键 key，值列表和操作符 operator 来构造需求。合法的操作符有 In，NotIn，Exists 和 DoesNotExist。
+
+来自 `matchLabels` 和 `matchExpressions` 的所有需求都按逻辑与的方式组合在一起。这些需求都必须被满足才被视为匹配。
+
+#### 类 {#PersistentVolume-PersistentVolumeClaims-Class}
+
+申领可以通过为 `storageClassName` 属性设置 StorageClass 的名称来请求特定的存储类。只有所请求的类的 PV，即 `storageClassName` 值与 PVC 设置相同的 PV，才能绑定到 PVC。
+
+PVC 不比一定要请求某个类。如果 PVC 的 `storageClassName` 属性值设置为 `""`，则被视为要请求的是没有设置存储类的 PV，因此这一 PVC 只能绑定到未设置存储类的 PV（未设置注解或者注解值为 `""` 的 PV 对象在系统中不会被删除，因为这样做可能会引起数据丢失）。未设置 `storageClassName` 的 PVC 与此大不相同，也会被集群作不同处理。具体筛查方式取决于 `DefaultStorageClass` [准入控制插件](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#defaultstorageclass)是否被启用。
+
+- 如果准入控制器插件被启用，则管理员可以设置一个默认的 StorageClass。所有未设置 `storageClassName` 的 PVC 创建的处理方式与未启用准入控制器插件时相同。如果设定的默认存储类不止一个，准入控制插件会禁止所有创建 PVC 操作。
+- 如果准入控制器插件被关闭，则不存在默认 StorageClass 的说法。所有未设置 `storageClassName` 的 PVC 都只能绑定到未设置存储类的 PV。在这种情况下，未设置 `storageClassName` 的 PVC 与 `storageClassName` 设置为 `""` 的 PVC 的处理方式相同。
+
+取决于安装方式，默认的 StorageClass 可能在集群安装期间由插件管理器（Addon Manager）部署到集群中。
+
+当某 PVC 除了请求 StorageClass 之外还设置了 `selector`，则这两种需求会按逻辑与关系处理：已有隶属于所请求类切带有所请求标签的 PV 才能绑定到 PVC。
+
+{% blockquote_note() %}
+目前，设置了非空 `selector` 的 PVC 对象无法让集群为其动态制备 PV 卷。
+{% end %}
 
 ### 使用申领作为卷 {#PersistentVolumes-ClaimsAsVolumes}
 
-WIP
+Pod 将申领作为卷来使用，并以此访问存储资源。申领必须位于使用它的 Pod 所在的同一名字空间内。集群在 Pod 的名字空间中查找申领，并使用它来获得申领所使用的 PV。之后，卷会被挂载到宿主上并挂载到 Pod 中。
 
-### 原始块卷支持
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx
+      volumeMounts:
+        - mountPath: "/var/www/html"
+          name: mypd
+  volumes:
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: myclaim
+```
+
+### 原始块卷支持 {#PersistentVolumes-RawBlockVolumeSupport}
 
 WIP
 
