@@ -17,6 +17,7 @@
 		"kqueue",
 		"kube",
 		"kubeadm",
+		"kubeconfig",
 		"kubectl",
 		"kubelet",
 		"Kubernetes",
