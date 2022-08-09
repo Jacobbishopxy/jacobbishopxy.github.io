@@ -3,6 +3,8 @@ title="K8s 笔记 (IV) 下"
 description="工作负载（负载资源）"
 date=2022-08-15
 
+draft = true
+
 [taxonomies]
 categories = ["Doc"]
 tags = ["k8s"]

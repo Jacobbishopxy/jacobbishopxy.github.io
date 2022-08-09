@@ -3,6 +3,8 @@ title="K8s 笔记 (VI)"
 description="存储"
 date=2022-09-15
 
+draft = true
+
 [taxonomies]
 categories = ["Doc"]
 tags = ["k8s"]

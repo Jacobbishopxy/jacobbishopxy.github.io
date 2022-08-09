@@ -2,6 +2,7 @@
 title = "Rancher k8s cluster setup"
 description = "An experimental record"
 date = 2022-07-18
+updated = 2022-08-09
 
 [taxonomies]
 categories = ["Post"]
@@ -20,9 +21,6 @@ toc = true
    192.168.50.141 k8s-node1
    192.168.50.142 k8s-node2
    192.168.50.143 k8s-node3
-
-   # /etc/hosts
-   192.168.50.140 h194
    ```
 
 1. Config machine name (optional):
@@ -141,7 +139,8 @@ Container runtime.
 
    ```sh
    sudo mkdir -p /etc/apt/keyrings
-   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg \
+      --dearmor -o /etc/apt/keyrings/docker.gpg
    ```
 
 1. Set up the repository
@@ -156,7 +155,10 @@ Container runtime.
 
    ```sh
    sudo apt-get update
-   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+   sudo apt-get install docker-ce \
+      docker-ce-cli \
+      containerd.io \
+      docker-compose-plugin
    ```
 
 1. Create the docker group if it does not exist
@@ -359,7 +361,10 @@ Official Helm [document](https://helm.sh/docs/) and Rancher's Helm [document](ht
    Install the cert-manager Helm chart:
 
    ```sh
-   helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.7.1
+   helm install cert-manager jetstack/cert-manager \
+      --namespace cert-manager \
+      --create-namespace \
+      --version v1.7.1
    ```
 
    Check cert-manager:
@@ -371,7 +376,11 @@ Official Helm [document](https://helm.sh/docs/) and Rancher's Helm [document](ht
 1. Install Rancher, notice because of going through Nginx, add `--set tls=external`
 
    ```sh
-   helm install rancher rancher-stable/rancher --namespace cattle-system --set hostname=<DNS name> --set bootstrapPassword=<your secret password> --set tls=external
+   helm install rancher rancher-stable/rancher \
+      --namespace cattle-system \
+      --set hostname=<DNS name> \
+      --set bootstrapPassword=<your secret password> \
+      --set tls=external
    ```
 
    Wait for Rancher to be rolled out:
