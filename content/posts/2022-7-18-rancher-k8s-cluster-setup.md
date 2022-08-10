@@ -209,6 +209,8 @@ Container runtime.
 
 ## RKE2 {#RKE2}
 
+### Note
+
 - [quick start](https://docs.rke2.io/install/quickstart/)
 
 - [requirements](https://docs.rke2.io/install/requirements/)
@@ -226,6 +228,20 @@ Container runtime.
 
   ```sh
   systemctl reload NetworkManager
+  ```
+
+- kill all & uninstall scripts:
+
+  ```sh
+  curl -sL https://raw.githubusercontent.com/rancher/rke2/master/bundle/bin/rke2-uninstall.sh --output rke2-uninstall.sh
+  chmod +x rke2-uninstall.sh
+  mv rke2-uninstall.sh /usr/local/bin
+  ```
+
+  ```sh
+  curl -sL https://raw.githubusercontent.com/rancher/rke2/master/bundle/bin/rke2-killall.sh --output rke2-killall.sh
+  chmod +x rke2-killall.sh
+  mv rke2-killall.sh /usr/local/bin
   ```
 
 ### Server Node {#RKE2ServerNodeInstallation}
@@ -281,14 +297,12 @@ After running this installation:
 
 1. Switch out from root user.
 
-1. Copy kubeconfig by: `cp /etc/rancher/rke2/rke2.yaml ~/.kube/config`
+1. Copy kubeconfig by: `cp /etc/rancher/rke2/rke2.yaml ~/.kube/config`. This works on remote machine as well, all we have to do is to modify `server` field with real IP address.
 
-1. Grant permission:
+1. Grant read permission:
 
    ```sh
-   sudo chmod 775 ~/.kube/config
-   <!-- sudo chmod g-rw ~/.kube/config -->
-   <!-- sudo chmod o-r ~/.kube/config -->
+   sudo chown -R $USER ~/.kube
    ```
 
 1. Export environment variable by `vim ~/.profile`:

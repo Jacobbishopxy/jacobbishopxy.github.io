@@ -3,8 +3,6 @@ title="K8s 笔记 (IV) 上"
 description="工作负载（Pod）"
 date=2022-08-01
 
-draft = true
-
 [taxonomies]
 categories = ["Doc"]
 tags = ["k8s"]
