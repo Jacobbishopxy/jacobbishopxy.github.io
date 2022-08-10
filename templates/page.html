@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% block title %} {{ config.title }} | {{ page.title
-}} {% endblock %} {% block content %}
+{% import 'render_comment.html' as render_comment %} {% extends 'base.html' %}
+{% block title %} {{ config.title }} | {{ page.title }} {% endblock %} {% block
+content %}
 <section class="section">
 	<div class="container">
 		<div class="columns">
@@ -25,15 +26,7 @@
 						</div>
 					</div>
 					<div class="content mt-2">{{ page.content | safe }}</div>
-					<script
-						src="https://utteranc.es/client.js"
-						repo="jacobbishopxy/jacobbishopxy.github.io"
-						issue-term="title"
-						label="comments"
-						theme="github-light"
-						crossorigin="anonymous"
-						async
-					></script>
+					{{render_comment::comment()}}
 				</article>
 			</div>
 			{% if page.extra.toc %}

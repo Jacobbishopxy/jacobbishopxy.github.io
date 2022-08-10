@@ -12,7 +12,28 @@ tags = ["k8s"]
 toc = true
 +++
 
-## Prerequisites
+## Clarification
+
+### Production
+
+Production checklist:
+
+- [Prerequisites](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#Prerequisites)
+- [RKE2](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#RKE2)
+- [Helm](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#Helm)
+- [Rancher](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#Rancher)
+
+### Development
+
+Development checklist:
+
+- [Prerequisites](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#Prerequisites)
+- [Kubectl](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#Kubectl)
+- [Docker](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#Docker)
+- [Helm](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#Helm)
+- [Rancher](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#Rancher)
+
+## Prerequisites {#Prerequisites}
 
 1. **[IMPORTANT]** Config machine name (optional):
 
@@ -56,14 +77,14 @@ toc = true
    sudo swapoff -a
    ```
 
-## Kubectl
+## Kubectl {#Kubectl}
 
 **Skip this step if using RKE2 & Rancher**, directly goto [RKE2](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#RKE2).
 
 Install these packages on all of your machines:
 
-- `kubeadm`: the command to bootstrap the cluster
-- `kubelet`: the component that runs on all of the machines in your cluster and does things like starting pods and containers
+- ~~`kubeadm`: the command to bootstrap the cluster~~
+- ~~`kubelet`: the component that runs on all of the machines in your cluster and does things like starting pods and containers~~
 - `kubectl`: the command line util to talk to your cluster
 
 1. Import gpg key. This step is very import especially lacking of a proxy server:
@@ -99,7 +120,7 @@ Install these packages on all of your machines:
    sudo apt-get install -y kubectl
    ```
 
-## Docker
+## Docker {#Docker}
 
 **Skip this step if using RKE2 & Rancher**, directly goto [RKE2](@/posts/2022-7-18-rancher-k8s-cluster-setup.md#RKE2).
 
@@ -207,7 +228,7 @@ Container runtime.
   systemctl reload NetworkManager
   ```
 
-### Server Node Installation {#RKE2ServerNodeInstallation}
+### Server Node {#RKE2ServerNodeInstallation}
 
 1. Switch to root user.
 
@@ -230,7 +251,7 @@ After running this installation:
 
 {% end %}
 
-### Agent Node Installation
+### Agent Node {#RKE2AgentNodeInstallation}
 
 1. Switch to root user.
 
@@ -297,7 +318,7 @@ After running this installation:
 
    Copy `/etc/rancher/rke2/rke2.yaml` on your machine located outside the cluster as `~/.kube/config`. Then replace `127.0.0.1` with the IP or hostname of your RKE2 server. `kubectl` can now manage your RKE2 cluster.
 
-## Helm
+## Helm {#Helm}
 
 > Helm is a tool for managing packages of pre-configured Kubernetes resources. These packages are known as Helm charts.
 >
@@ -344,13 +365,13 @@ Official Helm [document](https://helm.sh/docs/) and Rancher's Helm [document](ht
    helm search repo bitnami
    ```
 
-## Rancher
+## Rancher {#Rancher}
 
 > **Why Rancher?**
 >
 > Rancher is a complete software stack for teams adopting containers. It addresses the operational and security challenges of managing multiple Kubernetes clusters across any infrastructure, while providing DevOps teams with integrated tools for running containerized workloads.
 
-### Installation
+### Production {#RancherProduction}
 
 [Install by helm](https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/)
 
@@ -456,7 +477,7 @@ Official Helm [document](https://helm.sh/docs/) and Rancher's Helm [document](ht
    kubectl -n cattle-system rollout status deploy/rancher
    ```
 
-### Development Clusters
+### Development {#RancherDevelopment}
 
 **This case is only for development, do not use it in production.**
 
