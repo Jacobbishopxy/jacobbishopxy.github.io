@@ -82,6 +82,12 @@ To modify Ubuntu's starting directory, we can open Windows terminal, and you'll 
    sudo adduser jacob
    ```
 
+   remove user:
+
+   ```sh
+   sudo deluser jacob
+   ```
+
 1. Update sudoers
 
    ```sh
