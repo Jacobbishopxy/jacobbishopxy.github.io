@@ -209,6 +209,16 @@ Container runtime.
 
 ## RKE2 {#RKE2}
 
+> RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution.
+>
+> It is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
+>
+> To meet these goals, RKE2 does the following:
+>
+> - Provides defaults and configuration options that allow clusters to pass the CIS Kubernetes Benchmark v1.6 with minimal operator intervention
+> - Enables FIPS 140-2 compliance
+> - Regularly scans components for CVEs using trivy in our build pipeline
+
 ### Note
 
 - [quick start](https://docs.rke2.io/install/quickstart/)
@@ -230,20 +240,6 @@ Container runtime.
   systemctl reload NetworkManager
   ```
 
-- kill all & uninstall scripts:
-
-  ```sh
-  curl -sL https://raw.githubusercontent.com/rancher/rke2/master/bundle/bin/rke2-uninstall.sh --output rke2-uninstall.sh
-  chmod +x rke2-uninstall.sh
-  mv rke2-uninstall.sh /usr/local/bin
-  ```
-
-  ```sh
-  curl -sL https://raw.githubusercontent.com/rancher/rke2/master/bundle/bin/rke2-killall.sh --output rke2-killall.sh
-  chmod +x rke2-killall.sh
-  mv rke2-killall.sh /usr/local/bin
-  ```
-
 ### Server Node {#RKE2ServerNodeInstallation}
 
 1. Switch to root user.
@@ -257,6 +253,8 @@ Container runtime.
 1. Follow the logs (optional): `journalctl -u rke2-server -f`
 
 {% blockquote(class="blockquote-note") %}
+**IMPORTANT!**
+
 After running this installation:
 
 - The `rke2-server` service will be installed. The `rke2-server` service will be configured to automatically restart after node reboots or if the process crashes or is killed.
@@ -299,10 +297,11 @@ After running this installation:
 
 1. Copy kubeconfig by: `cp /etc/rancher/rke2/rke2.yaml ~/.kube/config`. This works on remote machine as well, all we have to do is to modify `server` field with real IP address.
 
-1. Grant read permission:
+1. Remove group-readable & world-readable WARNING:
 
    ```sh
-   sudo chown -R $USER ~/.kube
+   chmod g-rw ~/.kube/config
+   chmod o-r ~/.kube/config
    ```
 
 1. Export environment variable by `vim ~/.profile`:
@@ -346,7 +345,9 @@ After running this installation:
 
 Official Helm [document](https://helm.sh/docs/) and Rancher's Helm [document](https://rancher.com/docs/k3s/latest/en/helm/).
 
-1. Installation (needs a proxy server):
+### Installation
+
+1. Install by script (needs a proxy server):
 
    ```sh
    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
