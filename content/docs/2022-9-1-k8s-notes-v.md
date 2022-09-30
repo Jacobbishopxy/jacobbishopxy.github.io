@@ -3,8 +3,6 @@ title="K8s 笔记 (V)"
 description="服务，负载均衡和网络"
 date=2022-09-01
 
-draft = true
-
 [taxonomies]
 categories = ["Doc"]
 tags = ["k8s"]
@@ -1168,9 +1166,19 @@ Events:
 
 ## Ingress 控制器
 
-WIP
+为了使 Ingress 资源工作，集群必须拥有一个运行的 ingress 控制器。
 
-## 端点切片
+有别于其它作为 `kube-controller-manager` 二进制部分运行的控制器，Ingress 控制器不会被集群自动启动。
+
+Kubernetes 作为一个项目，目前支持和维护 AWS、 GCE 和 Nginx Ingress 控制器。
+
+## 端点切片 {#EndpointSlices}
+
+**特性状态**：`v1.21 [stable]`
+
+*端点切片 EndpointSlices*提供了一个简单的方法用于追踪 k8s 集群中的网络端点。它们提供一种可扩缩和可拓展的代替方案。
+
+### 动机 {#EndpointSlices-Motivation}
 
 WIP
 
