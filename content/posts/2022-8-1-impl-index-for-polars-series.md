@@ -11,7 +11,7 @@ tags = ["Rust"]
 
 ## Intro
 
-Today I would like to talk about a small problem I met in my project, and the inspired thoughts through the whole working process. While trying to select data from Series or DataFrame, the intuitive thought is how to make Rust DataFrame's selection similar to Python's DataFrame? For example, we have `iat`, `at`, `iloc` and `loc` methods in pandas' DataFrame, which represents _accessing integer location scalar_, _accessing a single value for a row/column label pair_, _accessing a group of rows and columns by integer position(s)_, and _accessing a group of rows and columns by label(s)_ respectfully.
+Today I would like to talk about a small problem I met in my project, and the inspired thoughts through the whole working process. While trying to select data from Series or DataFrame, the intuitive thought come up to me is how to make the Rust DataFrame's selection act like Python. For example, we have `iat`, `at`, `iloc` and `loc` methods in pandas' DataFrame, which represents _accessing integer location scalar_, _accessing a single value for a row/column label pair_, _accessing a group of rows and columns by integer position(s)_, and _accessing a group of rows and columns by label(s)_ respectfully.
 
 The first idea came to me is that implementing `Index` trait for polars series can approach the same effect as pandas DataFrame does. As a syntactic sugar of `foo.index(index)`, `Index` provide us a simple way to get an indexed of value from a variable.
 
