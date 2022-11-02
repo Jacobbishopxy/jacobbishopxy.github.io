@@ -2,9 +2,7 @@
 title = "A Small ETL App"
 description = "Yet another Fabrix"
 date = 2022-10-10
-updated = 2022-10-11
-
-draft = true
+updated = 2022-11-02
 
 [taxonomies]
 categories = ["Post"]

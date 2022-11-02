@@ -1,22 +1,19 @@
 +++
 title = "Deploy A Bunch of Staff on K8s"
 description = "Using local Volume"
-date = 2022-08-12
-updated = 2022-08-12
-
-draft = true
+date = 2022-09-12
+updated = 2022-11-02
 
 [taxonomies]
 categories = ["Post"]
 tags = ["k8s"]
-
-[extra]
-toc = true
 +++
 
-## Intro
+## Apps
 
+- Kubeapps
 - Postgresql
+- MinIO
 - Spark
 - SeaTunnel
 
