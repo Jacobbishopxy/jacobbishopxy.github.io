@@ -168,6 +168,7 @@ navbar_items = [
   { url = "$BASE_URL/", name = "Home" },
   { url = "$BASE_URL/posts", name = "Posts" },
   { url = "$BASE_URL/docs", name = "Docs" },
+  { url = "$BASE_URL/reads", name = "Reads" },
   { url = "$BASE_URL/archives", name = "Archives" },
   { url = "$BASE_URL/tags", name = "Tags" },
   { url = "$BASE_URL/categories", name = "Categories" },

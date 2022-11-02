@@ -3,14 +3,28 @@
 <section class="archive">
 	<h1 class="title is-2 center-text">Archives</h1>
 
-	<div class="box-l">
-		<h2 class="subtitle is-5 center-text">Posts</h2>
+	<div class="center-text">
+		<button
+			class="tablink"
+			onclick="openPage('Posts', this, '#00589C')"
+			id="defaultOpen"
+		>
+			Posts
+		</button>
+		<button class="tablink" onclick="openPage('Docs', this, '#CC997B')">
+			Docs
+		</button>
+		<button class="tablink" onclick="openPage('Reads', this, '#C83533')">
+			Reads
+		</button>
+	</div>
 
+	<div id="Posts" class="tabcontent">
 		{% set section = get_section(path="posts/_index.md") %} {% for year, posts
 		in section.pages | sort(attribute="date") | reverse |
 		group_by(attribute="year") %}
 
-		<h2 class="subtitle is-5 year-space">{{ year }}</h2>
+		<h2 class="subtitle is-5 center-text">{{ year }}</h2>
 
 		<ul>
 			{% for post in posts %}
@@ -27,16 +41,12 @@
 		{% endfor %}
 	</div>
 
-	<!--  -->
-
-	<div class="box-r">
-		<h2 class="subtitle is-5 center-text">Docs</h2>
-
+	<div id="Docs" class="tabcontent">
 		{% set section = get_section(path="docs/_index.md") %} {% for year, docs in
 		section.pages | sort(attribute="date") | reverse |
 		group_by(attribute="year") %}
 
-		<h2 class="subtitle is-5 year-space">{{ year }}</h2>
+		<h2 class="subtitle is-5 center-text">{{ year }}</h2>
 
 		<ul>
 			{% for doc in docs %}
@@ -53,5 +63,47 @@
 
 		{% endfor %}
 	</div>
+
+	<div id="Reads" class="tabcontent">
+		{% set section = get_section(path="reads/_index.md") %} {% for year, reads
+		in section.pages | sort(attribute="date") | reverse |
+		group_by(attribute="year") %}
+
+		<h2 class="subtitle is-5 center-text">{{ year }}</h2>
+
+		<ul>
+			{% for read in reads %}
+			<li class="list-space">
+				<time class="list-space-date">
+					{{ read.date | date(format="%d-%h") }}
+				</time>
+				<a class="list-space-title" href="{{ read.permalink }}">
+					{{ read.title }}
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+		{% endfor %}
+	</div>
 </section>
+
+<script>
+	function openPage(pageName, elmnt, color) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablink");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].style.backgroundColor = "";
+		}
+		document.getElementById(pageName).style.display = "block";
+		elmnt.style.backgroundColor = color;
+	}
+
+	// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
+</script>
+
 {% endblock content %}

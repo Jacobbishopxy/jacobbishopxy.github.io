@@ -25,19 +25,19 @@ toc = true
 
 以下是 Deployments 的典型使用案例：
 
-- [创建一个 Deployment 以将 ReplicaSet 上线](@/docs/2022-8-15-k8s-notes-iv-b.md#CreatingADeployment)。ReplicaSet 在后台创建 Pods。检查上线状态确认其成功与否。
+- [创建一个 Deployment 以将 ReplicaSet 上线](@/reads/2022-8-15-k8s-notes-iv-b.md#CreatingADeployment)。ReplicaSet 在后台创建 Pods。检查上线状态确认其成功与否。
 
-- [通过更新 Deployment 的 Pod 模版声明一个 Pods 的新状态](@/docs/2022-8-15-k8s-notes-iv-b.md#UpdatingADeployment)。一个新的 ReplicaSet 被创建，并且 Deployment 控速从旧的 ReplicaSet 移动 Pods 至新的。每个新的 ReplicaSet 都会更新 Deployment 的修订版本。
+- [通过更新 Deployment 的 Pod 模版声明一个 Pods 的新状态](@/reads/2022-8-15-k8s-notes-iv-b.md#UpdatingADeployment)。一个新的 ReplicaSet 被创建，并且 Deployment 控速从旧的 ReplicaSet 移动 Pods 至新的。每个新的 ReplicaSet 都会更新 Deployment 的修订版本。
 
-- [回滚到较早之前的 Deployment 版本](@/docs/2022-8-15-k8s-notes-iv-b.md#RollingBackADeployment)，如果当前状态的 Deployment 并不稳定。每次回滚都会更新 Deployment 的修订版本。
+- [回滚到较早之前的 Deployment 版本](@/reads/2022-8-15-k8s-notes-iv-b.md#RollingBackADeployment)，如果当前状态的 Deployment 并不稳定。每次回滚都会更新 Deployment 的修订版本。
 
-- [扩大 Deployment 规模用以承担更多负载](@/docs/2022-8-15-k8s-notes-iv-b.md#ScalingADeployment)。
+- [扩大 Deployment 规模用以承担更多负载](@/reads/2022-8-15-k8s-notes-iv-b.md#ScalingADeployment)。
 
-- [暂停 Deployment](@/docs/2022-8-15-k8s-notes-iv-b.md#PausingAndResumingADeployment) 用以修复若干 Pod 模板，并恢复开始一个新的上线过程。
+- [暂停 Deployment](@/reads/2022-8-15-k8s-notes-iv-b.md#PausingAndResumingADeployment) 用以修复若干 Pod 模板，并恢复开始一个新的上线过程。
 
-- [使用 Deployment 状态](@/docs/2022-8-15-k8s-notes-iv-b.md#DeploymentStatus)判断上线过程是否出现停滞。
+- [使用 Deployment 状态](@/reads/2022-8-15-k8s-notes-iv-b.md#DeploymentStatus)判断上线过程是否出现停滞。
 
-- [清理较旧的不再需要的 ReplicaSet](@/docs/2022-8-15-k8s-notes-iv-b.md#CleanUpPolicy)。
+- [清理较旧的不再需要的 ReplicaSet](@/reads/2022-8-15-k8s-notes-iv-b.md#CleanUpPolicy)。
 
 #### 创建 Deployment {#CreatingADeployment}
 

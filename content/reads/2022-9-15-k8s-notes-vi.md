@@ -313,7 +313,7 @@ PV 的制备有两种方式：静态制备或动态制备。
 
 Pod 将 PVC 当做存储卷来使用。集群会检查 PVC，找到所绑定的卷，并为 Pod 挂载该卷。对于支持多种访问模式的卷，用户要在 Pod 中以卷的形式使用申领时指定期望的访问模式。
 
-一旦用户有了申领对象并且该申领已经被绑定，则所绑定的 PV 在用户仍然需要它期间一直属于该用户。用户通过在 Pod 的 `volumes` 块中包含 `persistentVolumeClaim` 节区来调度 Pod，访问所申领的 PV。细节可参阅[使用申领作为卷](@/docs/2022-9-15-k8s-notes-vi.md#PersistentVolumes-ClaimsAsVolumes)。
+一旦用户有了申领对象并且该申领已经被绑定，则所绑定的 PV 在用户仍然需要它期间一直属于该用户。用户通过在 Pod 的 `volumes` 块中包含 `persistentVolumeClaim` 节区来调度 Pod，访问所申领的 PV。细节可参阅[使用申领作为卷](@/reads/2022-9-15-k8s-notes-vi.md#PersistentVolumes-ClaimsAsVolumes)。
 
 #### 保护使用中的存储对象
 
@@ -555,7 +555,7 @@ spec:
 
 `volumeMode` 属性设置为 `Filesystem` 的卷会被 Pod **挂载 Mount**到某个目录。如果卷的存储来自某块设备而该设备目前为空，k8s 会在第一次挂载卷之前在设备上创建文件系统。
 
-用户可以将 `volumeMode` 设置为 `Block`，以便将卷作为原始块设备来使用。这类卷以块的方式交给 Pod 使用，其上没有任何文件系统。这种模式对于为 Pod 提供一种使用最快可能方式来访问卷而言很有帮助，Pod 和卷之间不存在文件系统层。另外 Pod 中运行的应用必须知道如何处理原始块设备。关于如何在 Pod 中使用 `volumeMode: Block` 的卷，可参阅[原始块卷支持](@/docs/2022-9-15-k8s-notes-vi.md#PersistentVolumes-RawBlockVolumeSupport)。
+用户可以将 `volumeMode` 设置为 `Block`，以便将卷作为原始块设备来使用。这类卷以块的方式交给 Pod 使用，其上没有任何文件系统。这种模式对于为 Pod 提供一种使用最快可能方式来访问卷而言很有帮助，Pod 和卷之间不存在文件系统层。另外 Pod 中运行的应用必须知道如何处理原始块设备。关于如何在 Pod 中使用 `volumeMode: Block` 的卷，可参阅[原始块卷支持](@/reads/2022-9-15-k8s-notes-vi.md#PersistentVolumes-RawBlockVolumeSupport)。
 
 #### 访问模式 {#PersistentVolume-PersistentVolume-AccessMode}
 
@@ -635,11 +635,11 @@ spec:
 
 #### 访问模式 {#PersistentVolume-PersistentVolumeClaims-AccessMode}
 
-申领在请求具有特定访问模式的存储时，使用与卷相同的[访问模式约定](@/docs/2022-9-15-k8s-notes-vi.md#PersistentVolume-PersistentVolume-AccessMode)。
+申领在请求具有特定访问模式的存储时，使用与卷相同的[访问模式约定](@/reads/2022-9-15-k8s-notes-vi.md#PersistentVolume-PersistentVolume-AccessMode)。
 
 #### 卷模式 {#PersistentVolume-PersistentVolumeClaims-VolumeMode}
 
-申领使用与[卷相同的约定](@/docs/2022-9-15-k8s-notes-vi.md#PersistentVolume-PersistentVolume-VolumeMode)来表明是将卷作为文件系统还是块设备来使用。
+申领使用与[卷相同的约定](@/reads/2022-9-15-k8s-notes-vi.md#PersistentVolume-PersistentVolume-VolumeMode)来表明是将卷作为文件系统还是块设备来使用。
 
 #### 资源 {#PersistentVolume-PersistentVolumeClaims-Resources}
 
@@ -647,7 +647,7 @@ spec:
 
 #### 选择算符 {#PersistentVolume-PersistentVolumeClaims-Selector}
 
-申领可以设置[标签选择算符](@/docs/2022-7-10-k8s-notes-i.md#Objects-LabelsAndSelectors)来进一步过滤卷集合。只有标签与选择算符想匹配的卷能够绑定到申领上。选择算符包含两个字段：
+申领可以设置[标签选择算符](@/reads/2022-7-10-k8s-notes-i.md#Objects-LabelsAndSelectors)来进一步过滤卷集合。只有标签与选择算符想匹配的卷能够绑定到申领上。选择算符包含两个字段：
 
 - `matchLabels` - 卷必须包含带有此值的标签
 - `matchExpressions` - 通过设定键 key，值列表和操作符 operator 来构造需求。合法的操作符有 In，NotIn，Exists 和 DoesNotExist。
@@ -798,7 +798,7 @@ Alpha 发现版本中仅支持静态制备的卷。管理员需要在处理原�
 
 **特性状态**：`v1.20 [stable]`
 
-卷快照 Volume Snapshot 仅支持树外 CSI 卷插件。有关细节可参阅[卷快照](@/docs/2022-9-15-k8s-notes-vi.md#VolumeSnapshots)文档。
+卷快照 Volume Snapshot 仅支持树外 CSI 卷插件。有关细节可参阅[卷快照](@/reads/2022-9-15-k8s-notes-vi.md#VolumeSnapshots)文档。
 
 #### 基于卷快照创建 PVC
 

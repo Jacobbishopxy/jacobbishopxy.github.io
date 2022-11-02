@@ -85,7 +85,7 @@ spec:
 
 上述规范创建了一个新的名为 “my-service” 的 Service 对象，其代理 TCP 端口 9376 并且具有标签 `app=MyApp` 的 Pod 上。
 
-k8s 为该服务分配一个 IP 地址（有时称为“集群 IP”），该 IP 地址由服务代理使用（详见下述 [VIP 和 Service 代理](@/docs/2022-9-1-k8s-notes-v.md#VirtualIPsAndServiceProxies)）。
+k8s 为该服务分配一个 IP 地址（有时称为“集群 IP”），该 IP 地址由服务代理使用（详见下述 [VIP 和 Service 代理](@/reads/2022-9-1-k8s-notes-v.md#VirtualIPsAndServiceProxies)）。
 
 Service 选择算符的控制器持续扫描匹配选择算符的 Pods，然后 POSTs 更新至一个名为“my-service”的端点对象。
 
@@ -464,7 +464,7 @@ NAME       ENDPOINTS                     AGE
 my-nginx   10.244.2.5:80,10.244.3.4:80   1m
 ```
 
-现在用户应该可以从集群中任意节点上使用 curl 命令向 `<CLUSTER-IP>:<PORT>` 发送请求以访问 Nginx Service。注意 Service IP 完全是虚拟的，它从来没有走过网络，如果对它如何工作的原理好奇，可以进一步阅读[服务代理](@/docs/2022-9-1-k8s-notes-v.md#ServicesLoadBalancingAndNetworking-Service)的内容。
+现在用户应该可以从集群中任意节点上使用 curl 命令向 `<CLUSTER-IP>:<PORT>` 发送请求以访问 Nginx Service。注意 Service IP 完全是虚拟的，它从来没有走过网络，如果对它如何工作的原理好奇，可以进一步阅读[服务代理](@/reads/2022-9-1-k8s-notes-v.md#ServicesLoadBalancingAndNetworking-Service)的内容。
 
 ### 访问 Service
 
@@ -895,7 +895,7 @@ spec:
 
 #### 由单个 Service 来完成的 Ingress
 
-现有的 k8s 概念允许用户暴露单个 Service（参见[代替方案](@/docs/2022-9-1-k8s-notes-v.md#Ingress-Alternatives)）。也可以通过指定无规则的*默认后端*来对 Ingress 进行此操作。例如（`service/networking/test-ingress.yaml`）：
+现有的 k8s 概念允许用户暴露单个 Service（参见[代替方案](@/reads/2022-9-1-k8s-notes-v.md#Ingress-Alternatives)）。也可以通过指定无规则的*默认后端*来对 Ingress 进行此操作。例如（`service/networking/test-ingress.yaml`）：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1161,8 +1161,8 @@ Events:
 
 ### 替代方案 {#Ingress-Alternatives}
 
-- 使用 [Service.Type=LoadBalancer](@/docs/2022-9-1-k8s-notes-v.md#Service-PublishingServices-TypeLoadBalancer)
-- 使用 [Service.Type=NodePort](@/docs/2022-9-1-k8s-notes-v.md#Service-PublishingServices-TypeNodePort)
+- 使用 [Service.Type=LoadBalancer](@/reads/2022-9-1-k8s-notes-v.md#Service-PublishingServices-TypeLoadBalancer)
+- 使用 [Service.Type=NodePort](@/reads/2022-9-1-k8s-notes-v.md#Service-PublishingServices-TypeNodePort)
 
 ## Ingress 控制器
 
