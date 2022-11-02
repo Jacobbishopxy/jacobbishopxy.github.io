@@ -4,7 +4,7 @@ description="工作负载（Pod）"
 date=2022-08-01
 
 [taxonomies]
-categories = ["Doc"]
+categories = ["Read"]
 tags = ["k8s"]
 
 [extra]

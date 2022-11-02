@@ -6,7 +6,7 @@ date=2022-10-15
 draft = true
 
 [taxonomies]
-categories = ["Doc"]
+categories = ["Read"]
 tags = ["k8s"]
 
 [extra]

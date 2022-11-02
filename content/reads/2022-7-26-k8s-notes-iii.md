@@ -4,7 +4,7 @@ description="容器"
 date=2022-07-26
 
 [taxonomies]
-categories = ["Doc"]
+categories = ["Read"]
 tags = ["k8s"]
 
 [extra]

@@ -4,7 +4,7 @@ description="存储"
 date=2022-09-15
 
 [taxonomies]
-categories = ["Doc"]
+categories = ["Read"]
 tags = ["k8s"]
 
 [extra]

@@ -4,7 +4,7 @@ description="服务，负载均衡和网络"
 date=2022-09-01
 
 [taxonomies]
-categories = ["Doc"]
+categories = ["Read"]
 tags = ["k8s"]
 
 [extra]

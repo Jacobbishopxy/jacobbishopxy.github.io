@@ -4,19 +4,11 @@
 	<h1 class="title is-2 center-text">Archives</h1>
 
 	<div class="center-text">
-		<button
-			class="tablink"
-			onclick="openPage('Posts', this, '#00589C')"
-			id="defaultOpen"
-		>
+		<button class="tablink" onclick="openPage('Posts', this)" id="defaultOpen">
 			Posts
 		</button>
-		<button class="tablink" onclick="openPage('Docs', this, '#CC997B')">
-			Docs
-		</button>
-		<button class="tablink" onclick="openPage('Reads', this, '#C83533')">
-			Reads
-		</button>
+		<button class="tablink" onclick="openPage('Docs', this)">Docs</button>
+		<button class="tablink" onclick="openPage('Reads', this)">Reads</button>
 	</div>
 
 	<div id="Posts" class="tabcontent">
@@ -88,7 +80,7 @@
 </section>
 
 <script>
-	function openPage(pageName, elmnt, color) {
+	function openPage(pageName, elmnt) {
 		var i, tabcontent, tablinks;
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
@@ -99,7 +91,7 @@
 			tablinks[i].style.backgroundColor = "";
 		}
 		document.getElementById(pageName).style.display = "block";
-		elmnt.style.backgroundColor = color;
+		elmnt.style.backgroundColor = "#E8E8E8";
 	}
 
 	// Get the element with id="defaultOpen" and click on it

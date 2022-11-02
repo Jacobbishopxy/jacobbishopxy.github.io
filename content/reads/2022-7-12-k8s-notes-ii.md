@@ -4,7 +4,7 @@ description="集群架构"
 date=2022-07-12
 
 [taxonomies]
-categories = ["Doc"]
+categories = ["Read"]
 tags = ["k8s"]
 
 [extra]

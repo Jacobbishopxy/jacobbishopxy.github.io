@@ -4,7 +4,7 @@ description="工作负载（负载资源）"
 date=2022-08-15
 
 [taxonomies]
-categories = ["Doc"]
+categories = ["Read"]
 tags = ["k8s"]
 
 [extra]
