@@ -2,6 +2,7 @@
 title = "Lambda Comparison"
 description = "C++ vs. Rust"
 date = 2022-11-01
+updated = 2022-11-03
 
 [taxonomies]
 categories = ["Post"]
@@ -13,37 +14,25 @@ toc = true
 
 While working on a trivial project, a simple idea hits on me: what's the difference between C++'s lambda and Rust's closure? Having an explicit listing may give me a better cognition.
 
-Here is a short menu serving redirection:
+Here is a quick summary of today's topic:
 
-- [lambda_and_fn_ptr](@/posts/2022-11-01-lambda-comparison.md#lambda_and_fn_ptr)
-
-- [simple_lambda](@/posts/2022-11-01-lambda-comparison.md#simple_lambda)
-
-- [passing_lambda_to_fn](@/posts/2022-11-01-lambda-comparison.md#passing_lambda_to_fn)
-
-- [generic_lambda](@/posts/2022-11-01-lambda-comparison.md#generic_lambda)
-
-- [simple_capture](@/posts/2022-11-01-lambda-comparison.md#simple_capture)
-
-- [mutable_capture](@/posts/2022-11-01-lambda-comparison.md#mutable_capture)
-
-- [reference_capture](@/posts/2022-11-01-lambda-comparison.md#reference_capture)
-
-- [ownership_capture](@/posts/2022-11-01-lambda-comparison.md#ownership_capture)
-
-- [mixing_capture](@/posts/2022-11-01-lambda-comparison.md#mixing_capture)
-
-- [default_value_capture](@/posts/2022-11-01-lambda-comparison.md#default_value_capture)
-
-- [default_reference_capture](@/posts/2022-11-01-lambda-comparison.md#default_reference_capture)
-
-- [default_mixing_capture](@/posts/2022-11-01-lambda-comparison.md#default_mixing_capture)
-
-- [init_var_capture](@/posts/2022-11-01-lambda-comparison.md#init_var_capture)
-
-- [copy_lambda](@/posts/2022-11-01-lambda-comparison.md#copy_lambda)
-
-- [copy_ref_lambda](@/posts/2022-11-01-lambda-comparison.md#copy_ref_lambda)
+| function                                                                                       | C++'s Concept | Rust's Concept | Major Variety |
+| ---------------------------------------------------------------------------------------------- | ------------- | -------------- | ------------- |
+| [lambda_and_fn_ptr](@/posts/2022-11-01-lambda-comparison.md#lambda_and_fn_ptr)                 | ✔️            | ✔️             |               |
+| [simple_lambda](@/posts/2022-11-01-lambda-comparison.md#simple_lambda)                         | ✔️            | ✔️             | ✔️            |
+| [passing_lambda_to_fn](@/posts/2022-11-01-lambda-comparison.md#passing_lambda_to_fn)           | ✔️            | ✔️             |               |
+| [generic_lambda](@/posts/2022-11-01-lambda-comparison.md#generic_lambda)                       | ✔️            | ✔️             |               |
+| [simple_capture](@/posts/2022-11-01-lambda-comparison.md#simple_capture)                       | ✔️            | ✔️             |               |
+| [mutable_capture](@/posts/2022-11-01-lambda-comparison.md#mutable_capture)                     | ✔️            | ✔️             | ✔️            |
+| [reference_capture](@/posts/2022-11-01-lambda-comparison.md#reference_capture)                 | ✔️            | ✔️             | ✔️            |
+| [ownership_capture](@/posts/2022-11-01-lambda-comparison.md#ownership_capture)                 | ✔️            | ✔️             | ✔️            |
+| [mixing_capture](@/posts/2022-11-01-lambda-comparison.md#mixing_capture)                       | ✔️            | ✔️             |               |
+| [default_value_capture](@/posts/2022-11-01-lambda-comparison.md#default_value_capture)         | ✔️            | ❌             |               |
+| [default_reference_capture](@/posts/2022-11-01-lambda-comparison.md#default_reference_capture) | ✔️            | ❌             |               |
+| [default_mixing_capture](@/posts/2022-11-01-lambda-comparison.md#default_mixing_capture)       | ✔️            | ❌             |               |
+| [init_var_capture](@/posts/2022-11-01-lambda-comparison.md#init_var_capture)                   | ✔️            | ❌             |               |
+| [copy_lambda](@/posts/2022-11-01-lambda-comparison.md#copy_lambda)                             | ✔️            | ❌             |               |
+| [copy_ref_lambda](@/posts/2022-11-01-lambda-comparison.md#copy_ref_lambda)                     | ✔️            | ❌             |               |
 
 ## lambda_and_fn_ptr {#lambda_and_fn_ptr}
 
@@ -733,4 +722,4 @@ void copy_ref_lambda() {
 }
 ```
 
-Here is the full code on my [Github page](https://github.com/Jacobbishopxy/jotting/tree/master/lambda-comparison). Leave me a comment if you have any suggestion.
+Check my [Github page](https://github.com/Jacobbishopxy/jotting/tree/master/lambda-comparison) to see the code, and leave me a comment if you have any suggestion.
