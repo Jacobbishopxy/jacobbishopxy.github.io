@@ -26,7 +26,7 @@ Pre-pull image in case of k8s pulling timeout:
 docker pull docker.io/bitnami/spark:3.3.0-debian-11-r2
 ```
 
-```
+```txt
 ** Please be patient while the chart is being deployed **
 
 1. Get the Spark master WebUI URL by running these commands:

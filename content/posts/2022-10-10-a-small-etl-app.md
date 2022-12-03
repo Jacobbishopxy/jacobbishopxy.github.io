@@ -2,7 +2,9 @@
 title = "A Small ETL App"
 description = "Yet another Fabrix"
 date = 2022-10-10
-updated = 2022-11-02
+updated = 2022-10-11
+
+draft = true
 
 [taxonomies]
 categories = ["Post"]
@@ -19,6 +21,7 @@ There comes an impulse when I was reading `arrow2` documentation: instead of usi
 Then what this lib crate can do and its requirement:
 
 - An application who supports different types of data sources' read and write
+
 - Data schema is already known before compile
 
 In order to achieve this goal I've made a list of challenges (todo) as well:
@@ -32,6 +35,16 @@ In order to achieve this goal I've made a list of challenges (todo) as well:
 - A new type of `arrow` chuck, who stores different type of array, encapsulates methods who solve different sources of data's read and write
 
 - Rust procedure macros to generate compile-time schema's functions
+
+Furthermore, in this tutorial we will learn the following skills:
+
+- Rust declarative macros to simplify multiple type implementation (`array.rs`) and generic trait implementation (`connector.rs`)
+
+- Rust procedure macros with `syn`, `quote` and `proc-macro2` to build a derive macro for a struct
+
+- Trait with generic associate type to implement async function.
+
+- feature: `type_alias_impl_trait`
 
 Alright, let's speed up and launch our tutorial, firmly.
 
