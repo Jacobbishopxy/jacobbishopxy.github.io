@@ -12,21 +12,30 @@ tags = ["Latex"]
 1. [MacTeX](https://www.tug.org/mactex/): choose smaller download, or by Homebrew:
 
    ```sh
-   brew install cask mactex-no-gui
+   brew install mactex-no-gui
    ```
 
    or
 
    ```sh
-   brew install cask basictex
+   brew install basictex
    ```
 
-1. Install `latexmk` and add to PATH:
+1. Update `tlmgr` and add to PATH:
+
+   ```sh
+   sudo tlmgr update --self
+   sudo tlmgr path add
+   ```
+
+1. Install `tlmgr` plugins, check [ctan](https://ctan.org/) for more:
 
    ```sh
    sudo tlmgr install latexmk
-   sudo tlmgr path add
+   sudo tlmgr install ctex
    ```
+
+   note `ctex` supports Chinese words.
 
 1. Install `latexindent`:
 
@@ -42,11 +51,26 @@ tags = ["Latex"]
    "latex-workshop.latex.outDir": "./out/",
    "latex-workshop.latex.recipes": [
       {
-         "name": "latexmk 🔃",
+         "name": "xelatex",
+         "tools": ["xelatex"]
+      },
+      {
+         "name": "latexmk",
          "tools": ["latexmk"]
       }
    ],
    "latex-workshop.latex.tools": [
+      {
+         "name": "xelatex",
+         "command": "xelatex",
+         "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "-output-directory=%OUTDIR%",
+            "%DOC%"
+         ]
+      },
       {
          "name": "latexmk",
          "command": "latexmk",
@@ -58,7 +82,8 @@ tags = ["Latex"]
             "-outdir=%OUTDIR%",
             "%DOC%"
          ],
-         "env": {}
       }
    ]
    ```
+
+   Note: we can choose a compiler to compile our files by `LaTex Workshop: Build with recipe`
