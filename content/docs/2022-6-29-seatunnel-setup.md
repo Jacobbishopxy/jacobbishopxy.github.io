@@ -83,7 +83,7 @@ Other basic commands:
 
 - `stop-all.sh`
 
-**IMPORTANT**
+**IMPORTANT!**
 
 If we're running Ubuntu on WSL, and we may see `localhost: ssh: connect to host localhost port 22: Connection refused` this error while trying to start a spark worker, we shall generate a new ssh key for localhost. According to [this](https://stackoverflow.com/a/60198221):
 
