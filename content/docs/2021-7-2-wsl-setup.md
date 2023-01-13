@@ -2,6 +2,7 @@
 title="WSL setup"
 description="Setup WSL on Windows"
 date=2021-07-02
+updated=2023-01-11
 
 [taxonomies]
 categories = ["Doc"]
@@ -9,7 +10,13 @@ categories = ["Doc"]
 
 ## WSL and Ubuntu download
 
-Please follow [the official documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+One line command: `wsl --install`.
+
+For futher detailed info, visit [the official documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+
+## Install Windows Terminal
+
+Please follow [this step](https://learn.microsoft.com/en-us/windows/terminal/install).
 
 ## Move Ubuntu to another driver
 
@@ -27,11 +34,11 @@ To modify Ubuntu's starting directory, we can open Windows terminal, and you'll 
 
 ```json
 {
-    "guid": ...,
+    "commandline": "wsl ~ -d Ubuntu",
     "hidden": false,
-    "name": "Ubuntu-20.04",
+    "name": "Ubuntu",
     "source": "Windows.Terminal.Wsl",
-    "startingDirectory": "//wsl$/Ubuntu-20.04/home/<username>"
+    "startingDirectory": "~"
 }
 ```
 
@@ -91,7 +98,7 @@ To modify Ubuntu's starting directory, we can open Windows terminal, and you'll 
 1. Update sudoers
 
    ```sh
-   su root
+   sudo -i
    vim /etc/sudoers
    ```
 
