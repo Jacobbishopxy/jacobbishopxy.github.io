@@ -2,6 +2,7 @@
 title="Docker-desktop k8s Setup"
 description="k8s starting"
 date=2022-07-03
+updated=2023-01-13
 
 [taxonomies]
 categories = ["Doc"]
@@ -12,7 +13,49 @@ Docker desktop setup Kubernetes as a dev environment.
 
 ## Start up
 
-Starting up from this [repo](https://github.com/AliyunContainerService/k8s-for-docker-desktop), we use image mirrors without any proxy setup.
+- [docker desktop download & install](https://www.docker.com/products/docker-desktop/)
+
+- [kubectl download & install](https://kubernetes.io/docs/tasks/tools/)
+
+- [Golang download & install [optional]](https://go.dev/doc/install)
+
+  ```sh
+  wget https://go.dev/dl/go1.19.5.linux-amd64.tar.gz
+  sudo  rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
+  ```
+
+  Adding following line to `$HOME/.profile` or `/etc/profile`
+
+  ```sh
+  export PATH=$PATH:/usr/local/go/bin
+  ```
+
+  then `source $HOME/.profile`, and check version by `go version`
+
+- [helm download & install](https://helm.sh/docs/intro/install/)
+
+  From source code (needing a Go env):
+
+  ```sh
+  git clone https://github.com/helm/helm.git
+  cd helm
+  make
+  ```
+
+  Copy into `/usr/local`
+
+  ```sh
+  sudo cp -r bin/ /usr/local/helm/
+  ```
+
+  Adding following line to `$HOME/.profile`
+
+  ```sh
+  export PATH=$PATH:/usr/local/helm
+  ```
+
+  then `source $HOME/.profile`, and check version by `helm version`
+
 
 ## Use cases
 
