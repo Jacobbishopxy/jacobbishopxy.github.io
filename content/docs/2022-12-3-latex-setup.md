@@ -55,12 +55,14 @@ tags = ["Latex"]
 
    or
 
-   > cd /tmp # working directory of your choice
-   > wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz # or curl instead of wget
-   > zcat install-tl-unx.tar.gz | tar xf -
-   > cd install-tl-*
-   > perl ./install-tl --no-interaction # as root or with writable destination
-   > Finally, prepend /usr/local/texlive/YYYY/bin/PLATFORM to your PATH, e.g., /usr/local/texlive/2022/bin/x86_64-linux
+   ```sh
+   cd /tmp # working directory of your choice
+   wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz # or curl instead of wget
+   zcat install-tl-unx.tar.gz | tar xf -
+   cd install-tl-*
+   perl ./install-tl --no-interaction # as root or with writable destination
+   # Finally, prepend /usr/local/texlive/YYYY/bin/PLATFORM to your PATH, e.g., /usr/local/texlive/2022/bin/x86_64-linux
+   ```
 
 ## Vs Code
 

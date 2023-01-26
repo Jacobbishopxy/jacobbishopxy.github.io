@@ -6,6 +6,8 @@ title = "Jacob's Domain"
 
 {% align_center() %}
 My name is Jacob Xie, and I'm a fullstack developer also a data engineer.
+
+I'm currently working on [poma-notes](https://github.com/Jacobbishopxy/poma-notes) and [fx](https://github.com/Jacobbishopxy/fx).
 {% end %}
 
 {{ br() }}
