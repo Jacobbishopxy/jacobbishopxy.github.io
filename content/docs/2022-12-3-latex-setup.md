@@ -35,6 +35,7 @@ tags = ["Latex"]
    ```sh
    sudo tlmgr install latexmk
    sudo tlmgr install ctex
+   sudo tlmgr install collection-fontsrecommended
    ```
 
    note `ctex` supports Chinese words.
