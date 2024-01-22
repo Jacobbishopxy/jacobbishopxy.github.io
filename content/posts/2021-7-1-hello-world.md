@@ -28,6 +28,9 @@ This blog is powered by [Zola](https://github.com/getzola/zola). Want to paly wi
 
   ```sh
   gh repo clone getzola/zola
+
+  # or by git clone
+  git clone git@github.com:getzola/zola.git
   ```
 
 - Build Rust binary executable:

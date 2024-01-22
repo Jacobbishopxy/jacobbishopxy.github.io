@@ -1,5 +1,5 @@
 +++
-title="WSL setup"
+title="WSL SSH setup"
 description="Setup WSL SSH"
 date=2024-01-22
 

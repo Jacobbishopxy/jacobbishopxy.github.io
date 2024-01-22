@@ -97,7 +97,7 @@ To modify Ubuntu's starting directory, we can open Windows terminal, and you'll 
 
 1. Update sudoers
 
-   ```sh
+   <!-- ```sh
    sudo -i
    vim /etc/sudoers
    ```
@@ -106,6 +106,12 @@ To modify Ubuntu's starting directory, we can open Windows terminal, and you'll 
 
    ```txt
    jacob ALL=(ALL) ALL
+   ``` -->
+
+   add user to sudo group
+
+   ```sh
+   usermod -aG sudo jacob
    ```
 
 ## Setup Git
