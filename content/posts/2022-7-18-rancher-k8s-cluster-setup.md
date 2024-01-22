@@ -2,7 +2,7 @@
 title = "Rancher k8s cluster setup"
 description = "An experimental record"
 date = 2022-07-18
-updated = 2022-08-10
+updated = 2023-03-09
 
 [taxonomies]
 categories = ["Post"]
@@ -468,22 +468,16 @@ Official Helm [document](https://helm.sh/docs/) and Rancher's Helm [document](ht
 1. According to [this](https://docs.rke2.io/networking/#nginx-ingress-controller), modify RKE2 Nginx config `/var/lib/rancher/rke2/server/manifests/rke2-ingress-nginx-config.yaml`:
 
    ```yaml
-   apiVersion: helm.cattle.io/v1
-   kind: HelmChartConfig
-   metadata:
-   name: rke2-ingress-nginx
-   namespace: kube-system
-   spec:
-   valuesContent: |-
-     controller:
-        config:
-        use-forwarded-headers: "true"
-   ```
-
-   and restart:
-
-   ```sh
-   systemctl restart
+    apiVersion: helm.cattle.io/v1
+    kind: HelmChartConfig
+    metadata:
+      name: rke2-ingress-nginx
+      namespace: kube-system
+    spec:
+      valuesContent: |-
+        controller:
+          config:
+            use-forwarded-headers: "true"
    ```
 
 1. Verify that the Rancher server is successfully deployed:

@@ -2,7 +2,7 @@
 title="WSL setup"
 description="Setup WSL on Windows"
 date=2021-07-02
-updated=2023-01-11
+updated=2023-02-16
 
 [taxonomies]
 categories = ["Doc"]
@@ -144,6 +144,19 @@ Copy the public key to your [GitHub account](https://github.com/settings/keys):
 
 ```sh
 cat ~/.ssh/id_rsa.pub
+```
+
+## Copy SSH key and add to remote server
+
+```sh
+cat ~/.ssh/id_rsa.pub
+```
+
+Copy the public key to the remote server `~/.ssh/authorized_keys` (create one, if doesn't exist).
+If `authorized_keys` needs to be create, make sure its permissions are correct:
+
+```sh
+chown -R $USER:$USER ~/.ssh
 ```
 
 ### Issues may occur
