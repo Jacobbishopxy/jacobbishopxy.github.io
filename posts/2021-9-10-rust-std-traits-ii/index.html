@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | Rust Std Traits (II) </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Rust Std Traits (II)</h1>
+					<p class="subtitle">Useful traits from the Rust standard library</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2021-09-10">September 10, 2021</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>8 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>1507 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/post/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Post</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/rust/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Rust</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><p>Let's continue our exploration of the Rust standard traits.</p>
+<h2 id="error-handling">Error Handling</h2>
+<p>As I've already played with Error and Result so much, I'm going to introduce three crates that are useful for dealing with errors. They are <a href="https://crates.io/crates/thiserror"><code>thiserror</code></a>, <a href="https://crates.io/crates/anyhow"><code>anyhow</code></a> and <a href="https://crates.io/crates/snafu"><code>snafu</code></a>.</p>
+<p>Below is a simple example of combining <code>thiserror</code> and <code>anyhow</code> to solve a customized error.</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#65737e;">//! Error Handling
+</span><span>
+</span><span style="color:#b48ead;">use </span><span>anyhow::{anyhow, Context, Result};
+</span><span style="color:#b48ead;">use </span><span>thiserror::Error;
+</span><span>
+</span><span style="color:#b48ead;">use </span><span>serde::Deserialize;
+</span><span style="color:#b48ead;">use </span><span>serde_json::from_str;
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">allow</span><span>(dead_code)]
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Deserialize, Debug)]
+</span><span style="color:#b48ead;">struct </span><span>ClusterMap {
+</span><span>    </span><span style="color:#bf616a;">name</span><span>: String,
+</span><span>    </span><span style="color:#bf616a;">group</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">/*
+</span><span style="color:#65737e;">1. anyhow::Result + anyhow::Context
+</span><span style="color:#65737e;">*/
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">allow</span><span>(dead_code)]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">get_cluster_info</span><span>(</span><span style="color:#bf616a;">path</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;ClusterMap&gt; {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> config =
+</span><span>        std::fs::read_to_string(path).</span><span style="color:#96b5b4;">with_context</span><span>(|| format!(&quot;</span><span style="color:#a3be8c;">Failed to read from </span><span style="color:#d08770;">{}</span><span>&quot;, path))?;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> map = </span><span style="color:#96b5b4;">from_str</span><span>(&amp;config);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">match</span><span> map {
+</span><span>        Ok(map) =&gt; Ok(map),
+</span><span>        Err(e) =&gt; Err(anyhow!(&quot;</span><span style="color:#a3be8c;">Failed to parse config: {}</span><span>&quot;, e)),
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">test_get_cluster_info</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> cm = </span><span style="color:#96b5b4;">get_cluster_info</span><span>(&quot;</span><span style="color:#a3be8c;">./mock/cluster_map.json</span><span>&quot;);
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, cm);
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">/*
+</span><span style="color:#65737e;">2. thiserror::Error
+</span><span style="color:#65737e;">*/
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">allow</span><span>(dead_code)]
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Error, Debug)]
+</span><span style="color:#b48ead;">pub enum </span><span>ClusterMapError {
+</span><span>    #[</span><span style="color:#bf616a;">error</span><span>(&quot;</span><span style="color:#a3be8c;">Invalid range of range (expected in 0-100), got {0}</span><span>&quot;)]
+</span><span>    InvalidGroup(</span><span style="color:#b48ead;">i32</span><span>),
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">allow</span><span>(dead_code)]
+</span><span style="color:#b48ead;">impl </span><span>ClusterMap {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">validate</span><span>(</span><span style="color:#bf616a;">self</span><span>) -&gt; Result&lt;</span><span style="color:#b48ead;">Self</span><span>&gt; {
+</span><span>        </span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">self</span><span>.group &lt; </span><span style="color:#d08770;">0 </span><span>|| </span><span style="color:#bf616a;">self</span><span>.group &gt; </span><span style="color:#d08770;">100 </span><span>{
+</span><span>            Err(ClusterMapError::InvalidGroup(</span><span style="color:#bf616a;">self</span><span>.group).</span><span style="color:#96b5b4;">into</span><span>())
+</span><span>        } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>            Ok(</span><span style="color:#bf616a;">self</span><span>)
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">allow</span><span>(dead_code)]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">get_cluster_info_pro</span><span>(</span><span style="color:#bf616a;">path</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;ClusterMap&gt; {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> config =
+</span><span>        std::fs::read_to_string(path).</span><span style="color:#96b5b4;">with_context</span><span>(|| format!(&quot;</span><span style="color:#a3be8c;">Failed to read from </span><span style="color:#d08770;">{}</span><span>&quot;, path))?;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> map: ClusterMap = </span><span style="color:#96b5b4;">from_str</span><span>(&amp;config)?;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> map = map.</span><span style="color:#96b5b4;">validate</span><span>()?;
+</span><span>    Ok(map)
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">test_get_cluster_info_pro</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let </span><span>_ = </span><span style="color:#b48ead;">match </span><span style="color:#96b5b4;">get_cluster_info_pro</span><span>(&quot;</span><span style="color:#a3be8c;">./mock/cluster_map.json</span><span>&quot;) {
+</span><span>        Ok(cm) =&gt; println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, cm),
+</span><span>        Err(e) =&gt; println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, e),
+</span><span>    };
+</span><span>}
+</span></code></pre>
+<p>TODO: <code>snafu</code> example</p>
+<h2 id="conversion-traits">Conversion Traits</h2>
+<h3 id="from-into-tryfrom-tryinto">From/Into &amp; TryFrom/TryInto</h3>
+<p>Simple and useful:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>std::convert::TryFrom;
+</span><span>
+</span><span style="color:#b48ead;">enum </span><span>JsonValue {
+</span><span>    Number(</span><span style="color:#b48ead;">f64</span><span>),
+</span><span>    Integer(</span><span style="color:#b48ead;">i64</span><span>),
+</span><span>    String(String),
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>From&lt;</span><span style="color:#b48ead;">f64</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>JsonValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">f64</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        JsonValue::Number(v)
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>From&lt;</span><span style="color:#b48ead;">f32</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>JsonValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">f32</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        JsonValue::Number(v.</span><span style="color:#96b5b4;">into</span><span>())
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>From&lt;</span><span style="color:#b48ead;">i32</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>JsonValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">i32</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        JsonValue::Integer(v.</span><span style="color:#96b5b4;">into</span><span>())
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>From&lt;</span><span style="color:#b48ead;">i16</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>JsonValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">i16</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        JsonValue::Integer(v.</span><span style="color:#96b5b4;">into</span><span>())
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>From&lt;</span><span style="color:#b48ead;">i8</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>JsonValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">i8</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        JsonValue::Integer(v.</span><span style="color:#96b5b4;">into</span><span>())
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>From&lt;&amp;</span><span style="color:#b48ead;">str</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>JsonValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        JsonValue::String(v.</span><span style="color:#96b5b4;">to_owned</span><span>())
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>From&lt;String&gt; </span><span style="color:#b48ead;">for </span><span>JsonValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: String) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        JsonValue::String(v)
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">enum </span><span>MyError {
+</span><span>    ParseError,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>TryFrom&lt;JsonValue&gt; </span><span style="color:#b48ead;">for </span><span>String {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Error = MyError;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">try_from</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;(</span><span style="color:#bf616a;">value</span><span>: JsonValue) -&gt; Result&lt;</span><span style="color:#b48ead;">Self</span><span>, </span><span style="color:#b48ead;">Self::</span><span>Error&gt; {
+</span><span>        </span><span style="color:#b48ead;">match</span><span> value {
+</span><span>            JsonValue::String(s) =&gt; Ok(s),
+</span><span>            _ =&gt; Err(MyError::ParseError),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>TryFrom&lt;JsonValue&gt; </span><span style="color:#b48ead;">for </span><span>i64 {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Error = MyError;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">try_from</span><span>(</span><span style="color:#bf616a;">value</span><span>: JsonValue) -&gt; Result&lt;</span><span style="color:#b48ead;">Self</span><span>, </span><span style="color:#b48ead;">Self::</span><span>Error&gt; {
+</span><span>        </span><span style="color:#b48ead;">match</span><span> value {
+</span><span>            JsonValue::Integer(f) =&gt; Ok(f),
+</span><span>            _ =&gt; Err(MyError::ParseError),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>TryFrom&lt;JsonValue&gt; </span><span style="color:#b48ead;">for </span><span>f64 {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Error = MyError;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">try_from</span><span>(</span><span style="color:#bf616a;">value</span><span>: JsonValue) -&gt; Result&lt;</span><span style="color:#b48ead;">Self</span><span>, </span><span style="color:#b48ead;">Self::</span><span>Error&gt; {
+</span><span>        </span><span style="color:#b48ead;">match</span><span> value {
+</span><span>            JsonValue::Number(f) =&gt; Ok(f),
+</span><span>            _ =&gt; Err(MyError::ParseError),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<h3 id="fromstr">FromStr</h3>
+<p>First of all, let's look at the <code>FromStr</code> trait:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">trait </span><span>FromStr {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Err;
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from_str</span><span>(</span><span style="color:#bf616a;">s</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;</span><span style="color:#b48ead;">Self</span><span>, </span><span style="color:#b48ead;">Self::</span><span>Err&gt;;
+</span><span>}
+</span></code></pre>
+<p>That is to say, any types who implemented this trait can be constructed from a <code>&amp;str</code>. A complex example I've provided is in <a href="https://jacobbishopxy.github.io/posts/a-taste-of-nom/">this article</a>, in which I used <code>nom</code>, a parser combinator, to parse complex string structure.</p>
+<h3 id="asref-asmut">AsRef &amp; AsMut</h3>
+<p>Take a look at their signature:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">trait </span><span>AsRef&lt;T: ?Sized&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_ref</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;T;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">trait </span><span>AsMut&lt;T: ?Sized&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_mut</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">mut</span><span> T;
+</span><span>}
+</span></code></pre>
+<p>Both <code>AsRef</code> and <code>AsMut</code> are similar to <code>From</code> or <code>Into</code>, instead they do not take ownership but providing immutable reference and mutable reference respectively. <code>AsRef</code> is commonly used in many places, for example, in <code>std::fs::File</code>:</p>
+<blockquote>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">open</span><span>&lt;P: AsRef&lt;Path&gt;&gt;(</span><span style="color:#bf616a;">path</span><span>: P) -&gt; io::Result&lt;File&gt; {
+</span><span>    OpenOptions::new().</span><span style="color:#96b5b4;">read</span><span>(</span><span style="color:#d08770;">true</span><span>).</span><span style="color:#96b5b4;">open</span><span>(path.</span><span style="color:#96b5b4;">as_ref</span><span>())
+</span><span>}
+</span></code></pre>
+</blockquote>
+<p>We can use <code>File::Open</code> to open a file from different sources, such as URL, file path, etc.</p>
+<p><code>AsMut</code>, however, is seldom used in my experience, so for illustration, I made an example of <code>AsMut</code>. In the example below, I wrote two functions <code>zoom_1</code> and <code>zoom_2</code>, and you will see by using <code>AsMut</code> as a function's generic parameter, <code>zoom_1</code> is capable of tackle both <code>Box&lt;T&gt;</code> and <code>T</code> arguments.</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#65737e;">// describes all the behavior of a type:
+</span><span style="color:#65737e;">// - area: calculates the area of a shape
+</span><span style="color:#65737e;">// - zoom: used for mutating the type&#39;s fields
+</span><span style="color:#b48ead;">trait </span><span>Shape {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">area</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">f64</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">zoom</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">factor</span><span>: </span><span style="color:#b48ead;">f64</span><span>);
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// concrete type #1
+</span><span style="color:#b48ead;">struct </span><span>Rectangle {
+</span><span>    </span><span style="color:#bf616a;">width</span><span>: </span><span style="color:#b48ead;">f64</span><span>,
+</span><span>    </span><span style="color:#bf616a;">height</span><span>: </span><span style="color:#b48ead;">f64</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Shape </span><span style="color:#b48ead;">for </span><span>Rectangle {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">area</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">f64 </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.width * </span><span style="color:#bf616a;">self</span><span>.height
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">zoom</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">factor</span><span>: </span><span style="color:#b48ead;">f64</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.width *= factor;
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.height *= factor;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// impl AsMut&lt;dyn Shape&gt;
+</span><span style="color:#65737e;">// lifetime parameter &#39;a is required for `dyn Shape`
+</span><span style="color:#b48ead;">impl</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt; AsMut&lt;dyn Shape + </span><span style="color:#b48ead;">&#39;a</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>Rectangle {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_mut</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">mut </span><span>(dyn Shape + </span><span style="color:#b48ead;">&#39;a</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">self
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// concrete type #2
+</span><span style="color:#b48ead;">struct </span><span>Triangle {
+</span><span>    </span><span style="color:#bf616a;">base</span><span>: </span><span style="color:#b48ead;">f64</span><span>,
+</span><span>    </span><span style="color:#bf616a;">height</span><span>: </span><span style="color:#b48ead;">f64</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Shape </span><span style="color:#b48ead;">for </span><span>Triangle {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">area</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">f64 </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.base * </span><span style="color:#bf616a;">self</span><span>.height / </span><span style="color:#d08770;">2.0
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">zoom</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">factor</span><span>: </span><span style="color:#b48ead;">f64</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.base *= factor;
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.height *= factor;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt; AsMut&lt;dyn Shape + </span><span style="color:#b48ead;">&#39;a</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>Triangle {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_mut</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">mut </span><span>(dyn Shape + </span><span style="color:#b48ead;">&#39;a</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">self
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>Circle {
+</span><span>    </span><span style="color:#bf616a;">radius</span><span>: </span><span style="color:#b48ead;">f64</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Shape </span><span style="color:#b48ead;">for </span><span>Circle {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">area</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">f64 </span><span>{
+</span><span>        std::f64::consts::</span><span style="color:#d08770;">PI </span><span>* </span><span style="color:#bf616a;">self</span><span>.radius * </span><span style="color:#bf616a;">self</span><span>.radius
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">zoom</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">factor</span><span>: </span><span style="color:#b48ead;">f64</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.radius *= factor;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt; AsMut&lt;dyn Shape + </span><span style="color:#b48ead;">&#39;a</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>Circle {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_mut</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">mut </span><span>(dyn Shape + </span><span style="color:#b48ead;">&#39;a</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">self
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// zoom_1 is more flexible than zoom_2
+</span><span>#[</span><span style="color:#bf616a;">allow</span><span>(dead_code)]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">zoom_1</span><span>&lt;T: AsMut&lt;dyn Shape&gt;&gt;(</span><span style="color:#bf616a;">shape</span><span>: &amp;</span><span style="color:#b48ead;">mut</span><span> T, </span><span style="color:#bf616a;">factor</span><span>: </span><span style="color:#b48ead;">f64</span><span>) {
+</span><span>    shape.</span><span style="color:#96b5b4;">as_mut</span><span>().</span><span style="color:#96b5b4;">zoom</span><span>(factor);
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// zoom_2 only accepts `Box&lt;dyn Shape&gt;`
+</span><span>#[</span><span style="color:#bf616a;">allow</span><span>(dead_code)]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">zoom_2</span><span>(</span><span style="color:#bf616a;">shape</span><span>: &amp;</span><span style="color:#b48ead;">mut </span><span>Box&lt;dyn Shape&gt;, </span><span style="color:#bf616a;">factor</span><span>: </span><span style="color:#b48ead;">f64</span><span>) {
+</span><span>    shape.</span><span style="color:#96b5b4;">zoom</span><span>(factor);
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">test_zoom_1</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> rectangle = Rectangle {
+</span><span>        width: </span><span style="color:#d08770;">10.0</span><span>,
+</span><span>        height: </span><span style="color:#d08770;">20.0</span><span>,
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">zoom_1</span><span>(&amp;</span><span style="color:#b48ead;">mut</span><span> rectangle, </span><span style="color:#d08770;">2.0</span><span>);
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">test_zoom_2</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> rectangle = Rectangle {
+</span><span>        width: </span><span style="color:#d08770;">10.0</span><span>,
+</span><span>        height: </span><span style="color:#d08770;">20.0</span><span>,
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> rectangle = Box::new(rectangle) as Box&lt;dyn Shape&gt;;
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">zoom_2</span><span>(&amp;</span><span style="color:#b48ead;">mut</span><span> rectangle, </span><span style="color:#d08770;">2.0</span><span>);
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">test_zoom_vec_shape</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> vec: Vec&lt;Box&lt;dyn Shape&gt;&gt; = vec![
+</span><span>        Box::new(Rectangle {
+</span><span>            width: </span><span style="color:#d08770;">10.0</span><span>,
+</span><span>            height: </span><span style="color:#d08770;">20.0</span><span>,
+</span><span>        }),
+</span><span>        Box::new(Triangle {
+</span><span>            base: </span><span style="color:#d08770;">10.0</span><span>,
+</span><span>            height: </span><span style="color:#d08770;">20.0</span><span>,
+</span><span>        }),
+</span><span>        Box::new(Circle { radius: </span><span style="color:#d08770;">10.0 </span><span>}),
+</span><span>    ];
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// here we can use both zoom_1 and zoom_2
+</span><span>    vec.</span><span style="color:#96b5b4;">iter_mut</span><span>().</span><span style="color:#96b5b4;">for_each</span><span>(|</span><span style="color:#bf616a;">shape</span><span>| {
+</span><span>        </span><span style="color:#65737e;">// `shape` satisfies both `AsMut&lt;dyn Shape&gt;` and `Box&lt;dyn Shape&gt;`
+</span><span>        </span><span style="color:#96b5b4;">zoom_1</span><span>(shape, </span><span style="color:#d08770;">2.0</span><span>);
+</span><span>        </span><span style="color:#96b5b4;">zoom_2</span><span>(shape, </span><span style="color:#d08770;">2.0</span><span>);
+</span><span>    });
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span> item in vec.</span><span style="color:#96b5b4;">iter</span><span>() {
+</span><span>        </span><span style="color:#b48ead;">let</span><span> area = item.</span><span style="color:#96b5b4;">area</span><span>();
+</span><span>
+</span><span>        println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, area);
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">test_zoom_vec_rectangle</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> vec = vec![
+</span><span>        Rectangle {
+</span><span>            width: </span><span style="color:#d08770;">10.0</span><span>,
+</span><span>            height: </span><span style="color:#d08770;">20.0</span><span>,
+</span><span>        },
+</span><span>        Rectangle {
+</span><span>            width: </span><span style="color:#d08770;">12.0</span><span>,
+</span><span>            height: </span><span style="color:#d08770;">18.0</span><span>,
+</span><span>        },
+</span><span>        Rectangle {
+</span><span>            width: </span><span style="color:#d08770;">14.0</span><span>,
+</span><span>            height: </span><span style="color:#d08770;">16.0</span><span>,
+</span><span>        },
+</span><span>    ];
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// zoom_2 is no longer applicable
+</span><span>    vec.</span><span style="color:#96b5b4;">iter_mut</span><span>().</span><span style="color:#96b5b4;">for_each</span><span>(|</span><span style="color:#bf616a;">shape</span><span>| {
+</span><span>        </span><span style="color:#65737e;">// `shape` satisfies only `AsMut&lt;dyn Shape&gt;`
+</span><span>        </span><span style="color:#96b5b4;">zoom_1</span><span>(shape, </span><span style="color:#d08770;">2.0</span><span>);
+</span><span>        </span><span style="color:#65737e;">// no more allowed here
+</span><span>        </span><span style="color:#65737e;">// zoom_2(shape, 2.0);
+</span><span>    });
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span> item in vec.</span><span style="color:#96b5b4;">iter</span><span>() {
+</span><span>        </span><span style="color:#b48ead;">let</span><span> area = item.</span><span style="color:#96b5b4;">area</span><span>();
+</span><span>
+</span><span>        println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, area);
+</span><span>    }
+</span><span>}
+</span><span>
+</span></code></pre>
+<h3 id="borrow-borrowmut">Borrow &amp; BorrowMut</h3>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">trait </span><span>Borrow&lt;Borrowed&gt;
+</span><span>where
+</span><span>    Borrowed: ?Sized,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">borrow</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;Borrowed;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">trait </span><span>BorrowMut&lt;Borrowed&gt;: Borrow&lt;Borrowed&gt;
+</span><span>where
+</span><span>    Borrowed: ?Sized,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">borrow_mut</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">mut</span><span> Borrowed;
+</span><span>}
+</span></code></pre>
+<blockquote>
+<p>These traits were invented to solve the very specific problem of looking up <code>String</code> keys in <code>HashSet</code>s, <code>HashMap</code>s, <code>BTreeSet</code>s, and <code>BTreeMap</code>s using <code>&amp;str</code> values.</p>
+<p>We can view <code>Borrow&lt;T&gt;</code> and <code>BorrowMut&lt;T&gt;</code> as stricter versions of <code>AsRef&lt;T&gt;</code> and <code>AsMut&lt;T&gt;</code>, where the returned reference <code>&amp;T</code> has equivalent <code>Eq</code>, <code>Hash</code>, and <code>Ord</code> impls to <code>Self</code>.</p>
+</blockquote>
+<p>According to the author, these traits are very rare that we would ever need to implement them, so let's skip their example for now.</p>
+<h3 id="toowned">ToOwned</h3>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">trait </span><span>ToOwned {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Owned: Borrow&lt;</span><span style="color:#b48ead;">Self</span><span>&gt;;
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">to_owned</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">Self::</span><span>Owned;
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// provided default impls
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">clone_into</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">target</span><span>: &amp;</span><span style="color:#b48ead;">mut Self::</span><span>Owned);
+</span><span>}
+</span></code></pre>
+<blockquote>
+<p>For similar reasons as Borrow and BorrowMut, it's good to be aware of this trait and understand why it exists but it's very rare we'll ever need to impl it for any of our types.</p>
+</blockquote>
+<h2 id="iteration-traits">Iteration Traits</h2>
+<h3 id="iterator">Iterator</h3>
+<p>Let's use <code>TreeNode</code> as an example, we can implement multiple iteration methods. First, define <code>TreeNode</code> struct:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>#[</span><span style="color:#bf616a;">derive</span><span>(Debug, PartialEq, Eq, Clone)]
+</span><span style="color:#b48ead;">pub struct </span><span>TreeNode {
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">val</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">left</span><span>: Option&lt;Rc&lt;RefCell&lt;TreeNode&gt;&gt;&gt;,
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">right</span><span>: Option&lt;Rc&lt;RefCell&lt;TreeNode&gt;&gt;&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>TreeNode {
+</span><span>    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">new</span><span>(</span><span style="color:#bf616a;">val</span><span>: </span><span style="color:#b48ead;">i32</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        TreeNode {
+</span><span>            val,
+</span><span>            left: None,
+</span><span>            right: None,
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Next, we need two struct, one for implementing <code>Iterator</code> trait and another for <code>IntoIterator</code>:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span>std::cell::RefCell;
+</span><span style="color:#b48ead;">use </span><span>std::collections::VecDeque;
+</span><span style="color:#b48ead;">use </span><span>std::rc::Rc;
+</span><span>
+</span><span style="color:#65737e;">// impl `Iterator`
+</span><span style="color:#b48ead;">pub struct </span><span>IntoIteratorLR {
+</span><span>    </span><span style="color:#bf616a;">que</span><span>: VecDeque&lt;Rc&lt;RefCell&lt;TreeNode&gt;&gt;&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Iterator </span><span style="color:#b48ead;">for </span><span>IntoIteratorLR {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Item = </span><span style="color:#b48ead;">i32</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">next</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; Option&lt;</span><span style="color:#b48ead;">Self::</span><span>Item&gt; {
+</span><span>        </span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">self</span><span>.que.</span><span style="color:#96b5b4;">is_empty</span><span>() {
+</span><span>            None
+</span><span>        } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>            </span><span style="color:#b48ead;">let</span><span> node = </span><span style="color:#bf616a;">self</span><span>.que.</span><span style="color:#96b5b4;">pop_front</span><span>().</span><span style="color:#96b5b4;">unwrap</span><span>();
+</span><span>            </span><span style="color:#b48ead;">if let </span><span>Some(n) = node.</span><span style="color:#96b5b4;">borrow</span><span>().left.</span><span style="color:#96b5b4;">clone</span><span>() {
+</span><span>                </span><span style="color:#bf616a;">self</span><span>.que.</span><span style="color:#96b5b4;">push_back</span><span>(n);
+</span><span>            }
+</span><span>            </span><span style="color:#b48ead;">if let </span><span>Some(n) = node.</span><span style="color:#96b5b4;">borrow</span><span>().right.</span><span style="color:#96b5b4;">clone</span><span>() {
+</span><span>                </span><span style="color:#bf616a;">self</span><span>.que.</span><span style="color:#96b5b4;">push_back</span><span>(n);
+</span><span>            }
+</span><span>
+</span><span>            </span><span style="color:#b48ead;">return </span><span>Some(node.</span><span style="color:#96b5b4;">borrow</span><span>().val);
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// impl `IntoIterator`
+</span><span style="color:#b48ead;">pub struct </span><span>TreeNodeByLeftRightLevelOrder(TreeNode);
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>IntoIterator </span><span style="color:#b48ead;">for </span><span>TreeNodeByLeftRightLevelOrder {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Item = </span><span style="color:#b48ead;">i32</span><span>;
+</span><span>    </span><span style="color:#b48ead;">type </span><span>IntoIter = IntoIteratorLR;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">into_iter</span><span>(</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">Self::</span><span>IntoIter {
+</span><span>        </span><span style="color:#b48ead;">let mut</span><span> que = VecDeque::new();
+</span><span>        que.</span><span style="color:#96b5b4;">push_back</span><span>(Rc::new(RefCell::new(</span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0</span><span>)));
+</span><span>
+</span><span>        IntoIteratorLR { que }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Then we can have a new method <code>iter_left_right_level_order</code>:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">impl </span><span>TreeNode {
+</span><span>    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">iter_left_right_level_order</span><span>(</span><span style="color:#bf616a;">self</span><span>) -&gt; IntoIteratorLR {
+</span><span>        TreeNodeByLeftRightLevelOrder(</span><span style="color:#bf616a;">self</span><span>).</span><span style="color:#96b5b4;">into_iter</span><span>()
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Finally, our unit test:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#96b5b4;">macro_rules! </span><span>new_node {
+</span><span>    (</span><span style="color:#bf616a;">$num</span><span>:</span><span style="color:#b48ead;">expr</span><span>) =&gt; {
+</span><span>        Some(Rc::new(RefCell::new(TreeNode::new(</span><span style="color:#bf616a;">$num</span><span>))))
+</span><span>    };
+</span><span>}
+</span><span>
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">level_order_success</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> root = TreeNode {
+</span><span>        val: </span><span style="color:#d08770;">1</span><span>,
+</span><span>        left: Some(Rc::new(RefCell::new(TreeNode {
+</span><span>            val: </span><span style="color:#d08770;">2</span><span>,
+</span><span>            left: new_node!(</span><span style="color:#d08770;">3</span><span>),
+</span><span>            right: new_node!(</span><span style="color:#d08770;">4</span><span>),
+</span><span>        }))),
+</span><span>        right: Some(Rc::new(RefCell::new(TreeNode {
+</span><span>            val: </span><span style="color:#d08770;">5</span><span>,
+</span><span>            left: new_node!(</span><span style="color:#d08770;">6</span><span>),
+</span><span>            right: new_node!(</span><span style="color:#d08770;">7</span><span>),
+</span><span>        }))),
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> v = root.</span><span style="color:#96b5b4;">iter_left_right_level_order</span><span>().collect::&lt;Vec&lt;_&gt;&gt;();
+</span><span>
+</span><span>    assert_eq!(vec![</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">2</span><span>, </span><span style="color:#d08770;">5</span><span>, </span><span style="color:#d08770;">3</span><span>, </span><span style="color:#d08770;">4</span><span>, </span><span style="color:#d08770;">6</span><span>, </span><span style="color:#d08770;">7</span><span>], v);
+</span><span>}
+</span></code></pre>
+<p>Check <a href="https://github.com/Jacobbishopxy/jotting/blob/master/std-traits/src/tree_node_traverse.rs">this</a> for more detail (including different ways of iteration).</p>
+<h3 id="intoiterator">IntoIterator</h3>
+<p>TODO: example</p>
+<h3 id="fromiterator">FromIterator</h3>
+<p>TODO: example</p>
+<h2 id="i-o-traits">I/O Traits</h2>
+<h3 id="read-write">Read &amp; Write</h3>
+<p>TODO: example</p>
+<h2 id="summary">Summary</h2>
+<p>to be continued...</p>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-error-handling"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#error-handling"
+							>
+								Error Handling
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-conversion-traits"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#conversion-traits"
+							>
+								Conversion Traits
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-from-into-tryfrom-tryinto"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#from-into-tryfrom-tryinto"
+									>
+										From&#x2F;Into &amp; TryFrom&#x2F;TryInto
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-fromstr"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#fromstr"
+									>
+										FromStr
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-asref-asmut"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#asref-asmut"
+									>
+										AsRef &amp; AsMut
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-borrow-borrowmut"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#borrow-borrowmut"
+									>
+										Borrow &amp; BorrowMut
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-toowned"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#toowned"
+									>
+										ToOwned
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-iteration-traits"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#iteration-traits"
+							>
+								Iteration Traits
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-iterator"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#iterator"
+									>
+										Iterator
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-intoiterator"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#intoiterator"
+									>
+										IntoIterator
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-fromiterator"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#fromiterator"
+									>
+										FromIterator
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-i-o-traits"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#i-o-traits"
+							>
+								I&#x2F;O Traits
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-read-write"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#read-write"
+									>
+										Read &amp; Write
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-summary"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-9-10-rust-std-traits-ii/#summary"
+							>
+								Summary
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>
