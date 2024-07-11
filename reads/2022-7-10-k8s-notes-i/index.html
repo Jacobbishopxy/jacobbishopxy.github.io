@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | K8s 笔记 (I) </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">K8s 笔记 (I)</h1>
+					<p class="subtitle">组件与对象</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-07-10">July 10, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>26 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>5033 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/read/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Read</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/k8s/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="kubernetes-zu-jian">Kubernetes 组件</h2>
+<div class="content__image">
+  <img src="&#x2F;images&#x2F;k8s-cluster.svg" alt="k8s cluster"  height="250px"   />
+</div>
+<h3 id="kong-zhi-mian-zu-jian">控制面组件</h3>
+<p>控制面组件 Control Plane Components 处理整个集群的决策（例如资源调度），同样也检测和响应集群的事件（例如当一个部署的 <code>replicas</code> 字段不满足条件时，启动一个新的 pod）。</p>
+<ul>
+<li>
+<p>Kube api server: 用于暴露 k8s 的 API，即 k8s 的前端服务。</p>
+</li>
+<li>
+<p>etcd: 一致性和高可用的键值数据库，存储 k8s 所有的集群数据。</p>
+</li>
+<li>
+<p>kube scheduler: 用于观察哪些新建的 Pods 并没有被赋予节点，选择一个节点用于运行它们；以下几种因素作为调度的抉择：单独与集合的资源需求，硬件/软件/策略的约束，亲和性与反亲和性规则，数据位置，内部负载间的干扰，以及最后时限。</p>
+</li>
+<li>
+<p>kube controller manager: 用于运行控制器进程。理论上来说每个控制器都是独立的进程，但是为了减少复杂性，它们都被编译在单个二进制文件中并单进程运行。它们的其中一些类型为：</p>
+<ul>
+<li>
+<p>节点控制器 node controller：当节点关闭时通知与响应。</p>
+</li>
+<li>
+<p>任务控制器 job controller：观察代表 one-off 任务的任务对象，然后创建 Pods 运行并完成这些任务。</p>
+</li>
+<li>
+<p>端点控制器 endpoints controller：填充端点对象（即加入 Service 与 Pod）。</p>
+</li>
+<li>
+<p>服务账户与令牌控制器 service account &amp; token controller：为新的命名空间创建默认账户和 API 访问令牌。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>cloud controller manager: 嵌入特定云的控制逻辑。</p>
+</li>
+</ul>
+<h3 id="jie-dian-zu-jian">节点组件</h3>
+<p>节点组件 Node Components 维护运行中的 pods 并提控 k8s 运行时的环境。</p>
+<ul>
+<li>
+<p>kubelet: 运行在每个集群节点上，保证容器都运行在 Pod 中。</p>
+</li>
+<li>
+<p>kube proxy: 运行在每个集群节点上的网络代理，实现 k8s 服务 （Service）概念的一部分。</p>
+</li>
+<li>
+<p>容器运行时: 负责运行容器的软件，如 Docker，containerd，CRI-O 以及 k8s 的其他任何实现。</p>
+</li>
+</ul>
+<h3 id="cha-jian">插件</h3>
+<p>插件 Addons 使用 k8s 资源（DaemonSet，Deployment 等）实现集群功能。插件中命名空间域的资源属于 <code>kube-system</code> 命名空间。</p>
+<ul>
+<li>
+<p>DNS: 为 k8s 服务提供 DNS 记录。</p>
+</li>
+<li>
+<p>Web UI: 提供用户界面。</p>
+</li>
+<li>
+<p>容器资源监控: 将关于容器的一些常见的时间序列度量值保存到一个集中的数据库中，并提供浏览这些数据的界面。</p>
+</li>
+<li>
+<p>集群层面日志: 将容器的日志数据保存到一个集中的日志存储中，并提供搜索与浏览接口。</p>
+</li>
+</ul>
+<h2 id="li-jie-k8s-dui-xiang">理解 k8s 对象</h2>
+<p>k8s 的对象是 k8s 系统中持久化的实体。k8s 使用这些实体来状态化集群：</p>
+<ul>
+<li>
+<p>描述哪些应用正在运行以及它们运行在哪些节点</p>
+</li>
+<li>
+<p>描述这些应用可用的资源</p>
+</li>
+<li>
+<p>描述这些应用应该如何作用的规则，例如重启，更新以及错误容忍等</p>
+</li>
+</ul>
+<p>创建一个对象是在告诉 k8s 集群应该如何运作，它们也是集群的<em>理想状态</em>。需要使用 k8s 的 API 才能创建，修改，或者删除它们。可以使用 <code>kubectl</code> 命令行或者其他的客户端库。</p>
+<h3 id="dui-xiang-spec-yu-status">对象 Spec 与 Status</h3>
+<p>几乎所有 k8s 对象都包含两个嵌套对象的字段，用于管理对象的配置：<code>spec</code> 和 <code>status</code>。前者为创建该对象时所得，提供对象所需资源的描述；后者描述对象的<em>当前状态</em>，包括 k8s 系统与它的组件所提供的支持与更新。</p>
+<h3 id="miao-shu-yi-ge-k8s-dui-xiang">描述一个 k8s 对象</h3>
+<p>在 k8s 中创建一个对象，必须提供对象用于描述其理想状态与基础信息的 spec。当通过 k8s API 来创建对象时（或是直接通过 <code>kubectl</code>），API 也同样需要这些信息的 JSON 请求体。<strong>通常的做法是提供一个包含信息的 .yaml 文件给 <code>kubectl</code>。</strong> <code>kubectl</code> 在发起 API 请求时则会将 .yaml 文件中的信息转换为 JSON。</p>
+<p>以下是一个 <code>.yaml</code> 文件的例子（application/deployment.yaml）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">apps/v1
+</span><span>
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Deployment
+</span><span>
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx-deployment
+</span><span>
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">selector</span><span>:
+</span><span>    </span><span style="color:#bf616a;">matchLabels</span><span>:
+</span><span>      </span><span style="color:#bf616a;">app</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">replicas</span><span>: </span><span style="color:#d08770;">2 </span><span style="color:#65737e;"># 需要 2 个 pods 来匹配该模版
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">template</span><span>:
+</span><span>    </span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>      </span><span style="color:#bf616a;">labels</span><span>:
+</span><span>        </span><span style="color:#bf616a;">app</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">spec</span><span>:
+</span><span>      </span><span style="color:#bf616a;">containers</span><span>:
+</span><span>        - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span>
+</span><span>          </span><span style="color:#bf616a;">image</span><span>: </span><span style="color:#a3be8c;">nginx:1.14.2
+</span><span>
+</span><span>          </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>            - </span><span style="color:#bf616a;">containerPort</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<p>接着使用 <code>kubectl apply</code> 命令执行：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> apply</span><span style="color:#bf616a;"> -f</span><span> https://k8s.io/examples/application/deployment.yaml
+</span></code></pre>
+<p>其将会返回：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">deployment.apps/nginx-deployment</span><span> created
+</span></code></pre>
+<h3 id="suo-xu-de-zi-duan">所需的字段</h3>
+<p><code>.yaml</code> 文件中需要如下几个字段：</p>
+<ul>
+<li>
+<p><code>apiVersion</code>: k8s 的 API 版本</p>
+</li>
+<li>
+<p><code>kind</code>: 对象类别</p>
+</li>
+<li>
+<p><code>metadata</code>: 用于区别对象的唯一标识，包括 <code>name</code> 字符串，<code>UID</code>，以及可选的 <code>namespace</code>。</p>
+</li>
+<li>
+<p><code>spec</code>: 该对象所期望的状态</p>
+</li>
+</ul>
+<h2 id="k8s-dui-xiang-de-guan-li">k8s 对象的管理</h2>
+<p><code>kubectl</code> 命令行工具支持几个不同的方法用于创建与管理 k8s 对象。</p>
+<blockquote class="blockquote-alert">
+	<p class="font-bold">警告：</p>
+	<p>一个 k8s 的对象应该仅有一种技术来进行管理。混合不同的技术管理同一个对象将会造成未定义行为。</p>
+
+</blockquote>
+<table><thead><tr><th>管理技术</th><th>作用于</th><th>推荐的环境</th><th>支持的写入者</th><th>学习曲线</th></tr></thead><tbody>
+<tr><td>指令式命令</td><td>活跃对象</td><td>测试项目</td><td>1+</td><td>低</td></tr>
+<tr><td>指令式对象配置</td><td>单个文件</td><td>生产项目</td><td>1</td><td>中</td></tr>
+<tr><td>声明式对象配置</td><td>文件目录</td><td>生产项目</td><td>1+</td><td>高</td></tr>
+</tbody></table>
+<h3 id="zhi-ling-shi-ming-ling">指令式命令</h3>
+<p>使用指令式命令时，用户是对集群里的活跃对象进行直接操作。例如：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> create deployment nginx</span><span style="color:#bf616a;"> --image</span><span> nginx
+</span></code></pre>
+<p>与对象配置相比，这种方式的优点在于：</p>
+<ul>
+<li>命令简单，易学并且易于记忆</li>
+<li>命令仅需一步即可对集群进行更改</li>
+</ul>
+<p>缺点在于：</p>
+<ul>
+<li>命令不能与变更审查流程集成</li>
+<li>命令不提供与更改关联的审核跟踪</li>
+<li>除了实时内容之外，命令不提供记录的源</li>
+<li>命令不提供用于创建新对象的模板</li>
+</ul>
+<h3 id="zhi-ling-shi-dui-xiang-pei-zhi">指令式对象配置</h3>
+<p>kubectl 命令指定操作（创建，替换等），可选标志和至少一个文件名。指定的文件必须包含 YAML 或者 JSON 格式的对象的完整定义。</p>
+<blockquote class="blockquote-alert">
+	<p class="font-bold">警告：</p>
+	<p><code>replace</code> 命令将现有规范替换为新的规范，并放弃对配置文件中缺少的对象的所有更改。该方法不应对独立于配置文件更新的对象使用。例如，服务类型 <code>LoadBalancer</code> 拥有 <code>externalIPs</code> 字段是独立于集群的配置更新的。</p>
+
+</blockquote>
+<p>例如，创建配置文件中定义的对象：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> create</span><span style="color:#bf616a;"> -f</span><span> nginx.yaml
+</span></code></pre>
+<p>删除两个配置文件中定义的对象：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> delete</span><span style="color:#bf616a;"> -f</span><span> nginx.yaml</span><span style="color:#bf616a;"> -f</span><span> redis.yaml
+</span></code></pre>
+<p>覆盖配置来更新配置文件中定义的对象：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> replace</span><span style="color:#bf616a;"> -f</span><span> nginx.yaml
+</span></code></pre>
+<p>与指令式命令相比的优点在于：</p>
+<ul>
+<li>对象配置可以储存在例如 Git 中</li>
+<li>对象配置可以与流程集成，例如在推送或者审计之前检查更新</li>
+<li>对象配置提供了用于创建新对象的模板</li>
+</ul>
+<p>与指令式命令相比的缺点在于：</p>
+<ul>
+<li>对象配置需要对对象架构有基本的了解</li>
+<li>对象配置需要额外的步骤来编写 YAML 文件</li>
+</ul>
+<p>与声明式对象配置相比的优点在于：</p>
+<ul>
+<li>指令式对象配置行为更加简单</li>
+<li>从 k8s 1.5 版本开始，指令对象配置更加成熟</li>
+</ul>
+<p>与声明式对象配置相比的缺点在于：</p>
+<ul>
+<li>指令式对象配置更适合文件，而不是目录</li>
+<li>对活动对象的更新必须反映在配置文件中，否则会在下一次替换时丢失</li>
+</ul>
+<h3 id="sheng-ming-shi-dui-xiang-pei-zhi">声明式对象配置</h3>
+<p>对本地存储的对象配置文件进行操作，但不需要对文件执行操作。<code>kubectl</code> 会自动检测每个文件的创建，更新和删除操作。这使得配置可以在目录上工作，根据目录中配置文件对不同的对象执行不同的操作。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>声明式对象配置保留其他编写者的修改，即使这些更改未被合并到对象配置文件中。可以通过 <code>patch</code> API 操作仅写入观察到的差异，而不是使用 <code>replace</code> API 操作来替换整个对象配置来实现。</p>
+
+</blockquote>
+<p>例如，处理 <code>configs</code> 目录中的所有对象配置文件，创建并更新活跃对象。可以先使用 <code>diff</code> 子命令查看将要进行的修改，然后再进行应用：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> diff</span><span style="color:#bf616a;"> -f</span><span> configs/
+</span><span style="color:#bf616a;">kubectl</span><span> apply</span><span style="color:#bf616a;"> -f</span><span> configs/
+</span></code></pre>
+<p>递归处理目录：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> diff</span><span style="color:#bf616a;"> -R -f</span><span> configs/
+</span><span style="color:#bf616a;">kubectl</span><span> apply</span><span style="color:#bf616a;"> -R -f</span><span> configs/
+</span></code></pre>
+<p>与指令式对象配置相比的优点：</p>
+<ul>
+<li>对活动对象所做的更改即使未合并到配置文件中，也会被保留下来。</li>
+<li>声明性对象配置更好地支持对目录进行操作并自动检测每个文件的操作类型（创建，修补，删除）。</li>
+</ul>
+<p>与指令式对象配置相比的缺点：</p>
+<ul>
+<li>声明式对象配置难于调试并且出现异常时结果难以理解。</li>
+<li>使用 diff 产生的部分更新会创建复杂的合并和补丁操作。</li>
+</ul>
+<h2 id="dui-xiang-ming-cheng-yu-ids">对象名称与 IDs</h2>
+<p>在集群里的同种资源类型下，每个对象都拥有唯一名称。在整个 k8s 系统中，每个对象也拥有一个唯一的 UID 。</p>
+<ul>
+<li>
+<p>名称：一个由客户端所提供的字符串，意味着一个拥有资源 URL 的对象，例如 <code>/api/v1/pods/some-name</code></p>
+</li>
+<li>
+<p>UID：由 k8s 系统自动生成的唯一标识符用于区分对象。</p>
+</li>
+</ul>
+<h2 id="ming-ming-kong-jian">命名空间</h2>
+<p>在 k8s 中，<em>命名空间</em>提供了一个机制来隔离单个集群内的资源组。在一个命名空间内的资源名称都是唯一的，不同的命名空间不受此约束。基于命名空间的作用域仅适用于命名空间对象（例如 Deployments，Services 等），而不是整个集群范围的对象（例如 StorageClass，Nodes，PersistentVolumes 等）。</p>
+<p>命名空间的意义在于存在多个跨组或者跨项目用户的环境。对于少于十个用户的情况，完全不应该创建或者考虑命名空间。</p>
+<h2 id="biao-qian-yu-xuan-ze-suan-fu">标签与选择算符</h2>
+<p><em>标签</em>是赋予对象的键/值对，例如 pods。标签的作用是识别对于用户有意义的对象属性，而不是直接作用于核心系统的。标签可以用来管理以及筛选对象。可以在对象创建之初赋予其标签，也可以之后在任何时间添加或者修改。</p>
+<h3 id="dong-ji">动机</h3>
+<p>标签允许用户用一种松散的方式来映射自定义的组织结构于系统的对象，而不需要客户端来存储这些映射。</p>
+<p>服务部署 service deployment 和批处理管道 batch processing pipelines 通常是多维的实体（例如，多个分区或部署，多个版本，多层，每层多个微服务）。管理通常需要交差操作，则会打破严格层次展示的封装，特别是严格的层次结构是由基建决定的而不是由用户决定。</p>
+<p>例如：</p>
+<ul>
+<li><code>&quot;release&quot; : &quot;stable&quot;</code>, <code>&quot;release&quot; : &quot;canary&quot;</code></li>
+<li><code>&quot;environment&quot; : &quot;dev&quot;</code>, <code>&quot;environment&quot; : &quot;qa&quot;</code>, <code>&quot;environment&quot; : &quot;production&quot;</code></li>
+<li><code>&quot;tier&quot; : &quot;frontend&quot;</code>, <code>&quot;tier&quot; : &quot;backend&quot;</code>, <code>&quot;tier&quot; : &quot;cache&quot;</code></li>
+<li><code>&quot;partition&quot; : &quot;customerA&quot;</code>, <code>&quot;partition&quot; : &quot;customerB&quot;</code></li>
+<li><code>&quot;track&quot; : &quot;daily&quot;</code>, <code>&quot;track&quot; : &quot;weekly&quot;</code></li>
+</ul>
+<h3 id="yu-fa-he-zi-fu-ji">语法和字符集</h3>
+<p><em>标签</em>是键/值对。合法的标签键拥有两段：可选的前缀以及名称，通过 <code>/</code> 分隔。名称部分需要小于等于 63 个 char，以及使用字母开始与结尾，中间可以包含 <code>-</code>， <code>_</code> 和 <code>.</code>。如果定义了前缀，其必须是 DNS 的子域：由点 <code>.</code> 分隔的一系列 DNS 标签，总共不超过 253 个字符，后面接着 <code>/</code>。</p>
+<p>如果省略了前缀，那么标签的键则对于用户来说是私有的。向最终用户对象添加标签的自动系统组件（例如 <code>kube-scheduler</code>，<code>kube-controller-manager</code>，<code>kube-apiserver</code>，<code>kubectl</code> 或其他第三方自动化工具）必须指定前缀。</p>
+<p><code>kubernetes.io/</code> 和 <code>k8s.io/</code> 前缀是为 k8s 核心组件保留的。</p>
+<p>例如以下是一个 Pod 的配置文件，拥有两个标签 <code>environment: production</code> 以及 <code>app: nginx</code>：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Pod
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">label-demo
+</span><span>  </span><span style="color:#bf616a;">labels</span><span>:
+</span><span>    </span><span style="color:#bf616a;">environment</span><span>: </span><span style="color:#a3be8c;">production
+</span><span>    </span><span style="color:#bf616a;">app</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">containers</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span>      </span><span style="color:#bf616a;">image</span><span>: </span><span style="color:#a3be8c;">nginx:1.14.2
+</span><span>      </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>        - </span><span style="color:#bf616a;">containerPort</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<h3 id="Objects-LabelsAndSelectors">标签选择算符</h3>
+<p>不同于名称和 UIDs，标签不提供唯一性。通常来说，我们希望很多对象都携带同种标签。</p>
+<p>通过<em>标签选择算符</em>，客户端/用户可以识别对象的集合，因此它是 k8s 中的核心分组原语。</p>
+<p>API 现在支持两种类型的选择算符：<em>基于等值的</em>和<em>基于集合的</em>。标签选择可以有都好分隔的多个<em>需求</em>组成。在多个需求的情况下，必须满足所有需求，因此逗号分隔符等同于 <code>&amp;&amp;</code> 逻辑运算符。</p>
+<p><em>基于等值</em>或者<em>基于不等值</em>的需求允许按标签键和值进行过滤。匹配对象必须满足所有指定的标签约束，即使他们也可能具有其他标签。可接受的运算符有 <code>=</code>，<code>==</code> 和 <code>!=</code> 三种。前两个表示<em>相等</em>（仅为同义词），后者表示<em>不相等</em>，例如：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">environment</span><span> = production
+</span><span style="color:#bf616a;">tier</span><span> != frontend
+</span></code></pre>
+<p><em>基于集合</em>的标签需求允许通过一组值来过滤键。支持三种操作符：<code>in</code>，<code>notin</code> 和 <code>exists</code>（只可以用在键标识符上）。例如：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">environment</span><span> in (production, qa)
+</span><span style="color:#bf616a;">tier</span><span> notin (frontend, backend)
+</span><span style="color:#bf616a;">partition
+</span><span>!</span><span style="color:#bf616a;">partition
+</span></code></pre>
+<ul>
+<li>第一个示例选择了所有键等于 <code>environment</code> 并且值等于 <code>production</code> 或者 <code>qa</code> 的资源。</li>
+<li>第二个示例选择了所有键等于 <code>tier</code> 并且值不等于 <code>frontend</code> 或者 <code>backend</code> 的资源，以及所有没有 <code>tier</code> 键标签的资源。</li>
+<li>第三个示例选择了所有包含了有 <code>partition</code> 标签的资源；没有校验它的值。</li>
+<li>第四个示例选择了所有没有 <code>partition</code> 标签的资源；没有校验它的值。</li>
+</ul>
+<h3 id="biao-qian-api">标签 API</h3>
+<p>LIST 和 WATCH 过滤</p>
+<p>LIST 和 WATCH 操作可以使用查询参数指定标签选择算符过滤一组对象。两种需求都是允许的（这里显示的是它们出现在 URL 查询字符串中）。</p>
+<ul>
+<li>基于等值 的需求：<code>?labelSelector=environment%3Dproduction,tier%3Dfrontend</code></li>
+<li>基于集合 的需求：<code>?labelSelector=environment+in+%28production%2Cqa%29%2Ctier+in+%28frontend%29</code></li>
+</ul>
+<p>两种标签选择算符都可以通过 REST 客户端用于 list 或 watch 资源。例如使用 <code>kubectl</code> 定位 <code>apiserver</code> 可以使用<em>基于等值</em>的标签选择算符：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> -l</span><span> environment=production,tier=frontend
+</span></code></pre>
+<p>或者使用<em>基于集合</em>的需求：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> -l </span><span>&#39;</span><span style="color:#a3be8c;">environment in (production),tier in (frontend)</span><span>&#39;
+</span></code></pre>
+<p><em>基于集合</em>的需求更具有表达力，它们可以实现值的<em>或</em>操作：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> -l </span><span>&#39;</span><span style="color:#a3be8c;">environment in (production, qa)</span><span>&#39;
+</span></code></pre>
+<p>或者通过 <code>exists</code> 运算符限制不匹配：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> -l </span><span>&#39;</span><span style="color:#a3be8c;">environment,environment notin (frontend)</span><span>&#39;
+</span></code></pre>
+<h2 id="zhu-jie">注解</h2>
+<p>使用注解可以为对象附加任意的非标识类的元数据。客户端的工具和库可以获取这些元数据。</p>
+<p>用户可以使用标记或者注解来为 k8s 对象附加元数据。标注可以用于归纳对象，而注解不行。一个注解的元数据可以很小或者很大，结构化或者非结构化的，可以包含标签不允许包含的字符。</p>
+<p>注解类似于标签，也是键/值的 maps：</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>&quot;</span><span style="color:#a3be8c;">metadata</span><span>&quot;: {
+</span><span>  &quot;</span><span style="color:#a3be8c;">annotations</span><span>&quot;: {
+</span><span>    &quot;</span><span style="color:#a3be8c;">key1</span><span>&quot; : &quot;</span><span style="color:#a3be8c;">value1</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">key2</span><span>&quot; : &quot;</span><span style="color:#a3be8c;">value2</span><span>&quot;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<blockquote>
+<p>注意：键和值必须皆为字符串。换言之，不允许使用述职，布尔值，列表或者其它类型的值作为键或者值。</p>
+</blockquote>
+<p>以下是一些可以记录在注解里的信息：</p>
+<ul>
+<li>
+<p>由声明式配置层管理的字段。在注解中添加这些字段可以用于区分由客户端或者服务端默认的字段，以及由自动自动调整大小或者自适应系统自动生成的字段。</p>
+</li>
+<li>
+<p>构建，发布，或者镜像信息例如时间戳，发布 IDs，git 分支，PR 数，镜像哈希值，以及注册地址。</p>
+</li>
+<li>
+<p>指向日志，监控，分析，或者审计仓库的指针。</p>
+</li>
+<li>
+<p>客户端库或者用于 debug 的工具信息：例如名称，版本以及构建信息。</p>
+</li>
+<li>
+<p>用户或者工具/系统的初始信息，例如 URLs 或者其它生态系统的关联对象。</p>
+</li>
+<li>
+<p>轻量级的上线工具的元数据：例如配置或者检查点。</p>
+</li>
+<li>
+<p>负责人的电话或者页面，或者其它直接的联系信息，例如小组的网页。</p>
+</li>
+<li>
+<p>从终端用户实现的修改行为或者非标准特性的指令等。</p>
+</li>
+</ul>
+<p>例如以下就是从 Pod 而来的一个配置文件，其拥有注解 <code>imageregistry: https://hub.docker.com/</code>：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Pod
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">annotations-demo
+</span><span>  </span><span style="color:#bf616a;">annotations</span><span>:
+</span><span>    </span><span style="color:#bf616a;">imageregistry</span><span>: &quot;</span><span style="color:#a3be8c;">https://hub.docker.com/</span><span>&quot;
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">containers</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span>      </span><span style="color:#bf616a;">image</span><span>: </span><span style="color:#a3be8c;">nginx:1.14.2
+</span><span>      </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>        - </span><span style="color:#bf616a;">containerPort</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<h2 id="zi-duan-xuan-ze-qi">字段选择器</h2>
+<p>字段选择器 field selectors 允许用户根据一个或多个资源的字段来选择 k8s 资源。这里是一些关于字段选择器请求的案例：</p>
+<ul>
+<li><code>metadata.name=my-service</code></li>
+<li><code>metadata.namespace!=default</code></li>
+<li><code>status.phase=Pending</code></li>
+</ul>
+<p>这个 <code>kubectl</code> 命令选择所有 Pods 的 <code>status.phase</code> 字段为 <code>Running</code>：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> --field-selector</span><span> status.phase=Running
+</span></code></pre>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>字段选择器是基础资源的过滤器。默认是没有选择器/过滤器被应用的，意味着特定类型的所有资源都被选择。这就使得 <code>kubectl</code> 查询等同于 <code>kubectl get pods</code> 以及 <code>kubectl get pods -- field-select &quot;&quot;</code>。</p>
+
+</blockquote>
+<h3 id="zhi-chi-de-zi-duan">支持的字段</h3>
+<p>所有的资源类型支持 <code>metadata.name</code> 以及 <code>metadata.namespace</code> 字段。使用非支持的字段选择器则会抛出异常，例如：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get ingress</span><span style="color:#bf616a;"> --field-selector</span><span> foo.bar=baz
+</span></code></pre>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">Error</span><span> from server (BadRequest)</span><span style="color:#96b5b4;">:</span><span> Unable to find &quot;</span><span style="color:#a3be8c;">ingresses</span><span>&quot; that match label selector &quot;&quot;, field selector &quot;</span><span style="color:#a3be8c;">foo.bar=baz</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">foo.bar</span><span>&quot; is not a known field selector: only &quot;</span><span style="color:#a3be8c;">metadata.name</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">metadata.namespace</span><span>&quot;
+</span></code></pre>
+<h3 id="zhi-chi-de-cao-zuo">支持的操作</h3>
+<p>可以使用 <code>=</code>，<code>==</code> 以及 <code>!=</code> 运算符（<code>=</code> 等同于 <code>==</code>）。例如 <code>kubectl</code> 命令选择 k8s 所有非默认命名空间的服务：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get services</span><span style="color:#bf616a;">  --all-namespaces --field-selector</span><span> metadata.namespace!=default
+</span></code></pre>
+<h3 id="lian-shi-xuan-ze">链式选择</h3>
+<p>与其它选择器一样，字段选择器可以通过都好分隔的数组串联在一起。例如 <code>kubectl</code> 命令选择所有 <code>status.phase</code> 不等于 <code>Running</code> 以及 <code>spec.restartPolicy</code> 等于 <code>Always</code> 的 Pods：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> --field-selector</span><span>=status.phase!=Running,spec.restartPolicy=Always
+</span></code></pre>
+<h3 id="duo-zi-yuan-lei-xing">多资源类型</h3>
+<p>可以跨资源类型使用字段选择器。例如 <code>kubectl</code> 命令选择所有不为默认命名空间的状态集与服务：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get statefulsets,services</span><span style="color:#bf616a;"> --all-namespaces --field-selector</span><span> metadata.namespace!=default
+</span></code></pre>
+<h2 id="finalizers">Finalizers</h2>
+<p>Finalizer 是带有命名空间的键，告诉 Kubernetes 等到特定的条件被满足后， 再完全删除被标记为删除的资源。 Finalizer 提醒控制器清理被删除的对象拥有的资源。</p>
+<h2 id="suo-you-zhe-yu-yi-lai-zhe">所有者与依赖者</h2>
+<p>在 k8s 中，一些对象是其他对象的“所有者（Owner）”。 例如，ReplicaSet 是一组 Pod 的所有者。拥有所有者的对象是“依赖者（Dependent）”。</p>
+<h2 id="tui-jian-de-biao-qian">推荐的标签</h2>
+<p>除了 kubectl 和 dashboard 之外，你可以使用其他工具来可视化和管理 Kubernetes 对象。 一组通用的标签可以让多个工具之间相互操作，用所有工具都能理解的通用方式描述对象。</p>
+<p>除了支持工具外，推荐的标签还以一种可以查询的方式描述了应用程序。</p>
+<p>元数据围绕 应用（application） 的概念进行组织。Kubernetes 不是 平台即服务（PaaS），没有或强制执行正式的应用程序概念。 相反，应用程序是非正式的，并使用元数据进行描述。应用程序包含的定义是松散的。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>这些是推荐的标签。它们使管理应用程序变得更容易但不是任何核心工具所必需的。</p>
+
+</blockquote>
+<p>共享标签和注解都使用同一个前缀：app.kubernetes.io。没有前缀的标签是用户私有的。共享前缀可以确保共享标签不会干扰用户自定义的标签。</p>
+<table><thead><tr><th>键</th><th>描述</th><th>示例</th><th>类型</th></tr></thead><tbody>
+<tr><td>app.kubernetes.io/name</td><td>应用程序的名称</td><td>mysql</td><td>字符串</td></tr>
+<tr><td>app.kubernetes.io/instance</td><td>用于唯一确定应用实例的名称</td><td>mysql-abcxzy</td><td>字符串</td></tr>
+<tr><td>app.kubernetes.io/version</td><td>应用程序的当前版本（例如，语义版本，修订版哈希等）</td><td>5.7.21</td><td>字符串</td></tr>
+<tr><td>app.kubernetes.io/component</td><td>架构中的组件</td><td>database</td><td>字符串</td></tr>
+<tr><td>app.kubernetes.io/part-of</td><td>此级别的更高级别应用程序的名称</td><td>wordpress</td><td>字符串</td></tr>
+<tr><td>app.kubernetes.io/managed-by</td><td>用于管理应用程序的工具</td><td>helm</td><td>字符串</td></tr>
+<tr><td>app.kubernetes.io/created-by</td><td>创建该资源的控制器或者用户</td><td>controller-manager</td><td>字符串</td></tr>
+</tbody></table>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-kubernetes-zu-jian"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#kubernetes-zu-jian"
+							>
+								Kubernetes 组件
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-kong-zhi-mian-zu-jian"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#kong-zhi-mian-zu-jian"
+									>
+										控制面组件
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-jie-dian-zu-jian"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#jie-dian-zu-jian"
+									>
+										节点组件
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-cha-jian"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#cha-jian"
+									>
+										插件
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-li-jie-k8s-dui-xiang"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#li-jie-k8s-dui-xiang"
+							>
+								理解 k8s 对象
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-dui-xiang-spec-yu-status"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#dui-xiang-spec-yu-status"
+									>
+										对象 Spec 与 Status
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-miao-shu-yi-ge-k8s-dui-xiang"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#miao-shu-yi-ge-k8s-dui-xiang"
+									>
+										描述一个 k8s 对象
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-suo-xu-de-zi-duan"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#suo-xu-de-zi-duan"
+									>
+										所需的字段
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-k8s-dui-xiang-de-guan-li"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#k8s-dui-xiang-de-guan-li"
+							>
+								k8s 对象的管理
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-zhi-ling-shi-ming-ling"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#zhi-ling-shi-ming-ling"
+									>
+										指令式命令
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-zhi-ling-shi-dui-xiang-pei-zhi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#zhi-ling-shi-dui-xiang-pei-zhi"
+									>
+										指令式对象配置
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-sheng-ming-shi-dui-xiang-pei-zhi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#sheng-ming-shi-dui-xiang-pei-zhi"
+									>
+										声明式对象配置
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-dui-xiang-ming-cheng-yu-ids"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#dui-xiang-ming-cheng-yu-ids"
+							>
+								对象名称与 IDs
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-ming-ming-kong-jian"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#ming-ming-kong-jian"
+							>
+								命名空间
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-biao-qian-yu-xuan-ze-suan-fu"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#biao-qian-yu-xuan-ze-suan-fu"
+							>
+								标签与选择算符
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-dong-ji"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#dong-ji"
+									>
+										动机
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-yu-fa-he-zi-fu-ji"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#yu-fa-he-zi-fu-ji"
+									>
+										语法和字符集
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-Objects-LabelsAndSelectors"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#Objects-LabelsAndSelectors"
+									>
+										标签选择算符
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-biao-qian-api"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#biao-qian-api"
+									>
+										标签 API
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-zhu-jie"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#zhu-jie"
+							>
+								注解
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-zi-duan-xuan-ze-qi"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#zi-duan-xuan-ze-qi"
+							>
+								字段选择器
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-zhi-chi-de-zi-duan"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#zhi-chi-de-zi-duan"
+									>
+										支持的字段
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-zhi-chi-de-cao-zuo"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#zhi-chi-de-cao-zuo"
+									>
+										支持的操作
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-lian-shi-xuan-ze"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#lian-shi-xuan-ze"
+									>
+										链式选择
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-duo-zi-yuan-lei-xing"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#duo-zi-yuan-lei-xing"
+									>
+										多资源类型
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-finalizers"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#finalizers"
+							>
+								Finalizers
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-suo-you-zhe-yu-yi-lai-zhe"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#suo-you-zhe-yu-yi-lai-zhe"
+							>
+								所有者与依赖者
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-tui-jian-de-biao-qian"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-10-k8s-notes-i/#tui-jian-de-biao-qian"
+							>
+								推荐的标签
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

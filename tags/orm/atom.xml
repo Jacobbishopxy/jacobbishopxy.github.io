@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Jacob&#x27;s Domain - Orm</title>
+    <subtitle>Sharing interesting things</subtitle>
+    <link href="https://jacobbishopxy.github.io/tags/orm/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://jacobbishopxy.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-12-24T00:00:00+00:00</updated>
+    <id>https://jacobbishopxy.github.io/tags/orm/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Toy Note</title>
+        <published>2021-12-24T00:00:00+00:00</published>
+        <updated>2021-12-24T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://jacobbishopxy.github.io/posts/toy-note/" type="text/html"/>
+        <id>https://jacobbishopxy.github.io/posts/toy-note/</id>
+        
+        <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;For convenience sake, as a full-stack developer I&#x27;ve been working with NodeJS for a long while. Using NodeJS as backend service obviously gives coders a lot of flexibility, such as mature open-source libraries, same frontend &amp;amp; backend language, etc. However, in some cases, for example in a concurrency scenario, NodeJS is no more feasible. After a short time of survey, Golang turns out to be an alternative option for me to build up my backend service. And here I wrote a simple toy project to record my study progress. Check the full source code on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Jacobbishopxy&#x2F;toy-note&quot;&gt;Github&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;structure&quot;&gt;Structure&lt;&#x2F;h2&gt;
+&lt;p&gt;The project structure is simple enough to understand:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;txt&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-txt &quot;&gt;&lt;code class=&quot;language-txt&quot; data-lang=&quot;txt&quot;&gt;&lt;span&gt;toy-note
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── api
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── controller
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── note.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── query.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── response.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── entity
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── affiliate.entity.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── post.entity.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── tag.entity.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── common.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── persistence
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── mongo_test.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── mongo.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── postgres_test.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── postgres.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── service
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── note.service_test.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── note.service.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── repository.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── util
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── config_test.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── config.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── api.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── cmd
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── app
+&lt;&#x2F;span&gt;&lt;span&gt;    │       └── main.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── docs
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── docs.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── swagger.json
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── swagger.yaml
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── env
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── dev.env
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── prod.env
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── logger
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── logger.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── go.mod
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── go.sum
+&lt;&#x2F;span&gt;&lt;span&gt;    └── Makefile
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;to be continued...&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

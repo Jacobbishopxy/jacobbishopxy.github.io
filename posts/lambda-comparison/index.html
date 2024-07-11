@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | Lambda Comparison </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Lambda Comparison</h1>
+					<p class="subtitle">C++ vs. Rust</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-11-01">November 01, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>11 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>2137 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/post/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Post</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/c/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>C++</span>
+    </span>
+  </a>
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/rust/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Rust</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><p>While working on a trivial project, a simple idea hits on me: what's the difference between C++'s lambda and Rust's closure? Having an explicit listing may give me a better cognition.</p>
+<p>Here is a quick summary of today's topic:</p>
+<table><thead><tr><th>function</th><th>C++'s Concept</th><th>Rust's Concept</th><th>Major Variety</th></tr></thead><tbody>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#lambda_and_fn_ptr">lambda_and_fn_ptr</a></td><td>✔️</td><td>✔️</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#simple_lambda">simple_lambda</a></td><td>✔️</td><td>✔️</td><td>✔️</td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#passing_lambda_to_fn">passing_lambda_to_fn</a></td><td>✔️</td><td>✔️</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#generic_lambda">generic_lambda</a></td><td>✔️</td><td>✔️</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#simple_capture">simple_capture</a></td><td>✔️</td><td>✔️</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#mutable_capture">mutable_capture</a></td><td>✔️</td><td>✔️</td><td>✔️</td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#reference_capture">reference_capture</a></td><td>✔️</td><td>✔️</td><td>✔️</td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#ownership_capture">ownership_capture</a></td><td>✔️</td><td>✔️</td><td>✔️</td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#mixing_capture">mixing_capture</a></td><td>✔️</td><td>✔️</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#default_value_capture">default_value_capture</a></td><td>✔️</td><td>❌</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#default_reference_capture">default_reference_capture</a></td><td>✔️</td><td>❌</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#default_mixing_capture">default_mixing_capture</a></td><td>✔️</td><td>❌</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#init_var_capture">init_var_capture</a></td><td>✔️</td><td>❌</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#copy_lambda">copy_lambda</a></td><td>✔️</td><td>❌</td><td></td></tr>
+<tr><td><a href="https://jacobbishopxy.github.io/posts/lambda-comparison/#copy_ref_lambda">copy_ref_lambda</a></td><td>✔️</td><td>❌</td><td></td></tr>
+</tbody></table>
+<h2 id="lambda_and_fn_ptr">lambda_and_fn_ptr</h2>
+<p>Function pointer is not necessary a key difference, though they can be passed as a parameter to a function both in C++ and Rust. However, in C++, rather than using a function pointer to hold a non-capturing lambda (as its odd syntax), prefer using a list initialization with lambda syntax.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">lambda_and_fn_ptr</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span>(*lbd)(</span><span style="color:#b48ead;">int</span><span>){[](</span><span style="color:#b48ead;">int</span><span> i) { </span><span style="color:#b48ead;">return</span><span> i * </span><span style="color:#d08770;">2</span><span>; }};
+</span><span>
+</span><span>  std::cout &lt;&lt; </span><span style="color:#bf616a;">lbd</span><span>(</span><span style="color:#d08770;">2</span><span>) &lt;&lt; std::endl;
+</span><span>  std::cout &lt;&lt; </span><span style="color:#bf616a;">lbd</span><span>(</span><span style="color:#d08770;">3</span><span>) &lt;&lt; std::endl;
+</span><span>}
+</span></code></pre>
+<p>Unlike C++, no need to explicit declare a pointer with function type. Instead, a named variable with function pointer type is a pointer variable. Identically, C++'s function pointer only works for non-capturing lambda, and Rust function pointer type can only be created for non-capturing closures.</p>
+<div class="color-rust"><p>Rust</p>
+</div>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">lambda_and_fn_ptr</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">mul </span><span>= |</span><span style="color:#bf616a;">i</span><span>: </span><span style="color:#b48ead;">i32</span><span>| i * </span><span style="color:#d08770;">2</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">type </span><span>M = </span><span style="color:#b48ead;">fn</span><span>(</span><span style="color:#b48ead;">i32</span><span>) -&gt; </span><span style="color:#b48ead;">i32</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> lbd: M = mul;
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, </span><span style="color:#96b5b4;">lbd</span><span>(</span><span style="color:#d08770;">2</span><span>));
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, </span><span style="color:#96b5b4;">lbd</span><span>(</span><span style="color:#d08770;">3</span><span>));
+</span><span>}
+</span></code></pre>
+<h2 id="simple_lambda">simple_lambda</h2>
+<p>In both C++ and Rust, a simple lambda/closure is non-capturing. Note that <code>simple_lambda2</code> in C++, instead of using <code>auto</code> keyword, use a type deduction for <code>std::function</code>, and prior C++17, explicit type <code>std::function&lt;(int)&gt;</code> is required.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">simple_lambda1</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">lbd</span><span>{[](</span><span style="color:#b48ead;">int</span><span> i) { </span><span style="color:#b48ead;">return</span><span> i * </span><span style="color:#d08770;">3</span><span>; }};
+</span><span>
+</span><span>  std::cout &lt;&lt; </span><span style="color:#bf616a;">lbd</span><span>(</span><span style="color:#d08770;">2</span><span>) &lt;&lt; std::endl;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">simple_lambda2</span><span>() {
+</span><span>  std::function </span><span style="color:#bf616a;">lbd</span><span>{[](</span><span style="color:#b48ead;">int</span><span> i) { </span><span style="color:#b48ead;">return</span><span> i * </span><span style="color:#d08770;">4</span><span>; }};
+</span><span>
+</span><span>  std::cout &lt;&lt; </span><span style="color:#bf616a;">lbd</span><span>(</span><span style="color:#d08770;">2</span><span>) &lt;&lt; std::endl;
+</span><span>}
+</span></code></pre>
+<div class="color-rust"><p>Rust</p>
+</div>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">simple_lambda1</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">lbd </span><span>= |</span><span style="color:#bf616a;">i</span><span>: </span><span style="color:#b48ead;">i32</span><span>| i * </span><span style="color:#d08770;">3</span><span>;
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, </span><span style="color:#96b5b4;">lbd</span><span>(</span><span style="color:#d08770;">2</span><span>));
+</span><span>}
+</span></code></pre>
+<h2 id="passing_lambda_to_fn">passing_lambda_to_fn</h2>
+<p>In C++, passing a function point who represents a lambda expression, whereas in Rust, passing a pointer function type variable.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">passing_lambda_to_fn</span><span>(</span><span style="color:#b48ead;">const</span><span> std::function&lt;</span><span style="color:#b48ead;">int</span><span>(</span><span style="color:#b48ead;">int</span><span>)&gt;&amp; </span><span style="color:#bf616a;">fn</span><span>) {
+</span><span>  </span><span style="color:#b48ead;">constexpr int</span><span> input = </span><span style="color:#d08770;">2</span><span>;
+</span><span>
+</span><span>  std::cout &lt;&lt; </span><span style="color:#bf616a;">fn</span><span>(input) &lt;&lt; std::endl;
+</span><span>}
+</span></code></pre>
+<div class="color-rust"><p>Rust</p>
+</div>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">passing_lambda_to_fn</span><span>(</span><span style="color:#bf616a;">f</span><span>: </span><span style="color:#b48ead;">fn</span><span>(</span><span style="color:#b48ead;">i32</span><span>) -&gt; </span><span style="color:#b48ead;">i32</span><span>) {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> input = </span><span style="color:#d08770;">2</span><span>;
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, </span><span style="color:#96b5b4;">f</span><span>(input));
+</span><span>}
+</span></code></pre>
+<h2 id="generic_lambda">generic_lambda</h2>
+<p>In C++, there are either <code>auto</code> keyword or function template can serve generic lambda.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">generic_lambda0</span><span>(</span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">value</span><span>) {
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">print</span><span>{[](</span><span style="color:#b48ead;">auto</span><span> v) { std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">value: </span><span>&quot; &lt;&lt; v &lt;&lt; std::endl; }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">print</span><span>(value);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">template </span><span>&lt;</span><span style="color:#b48ead;">typename</span><span> T&gt; </span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">generic_lambda1</span><span>(T </span><span style="color:#bf616a;">value</span><span>) {
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">print</span><span>{[](T v) { std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">value: </span><span>&quot; &lt;&lt; v &lt;&lt; std::endl; }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">print</span><span>(value);
+</span><span>}
+</span></code></pre>
+<div class="color-rust"><p>Rust</p>
+</div>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">generic_lambda</span><span>&lt;T: Debug&gt;(</span><span style="color:#bf616a;">value</span><span>: T) {
+</span><span>    </span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">lbd </span><span>= |</span><span style="color:#bf616a;">v</span><span>| {
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">value: </span><span style="color:#d08770;">{v:?}</span><span>&quot;);
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">lbd</span><span>(value);
+</span><span>}
+</span></code></pre>
+<h2 id="simple_capture">simple_capture</h2>
+<p>The first biggest difference happens while calling <code>simple_capture</code>: although it looks like the same when capturing a variable is actually clone this variable, Rust acts differently on account of <code>Copy</code>/<code>Clone</code> trait implementation.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">simple_capture</span><span>() {
+</span><span>  std::string </span><span style="color:#bf616a;">data</span><span>{&quot;</span><span style="color:#a3be8c;">halloween has come!</span><span>&quot;};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">rise_headless_horseman</span><span>{[data](std::string_view str) { std::cout &lt;&lt; data &lt;&lt; &quot; &quot; &lt;&lt; str; }};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">const</span><span> std::string_view </span><span style="color:#bf616a;">greet</span><span>{
+</span><span>      &quot;</span><span style="color:#a3be8c;">Prepare yourselves, the bells have tolled! Shelter your weak, your young and your old! Each </span><span>&quot;
+</span><span>      &quot;</span><span style="color:#a3be8c;">of you shall pay the final sum. Cry for mercy, the reckoning has come!</span><span>&quot;};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">rise_headless_horseman</span><span>(greet);
+</span><span>}
+</span></code></pre>
+<p>As shown below, the only difference between <code>simple_capture2</code> and <code>simple_capture3</code> is the <code>#[derive(Clone)]</code> on <code>struct MyStr(String);</code>. In short, a variable who does not implemented <code>copy</code> or <code>clone</code> trait will trigger move semantics, and its ownership will be passed into the closure who captured it.</p>
+<div class="color-rust"><p>Rust</p>
+</div>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">simple_capture1</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> data = String::from(&quot;</span><span style="color:#a3be8c;">halloween has come!</span><span>&quot;);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">rise_headless_horseman </span><span>= |</span><span style="color:#bf616a;">s</span><span>| {
+</span><span>        println!(&quot;</span><span style="color:#d08770;">{data:?} {s:?}</span><span>&quot;,);
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">const </span><span style="color:#d08770;">GREET</span><span>: &amp;</span><span style="color:#b48ead;">str </span><span>= &quot;</span><span style="color:#a3be8c;">Prepare yourselves, the bells have tolled! Shelter your weak, your young and your old! Each of you shall pay the final sum. Cry for mercy, the reckoning has come!</span><span>&quot;;
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">rise_headless_horseman</span><span>(</span><span style="color:#d08770;">GREET</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> _check_ownership = data.</span><span style="color:#96b5b4;">into_bytes</span><span>();
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">simple_capture2</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>MyStr(String);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">impl </span><span>MyStr {
+</span><span>        </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">turn</span><span>(</span><span style="color:#bf616a;">self</span><span>) -&gt; String {
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> data = MyStr(String::from(&quot;</span><span style="color:#a3be8c;">halloween coming soon</span><span>&quot;));
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">prepare_pumpkins </span><span>= |</span><span style="color:#bf616a;">s</span><span>| {
+</span><span>        println!(&quot;</span><span style="color:#d08770;">{:?}</span><span style="color:#a3be8c;"> -&gt; </span><span style="color:#d08770;">{s}</span><span>&quot;, data.</span><span style="color:#d08770;">0</span><span>);
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">const</span><span> G: &amp;</span><span style="color:#b48ead;">str </span><span>= &quot;</span><span style="color:#a3be8c;">Carving pumpkins</span><span>&quot;;
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">prepare_pumpkins</span><span>(G);
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// compile error here! since data has been moved into `prepare_pumpkins`
+</span><span>    </span><span style="color:#65737e;">// let _check_ownership = data.turn();
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">simple_capture3</span><span>() {
+</span><span>    #[</span><span style="color:#bf616a;">derive</span><span>(Clone)]
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>MyStr(String);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">impl </span><span>MyStr {
+</span><span>        </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">turn</span><span>(</span><span style="color:#bf616a;">self</span><span>) -&gt; String {
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> data = MyStr(String::from(&quot;</span><span style="color:#a3be8c;">halloween coming soon</span><span>&quot;));
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">prepare_pumpkins </span><span>= |</span><span style="color:#bf616a;">s</span><span>| {
+</span><span>        println!(&quot;</span><span style="color:#d08770;">{:?}</span><span style="color:#a3be8c;"> -&gt; </span><span style="color:#d08770;">{s}</span><span>&quot;, data.</span><span style="color:#d08770;">0</span><span>);
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">const</span><span> G: &amp;</span><span style="color:#b48ead;">str </span><span>= &quot;</span><span style="color:#a3be8c;">Carving pumpkins</span><span>&quot;;
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">prepare_pumpkins</span><span>(G);
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// Ownership hasn&#39;t been take until now.
+</span><span>    </span><span style="color:#65737e;">// Clone has been made while compiling `prepare_pumpkins` on account of `#[derive(Clone)]`
+</span><span>    </span><span style="color:#b48ead;">let</span><span> _check_ownership = data.</span><span style="color:#96b5b4;">turn</span><span>();
+</span><span>}
+</span></code></pre>
+<h2 id="mutable_capture">mutable_capture</h2>
+<p>The second mainly difference is right here: C++'s mutable capture (a <code>mutable</code> keyword after parentheses) means granting mutability to all captured variables (remove the default <code>const</code> capturing limitation), and in fact these variables are still cloned from their original statements; on the other hands, Rust's mutable capture is done by mutable reference capture.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">mutable_capture</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">quiver</span><span>{</span><span style="color:#d08770;">8</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">shoot</span><span>{[quiver]() </span><span style="color:#b48ead;">mutable </span><span>{
+</span><span>    --quiver;
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">Arrows left: </span><span>&quot; &lt;&lt; quiver &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">shoot</span><span>();
+</span><span>  </span><span style="color:#bf616a;">shoot</span><span>();
+</span><span>  </span><span style="color:#bf616a;">shoot</span><span>();
+</span><span>}
+</span></code></pre>
+<div class="color-rust"><p>Rust</p>
+</div>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">mutable_capture1</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> quiver = </span><span style="color:#d08770;">8</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let mut </span><span style="color:#8fa1b3;">shoot </span><span>= || {
+</span><span>        </span><span style="color:#65737e;">// let q = &amp;mut quiver;
+</span><span>        quiver -= </span><span style="color:#d08770;">1</span><span>;
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">Arrows left </span><span style="color:#d08770;">{quiver:?}</span><span>&quot;);
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#a3be8c;">Check the rest: </span><span style="color:#d08770;">{quiver:?}</span><span>&quot;);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">mutable_capture2</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>Quiver(</span><span style="color:#b48ead;">i32</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">impl </span><span>Quiver {
+</span><span>        </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">shoot</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) {
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0 </span><span>-= </span><span style="color:#d08770;">1</span><span>;
+</span><span>        }
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">check</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">i32 </span><span>{
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> quiver = Quiver(</span><span style="color:#d08770;">8</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let mut </span><span style="color:#8fa1b3;">shoot </span><span>= || {
+</span><span>        </span><span style="color:#65737e;">// let q = &amp;mut quiver;
+</span><span>        </span><span style="color:#65737e;">// q.shoot();
+</span><span>        quiver.</span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">Arrows left </span><span style="color:#d08770;">{:?}</span><span>&quot;, quiver.</span><span style="color:#96b5b4;">check</span><span>());
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#a3be8c;">Check the rest: </span><span style="color:#d08770;">{:?}</span><span>&quot;, quiver.</span><span style="color:#96b5b4;">check</span><span>());
+</span><span>}
+</span></code></pre>
+<h2 id="reference_capture">reference_capture</h2>
+<p>The third difference is about capturing by reference. Capture by reference in C++ is done by a <code>&amp;</code> operator before captured variable, and since C++'s reference is mutable, it can be used for value change. Yet reference in Rust means immutable reference by default. Hence, value change manipulation can only done by a <code>Rc&lt;RefCell&lt;T&gt;&gt;</code> and etc.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">reference_capture</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">magazine</span><span>{</span><span style="color:#d08770;">120</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">fire</span><span>{[&amp;magazine]() {
+</span><span>    magazine -= </span><span style="color:#d08770;">10</span><span>;
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">Bullets left: </span><span>&quot; &lt;&lt; magazine &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">fire</span><span>();
+</span><span>  </span><span style="color:#bf616a;">fire</span><span>();
+</span><span>  </span><span style="color:#bf616a;">fire</span><span>();
+</span><span>}
+</span></code></pre>
+<div class="color-rust"><p>Rust</p>
+</div>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">reference_capture1</span><span>() {
+</span><span>    </span><span style="color:#65737e;">// let mut quiver = 8;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> quiver = </span><span style="color:#d08770;">8</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">check </span><span>= || {
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">Arrows check </span><span style="color:#d08770;">{:?}</span><span>&quot;, &amp;quiver);
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">check</span><span>();
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// compile error: violate borrow checker
+</span><span>    </span><span style="color:#65737e;">// quiver -= 1;
+</span><span>    </span><span style="color:#65737e;">// check();
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">reference_capture2</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">use </span><span>std::cell::RefCell;
+</span><span>    </span><span style="color:#b48ead;">use </span><span>std::rc::Rc;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> quiver = Rc::new(RefCell::new(</span><span style="color:#d08770;">8</span><span>));
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">check </span><span>= || {
+</span><span>        </span><span style="color:#65737e;">// Note: a `.clone()` on `Rc` only clones a memory address
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">Arrows check </span><span style="color:#d08770;">{:?}</span><span>&quot;, quiver.</span><span style="color:#96b5b4;">clone</span><span>().</span><span style="color:#96b5b4;">borrow</span><span>());
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">check</span><span>();
+</span><span>
+</span><span>    *quiver.</span><span style="color:#96b5b4;">borrow_mut</span><span>() -= </span><span style="color:#d08770;">1</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">check</span><span>();
+</span><span>}
+</span></code></pre>
+<h2 id="ownership_capture">ownership_capture</h2>
+<p>The fourth difference is the moving range: C++ is moved by specified variable and Rust is moved by all captured variables. C++ should <code>#include&lt;memory&gt;</code> first, then call by <code>std::move()</code>, and Rust use keyword <code>move</code> in front of closure.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">ownership_capture</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">quiver</span><span>{</span><span style="color:#d08770;">8</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">shoot</span><span>{[q = std::</span><span style="color:#bf616a;">move</span><span>(quiver)]() </span><span style="color:#b48ead;">mutable </span><span>{
+</span><span>    </span><span style="color:#65737e;">// quiver has been moved
+</span><span>    --q;
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">Arrows left: </span><span>&quot; &lt;&lt; q &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">shoot</span><span>();
+</span><span>  </span><span style="color:#bf616a;">shoot</span><span>();
+</span><span>}
+</span></code></pre>
+<div class="color-rust"><p>Rust</p>
+</div>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">ownership_capture1</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> quiver = </span><span style="color:#d08770;">8</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> shoot = </span><span style="color:#b48ead;">move </span><span>|| {
+</span><span>        quiver -= </span><span style="color:#d08770;">1</span><span>;
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">Arrows left </span><span style="color:#d08770;">{quiver:?}</span><span>&quot;);
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// ⚠️ watch out! this still prints `8`, because all the primitive type in Rust has `Copy` implemented!
+</span><span>    println!(&quot;</span><span style="color:#a3be8c;">Check the rest </span><span style="color:#d08770;">{quiver:?}</span><span>&quot;);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">ownership_capture2</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>Quiver(</span><span style="color:#b48ead;">i32</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">impl </span><span>Quiver {
+</span><span>        </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">shoot</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) {
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0 </span><span>-= </span><span style="color:#d08770;">1</span><span>;
+</span><span>        }
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">check</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">i32 </span><span>{
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> quiver = Quiver(</span><span style="color:#d08770;">8</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> shoot = </span><span style="color:#b48ead;">move </span><span>|| {
+</span><span>        quiver.</span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">Arrows left </span><span style="color:#d08770;">{:?}</span><span>&quot;, quiver.</span><span style="color:#96b5b4;">check</span><span>());
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>    </span><span style="color:#96b5b4;">shoot</span><span>();
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// compile error here! Since `quiver` has been captured by ownership,
+</span><span>    </span><span style="color:#65737e;">// which in other words `quiver` is owned by the closure.
+</span><span>    </span><span style="color:#65737e;">// println!(&quot;Check the rest {:?}&quot;, quiver.check());
+</span><span>}
+</span></code></pre>
+<h2 id="mixing_capture">mixing_capture</h2>
+<p>Mixing capture is not so that important in Rust, as its capturing mechanism is actually differed by <code>copy</code>/<code>clone</code>, immutable/mutable reference which is already shown above (hence Rust's example is omitted in here).</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">mixing_capture</span><span>() {
+</span><span>  </span><span style="color:#65737e;">// capture by reference, by this means, players aiming one single target
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">boss</span><span>{</span><span style="color:#d08770;">100</span><span>};
+</span><span>  </span><span style="color:#65737e;">// capture by value, by this means, represents different players
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">player</span><span>{</span><span style="color:#d08770;">10</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">melee</span><span>{[&amp;boss, player](</span><span style="color:#b48ead;">bool</span><span> offensive) {
+</span><span>    </span><span style="color:#b48ead;">static int </span><span style="color:#bf616a;">p</span><span>{player};
+</span><span>    </span><span style="color:#b48ead;">char </span><span style="color:#bf616a;">direction</span><span>{&#39;</span><span style="color:#a3be8c;">&gt;</span><span>&#39;};
+</span><span>    </span><span style="color:#b48ead;">if </span><span>(offensive) {
+</span><span>      boss -= </span><span style="color:#d08770;">10</span><span>;
+</span><span>      direction = &#39;</span><span style="color:#a3be8c;">&lt;</span><span>&#39;;
+</span><span>    } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>      p -= </span><span style="color:#d08770;">1</span><span>;
+</span><span>      direction = &#39;</span><span style="color:#a3be8c;">&gt;</span><span>&#39;;
+</span><span>    }
+</span><span>
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">boss[ </span><span>&quot; &lt;&lt; boss &lt;&lt; &quot;</span><span style="color:#a3be8c;"> ] </span><span>&quot; &lt;&lt; direction &lt;&lt; &quot;</span><span style="color:#a3be8c;"> melee[ </span><span>&quot; &lt;&lt; p &lt;&lt; &quot;</span><span style="color:#a3be8c;"> ]</span><span>&quot; &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">range</span><span>{[&amp;boss, player](</span><span style="color:#b48ead;">bool</span><span> offensive) {
+</span><span>    </span><span style="color:#b48ead;">static int </span><span style="color:#bf616a;">p</span><span>{player};
+</span><span>    </span><span style="color:#b48ead;">char </span><span style="color:#bf616a;">direction</span><span>{&#39;</span><span style="color:#a3be8c;">&gt;</span><span>&#39;};
+</span><span>    </span><span style="color:#b48ead;">if </span><span>(offensive) {
+</span><span>      boss -= </span><span style="color:#d08770;">20</span><span>;
+</span><span>      direction = &#39;</span><span style="color:#a3be8c;">&lt;</span><span>&#39;;
+</span><span>    } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>      p -= </span><span style="color:#d08770;">3</span><span>;
+</span><span>      direction = &#39;</span><span style="color:#a3be8c;">&gt;</span><span>&#39;;
+</span><span>    }
+</span><span>
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">boss[ </span><span>&quot; &lt;&lt; boss &lt;&lt; &quot;</span><span style="color:#a3be8c;"> ]  </span><span>&quot; &lt;&lt; direction &lt;&lt; &quot;</span><span style="color:#a3be8c;">  range[ </span><span>&quot; &lt;&lt; p &lt;&lt; &quot;</span><span style="color:#a3be8c;"> ]</span><span>&quot; &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">melee</span><span>(</span><span style="color:#d08770;">false</span><span>);
+</span><span>  </span><span style="color:#bf616a;">melee</span><span>(</span><span style="color:#d08770;">false</span><span>);
+</span><span>  </span><span style="color:#bf616a;">range</span><span>(</span><span style="color:#d08770;">true</span><span>);
+</span><span>  </span><span style="color:#bf616a;">range</span><span>(</span><span style="color:#d08770;">true</span><span>);
+</span><span>  </span><span style="color:#bf616a;">melee</span><span>(</span><span style="color:#d08770;">true</span><span>);
+</span><span>  </span><span style="color:#bf616a;">range</span><span>(</span><span style="color:#d08770;">false</span><span>);
+</span><span>}
+</span></code></pre>
+<h2 id="default_value_capture">default_value_capture</h2>
+<p>The fifth difference is about default value/reference capture. There is no such kink of mechanism in Rust. The default value capture means &quot;capture by value without explicit declaring captured variables&quot;.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">default_value_capture</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">player</span><span>{</span><span style="color:#d08770;">10</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">lbd</span><span>{[=]() {
+</span><span>    </span><span style="color:#65737e;">// buffed by a holy priest
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">Player get buffed: </span><span>&quot; &lt;&lt; player + </span><span style="color:#d08770;">5 </span><span>&lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">lbd</span><span>();
+</span><span>
+</span><span>  std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">The original player: </span><span>&quot; &lt;&lt; player &lt;&lt; std::endl;
+</span><span>}
+</span></code></pre>
+<h2 id="default_reference_capture">default_reference_capture</h2>
+<p>The reference capture means &quot;capture by reference without explicit declaring captured variables&quot;.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">default_reference_capture</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">boss</span><span>{</span><span style="color:#d08770;">100</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">lbd</span><span>{[&amp;]() {
+</span><span>    </span><span style="color:#65737e;">// attacked by a hunter&#39;s aimed shot
+</span><span>    boss -= </span><span style="color:#d08770;">20</span><span>;
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">Boss get hit: </span><span>&quot; &lt;&lt; boss &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">lbd</span><span>();
+</span><span>
+</span><span>  std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">The original boss: </span><span>&quot; &lt;&lt; boss &lt;&lt; std::endl;
+</span><span>}
+</span></code></pre>
+<h2 id="default_mixing_capture">default_mixing_capture</h2>
+<p>A short snippet that demonstrates default mixing capture:</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#65737e;">// value capture a &amp; b, reference capture c
+</span><span>[a, b, &amp;c](){};
+</span><span>
+</span><span style="color:#65737e;">// reference capture c, value capture the rest
+</span><span>[=, &amp;c](){};
+</span><span>
+</span><span style="color:#65737e;">// value capture a, reference capture the rest
+</span><span>[&amp;, a](){};
+</span><span>
+</span><span style="color:#65737e;">// ⚠️ illegal, already reference captured all
+</span><span>[&amp;, &amp;c](){};
+</span><span>
+</span><span style="color:#65737e;">// ⚠️ illegal, already value captured all
+</span><span>[=, a](){};
+</span><span>
+</span><span style="color:#65737e;">// ⚠️ illegal, captured a twice
+</span><span>[a, &amp;b, &amp;a](){};
+</span><span>
+</span><span style="color:#65737e;">// ⚠️ illegal, default capture should always at the first
+</span><span>[armor, &amp;](){};
+</span><span>
+</span><span style="color:#65737e;">// a full example
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">default_mixing_capture</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">boss_health</span><span>{</span><span style="color:#d08770;">100</span><span>};
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">player_health</span><span>{</span><span style="color:#d08770;">10</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">const int </span><span style="color:#bf616a;">boss_dmg</span><span>{</span><span style="color:#d08770;">3</span><span>};
+</span><span>  </span><span style="color:#b48ead;">const int </span><span style="color:#bf616a;">player_dmg</span><span>{</span><span style="color:#d08770;">1</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#65737e;">// boss -&gt; player
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">boss_player</span><span>{[=, &amp;player_health]() {
+</span><span>    player_health -= boss_dmg;
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">The boss has made </span><span>&quot; &lt;&lt; boss_dmg &lt;&lt; &quot;</span><span style="color:#a3be8c;"> to the player, and the player has left </span><span>&quot; &lt;&lt; player_health
+</span><span>              &lt;&lt; &quot;</span><span style="color:#a3be8c;"> health!</span><span>&quot; &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#65737e;">// player -&gt; boss
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">player_boss</span><span>{[&amp;, player_dmg]() {
+</span><span>    boss_health -= player_dmg;
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">The play has made </span><span>&quot; &lt;&lt; player_dmg &lt;&lt; &quot;</span><span style="color:#a3be8c;"> to the boss, and the boss has left </span><span>&quot; &lt;&lt; boss_health
+</span><span>              &lt;&lt; &quot;</span><span style="color:#a3be8c;"> health!</span><span>&quot; &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">boss_player</span><span>();
+</span><span>  </span><span style="color:#bf616a;">player_boss</span><span>();
+</span><span>  </span><span style="color:#bf616a;">player_boss</span><span>();
+</span><span>  </span><span style="color:#bf616a;">player_boss</span><span>();
+</span><span>  </span><span style="color:#bf616a;">boss_player</span><span>();
+</span><span>  </span><span style="color:#bf616a;">player_boss</span><span>();
+</span><span>}
+</span></code></pre>
+<h2 id="init_var_capture">init_var_capture</h2>
+<p>The sixth difference. There is no such kink of mechanism in Rust.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">init_var_capture</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">life</span><span>{</span><span style="color:#d08770;">3</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#65737e;">// &amp;o is initialzed as life&#39;s reference
+</span><span>  </span><span style="color:#65737e;">// d is initialzed from cloned life
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">double_life</span><span>{[&amp;o = life, </span><span style="color:#bf616a;">d</span><span>{life * </span><span style="color:#d08770;">2</span><span>}]() {
+</span><span>    o *= </span><span style="color:#d08770;">2</span><span>;
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">1. Doubled life is </span><span>&quot; &lt;&lt; o &lt;&lt; std::endl;
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">2. Doubled life is </span><span>&quot; &lt;&lt; d &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#65737e;">// print 6, 6
+</span><span>  </span><span style="color:#bf616a;">double_life</span><span>();
+</span><span>  </span><span style="color:#65737e;">// print 12, 6
+</span><span>  </span><span style="color:#65737e;">// this is because `d{life * 2}` only initialzed once (when the first call is defined)
+</span><span>  </span><span style="color:#bf616a;">double_life</span><span>();
+</span><span>
+</span><span>  </span><span style="color:#65737e;">// 12, no doubt `o *= 2;` has been called twice
+</span><span>  std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">The original life has been changed to: </span><span>&quot; &lt;&lt; life &lt;&lt; std::endl;
+</span><span>}
+</span></code></pre>
+<h2 id="copy_lambda">copy_lambda</h2>
+<p>Additionally, in C++ lambda is a an object, which can be copy and modified. Although a <code>mutable</code> keyword has been used in here, <code>stage</code> is still captured by value (cloned). Hence, <code>stage</code> turns into a stateful variable who has been stored inside the lambda. It turns out, whenever a clone has been made upon <code>step_forward</code>, its state (<code>stage</code>) would have been cloned as well.</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">copy_lambda</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">stage</span><span>{</span><span style="color:#d08770;">0</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">step_forward</span><span>{[stage]() </span><span style="color:#b48ead;">mutable </span><span>{
+</span><span>    stage++;
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">step forward: </span><span>&quot; &lt;&lt; stage &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">step_forward</span><span>(); </span><span style="color:#65737e;">// stage -&gt; 1
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">another_sf</span><span>{step_forward}; </span><span style="color:#65737e;">// stage: 1
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">step_forward</span><span>(); </span><span style="color:#65737e;">// stage -&gt; 2
+</span><span>  </span><span style="color:#bf616a;">another_sf</span><span>();   </span><span style="color:#65737e;">// stage -&gt; 2
+</span><span>
+</span><span>  </span><span style="color:#65737e;">// no doubt, stage is still `0` right here
+</span><span>  std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">final stage: </span><span>&quot; &lt;&lt; stage &lt;&lt; std::endl;
+</span><span>}
+</span></code></pre>
+<h2 id="copy_ref_lambda">copy_ref_lambda</h2>
+<p>One more extra stuff:</p>
+<div class="color-cpp"><p>C++</p>
+</div>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#65737e;">// `auto&amp;` means type deduction of the argument must be a reference
+</span><span style="color:#65737e;">// by the later call, it turns out to be `std::function&lt;void()&gt;&amp;`
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">copy_invoke</span><span>(</span><span style="color:#b48ead;">const auto</span><span>&amp; </span><span style="color:#bf616a;">fn</span><span>) { </span><span style="color:#bf616a;">fn</span><span>(); }
+</span><span>
+</span><span style="color:#65737e;">/**
+</span><span style="color:#65737e;"> * @brief copy lambda by reference
+</span><span style="color:#65737e;"> *
+</span><span style="color:#65737e;"> * type `std::reference_wrapper` created by `std::ref`
+</span><span style="color:#65737e;"> */
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">copy_ref_lambda</span><span>() {
+</span><span>  </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">stage</span><span>{</span><span style="color:#d08770;">0</span><span>};
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">auto </span><span style="color:#bf616a;">step_forward</span><span>{[stage]() </span><span style="color:#b48ead;">mutable </span><span>{
+</span><span>    </span><span style="color:#65737e;">// stage is modified
+</span><span>    std::cout &lt;&lt; ++stage &lt;&lt; std::endl;
+</span><span>  }};
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">copy_invoke</span><span>(std::</span><span style="color:#bf616a;">ref</span><span>(step_forward)); </span><span style="color:#65737e;">// stage -&gt; 1
+</span><span>  </span><span style="color:#bf616a;">copy_invoke</span><span>(std::</span><span style="color:#bf616a;">ref</span><span>(step_forward)); </span><span style="color:#65737e;">// stage -&gt; 2
+</span><span>  </span><span style="color:#bf616a;">copy_invoke</span><span>(std::</span><span style="color:#bf616a;">ref</span><span>(step_forward)); </span><span style="color:#65737e;">// stage -&gt; 3
+</span><span>}
+</span></code></pre>
+<p>Check my <a href="https://github.com/Jacobbishopxy/jotting/tree/master/lambda-comparison">Github page</a> to see the code, and leave me a comment if you have any suggestion.</p>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-lambda_and_fn_ptr"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#lambda_and_fn_ptr"
+							>
+								lambda_and_fn_ptr
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-simple_lambda"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#simple_lambda"
+							>
+								simple_lambda
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-passing_lambda_to_fn"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#passing_lambda_to_fn"
+							>
+								passing_lambda_to_fn
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-generic_lambda"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#generic_lambda"
+							>
+								generic_lambda
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-simple_capture"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#simple_capture"
+							>
+								simple_capture
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-mutable_capture"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#mutable_capture"
+							>
+								mutable_capture
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-reference_capture"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#reference_capture"
+							>
+								reference_capture
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-ownership_capture"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#ownership_capture"
+							>
+								ownership_capture
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-mixing_capture"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#mixing_capture"
+							>
+								mixing_capture
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-default_value_capture"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#default_value_capture"
+							>
+								default_value_capture
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-default_reference_capture"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#default_reference_capture"
+							>
+								default_reference_capture
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-default_mixing_capture"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#default_mixing_capture"
+							>
+								default_mixing_capture
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-init_var_capture"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#init_var_capture"
+							>
+								init_var_capture
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-copy_lambda"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#copy_lambda"
+							>
+								copy_lambda
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-copy_ref_lambda"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/lambda-comparison/#copy_ref_lambda"
+							>
+								copy_ref_lambda
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>
