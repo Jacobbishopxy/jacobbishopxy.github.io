@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | Impl Index for polars&#x27; Series </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Impl Index for polars&#x27; Series</h1>
+					<p class="subtitle">An experimental attempt</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-08-01">August 01, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>11 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>2081 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/post/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Post</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/rust/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Rust</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="intro">Intro</h2>
+<p>Today I would like to talk about a small problem I met in my project, and the inspired thoughts through the whole working process. While trying to select data from Series or DataFrame, the intuitive thought come up to me is how to make the Rust DataFrame's selection act like Python. For example, we have <code>iat</code>, <code>at</code>, <code>iloc</code> and <code>loc</code> methods in pandas' DataFrame, which represents <em>accessing integer location scalar</em>, <em>accessing a single value for a row/column label pair</em>, <em>accessing a group of rows and columns by integer position(s)</em>, and <em>accessing a group of rows and columns by label(s)</em> respectfully.</p>
+<p>The first idea came to me is that implementing <code>Index</code> trait for polars series can approach the same effect as pandas DataFrame does. As a syntactic sugar of <code>foo.index(index)</code>, <code>Index</code> provide us a simple way to get an indexed of value from a variable.</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">pub trait </span><span>Index&lt;Idx: ?Sized&gt; {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Output: ?Sized;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">index</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">index</span><span>: Idx) -&gt; &amp;</span><span style="color:#b48ead;">Self::</span><span>Output;
+</span><span>}
+</span></code></pre>
+<p>In accordance with the <code>Index</code> trait, we know the associate type <code>Output</code> is UnSized and the return value of <code>index</code> is a reference of <code>Output</code>. However, assuming different types of data are stored in a DataFrame, no wonder that in Python we don't care about the return type, but as known in Rust that returning different types from a function is impossible. Moreover, as polars used Apache Arrow as its memory model, a series in polars actually represents a arrow's array who carries a set of specific type data. Although polars provides us <code>get</code> method that returns an enum <code>AnyValue</code> type, what if more custom types are required, such as <code>Uuid</code>.</p>
+<p>Instead, we could probably use either static dispatching (impl trait) or dynamic dispatching (dyn trait) as a workaround (or even worse, by using an <code>Enum</code> to wrap all types of data just like polars itself does). So the first problem is how do we design our own return type.</p>
+<p>The second problem is quite annoying: there is no way to return a reference of <code>Output</code>, since neither calling <code>get</code> method on a series nor calling conversion methods such as <code>bool</code> can give us a reference of value(s). Instead, these methods create new values which only allows us to move their ownership. In other words, the lifetime of <code>&amp;Self::Output</code> should live as longer as <code>&amp;self</code>, but these values returned by polar's methods have shorter lifetime then <code>&amp;self</code>.</p>
+<h2 id="custom-return-type">Custom Return Type</h2>
+<p>Designing a custom return type for <code>Output</code> is the first thing we should concern. As mentioned above, we need a trait who represents the interface of our own type, and then implement this trait for all primitive types and custom type, so that finally we could treat <code>Output</code> as a trait object.</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">trait </span><span>MyValueTrait: Debug {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">dtype</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">&#39;static str</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MyValueTrait </span><span style="color:#b48ead;">for </span><span>bool {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">dtype</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">&#39;static str </span><span>{
+</span><span>        &quot;</span><span style="color:#a3be8c;">bool</span><span>&quot;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MyValueTrait </span><span style="color:#b48ead;">for </span><span>i64 {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">dtype</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">&#39;static str </span><span>{
+</span><span>        &quot;</span><span style="color:#a3be8c;">i64</span><span>&quot;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Debug)]
+</span><span style="color:#b48ead;">struct </span><span>Null;
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MyValueTrait </span><span style="color:#b48ead;">for </span><span>Null {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">dtype</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">&#39;static str </span><span>{
+</span><span>        &quot;</span><span style="color:#a3be8c;">null</span><span>&quot;
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Apparently, in this case, <code>impl Trait</code> (static dispatch) is not Sized, for instance we have struct <code>MyGenericValue&lt;T: MyValueTrait&gt;(T)</code>, and <code>MyGenericValue(true)</code>'s size is not equal to <code>MyGenericValue(1i64)</code> (try this <code>assert_ne!(std::mem::size_of_val(&amp;v1), std::mem::size_of_val(&amp;v2))</code>). Hence, <code>dyn Trait</code> is the only thing left for us.</p>
+<p>The next step is to choose <code>&amp;dyn Trait</code> or <code>Box&lt;dyn Trait&gt;</code>, since we cannot use a bare <code>dyn Trait</code>. The former one means a reference, but when implementing <code>Index</code>, there is no way to hold the original variable which is also UnSized. For instance, though <code>&amp;true as &amp;dyn MyValueTrait</code> and <code>&amp;1i64 as &amp;dyn MyValueTrait</code> have the same size, <code>true</code> and <code>1i64</code> are not the same. As a result, I choose to use a newtype of <code>Box&lt;dyn MyValueTrait&gt;</code>:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>#[</span><span style="color:#bf616a;">derive</span><span>(Debug)]
+</span><span style="color:#b48ead;">struct </span><span>MyValue(Box&lt;dyn MyValueTrait&gt;);
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>AsRef&lt;MyValue&gt; </span><span style="color:#b48ead;">for </span><span>Box&lt;dyn MyValueTrait&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_ref</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;MyValue {
+</span><span>        </span><span style="color:#b48ead;">unsafe </span><span>{ std::mem::transmute(</span><span style="color:#bf616a;">self</span><span>) }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">my_value_as_ref</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> dv = Box::new(</span><span style="color:#d08770;">false</span><span>) as Box&lt;dyn MyValueTrait&gt;;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> dvr: &amp;MyValue = dv.</span><span style="color:#96b5b4;">as_ref</span><span>();
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, dvr);
+</span><span>}
+</span></code></pre>
+<p>Do not afraid of the unsafe code, I would replace them all later on. In compliance with 'Reinterprets the bits of a value of one type as another type' from the standard library, <code>std::mem::transmute</code> copies the bits from one source value into anther, and while newtype itself has the same size as the wrapped value, a <code>Box&lt;dyn MyValueTrait&gt;</code> can be regarded as a <code>MyValue</code>. This trick is applicable when <code>&amp;T</code> wants to be presented as a <code>&amp;U</code>, whom will be used later in the <code>index</code> function. The reason why I use a newtype instead of <code>Box&lt;dyn MyValueTrait&gt;</code> directly is the capacity of implementing traits (due to the orphan rule):</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">impl </span><span>From&lt;</span><span style="color:#b48ead;">bool</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>MyValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">bool</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        </span><span style="color:#b48ead;">Self</span><span>(Box::new(v))
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>From&lt;</span><span style="color:#b48ead;">i64</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>MyValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">i64</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        </span><span style="color:#b48ead;">Self</span><span>(Box::new(v))
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>From&lt;Null&gt; </span><span style="color:#b48ead;">for </span><span>MyValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">from</span><span>(</span><span style="color:#bf616a;">v</span><span>: Null) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        </span><span style="color:#b48ead;">Self</span><span>(Box::new(v))
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>That's it. The first part of the design is pretty simple, and the only problem remained is the unsafe code which will be solved in the last section.</p>
+<h2 id="impl-index">Impl Index</h2>
+<p>Before moving forward, we need a small review of <code>polars</code> crate. There are mainly two methods to get a value from a series: call <code>.get(index)</code> method directly on a Series, and from its signature we know the return type is <code>AnyValue</code>, whose variants represents different types of data; the second method is unpacking series to <code>ChunkedArray&lt;T&gt;</code> by calling <code>.bool()</code>, <code>.i32()</code> and etc., and by calling <code>.get(index)</code> get <code>T</code> value. The former method has a runtime cast (<code>T</code> -&gt; <code>AnyValue</code>), and the latter method has better performance. According to <a href="https://docs.rs/polars/latest/polars/chunked_array/struct.ChunkedArray.html">polars::chunked_array::ChunkedArray</a>:</p>
+<blockquote>
+<p>Every Series contains a <code>ChunkedArray&lt;T&gt;</code>. Unlike Series, ChunkedArray’s are typed. This allows us to apply closures to the data and collect the results to a <code>ChunkedArray</code> of the same type <code>T</code>.</p>
+<p>...</p>
+<p>Conversion from a <code>Series</code> to a <code>ChunkedArray</code> is effortless.</p>
+</blockquote>
+<p>One thing is very important but not really a relevant concept to our topic is <code>ChunkedArray</code>'s memory layout:</p>
+<blockquote>
+<p><code>ChunkedArray</code>’s use <a href="https://github.com/apache/arrow">Apache Arrow</a> as backend for the memory layout. Arrows memory is immutable which makes it possible to make multiple zero copy (sub)-views from a single array.</p>
+</blockquote>
+<p>It gives us a better conceptual view of a <code>Series</code>. Now, back to our design. From the two <code>.get(index)</code> methods introduced above, we found that neither getting value from a Series directly nor getting value from a ChunkedArray would return a referenced value. In other words, we have to cache this value in somewhere first, which grants this value a longer lifetime of existence, or else it will be dropped after the <code>index</code> function's scope. Therefore, we need a struct who has at least two fields in which the data refers to the original series and the cached state, who holds the temporary value returned by the <code>get</code> method, lives as long as the struct itself.</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">struct </span><span>MySeriesIndexing&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt; {
+</span><span>    </span><span style="color:#bf616a;">data</span><span>: &amp;</span><span style="color:#b48ead;">&#39;a</span><span> Series,
+</span><span>    </span><span style="color:#bf616a;">cache</span><span>: Box&lt;dyn MyValueTrait&gt;,
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">allow</span><span>(dead_code)]
+</span><span style="color:#b48ead;">impl</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt; MySeriesIndexing&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span>(</span><span style="color:#bf616a;">series</span><span>: &amp;</span><span style="color:#b48ead;">&#39;a</span><span> Series) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>            data: series,
+</span><span>            cache: Box::new(Null),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Next is the vital part of our design: implementing <code>Index</code> trait for our <code>MySeriesIndexing</code>. First and foremost turning a <code>Series</code> to a <code>ChunkedArray</code> is effortless, thus we can use pattern matching to classify a Series' type, and based on data's type call the conversion function, for example, on <code>DataType::Boolean</code> branch, we could use <code>.bool()</code> method for conversion. After that, we need to store the temporary value from the ChunkedArray. However, due to <code>index</code> function's immutable reference, we cannot mutate the self state without using unsafe code. Accordingly, we can turn <code>&amp;self.cache</code> into an immutable raw pointer, and then turn it to a mutable raw pointer, and finally use <code>unsafe</code> block to assign the temporary value to this mutable raw pointer. Finally, call <code>.as_ref()</code> to turn <code>&amp;Box&lt;dyn MyValueTrait&gt;</code> into <code>&amp;MyValue</code>.</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">impl</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt; Index&lt;</span><span style="color:#b48ead;">usize</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>MySeriesIndexing&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt; {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Output = MyValue;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">index</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">index</span><span>: </span><span style="color:#b48ead;">usize</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">Self::</span><span>Output {
+</span><span>        </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.data.</span><span style="color:#96b5b4;">dtype</span><span>() {
+</span><span>            DataType::Boolean =&gt; {
+</span><span>                </span><span style="color:#65737e;">// unpack series to `ChunkedArray`
+</span><span>                </span><span style="color:#b48ead;">let</span><span> res: Box&lt;dyn MyValueTrait&gt; = </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.data.</span><span style="color:#b48ead;">bool</span><span>().</span><span style="color:#96b5b4;">unwrap</span><span>().</span><span style="color:#96b5b4;">get</span><span>(index) {
+</span><span>                    Some(v) =&gt; Box::new(v),
+</span><span>                    None =&gt; Box::new(Null),
+</span><span>                };
+</span><span>
+</span><span>                </span><span style="color:#65737e;">// turn `cache` into an immutable raw pointer
+</span><span>                </span><span style="color:#b48ead;">let</span><span> r = &amp;</span><span style="color:#bf616a;">self</span><span>.cache as </span><span style="color:#b48ead;">*const </span><span>Box&lt;dyn MyValueTrait&gt;;
+</span><span>                </span><span style="color:#65737e;">// turn immutable raw pointer into a mutable pointer
+</span><span>                </span><span style="color:#b48ead;">let</span><span> m = r as </span><span style="color:#b48ead;">*mut </span><span>Box&lt;dyn MyValueTrait&gt;;
+</span><span>                </span><span style="color:#65737e;">// assign result to mutable pointer
+</span><span>                </span><span style="color:#b48ead;">unsafe </span><span>{ *m = res };
+</span><span>
+</span><span>                </span><span style="color:#bf616a;">self</span><span>.cache.</span><span style="color:#96b5b4;">as_ref</span><span>()
+</span><span>            }
+</span><span>            DataType::UInt8 =&gt; todo!(),
+</span><span>            DataType::UInt16 =&gt; todo!(),
+</span><span>            DataType::UInt32 =&gt; todo!(),
+</span><span>            DataType::UInt64 =&gt; todo!(),
+</span><span>            DataType::Int8 =&gt; todo!(),
+</span><span>            DataType::Int16 =&gt; todo!(),
+</span><span>            DataType::Int32 =&gt; todo!(),
+</span><span>            DataType::Int64 =&gt; {
+</span><span>                </span><span style="color:#65737e;">// directly call `.get` method, which has a runtime casting (less efficiency)
+</span><span>                </span><span style="color:#65737e;">// since we already use pattern matching on `self.data.dtype()`, this case
+</span><span>                </span><span style="color:#65737e;">// is only for demonstrating
+</span><span>                </span><span style="color:#b48ead;">let</span><span> res: Box&lt;dyn MyValueTrait&gt; = </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.data.</span><span style="color:#96b5b4;">get</span><span>(index) {
+</span><span>                    AnyValue::Int64(v) =&gt; Box::new(v),
+</span><span>                    _ =&gt; Box::new(Null),
+</span><span>                };
+</span><span>
+</span><span>                </span><span style="color:#b48ead;">let</span><span> r = &amp;</span><span style="color:#bf616a;">self</span><span>.cache as </span><span style="color:#b48ead;">*const </span><span>Box&lt;dyn MyValueTrait&gt;;
+</span><span>                </span><span style="color:#b48ead;">let</span><span> m = r as </span><span style="color:#b48ead;">*mut </span><span>Box&lt;dyn MyValueTrait&gt;;
+</span><span>                </span><span style="color:#b48ead;">unsafe </span><span>{ *m = res };
+</span><span>
+</span><span>                </span><span style="color:#bf616a;">self</span><span>.cache.</span><span style="color:#96b5b4;">as_ref</span><span>()
+</span><span>            }
+</span><span>            DataType::Float32 =&gt; todo!(),
+</span><span>            DataType::Float64 =&gt; todo!(),
+</span><span>            DataType::Utf8 =&gt; todo!(),
+</span><span>            _ =&gt; unimplemented!(),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>And here comes the finally unit test:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">my_series_index_success</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> s = Series::new(&quot;</span><span style="color:#a3be8c;">funk</span><span>&quot;, [</span><span style="color:#d08770;">true</span><span>, </span><span style="color:#d08770;">false</span><span>, </span><span style="color:#d08770;">true</span><span>, </span><span style="color:#d08770;">true</span><span>]);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> s = MySeriesIndexing::new(&amp;s);
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, &amp;s[</span><span style="color:#d08770;">1</span><span>]);
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, &amp;s[</span><span style="color:#d08770;">3</span><span>]);
+</span><span>}
+</span></code></pre>
+<p>which prints out:</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>MyValue(false)
+</span><span>MyValue(true)
+</span></code></pre>
+<p>All the unsafe code is epitomized right <a href="https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/unsafe_index.rs">here</a>, feel free to leave a comment.</p>
+<h2 id="safe-code">Safe Code</h2>
+<p>In spite of archiving our goal, the unsafe code is ineluctable. In order to discard all the unsafe code, a little refactor is needed. The first part to deal with is the conversion of &amp;T to &amp;U, which in our case converting <code>&amp;Box&lt;dyn MyValueTrait&gt;</code> to <code>&amp;MyValue</code>. Fortunately, I found a crate called <a href="https://docs.rs/ref-cast/latest/ref_cast/">ref_cast</a> who can safely convert <code>&amp;T</code> to <code>&amp;U</code>, conditionally.</p>
+<blockquote>
+<p>This crate provides a derive macro for generating safe conversions from <code>&amp;T</code> to <code>&amp;U</code> where the struct <code>U</code> contains a single field of type <code>T</code>.</p>
+</blockquote>
+<p>By its basic example:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span>ref_cast::RefCast;
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(RefCast)]
+</span><span>#[</span><span style="color:#bf616a;">repr</span><span>(transparent)]
+</span><span style="color:#b48ead;">struct </span><span>U(String);
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> s = String::new();
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// Safely cast from `&amp;String` to `&amp;U`.
+</span><span>    </span><span style="color:#b48ead;">let</span><span> u = U::ref_cast(&amp;s);
+</span><span>}
+</span></code></pre>
+<p>However, we can't just simply refactor our code as <code>MyValue(Box&lt;dyn MyValueTrait&gt;)</code>. Remember that the second place we wrote an unsafe code is in the <code>index</code> function, in which we tried to turn <code>&amp;self.cache</code> into a mutable raw pointer and then dereference it in an unsafe block. As a matter of fact, a safer way to avoid raw pointers and its dereference is to wrap our value by <code>RefCell</code>. Eventually, <code>MyValue</code> looks like this:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>#[</span><span style="color:#bf616a;">derive</span><span>(RefCast)]
+</span><span>#[</span><span style="color:#bf616a;">repr</span><span>(transparent)]
+</span><span style="color:#b48ead;">struct </span><span>MyValue(RefCell&lt;Box&lt;dyn MyValueTrait&gt;&gt;);
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MyValue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">dtype</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">&#39;static str </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0.</span><span style="color:#96b5b4;">borrow</span><span>().</span><span style="color:#96b5b4;">dtype</span><span>()
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Also its unit test:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">my_value_ref_cast</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> v = RefCell::new(Box::new(</span><span style="color:#d08770;">true</span><span>) as Box&lt;dyn MyValueTrait&gt;);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> res = MyValue::ref_cast(&amp;v);
+</span><span>
+</span><span>    assert_eq!(res.</span><span style="color:#96b5b4;">dtype</span><span>(), &quot;</span><span style="color:#a3be8c;">bool</span><span>&quot;);
+</span><span>}
+</span></code></pre>
+<p>And update <code>MySeriesIndexing</code>:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">struct </span><span>MySeriesIndexing {
+</span><span>    </span><span style="color:#bf616a;">data</span><span>: Series,
+</span><span>    </span><span style="color:#bf616a;">cache</span><span>: RefCell&lt;Box&lt;dyn MyValueTrait&gt;&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MySeriesIndexing {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span>(</span><span style="color:#bf616a;">series</span><span>: Series) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>            data: series,
+</span><span>            cache: RefCell::new(Box::new(Null)),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Index&lt;</span><span style="color:#b48ead;">usize</span><span>&gt; </span><span style="color:#b48ead;">for </span><span>MySeriesIndexing {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Output = MyValue;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">index</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">index</span><span>: </span><span style="color:#b48ead;">usize</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">Self::</span><span>Output {
+</span><span>        </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.data.</span><span style="color:#96b5b4;">dtype</span><span>() {
+</span><span>            DataType::Boolean =&gt; {
+</span><span>                </span><span style="color:#b48ead;">let</span><span> res: Box&lt;dyn MyValueTrait&gt; = </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.data.</span><span style="color:#b48ead;">bool</span><span>().</span><span style="color:#96b5b4;">unwrap</span><span>().</span><span style="color:#96b5b4;">get</span><span>(index) {
+</span><span>                    Some(v) =&gt; Box::new(v),
+</span><span>                    None =&gt; Box::new(Null),
+</span><span>                };
+</span><span>
+</span><span>                </span><span style="color:#bf616a;">self</span><span>.cache.</span><span style="color:#96b5b4;">replace</span><span>(res);
+</span><span>
+</span><span>                MyValue::ref_cast(&amp;</span><span style="color:#bf616a;">self</span><span>.cache)
+</span><span>            }
+</span><span>            DataType::UInt8 =&gt; todo!(),
+</span><span>            DataType::UInt16 =&gt; todo!(),
+</span><span>            DataType::UInt32 =&gt; todo!(),
+</span><span>            DataType::UInt64 =&gt; todo!(),
+</span><span>            DataType::Int8 =&gt; todo!(),
+</span><span>            DataType::Int16 =&gt; todo!(),
+</span><span>            DataType::Int32 =&gt; todo!(),
+</span><span>            DataType::Int64 =&gt; todo!(),
+</span><span>            DataType::Float32 =&gt; todo!(),
+</span><span>            DataType::Float64 =&gt; todo!(),
+</span><span>            DataType::Utf8 =&gt; {
+</span><span>                </span><span style="color:#b48ead;">let</span><span> res: Box&lt;dyn MyValueTrait&gt; = </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.data.</span><span style="color:#96b5b4;">utf8</span><span>().</span><span style="color:#96b5b4;">unwrap</span><span>().</span><span style="color:#96b5b4;">get</span><span>(index) {
+</span><span>                    Some(v) =&gt; Box::new(v.</span><span style="color:#96b5b4;">to_string</span><span>()),
+</span><span>                    None =&gt; Box::new(Null),
+</span><span>                };
+</span><span>
+</span><span>                </span><span style="color:#bf616a;">self</span><span>.cache.</span><span style="color:#96b5b4;">replace</span><span>(res);
+</span><span>
+</span><span>                MyValue::ref_cast(&amp;</span><span style="color:#bf616a;">self</span><span>.cache)
+</span><span>            }
+</span><span>            _ =&gt; {
+</span><span>                </span><span style="color:#bf616a;">self</span><span>.cache.</span><span style="color:#96b5b4;">replace</span><span>(Box::new(Null));
+</span><span>                MyValue::ref_cast(&amp;</span><span style="color:#bf616a;">self</span><span>.cache)
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p><strong>Notice</strong> that I also did some extra work such as impl <a href="https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs#L141-L172">Debug</a> and <a href="https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs#L76-L109">PartialEq</a> for <code>MyValue</code>, they are genuinely useful for our unit test. Please follow the link to see more detailed implementation if you are interested.</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">my_series_index_success</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> s = Series::new(&quot;</span><span style="color:#a3be8c;">funk</span><span>&quot;, [</span><span style="color:#d08770;">true</span><span>, </span><span style="color:#d08770;">false</span><span>, </span><span style="color:#d08770;">true</span><span>, </span><span style="color:#d08770;">true</span><span>]);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> s = MySeriesIndexing::new(s);
+</span><span>
+</span><span>    assert_eq!(&amp;s[</span><span style="color:#d08770;">1</span><span>], &amp;MyValue::new(</span><span style="color:#d08770;">false</span><span>));
+</span><span>    assert_eq!(&amp;s[</span><span style="color:#d08770;">3</span><span>], &amp;MyValue::new(</span><span style="color:#d08770;">true</span><span>));
+</span><span>}
+</span></code></pre>
+<p>The full code is in my Github page <a href="https://github.com/Jacobbishopxy/jotting/blob/master/polars-prober/src/index.rs">index.rs</a>. And that's all for today, until next time! 👋</p>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

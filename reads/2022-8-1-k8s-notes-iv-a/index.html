@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | K8s 笔记 (IV) 上 </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">K8s 笔记 (IV) 上</h1>
+					<p class="subtitle">工作负载（Pod）</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-08-01">August 01, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>38 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>7593 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/read/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Read</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/k8s/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="jian-jie">简介</h2>
+<p>工作负载即运行在 k8s 上的应用程序。无论工作负载是单组件工作或是多组件共同工作，在 k8s 中运行的都是一系列 pods。一个 <code>Pod</code> 代表着在集群中一系列运行容器的集合。</p>
+<p>k8s 的 pods 有定义好的生命周期。例如，一个运行在集群中的 pod 所在的节点出现致命错误时，所有该节点上的 Pods 的状态都会变成失败。k8s 将这类失败视为最终状态：即使改节点恢复正常运行，用户还是需要创建新的 Pod 用以恢复应用。</p>
+<p>不过为了使用的便利性，用户不需要直接管理每个 <code>Pod</code>。相反的，用户可以使用<em>负载资源</em>来管理一系列的 pods。这类资源配置控制器可以确保正确数量以及正确类型的 pod 运行，使得匹配用户指定的状态。</p>
+<p>k8s 提供若干内置的工作负载资源：</p>
+<ul>
+<li>
+<p><code>Deployment</code> 与 <code>ReplicaSet</code>（替换遗留资源 ReplicationController）。在集群中 <code>Deployment</code> 非常适合管理无状态应用的工作负载，在 <code>Deployment</code> 中的任何 <code>Pod</code> 都是可交替的并且需要时可以被替换。</p>
+</li>
+<li>
+<p><code>StatefulSet</code> 以某种方式允许一个或多个关联的 Pods 追踪状态。例如，如果工作负载持久化的记录数据，用户可以允许一个 <code>StatefulSet</code> 用以匹配 <code>Pod</code> 与 <code>PersistentVolume</code>。在 <code>StatefulSet</code> 中各个 <code>Pods</code> 上运行的代码可以复制数据到统一 <code>StatefulSet</code> 中的其它 <code>Pod</code> 中以提高整体的服务可靠性。</p>
+</li>
+<li>
+<p><code>DaemonSet</code> 定义 <code>Pods</code> 提供节点本地的设备。这可能是集群中的基础，例如一个网络帮助工具，或是插件的一部分。每添加一个节点至集群，如果节点与某 <code>DaemonSet</code> 的规约匹配，则控制面会为该 <code>DaemonSet</code> 调度一个 <code>Pod</code> 至新的节点。</p>
+</li>
+<li>
+<p><code>Job</code> 与 <code>CronJob</code>。定义一些一直运行到结束并停止的任务。<code>Job</code> 用来表达的是一次性任务，而 <code>CronJob</code> 会根据其时间规则反复运行。</p>
+</li>
+</ul>
+<h2 id="pod">Pod</h2>
+<p>在 k8s 中，<em>Pods</em>是可以创建与管理的最小可部署计算单元。</p>
+<p>一个<em>Pod</em>是一组单个或多个的容器，它们共享存储与网络资源，以及指定的运行容器的方法。一个 Pod 总是并置 co-located 与共同调度 co-scheduled 的，并且运行在共享的上下文中。一个 Pod 是一个“逻辑主机”的模型：它包含了一个或多个相对紧密耦合的应用容器。在非云环境中，相同的物理机或虚拟机上运行的应用类似于在同一逻辑主机上运行的云应用。</p>
+<p>除了应用容器，Pod 还可以包含在 Pod 启动期间运行的初始容器 init containers。也可以在集群中支持临时容器 ephemeral containers 时注入调试用的临时性容器。</p>
+<h3 id="shi-yao-shi-pod">什么是 Pod</h3>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>除了 Docker，k8s 支持很多的容器运行时，而 Docker 是最为熟知的运行时，使用 Docker 的术语描述 Pod 会很有帮助。</p>
+
+</blockquote>
+<p>一个 Pod 共享的上下文就是一系列的 Linux 命名空间，控制组 cgroups，以及其它隔离技术。在一个 Pod 的上下文中，可能会对应用程序更进一步的子隔离。</p>
+<p>根据 Docker 的概念，一个 Pod 类似于一组共享了命名空间与文件系统卷的 Docker 容器。</p>
+<h3 id="shi-yong-pods">使用 Pods</h3>
+<p>以下是一个由一个运行的镜像 <code>nginx:1.14.2</code> 构成的 Pod 例子：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Pod
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">containers</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span>      </span><span style="color:#bf616a;">image</span><span>: </span><span style="color:#a3be8c;">nginx:1.14.2
+</span><span>      </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>        - </span><span style="color:#bf616a;">containerPort</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<p>通过一下命令来创建上述的 Pod：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> apply</span><span style="color:#bf616a;"> -f</span><span> https://k8s.io/examples/pods/simple-pod.yaml
+</span></code></pre>
+<p>Pods 通常不会直接被创建而是通过工作负载资源来创建。</p>
+<h4 id="gong-zuo-fu-zai-zi-yuan-guan-li-pods">工作负载资源管理 pods</h4>
+<p>通常来说用户不需要直接创建 Pods，即使是单例模式的 Pods。相反，而是通过工作负载资源例如 Deployment 或 Job 创建它们。如果 Pods 需要追踪状态，则考虑 StatefulSet 资源。</p>
+<p>一个 k8s 集群的 Pods 主要由以下两种方式被使用：</p>
+<ul>
+<li>
+<p><strong>运行在单容器的 Pods</strong>：“每个 Pod 一个容器”模型是 k8s 最常用的用例；这种情况下，可以认为是一个 Pod 是一个单独容器的包装；k8s 管理 Pods 而不是直接管理容器。</p>
+</li>
+<li>
+<p><strong>运行在需要一起工作的多容器的 Pods</strong>：一个 Pod 可以封装一个由多个紧密耦合且需要共享资源的并置 co-located 容器构成的应用。这些并置容器构成了一个精密的服务单元，例如，一个容器提供共享卷的数据给公众，而另一个独立的<em>sidecar</em>容器则刷新或更新这些文件。Pod 将这些容器和存储资源打包成一个可管理的实体。</p>
+</li>
+</ul>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>将多个并置，同管的容器组织到一个 Pod 中是一种相对高级的使用场景。只有在一些场景中，容器之间紧密关联时才应该使用这种模式。</p>
+
+</blockquote>
+<p>每个 Pod 意味着运行一个给定应用的单个实例。若果需要平行扩展应用（通过运行更多的单例提供更多的资源），则应该使用若干 Pods，每个实例使用一个 Pod。在 k8s 中，这通常被称为<em>副本（Replication）</em>。通常使用一种工作负载资源及其控制器来创建和管理一组 Pod 副本。</p>
+<h4 id="pods-ru-he-guan-li-duo-ge-rong-qi">Pods 如何管理多个容器</h4>
+<p>Pods 被设计用来支持多个形成内聚服务单元的多个协作过程（形式为容器）。Pod 中的容器将会自动并置 co-located 与共同调度 co-scheduled 在集群中同个物理或虚拟机器。容器之间可以共享资源与依赖，互相通讯，以及协议何时以及如何结束。</p>
+<p>例如，可以有一个容器用作于共享卷文件管理的 web 服务，另一个独立的 “sidecar” 容器从远程资源更新这些文件，如下图所示：</p>
+<div class="content__image">
+  <img src="&#x2F;images&#x2F;pod.svg" alt="k8s pod"   />
+</div>
+<p>一些 Pods 拥有 Init 容器和应用容器。Init 容器运行并结束于应用容器开始前。</p>
+<p>Pods 天生的为其容器成员提供两类共享资源：网络与存储。</p>
+<h3 id="tong-guo-pods-gong-zuo">通过 Pods 工作</h3>
+<p>用户在 k8s 上很少直接创建独立的 Pods 即便是单例 Pods，是因为 Pods 被设计为相对临时以及可抛弃的实体。当一个 Pod 被创建（直接由用户或是间接被控制器创建），新的 Pod 则会被调度运行在集群中的一个节点上。Pod 会一直保留在该节点上直到 Pod 完成执行，或是 Pod 对象被删除，或是缺少资源 Pod 被<em>驱逐 evicted</em>，或是节点失败。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>在 Pod 中重启一个容器不应与重启一个 Pod 混淆。一个 Pod 不是一个进程，而是正在运行的容器（们）的环境。一个 Pod 会一直持续到被删除。</p>
+
+</blockquote>
+<p>当你为 Pod 对象创建清单时，要确保指定的 Pod 名称时合法的 DNS 子域名。</p>
+<h4 id="pods-yu-kong-zhi-qi">Pods 与控制器</h4>
+<p>可以使用工作负载资源创建并管理若干 Pods。控制器能够处理副本的管理，上线，并在 Pod 失效时提供自愈能力。例如，如果一个节点失败，一个控制器会注意到该节点上的 Pod 停止工作，并创建一个替换用的 Pod。调度器会放置该替换 Pod 到一个健康的节点上。</p>
+<p>以下是一些工作负载资源管理一个或多个的案例：</p>
+<ul>
+<li>Deployment</li>
+<li>StatefulSet</li>
+<li>DaemonSet</li>
+</ul>
+<h4 id="pod-mo-ban">Pod 模板</h4>
+<p>负载资源的控制器通过<em>pod 模版</em>创建 Pod，并为用户管理这些 Pods。</p>
+<p>Pod 模版是用于创建 Pods，以及包含类似 Deployment，Jobs，DaemonSets 工作负载资源的规范。</p>
+<p>每个负载资源的控制器在工作负载对象中使用 <code>PodTemplate</code> 创建真正的 Pods。<code>PodTemplate</code> 是用来运行应用时负载资源的期望状态其中的一部分。</p>
+<p>下面的案例是一个带有 <code>template</code> 用于启动一个容器的 Job 的清单：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">batch/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Job
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">hello
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">template</span><span>:
+</span><span>    </span><span style="color:#65737e;"># This is the pod template
+</span><span>    </span><span style="color:#bf616a;">spec</span><span>:
+</span><span>      </span><span style="color:#bf616a;">containers</span><span>:
+</span><span>        - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">hello
+</span><span>          </span><span style="color:#bf616a;">image</span><span>: </span><span style="color:#a3be8c;">busybox:1.28
+</span><span>          </span><span style="color:#bf616a;">command</span><span>: [&quot;</span><span style="color:#a3be8c;">sh</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">-c</span><span>&quot;, &#39;</span><span style="color:#a3be8c;">echo &quot;Hello, Kubernetes!&quot; &amp;&amp; sleep 3600</span><span>&#39;]
+</span><span>      </span><span style="color:#bf616a;">restartPolicy</span><span>: </span><span style="color:#a3be8c;">OnFailure
+</span><span>    </span><span style="color:#65737e;"># The pod template ends here
+</span></code></pre>
+<p>修改 Pod 模板或者替换新的 Pod 模板不会直接影响已经存在的 Pods。相反，新的 Pod 会被创建出来，与更改后的 Pod 模板匹配。</p>
+<p>例如，StatefulSet 控制器确保每个运行的 Pods 会为每个 StatefulSet 对象匹配当前的 Pod 模版。如果编辑 StatefulSet 修改其 pod 模版，StatefulSet 会根据更新后的模版开始创建新 Pods。最终，所有旧 Pods 会被新 Pods 替换，接着更新完成。</p>
+<p>每个负载资源为处理 Pod 模板实现其自身规则。在节点上，kubelet 不会直接观察或管理任何 pod 模版与其更新的细节；这些细节都被抽象出来。这种抽象和关注点分离简化了整个系统的语义，并且使得用户可以再不改变现有代码的前提下就能扩展集群的行为。</p>
+<h3 id="pod-geng-xin-yu-ti-huan">Pod 更新与替换</h3>
+<p>上一小节中提到，当负载资源的 Pod 模板被修改时，控制器根据更新后的模板创建新的 Pods，而不是更新或修改现有的 Pods。</p>
+<p>k8s 不阻止用户直接管理 Pods。更新一些运行中 Pod 的字段是允许的。然而 Pod 类似于 <code>patch</code> 与 <code>replace</code> 的更新操作有以下一些限制：</p>
+<ul>
+<li>
+<p>大多数的 Pod 元数据是不可变的。例如，不可修改 <code>namespace</code>，<code>name</code>，<code>uid</code>，或 <code>creationTimestamp</code> 字段；<code>generation</code> 字段比较特别，如果更新该字段，只能增加字段取值而不能减少。</p>
+</li>
+<li>
+<p>如果 <code>metadata.deletionTimestamp</code> 已经被设置，则不可以向 <code>metadata.finalizers</code> 列表中添加新的条目。</p>
+</li>
+<li>
+<p>Pod 更新不可以改变除了 <code>spec.containers[*].image</code>，<code>spec.initContainers[*].image</code>，<code>spec.activeDeadlineSeconds</code> 或 <code>spec.tolerations</code>。对于 <code>spec.tolerations</code> 而言只能添加新的条目。</p>
+</li>
+<li>
+<p>更新 <code>spec.activeDeadlineSeconds</code> 字段时，允许两种更新：</p>
+<ol>
+<li>
+<p>设置未被设置过的字段，可以将其设置为一个正数；</p>
+</li>
+<li>
+<p>如果该字段已经设置为一个正数，可以将其设置为一个更小的非负的正数。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="zi-yuan-gong-xiang-yu-tong-xun">资源共享与通讯</h3>
+<p>Pods 允许数据共享以及其成员容器之间的通讯。</p>
+<h4 id="pods-zhong-de-cun-chu">Pods 中的存储</h4>
+<p>一个 Pod 可以指定一系列的共享存储卷。Pod 中所有的容器可以访问共享卷，用于容器间的数据共享。卷同样允许在 Pod 中持久化数据，从而在需要重启时生存下来。</p>
+<h4 id="pod-de-wang-luo">Pod 的网络</h4>
+<p>每个 Pod 在每个地址家族中，都会被分配一个独立的 IP 地址。每个 Pod 中的容器共享网络命名空间，包括 IP 地址以及网络端口。<strong>在 Pod 中</strong>，属于 Pod 的容器可以通过 <code>localhost</code> 相互进行通讯。当 Pod 中的容器与<em>Pod 外</em>的资源通讯时，它们必须协调如何使用共享的网络资源（例如端口）。在一个 Pod 中，容器共享一个 IP 地址以及端口空间，并通过 <code>localhost</code> 互相发现。一个 Pod 中的容器同样也可以通过如 SystemV 信号量或者 POSIX 共享内存这样的标准的进程间通信方式来进行相互通讯。不同 Pod 中的容器的 IP 地址互不相同，没有特殊配置，无法通过 OS 级 IPC 进行通信就不能使用 IPC 进行通信。如果某容器希望与运行于其他 Pod 中的容器通信，可以通过 IP 联网的方式实现。</p>
+<p>Pod 中的容器所看到的系统主机名与 Pod 配置的 <code>name</code> 属性值相同。</p>
+<h3 id="rong-qi-de-te-quan-mo-shi">容器的特权模式</h3>
+<p>在 Linux 中，Pod 中任何容器都可以使用容器规约中的安全性上下文中的 <code>privileged</code>（Linux）参数开启特权模式。这对于想要使用操作系统管理权能（Capabilities，如操纵网络堆栈和访问设备）的容器很有用。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>容器运行时必须支持特权容器的概念才能使用这一配置。</p>
+
+</blockquote>
+<h3 id="jing-tai-pod">静态 Pod</h3>
+<p><em>静态 Pod</em>直接由特定节点上的 <code>kubelet</code> 守护进程管理，不需要 API 服务器看到它们。景观大多数 Pod 都是通过控制面（例如 Deployment）来管理的，对于静态 Pod 而言，<code>kubelet</code> 直接监控每个 Pod，并在其失效时重启它。</p>
+<p>静态 Pod 通常绑定到某个节点上的 kubelet。其主要用途是运行自托管的控制面。在自托管场景中，使用 <code>kubelet</code> 来管理每个独立的控制面组件。</p>
+<p><code>kubelet</code> 自动尝试为每个静态 Pod 在 k8s 的 API 服务器上创建一个镜像 Pod。这意味着在节点上运行的 Pod 在 API 服务器上是可见的，但是不可以通过 API 服务器来控制。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>静态 Pod 的 <code>spec</code> 不能引用其他的 API 对象（例如：ServiceAccount，ConfigMap，Secret 等）。</p>
+
+</blockquote>
+<h3 id="rong-qi-tan-zhen-probes">容器探针（probes）</h3>
+<p><strong>Probe</strong>是由 kubelet 对容器执行的定期诊断。要执行诊断，kubelet 可以执行三种动作：</p>
+<ul>
+<li><code>ExecAction</code>（借助容器运行时执行）</li>
+<li><code>TCPSocketAction</code>（由 kubelet 直接检测）</li>
+<li><code>HTTPGetAction</code>（由 kubelet 直接检测）</li>
+</ul>
+<h2 id="pod-sheng-ming-zhou-qi">Pod 生命周期</h2>
+<p>Pods 遵守生命周期的定义，由 <code>Pending</code> 阶段（phase）开始，如果至少其中一个主要容器正常启动，进入 <code>Running</code> 状态，之后取决于 Pod 中是否有容器以失败状态结束而进入 <code>Succeeded</code> 或者 <code>Failed</code> 阶段。</p>
+<p>一个 Pod 运行时，kubelet 可以重启容器解决一些错误。在 Pod 中，k8s 追踪不同容器的状态，并且决定何种行动使得 Pod 重新健康。</p>
+<p>K8s API 中，Pods 同时拥有一个规约部分和实际状态部分。Pod 对象的状态包含了一组 Pod 状况（Conditions）。如果应用需要的话，用户也可以向其注入自定义的就绪性信息。</p>
+<p>Pods 在其生命周期中只会被调度一次。一旦 Pod 被调度（分派）到某个节点，Pod 会一直在该节点运行，直到 Pod 停止或者被终止。</p>
+<h3 id="pod-sheng-ming-qi">Pod 生命期</h3>
+<p>与独立应用容器类似，Pods 是由相关联的临时（而不是持久的）实体构成的。Pods 被创建，被赋予一个唯一的 ID（UID），被分调度节点直到终结（根据重启策略）或删除。如果一个节点死亡，被调度到该节点的 Pods 会在超时后被定时删除。</p>
+<p>Pods 自身是不会自愈的。如果一个 Pod 被调度到一个节点而节点失败，Pod 会被删除；同样的，因为缺少资源或节点维护，一个 Pod 不会被驱逐后存活。k8s 使用高等级抽象，名为控制器，用于管理这些相对而言可随时丢弃的 Pod 实例。</p>
+<p>一个 Pod（由 UID 定义）永远不会被“重新调度”至另一个不同的节点；相反的，Pod 可以被替换成一个新的，几乎相同的 Pod，可以同名，但是 UID 会不同。</p>
+<p>如果某事物声称与 Pod 的生命周期相同，例如一个卷 volume，即意味着该事物的存续时间与指定 Pod（同样的 UID）相同。如果 Pod 在任何原因下被删除，甚至完全相同的替代被创建时，其相关内容（卷，本例中）也会被摧毁后重新创建。</p>
+<h3 id="pod-jie-duan">Pod 阶段</h3>
+<p>Pod 的 <code>status</code> 字段是一个 PodStatus 对象，其拥有一个 <code>phase</code> 字段。</p>
+<p>一个 Pod 的阶段是用于描述 Pod 所处生命周期的一个简单而又高阶的总结。阶段并不是对容器或 Pod 状态的综合汇总，也不是为了成为完整的状态机。</p>
+<p>Pod 阶段的数量和含义是严格定义的。除了文档中列举的内容外，不应该再假定有其他的 <code>phase</code> 值。</p>
+<p>以下是 <code>phase</code> 可能的值：</p>
+<table><thead><tr><th>数值</th><th>描述</th></tr></thead><tbody>
+<tr><td>挂起 Pending</td><td>Pod 被 k8s 集群接受，但是一个或多个容器还未创建以及运行。这里面包含了 Pod 等待被调度的时间，也包含了通过网络下载容器镜像的时间。</td></tr>
+<tr><td>运行 Running</td><td>Pod 已经被绑定至一个节点上，所有的容器都被创建。至少一个容器是在运行着的，或者处于正在启动或正在重启。</td></tr>
+<tr><td>成功 Succeeded</td><td>所有的容器都已成功终止，并且不会再重启。</td></tr>
+<tr><td>失败 Failed</td><td>所有的容器都已终止，并且至少有一个容器是因为失败终止。也就是说，容器以非 0 状态退出或者被系统终止。</td></tr>
+<tr><td>未知 Unknown</td><td>因为某些原因无法取得 Pod 的状态。这种情况通常是因为与 Pod 所在主机通信失败。</td></tr>
+</tbody></table>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>当一个 Pod 被删除时，它会在一些 kubectl 命令上显示为 <code>Terminating</code>。<code>Terminating</code> 状态不是任何一个 Pod 的阶段。 一个 Pod 默认拥有 30 秒的优雅终止。用户可以用 --force 标记来强制终止一个 Pod。</p>
+
+</blockquote>
+<p>如果某节点死亡或者与集群中其他节点失联，k8s 会采取一种策略，将失去的节点上运行的所有 Pod 的 <code>phase</code> 设置为 <code>Failed</code>。</p>
+<h3 id="rong-qi-zhuang-tai">容器状态</h3>
+<p>总体而已与 Pod 的阶段一样，k8s 追踪 Pod 中每个容器的状态。用户可以使用容器生命周期钩子用以触发容器内部特定的事件。</p>
+<p>一旦调度器给节点分配了一个 Pod，kubelet 则会开始使用容器运行时为 Pod 创建容器。容器状态有三种性：<code>Waiting</code>，<code>Running</code> 与 <code>Terminated</code>。</p>
+<p>可以使用 <code>kubectl describe pod &lt;name-of-pod&gt;</code> 检查 Pod 的容器状态。输出内容会显示改 Pod 中每个容器的状态。</p>
+<p>每个状态都有特定的意义：</p>
+<div class="color-beige color-beige"><p>等待 Waiting</p>
+</div>
+<p>一个容器处于 <code>Waiting</code> 状态仍然会执行操作以便完成启动：例如，从镜像仓库中拉取容器镜像，或者是应用 Secret 数据。当使用 <code>kubectl</code> 查询带有 <code>Waiting</code> 状态容器的 Pod 时，同样也可以看到容器为什么处于当前状态的原因信息汇总。</p>
+<div class="color-beige color-beige"><p>运行 Running</p>
+</div>
+<p><code>Running</code> 状态代表着一个容器正在执行并且没有问题。如果有配置过 <code>postStart</code> 钩子，那么该回调已经执行且已经完成了。如果使用 <code>kubectl</code> 查询带有 <code>Running</code> 状态容器的 Pod 时，同样也会看到关于容器进入 <code>Running</code> 状态的信息。</p>
+<div class="color-beige color-beige"><p>终结 Terminated</p>
+</div>
+<p><code>Terminated</code> 状态的容器已经开始执行，并会正常结束或是以某些原因失败。使用 <code>kubectl</code> 查询带有 <code>Terminated</code> 状态容器的 Pod 时，同样也会看到容器进入此状态的原因，退出代码以及容器执行期间的开始结束时间。</p>
+<p>如果容器配置了 <code>preStop</code> 钩子，则该回调会在容器进入 <code>Terminated</code> 状态之前执行。</p>
+<h3 id="rong-qi-zhong-qi-ce-lue">容器重启策略</h3>
+<p>一个 Pod 的 <code>spec</code> 有一个 <code>restartPolicy</code> 字段，其可选值为 <code>Always</code>，<code>OnFailure</code> 以及 <code>Never</code>。默认值为 <code>Always</code>。</p>
+<p><code>restartPolicy</code> 应用于该 Pod 中所有的容器。 <code>restartPolicy</code> 仅针对同一节点上 kubelet 的容器。Pod 中容器在退出后，kubelet 根据指数回退方式计算重启延时（10s，20s，40s，...），最长延迟为 5 分钟。一旦某容器执行了 10 分钟且没有出现问题，<code>kubelet</code> 对该容器的重启回退计时器则会执行重置操作。</p>
+<h3 id="pod-zhuang-kuang">Pod 状况</h3>
+<p>Pod 的 PodStatus 是一个包含 PodConditions 的数组。其中是 Pod 可能通过的测试：</p>
+<ul>
+<li><code>PodScheduled</code>：Pod 被调度去一个节点。</li>
+<li><code>ContainersReady</code>：Pod 中所有容器就绪。</li>
+<li><code>Initialized</code>：所有 init 容器成功完成。</li>
+<li><code>Ready</code>：Pod 可以为请求提供服务，并且应该被添加至所有匹配服务的负载均衡池。</li>
+</ul>
+<table><thead><tr><th>数值</th><th>描述</th></tr></thead><tbody>
+<tr><td>type</td><td>Pod 状况的名称</td></tr>
+<tr><td>status</td><td>表明该状况是否适用，可能的值为&quot;True&quot;，&quot;False&quot; 或者 &quot;Unknown&quot;。</td></tr>
+<tr><td>lastProbeTime</td><td>上次探测 Pod 状况时的时间戳</td></tr>
+<tr><td>lastTransitionTime</td><td>上次探测 Pod 转换状态时的时间戳</td></tr>
+<tr><td>reason</td><td>机器可读的，驼峰编码的文字，表述上次状况变化的原因</td></tr>
+<tr><td>message</td><td>人类可读的消息，表明上次状态转换的详细信息</td></tr>
+</tbody></table>
+<h4 id="pod-jiu-xu">Pod 就绪</h4>
+<p><strong>特性状态</strong>：<code>v1.14 [stable]</code></p>
+<p>用户的应用程序可以注入额外的反馈或者信号至 PodStatus：Pod 就绪（Pod Readiness）。要使用这个特性，可以在 Pod 的 <code>spec</code> 设置 <code>readinessGates</code> 列表，来为 kubelet 提供一组额外的状况供其评估 Pod 就绪时使用。</p>
+<p>就绪门控 Readiness gates 根据 <code>status.condition</code> 字段现有的状态决定。如果 k8s 不能发现 Pod 中 <code>status.conditions</code> 字段中某一个状况，那么该状况的默认值为 &quot;<code>False</code>&quot;。</p>
+<p>这里是一个例子：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Pod
+</span><span>---
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">readinessGates</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">conditionType</span><span>: &quot;</span><span style="color:#a3be8c;">www.example.com/feature-1</span><span>&quot;
+</span><span style="color:#bf616a;">status</span><span>:
+</span><span>  </span><span style="color:#bf616a;">conditions</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">type</span><span>: </span><span style="color:#a3be8c;">Ready </span><span style="color:#65737e;"># a built in PodCondition
+</span><span>      </span><span style="color:#bf616a;">status</span><span>: &quot;</span><span style="color:#a3be8c;">False</span><span>&quot;
+</span><span>      </span><span style="color:#bf616a;">lastProbeTime</span><span>: </span><span style="color:#d08770;">null
+</span><span>      </span><span style="color:#bf616a;">lastTransitionTime</span><span>: </span><span style="color:#d08770;">2018-01-01T00:00:00Z
+</span><span>    - </span><span style="color:#bf616a;">type</span><span>: &quot;</span><span style="color:#a3be8c;">www.example.com/feature-1</span><span>&quot; </span><span style="color:#65737e;"># an extra PodCondition
+</span><span>      </span><span style="color:#bf616a;">status</span><span>: &quot;</span><span style="color:#a3be8c;">False</span><span>&quot;
+</span><span>      </span><span style="color:#bf616a;">lastProbeTime</span><span>: </span><span style="color:#d08770;">null
+</span><span>      </span><span style="color:#bf616a;">lastTransitionTime</span><span>: </span><span style="color:#d08770;">2018-01-01T00:00:00Z
+</span><span>  </span><span style="color:#bf616a;">containerStatuses</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">containerID</span><span>: </span><span style="color:#a3be8c;">docker://abcd...
+</span><span>      </span><span style="color:#bf616a;">ready</span><span>: </span><span style="color:#d08770;">true
+</span></code></pre>
+<p>所添加的 Pod 状况名称必须满足 k8s 标签键名格式。</p>
+<h4 id="pod-jiu-xu-de-zhuang-tai">Pod 就绪的状态</h4>
+<p><code>kubectl patch</code> 命令不支持修改对象状态。为 pod 设置 <code>status.conditions</code>，应用程序以及 operators 需要使用 <code>PATCH</code> 操作。用户可以使用 k8s 客户端库来编写代码为 Pod 就绪设置自定义的 Pod 状况。</p>
+<p>对于使用自定义状况而言，Pod 只有满足下列表述才会被评估为就绪：</p>
+<ul>
+<li>Pod 中所有容器都已就绪；</li>
+<li><code>readinessGates</code> 中的所有状况都为 <code>True</code> 值。</li>
+</ul>
+<p>当 Pod 容器都已就绪，但至少一个自定义状况没有值或者值为 <code>False</code>，kubelet 设置 Pod 的状况为 <code>ContainersReady</code>。</p>
+<h3 id="rong-qi-tan-zhen">容器探针</h3>
+<p><em>探针 probe</em>是 kubelet 用于间断性的诊断容器的工具。kubelet 在容器中执行代码或者发起一个网络请求来执行诊断。</p>
+<h4 id="jian-cha-ji-zhi">检查机制</h4>
+<p>使用探针检查容器有四种不同的方法。每个探针必须定义下述四种机制的一种：</p>
+<div class="color-beige font-bold"><p>exec</p>
+</div>
+<p>在容器中执行指定的命令。如果命令返回的状态码为 0，那么诊断被视为成功。</p>
+<div class="color-beige font-bold"><p>grpc</p>
+</div>
+<p>使用 gRPC 进行远程过程调用。目标需要实现 gRPC 健康检查。如果响应的状态为 SERVING 那么诊断视为成功。</p>
+<div class="color-beige font-bold"><p>httpGet</p>
+</div>
+<p>对 Pod 的 IP 地址以及特定端口与路径，使用 HTTP GET 请求。如果响应的状态代码大于等于 200 并小于 400，那么诊断视为成功。</p>
+<div class="color-beige font-bold"><p>tcpSocket</p>
+</div>
+<p>对 Pod 的 IP 地址以及特定端口，使用 TCP 检查。如果远程系统（即容器）在连接建立后立刻关闭连接，视为健康。</p>
+<h4 id="tan-ce-jie-guo">探测结果</h4>
+<p>每个探针都有以下三个结果之一：</p>
+<div class="color-beige font-bold"><p>Success</p>
+</div>
+<p>容器通过了诊断。</p>
+<div class="color-beige font-bold"><p>Failure</p>
+</div>
+<p>容器没有通过诊断。</p>
+<div class="color-beige font-bold"><p>Unknown</p>
+</div>
+<p>诊断失败（没有执行操作，kubelet 将会进一步检查）</p>
+<h4 id="tan-ce-lei-xing">探测类型</h4>
+<p>kubelet 可以选择性的执行和响应三种类型的容器探针：</p>
+<div class="color-beige font-bold"><p>存活探针 livenessProbe</p>
+</div>
+<p>表明容器是否正在运行。如果存活探针失败，kubelet 则会杀死容器，容器受到重启策略影响。如果一个容器没有提供存活探针，默认的状态则是<em>Success</em>。</p>
+<div class="color-beige font-bold"><p>就绪探针 readinessProbe</p>
+</div>
+<p>表明容器是否就绪对请求进行响应。如果就绪探针失败，那么端点控制器则会从所有匹配该 Pod 服务的端点列表中，移除该 Pod 的 IP 地址。在初次延迟之前的默认就绪值为<em>Failure</em>。如果一个容器没有提供就绪探针，则默认值为<em>Success</em>。</p>
+<div class="color-beige font-bold"><p>启动探针 startupProbe</p>
+</div>
+<p>表明容器中的应用是否已经启动。如果提供了启动探针，其余的探针都会被禁用，直到其成功。如果启动探针失败，kubelet 则会杀死容器，容器受到重启策略影响。如果容器没有提供启动探针，则默认值为<em>Success</em>。</p>
+<h5 id="he-shi-gai-shi-yong-cun-huo-tan-zhen">何时该使用存活探针？</h5>
+<p><strong>特性状态</strong>：<code>v1.0 [stable]</code></p>
+<p>如果容器中的进程能够在遇到问题或不健康的情况下自行崩溃，则不一定需要存活探针；<code>kubelet</code> 将根据 Pod 的 <code>restartPolicy</code> 自动执行修复操作。</p>
+<p>如果用户希望容器在探测失败时被杀死并重启，那么请指定一个存活探针，并指定 <code>restartPolicy</code> 为 <code>&quot;Always&quot;</code> 或 <code>&quot;OnFailure&quot;</code>。</p>
+<h5 id="he-shi-gai-shi-yong-jiu-xu-tan-zhen">何时该使用就绪探针？</h5>
+<p><strong>特性状态</strong>：<code>v1.0 [stable]</code></p>
+<p>如果要尽在探测成功时才开始向 Pod 发送请求流量，请指定就绪探针。这种情况下，就绪探针可能与存货探针相同，但是规约中的就绪探针的存在意味着 Pod 将在启动阶段不接受任何数据，并且只有在探针探测成功后才开始接收数据。</p>
+<p>如果用户希望容器能够自行进入维护状态，也可以指定一个就绪探针，检查一个不同于存活探针的就绪端点。</p>
+<p>如果用户的应用程序对后端服务有严格的依赖性，则可以同时实现存活探针与就绪探针。当应用程序本身是健康的，存活探针检测通过后，就绪探针会额外检查每个所需的后端服务是否可用。这样可以帮助用户避免将流量导向只能返回错误信息的 Pod。</p>
+<p>如果用户的容器需要在启动期间加载大型数据，配置文件或执行迁移，则可以使用启动探针。然而，如果只想区分已经失败的应用和仍在处理其启动数据的应用，则更倾向于使用就绪探针。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>注意如果只想在 Pod 被删除时能够排空请求，则不一定需要使用就绪探针；删除 Pod 时，Pod 会自动将自身置于未就绪状态，无论就绪探针是否存在。等待 Pod 中的容器停止期间，Pod 会一直处于未就绪状态。</p>
+
+</blockquote>
+<h5 id="he-shi-gai-shi-yong-qi-dong-tan-zhen">何时该使用启动探针？</h5>
+<p><strong>特性状态</strong>：<code>v1.20 [stable]</code></p>
+<p>Pod 中所包含的容器需要较长时间才能启动好，那么启动探针是有用的。用户不再需要配置一个较长的存活探测时间间隔，只需要设置另一个独立的配置选定对启动期间的容器进行探测，从而允许使用远超出存活时间间隔所允许的时长。</p>
+<p>如果容器启动时间通常超出 <code>initialDelaySeconds + failureThreshold * periodSeconds</code> 总值，则应该设置一个启动探针，对存活探针所使用的同一端点执行检查。<code>periodSeconds</code> 的默认值是 10 秒。用户应该将其 <code>failureThreshold</code> 设置的很高，以便容器有充足的时间完成启动，并且避免更改存活探针所使用的默认值。改设置有利于减少死锁的发生。</p>
+<h3 id="pod-de-zhong-zhi">Pod 的终止</h3>
+<p>因为 Pods 代表着运行在集群中节点的进程，当这些进程不再被需要时（不是通过 <code>KILL</code> 信号，粗暴的停止并且无法再被清除），允许它们能够优雅的终结是很重要的。</p>
+<p>该设计提供用户请求删除并且知道何时进程终结，同时能确保这些删除最终能够完成。当用户请求删除一个 Pod，集群会在 Pod 被强制杀死之前，记录并追踪预期的时间。在存在强制关闭的前提下，kubelet 会尝试优雅的关闭。</p>
+<p>通常情况下，容器运行时发送一个 TERM 信号到每个容器的主进程。很多容器运行时都能注意到容器镜像中所定义的 <code>STOPSIGNAL</code> 值，发送该信号而不是 TERM。一旦超出了优雅终结的期限，容器运行时会像所有剩余进程发送 KILL 信号，之后 Pod 就会被从 API 服务器上移除。如果 <code>kubelet</code> 或者容器运行时的管理服务在等待进程终止期间被重启，集群则会从头开始重试，给予 Pod 完成的优雅终结期限。</p>
+<h4 id="qiang-zhi-zhong-zhi-pod">强制终止 Pod</h4>
+<blockquote class="blockquote-warn">
+	<p class="font-bold">注意：</p>
+	<p>对于某些工作负载及其 Pod 而言，强制删除很可能会带来某种破坏。</p>
+
+</blockquote>
+<p>默认情况下，所有的删除都是优雅的带有 30 秒期限。<code>kubectl delete</code> 命令提供 <code>--grace-period=&lt;seconds&gt;</code> 选项让用户覆盖该默认值。</p>
+<p>设置优雅期间为 <code>0</code> 意味着立刻从 API 服务器删除 Pod。如果 Pod 仍然运行在某节点上，强制删除操作会触发 <code>kubelet</code> 立刻执行清理操作。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>用户必须在设置 <code>--grace-period=0</code> 的同时额外设置 <code>--force</code> 参数才能发起强制删除请求。</p>
+
+</blockquote>
+<p>执行强制删除操作时，API 服务器不再等待来自 <code>kubelet</code> 的，关于 Pod 已经在原来运行的节点上终止执行的确认消息。API 服务器直接删除 Pod 对象，这样新的与之同名的 Pod 可以被创建。在节点上，被设置立刻终止的 Pod 仍然会在被强行杀死之前获得一些时间期限。</p>
+<h4 id="shi-xiao-pod-de-la-ji-shou-ji">失效 Pod 的垃圾收集</h4>
+<p>对于已失败的 Pod 而言，对应的 API 对象仍然会保留在集群的 API 服务器上，直到用户或者控制器进程显式的删除它。</p>
+<p>控制面组件会在 Pod 个数超出所配置的阈值（基于 <code>kube-controller-manager</code> 的 <code>terminated-pod-gc-threshold</code> 设置）时删除已终止的 Pod（阶段值为 <code>Succeeded</code> 或 <code>Failed</code>）。这一行为会避免随着时间不断创建和终止 Pod 而引起的资源泄漏问题。</p>
+<h2 id="init-rong-qi">Init 容器</h2>
+<p>WIP</p>
+<h2 id="gan-rao">干扰</h2>
+<p>WIP</p>
+<h2 id="lin-shi-rong-qi">临时容器</h2>
+<p>WIP</p>
+<h2 id="downward-api">Downward API</h2>
+<p>WIP</p>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-jian-jie"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#jian-jie"
+							>
+								简介
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-pod"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#pod"
+							>
+								Pod
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-shi-yao-shi-pod"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#shi-yao-shi-pod"
+									>
+										什么是 Pod
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-shi-yong-pods"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#shi-yong-pods"
+									>
+										使用 Pods
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-tong-guo-pods-gong-zuo"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#tong-guo-pods-gong-zuo"
+									>
+										通过 Pods 工作
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-pod-geng-xin-yu-ti-huan"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#pod-geng-xin-yu-ti-huan"
+									>
+										Pod 更新与替换
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-zi-yuan-gong-xiang-yu-tong-xun"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#zi-yuan-gong-xiang-yu-tong-xun"
+									>
+										资源共享与通讯
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-rong-qi-de-te-quan-mo-shi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#rong-qi-de-te-quan-mo-shi"
+									>
+										容器的特权模式
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-jing-tai-pod"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#jing-tai-pod"
+									>
+										静态 Pod
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-rong-qi-tan-zhen-probes"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#rong-qi-tan-zhen-probes"
+									>
+										容器探针（probes）
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-pod-sheng-ming-zhou-qi"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#pod-sheng-ming-zhou-qi"
+							>
+								Pod 生命周期
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-pod-sheng-ming-qi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#pod-sheng-ming-qi"
+									>
+										Pod 生命期
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-pod-jie-duan"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#pod-jie-duan"
+									>
+										Pod 阶段
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-rong-qi-zhuang-tai"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#rong-qi-zhuang-tai"
+									>
+										容器状态
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-rong-qi-zhong-qi-ce-lue"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#rong-qi-zhong-qi-ce-lue"
+									>
+										容器重启策略
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-pod-zhuang-kuang"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#pod-zhuang-kuang"
+									>
+										Pod 状况
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-rong-qi-tan-zhen"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#rong-qi-tan-zhen"
+									>
+										容器探针
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-pod-de-zhong-zhi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#pod-de-zhong-zhi"
+									>
+										Pod 的终止
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-init-rong-qi"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#init-rong-qi"
+							>
+								Init 容器
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-gan-rao"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#gan-rao"
+							>
+								干扰
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-lin-shi-rong-qi"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#lin-shi-rong-qi"
+							>
+								临时容器
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-downward-api"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-8-1-k8s-notes-iv-a/#downward-api"
+							>
+								Downward API
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

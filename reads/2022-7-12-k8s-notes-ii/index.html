@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | K8s 笔记 (II) </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">K8s 笔记 (II)</h1>
+					<p class="subtitle">集群架构</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-07-12">July 12, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>38 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>7511 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/read/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Read</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/k8s/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="jie-dian">节点</h2>
+<p>k8s 通过放置容器进入 Pods 运行在<em>节点</em>上从而运行负载。一个节点可能是虚拟的或者是物理机器，这取决于集群。每个节点都是通过控制面进行管理，并且包含了运行在 Pods 的服务。</p>
+<p>一个节点的组件包含了 kubelet，一个容器运行时，以及一个 kube-proxy。</p>
+<h3 id="jie-dian-guan-li">节点管理</h3>
+<p>有两种主要的方法用于添加节点至 API 服务：</p>
+<ol>
+<li>节点上的 <code>kubelet</code> 向控制面执行自注册；</li>
+<li>用户手动添加一个 Node 对象。</li>
+</ol>
+<p>创建节点对象后，控制面会检查该节点是否可用。例如，如果尝试通过以下 JSON 创建一个节点：</p>
+<pre data-lang="JSON" style="background-color:#2b303b;color:#c0c5ce;" class="language-JSON "><code class="language-JSON" data-lang="JSON"><span>{
+</span><span>  &quot;</span><span style="color:#a3be8c;">kind</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">Node</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">apiVersion</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">v1</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">metadata</span><span>&quot;: {
+</span><span>    &quot;</span><span style="color:#a3be8c;">name</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">10.240.79.157</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">labels</span><span>&quot;: {
+</span><span>      &quot;</span><span style="color:#a3be8c;">name</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">my-first-k8s-node</span><span>&quot;
+</span><span>    }
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p>k8s 创建一个内部的节点对象，接着检查一个在 API 服务上注册过的 kubelet 是否匹配节点的 <code>metadata.name</code> 字段。如果该节点是健康的（例如所有的服务都在运行），那么它可以运行一个 pod。否者该节点会被任何集群的行动所忽略，直到该节点恢复健康。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>k8s 会保留不可用节点的对象以及持续检查该节点是否恢复健康。用户或者控制器需要显式的删除节点对象以便停止健康检查。</p>
+
+</blockquote>
+<p>名称用于标识节点，在同一时刻下不可以有两个相同名称的节点。k8s 同样也假设拥有同一名称的资源是同一个对象。</p>
+<p>当 kubelet 标记 <code>--register-node</code> 为真时（即默认），kubelet 会尝试通过 API 服务进行自注册。这是首选的模式，大多数版本都会这样。</p>
+<p>关于自注册，kubelet 有下面几个选项：</p>
+<ul>
+<li><code>--kubeconfig</code>：用于向 API 服务器执行身份认证所用的凭据的路径。</li>
+<li><code>--cloud-provider</code>：与与驱动进行通信以读取与自身相关的元数据的方式。</li>
+<li><code>--register-node</code>：自动向 API 服务注册。</li>
+<li><code>--register-with-taints</code>：使用所给的污点列表（逗号分隔的 <code>&lt;key&gt;=&lt;value&gt;:&lt;effect&gt;</code>）注册节点。当 <code>register-node</code> 为 false 时无效。</li>
+<li><code>--node-ip</code>：节点 IP 地址。</li>
+<li><code>--node-labels</code>：在集群注册节点时所添加的标签。</li>
+<li><code>--node-status-update-frequency</code>：制定 kubelet 向控制面发生状态的频率。</li>
+</ul>
+<p>也可以使用 kubectl 来手动创建和修改 Node 对象，这时需要设置 <code>--register-node=false</code>。</p>
+<h3 id="jie-dian-zhuang-tai">节点状态</h3>
+<p>一个节点的状态包含以下信息：</p>
+<ul>
+<li>地址</li>
+<li>条件</li>
+<li>容量与分配</li>
+<li>信息</li>
+</ul>
+<p>可以使用 <code>kubectl</code> 查看节点状态以及其他细节：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> describe node &lt;insert-node-name-here&gt;
+</span></code></pre>
+<p>地址这个字段的使用取决于云服务商或者物理机的配置：</p>
+<ul>
+<li>HostName：有节点的内核报告。可以通过 kubelet 的 <code>--hostname-override</code> 参数覆盖。</li>
+<li>ExternalIP：通常是节点的可外部路由（从集群外可访问）的 IP 地址。</li>
+<li>InternalIP：通常是节点的仅可在集群内部路由的 IP 地址。</li>
+</ul>
+<p><code>conditions</code> 字段描述了所有 <code>Running</code> 节点的状态。例如状态包括：</p>
+<table><thead><tr><th>节点条件</th><th>描述</th></tr></thead><tbody>
+<tr><td>Ready</td><td>True 如果节点是健康的并且准备接受 pods，False 如果节点是不健康的以及未接受 pods，以及 Unknown 如果节点控制器在节点的最后 node-monitor-grace-period （默认为 40 秒）上没有获得相应</td></tr>
+<tr><td>DiskPressure</td><td>True 如果磁盘大小存在压力，也就是说空间很小；否者 False</td></tr>
+<tr><td>MemoryPressure</td><td>True 如果节点内存存在压力，也就是说节点内存不足；否者 False</td></tr>
+<tr><td>PIDPressure</td><td>True 如果进程存在压力，也就是说有太多的进程在此节点上了；否者 False</td></tr>
+<tr><td>NetworkUnavailable</td><td>True 如果节点的网络没有被正确的配置；否者 False</td></tr>
+</tbody></table>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>如果使用命令行工具打印已保护（Cordoned）节点的细节，其中的条件字段可能包括 <code>SchedulingDisabled</code>。它不是 k8s API 定义的条件，被保护起来的节点在其规则中被标记为不可调度（Unschedulable）。</p>
+
+</blockquote>
+<p>在 k8s API 中，节点的状态标识节点资源中 <code>.status</code> 的一部分。例如以下 JSON 结构描述了一个健康节点：</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>&quot;</span><span style="color:#a3be8c;">conditions</span><span>&quot;: [
+</span><span>  {
+</span><span>    &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">Ready</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">status</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">True</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">reason</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">KubeletReady</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">message</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">kubelet is posting ready status</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">lastHeartbeatTime</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">2019-06-05T18:38:35Z</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">lastTransitionTime</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">2019-06-05T11:41:27Z</span><span>&quot;
+</span><span>  }
+</span><span>]
+</span></code></pre>
+<p>如果准备条件的 <code>status</code> 一直保持着 <code>Unknown</code> 或是 <code>False</code> 状态，并超过了 <code>pod-eviction-timeout</code>（即传给 k8s 控制器管理者 kube-controller-manager 的一个参数），那么节点控制器触发 API 发起的驱逐。默认的驱逐超时时长为 5 分钟。某些情况下当一个节点不可获取时，API 服务不能与节点的 kubelet 进行交互。那么删除节点的决策不能传递给 kubelet 直到 API 服务重新被连接。在此期间，被计划删除的 pods 可能会继续在部分节点上运行。</p>
+<p>节点控制器不会强制删除 pods 直到它确认了它们被集群停止运行。用户有可能会看到 pods 运行在一个标记为 <code>Terminating</code> 或 <code>Unknown</code> 状态的不可获取的节点上。为了以防万一 k8s 在一个节点永久离开集群时，不能由下层基础设施推断出来，集群管理者可能需要手动删除该节点对象。从 k8s 删除节点对象会导致所有运行在节点的 Pod 从 API 服务中删除，同时释放它们的名称。</p>
+<p>当节点出现问题时，k8s 控制面会为收到影响的节点们自动的创建污点。当需要分配 pod 给节点时，调度器则会考虑到这些污点。Pod 也可以设置容忍度，使得在设置了特定污点的节点上运行。</p>
+<p>容量 capacity 与可分配 allocatable 这两个值描述了节点上的可用资源：CPU，内存，以及可用于调度给节点的最大 pods 数。“容量”的字段代表着一个节点的整体资源；“可分配”的字段代表着一个节点可被消费的整体资源。</p>
+<p>信息 info 描述了节点的信息，例如内核版本，k8s 版本（kubelet 与 kube-proxy 的版本），容器运行时的细节，以及节点所使用的操作系统。kubelet 从节点中收集了这些信息并发布进 k8s API。</p>
+<h3 id="xin-tiao">心跳</h3>
+<p>心跳，由 k8s 节点发送，帮助集群控制各个节点的可用性，以及对于失败做出相应的动作。对于节点而言，有两种形式的心跳：</p>
+<ul>
+<li>更新节点的 <code>.status</code>。</li>
+<li>在 <code>kube-node-lease</code> 命名空间内租借 lease 对象。每个节点都有一个关联的租借对象。</li>
+</ul>
+<p>相比于更新节点的 <code>.status</code>，Lease 是一个轻量级的资源。对于大型集群而言，通过 leases 可以减少更新所带来的性能影响。</p>
+<p>kubelet 负责创建与更新节点的 <code>.status</code>，同时也更新这些节点所关联的 lease。</p>
+<ul>
+<li>kubelet 会在节点状态变化或者配置的时间区间没有更新时，更新节点的 <code>.status</code>。默认的节点更新 <code>.status</code> 的时间区间为 5 分钟，远比 40 秒的不可获取节点的默认时间要长。</li>
+<li>kubelet 会每隔 10 秒（默认的更新时间区间）创建并更新 lease 对象。lease 的更新独立与节点 <code>.status</code> 的更新。如果 lease 更新失败，kubelet 会使用指数回退机制，从 200 毫秒开始重试，最长重试间隔为 7 秒钟。</li>
+</ul>
+<h3 id="jie-dian-kong-zhi-qi">节点控制器</h3>
+<p>节点控制器是 k8s 控制面中用于在多个层面上进行节点管理的组件。其在节点的生命周期中担任了多个角色。首先是当节点被注册是指定 CIDR 区段（如果开启了 CIDR 分配）。其次是维护控制器的内部节点列表与云服务商所提供的可用机器列表同步。如果在云环境下运行，只要某个节点不健康，节点控制器就会询问云服务节点的虚拟机是否仍然可用。如果不可用，节点控制器会将该节点从节点列表中删除。再者是监控节点的健康状况，负责以下：</p>
+<ul>
+<li>在节点不可获取的情况下，在节点的 <code>.status</code> 中更新 <code>Ready</code> 的状态并改为 <code>Unknown</code>。</li>
+<li>如果节点仍然无法访问，对于不可获取的节点上的所有 Pod 触发 API 发起的驱逐操作。默认情况节点控制器在将节点标记为 <code>Unknown</code> 后等待 5 分钟后提交第一个驱逐请求。</li>
+</ul>
+<h3 id="zi-yuan-rong-liang-zhui-zong">资源容量追踪</h3>
+<p>节点对象追踪节点资源容量的信息：比如可用的内存与 CPU 的数量。通过自注册机制生成的节点对象会在注册期间报告自身容量。如果是手动的添加节点，那么也需要手动的设置节点容量。k8s 调度器保证节点上有足够的资源提供给所有的 pod 使用。它会检查节点上所有容器的请求的总和不会超过节点的容量。中的请求包括由 kubelet 启动的所有容器，但不包括容器运行时直接启动的容器，也不包括不受 kubelet 控制的其它进程。</p>
+<h3 id="jie-dian-de-you-ya-guan-bi">节点的优雅关闭</h3>
+<p><strong>特性状态</strong>：<code>v1.21 [beta]</code></p>
+<p>kubelet 会尝试检测节点系统的关闭以及终止在节点上运行的 pods，并确保 pods 遵从 pod 终止流程。优雅关闭依赖于 systemd，因为利用了 systemd 的抑制器锁机制，在给定的期限内延迟节点关闭。优雅关闭这个特性受 <code>GracefulNodeShutdown</code> 控制门所控制，在 1.21 版本中是默认启用的。注意在默认情况下，下面描述的两个配置选项 <code>shutdownGracePeriod</code> 与 <code>shutdownGracePeriodCriticalPods</code> 的设置都为 0。因此不会激活节点优雅关闭功能。要激活该功能特性，这两个 kubelet 配置选项要适当配置，并设置为非零值。</p>
+<p>在优雅关闭节点的过程中 kubelet 分两个阶段来终止 Pod：</p>
+<ol>
+<li>终止在节点上运行的常规 Pod</li>
+<li>终止在节点上运行的关键 Pod</li>
+</ol>
+<p>优雅关闭的特性对应两个 <code>KubeletConfiguration</code> 选项：</p>
+<ul>
+<li><code>shutdownGracePeriod</code>：指定节点应延迟关闭的总持续时间。改时间为 Pod 优雅终止的时间总和，不区分常规 Pod 或是关键 Pod。</li>
+<li><code>shutdownGracePeriodCriticalPods</code>：节点关闭期间指定用于终止关键 Pod 的持续时间。该值应该小于 <code>shutdownGracePeriod</code>。</li>
+</ul>
+<h3 id="jie-dian-de-fei-you-ya-guan-bi">节点的非优雅关闭</h3>
+<p><strong>特性状态</strong>：<code>v1.24 [alpha]</code></p>
+<p>一个节点的关闭可能不会被 kubelet 的节点管理所监控，这有可能是因为命令没有触发 kubelet 使用的抑制器锁机制或是因为一个用户的错误，例如 <code>shutdownGracePeriod</code> 和 <code>shutdownGracePeriodCriticalPods</code> 没有被正确的配置。</p>
+<p>当节点的关闭并没有被 kubelet 管理所监控时，StatefulSet 部分的 pods 会停滞在终止的状态中，并且不能移动至新的节点上。这是因为 kubelet 在关闭的节点上不能删除 pods，因此 StatefulSet 不能创建同名的新 pod。如果 pods 还用到了 volume，那么 VolumeAttachments 也不会在原有节点上被删除，因此这些 pods 所使用的 volumes 也不能被挂载到新的运行的节点上。因此 StatefulSet 上运行的应用程序不能正常工作。如果原来的已关闭节点被恢复，kubelet 将删除 Pod，新的 Pod 将在不同的运行节点上创建。如果原来的已关闭节点没有被恢复，那些在已关闭节点上的 Pod 将永远停滞在终止状态。</p>
+<p>为了缓解上述状况，用户可以手动将 <code>NoExecute</code> 或者 <code>NoSchedule</code> 效果的 <code>node kubernetes.io/out-of-service</code> 污点添加到节点上，标记其无法提供服务。如果在 <code>kube-controller-manager</code> 上启用了 <code>NodeOutOfServiceVolumeDetach</code> 特性门控，并且节点被标记污点，同时如果节点 Pod 上没有设置对应的容忍度，那么这样的 Pod 将会被强制删除，并且 Pod 的 volume 会被立刻分离。这可以让在无法服务的节点上的 Pods 快速在另一个节点上恢复。</p>
+<p>在非优雅关闭节点过程中，Pod 分两个阶段终止：</p>
+<ol>
+<li>强制删除没有匹配的 <code>out-of-service</code> 容忍度的 Pod。</li>
+<li>立刻对此类 Pod 执行分离 volume 操作。</li>
+</ol>
+<h3 id="nei-cun-jiao-huan-guan-li">内存交换管理</h3>
+<p><strong>特性状态</strong>：<code>v1.22 [alpha]</code></p>
+<p>在 1.22 版本之前 k8s 不支持交换内存，如果在一个节点上检查到交换 kubelet 则默认会启动失败。在 1.22 版本之后，可以逐个节点启用交换内存支持。要在节点上启用交换内存，必须启用 kubelet 的 <code>NodeSwap</code> 特性门控，同时使用 <code>--fail-swap-on</code> 命令行参数或者将 <code>failSwapOn</code> 配置设置为 false。用户还可以选择配置 <code>memorySwap.swapBehavior</code> 来指定交换内存的方式，例如：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">memorySwap</span><span>:
+</span><span>  </span><span style="color:#bf616a;">swapBehavior</span><span>: </span><span style="color:#a3be8c;">LimitedSwap
+</span></code></pre>
+<h2 id="jie-dian-yu-kong-zhi-mian-de-tong-xin">节点与控制面的通信</h2>
+<p>本文档说明 API 服务与 k8s 集群的通信路径。目的是为了让用户能够自定义安装，实现对网络配置的加固，使得集群能够在不可信的网络上（或者一个云服务商完全公开的 IP 上）运行。</p>
+<h3 id="jie-dian-dao-kong-zhi-mian">节点到控制面</h3>
+<p>k8s 采用的是中心辐射型 Hub-and-Spoke API 模式。所有从节点（或运行的 Pod）发出的 API 调用都终止于 API 服务器。其它控制面组件都没有被设计为可暴露远程服务。API 服务器被配置在一个安全的 HTTPS 端口（通常为 443）上监听远程连接请求，并启用一种或多种形式的客户端身份认证机制。客户端的鉴权机制应该被启用，特别是在允许使用匿名请求或服务账户令牌时。</p>
+<p>节点应该被预先分配集群的公共根证书，这样它们可以通过合法的客户认证安全连接到 API 服务。一个良好的实现是以客户端证书的形式将客户端凭据提供给 kubelet。</p>
+<p>想要连接到 API 服务器的 Pod 可以使用服务账号安全的进行连接。当 Pod 被实例化时，k8s 自动把公共根证书和一个有效的持有者令牌注入到 Pod 里。<code>kubernetes</code> 服务（位于 <code>default</code> 命名空间内）配置了一个虚拟 IP 地址，用于（通过 kube-proxy）转发请求到 API 服务器的 HTTPS 末端。</p>
+<p>控制面组件控制面也通过安全端口与集群的 API 服务器通信。从集群节点和节点上运行的 Pod 到控制面的连接的默认操作模式是安全的，能够在不可信的网络或公网上运行。</p>
+<h3 id="kong-zhi-mian-dao-jie-dian">控制面到节点</h3>
+<p>控制面（API 服务）到节点主要有两种通信路径。第一种是从 API 服务到集群上每个节点上的 kubelet 进程；第二种是 API 服务通过自身的 proxy 功能到任意节点，pod 或者服务。</p>
+<h4 id="api-fu-wu-dao-kubelet">API 服务到 kubelet</h4>
+<p>用于：</p>
+<ul>
+<li>获取 Pod 日志</li>
+<li>挂接（通过 kubectl）到运行中的 Pod</li>
+<li>提供 kubelet 的端口转发功能</li>
+</ul>
+<p>这些连接终止于 kubelet 的 HTTPS 末端。默认情况下，API 服务器不检查 kubelet 的服务证书。这使得此类连接容易受到中间人攻击，在非授信网络或公开网络上运行也是<strong>不安全的</strong>。为了对连接进行认证，使用 <code>--kubelet-certificate-authority</code> 标志给 API 服务器提供一个根证书包，用于 kubelet 的服务证书。最后应该启用 kubelet 用户认证和/或鉴权来保护 kubelet API。</p>
+<h4 id="api-fu-wu-dao-jie-dian-pods-he-fu-wu">API 服务到节点，pods 和服务</h4>
+<p>从 API 服务器到节点，Pod 或服务的默认连接为纯 HTTP 方式，既没有认证，也没有加密。这些连接可通过给 API URL 中的节点，Pod 或服务器名称添加前缀 <code>https:</code> 来运行在安全的 HTTPS 连接上。不过这些连接既不会验证 HTTPS 末端提供的证书，也不会提供客户端证书。因此连接虽然是加密的，仍然无法提供任何完整性的保证。这些连接<strong>目前还不能安全的</strong>在非授信网络或公共网络上运行。</p>
+<h4 id="konnectivity-fu-wu">Konnectivity 服务</h4>
+<p><strong>特性状态</strong>：<code>v1.18 [beta]</code></p>
+<p>作为 SSH 隧道的替代方案，Konnectivity 服务提供 TCP 层的代理，支持从控制面到集群的通信。Konnectivity 服务包含两个部分：Konnectivity 服务器和 Konnectivity 代理， 分别运行在控制面网络和节点网络中。 Konnectivity 代理建立并维持到 Konnectivity 服务器的网络连接。 启用 Konnectivity 服务之后，所有控制面到节点的通信都通过这些连接传输。</p>
+<h2 id="kong-zhi-qi">控制器</h2>
+<p>在自动化中，<em>控制回路</em>是一个非终止的循环用于调节系统的状态。例如一个房间里的恒温控制器就是一个控制回路的例子。当设置温度时，即告诉恒温器<em>期望状态</em>，而室内实际温度则是<em>当前状态</em>。恒温器则会通过关闭或打开设备，使当前状态调整靠近至期望状态。k8s 中，控制器监控集群的状态，让后在需要的地方进行或请求更改。每个控制器都会尝试使当前的集群状态接近期望的状态。</p>
+<h3 id="kong-zhi-qi-mo-shi">控制器模式</h3>
+<p>控制器追踪至少一种 k8s 的资源类型。这些对象都有一个代表期望状态的 spec 字段。这些资源的控制器负责使当前状态接近理想状态。控制器可能自身就携带了这些行为；通常来说在 k8s 中，控制器将会发送信息至 API 服务。</p>
+<h4 id="tong-guo-api-fu-wu-kong-zhi">通过 API 服务控制</h4>
+<p>Job 控制器是 k8s 内建的控制器，其通过与 API 服务的互动来管理状态。Job 是运行在一个或多个 Pod 上的 k8s 资源，用于执行一个任务然后停止。（一旦被调度，Pod 对象会变成一个 kubelet 的期望状态的一部分）。当 Job 控制器在集群中看到一个新的任务则会确保若干节点的 kubelet 运行正确数量的 Pods 来完成任务。Job 控制器自身不会运行任何 Pods 或者容器，而是告诉 API 服务来创建或者移除 Pods。控制面中的其他组件会根据这些信息进行工作，最终使得任务被完成。在创建一个新的 job 后，期望状态则是 Job 完成后的状态。Job 控制器则会使当前状态不断接近期望状态，通过：创建为 Job 要完成工作所需要的 Pods 使得 Job 的状态接近完成。控制器也会更新配置对象，例如：一旦 Job 的工作完成了，Job 控制器会更新 Job 对象的状态为 <code>Finished</code>。（这就像温度调节器关闭了一个灯，以此来告诉你房间的温度现在达到设定的值了）。</p>
+<h4 id="zhi-jie-kong-zhi">直接控制</h4>
+<p>不同于 Job，一些控制器需要直接修改集群外的东西。例如，如果使用控制回路来确认集群中有足够多的节点，那么控制器需要在当前集群外的东西来确认是否需要设置新的节点。用于交互外部状态的控制器通过 API 服务寻找它们的期望状态，接着直接与外部系统交流并使当前状态靠近期望状态。（实际上在集群里有一个进行水平扩展节点的控制器）。这里有很重要的一点，控制器做出了一些改变使得事物更接近期望的状态，之后将当前状态报告给集群的 API 服务器。其他控制回路可以观察到汇报数据的变化，并采取各自的行动。在温度计的例子中，如果房间很冷，那么某个控制器可能会启动一个防冻的加热器。对于 k8s 集群而言，控制面间接与 IP 地址管理工具，存储服务，云驱动 APIs 以及其他服务协作，通过扩展 k8s 来实现。</p>
+<h3 id="qi-wang-zhuang-tai-yu-dang-qian-zhuang-tai">期望状态与当前状态</h3>
+<p>k8s 采用系统的云原生视图，可以处理持续的变化。在任务执行时，集群随时都可能被修改，控制回路则会自动修复故障。这以为着集群永远不会达到稳定的状态。只要集群中的控制器在运行并且进行有效的修改，整体状态的稳定便是无关紧要的。</p>
+<h3 id="she-ji">设计</h3>
+<p>作为设计的一个原则，k8s 使用了大量的控制器，它们每一个都管理集群状态的一个特定方面。通常而言，一个特定的控制回路（控制器）使用一种资源作为其预期状态，同时管理控制另一种类型的资源向它的预期状态演化。例如，一个 Job 控制器追踪 Job 对象 （用于发现新工作）以及 Pod 对象（用于运行 Jobs，并观察工作何时结束）。这个情况下，其余的事物创建 Jobs，而 Job 控制器创建 Pods。使用简单的控制器而不是一组互相连接的单体控制回路是很有用的。控制器会失败，所以 k8s 的设计正式考虑到了这一点。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>可以有多个控制器来创建或者更新相同类型的对象。在后台 k8s 控制器确保它们只关心与其控制资源相关联的资源。</p>
+<p>例如，你可以创建 Deployment 和 Job；它们都可以创建 Pod。Job 控制器不会删除 Deployment 所创建的 Pod，因为有信息（标签）让控制器可以区分这些 Pod。</p>
+
+</blockquote>
+<h3 id="yun-xing-kong-zhi-qi-de-fang-fa">运行控制器的方法</h3>
+<p>k8s 内置了一组控制器运行在 kube-controller-manager 内。这些内置的控制器提供了重要的核心功能。Deployment 控制器和 Job 控制器是 k8s 内置控制器的典型例子。k8s 允许运行一个稳定的控制面，这样即使某些内置控制器失败了，控制面的其他部分会接替它们的工作。有些控制器运行在控制面之外，用于扩展 k8s。如果愿意的话，用户可以编写一个新的控制器。运行该控制器作用于一系列的 Pods，或者运行在 k8s 之外。最合适的方案取决于控制器所要执行的功能是什么。</p>
+<h2 id="rong-qi-yun-xing-shi-jie-kou">容器运行时接口</h2>
+<p>容器运行时接口 Container Runtime Interface (CRI) 是一个插接接口，使得 kubelet 能够使用不同种类的容器运行时。用户需要在集群的每个节点上都运行一个容器运行时，这样 kubelet 可以加载 Pods 以及其容器。容器运行时接口 CRI 是 kubelet 与容器运行时通讯的主要协议，同时定义了集群组件与容器运行时通讯的主要 gRPC 协议。</p>
+<h3 id="api">API</h3>
+<p><strong>特性状态</strong>： <code>v1.23 [stable]</code></p>
+<p>当通过 gRPC 连接到容器运行时的时候，kubelet 作为客户端。运行时和镜像服务端点必须在容器运行时中可用，可以使用命令行标志的 <code>--image-service-endpoint</code> 和 <code>--container-runtime-endpoint</code> 在 kubelet 中单独配置。</p>
+<h3 id="sheng-ji">升级</h3>
+<p>升级 k8s 时，kubelet 会尝试在组件重启时自动选择最新的 CRI 版本。如果失败，则会回退。如果因为容器运行时已经升级而需要 gRPC 重拨，那么容器运行时还必须支持最初选择的版本，不然重拨会失败。这就需要重新启动 kubelet 了。</p>
+<h2 id="la-ji-shou-ji">垃圾收集</h2>
+<p>垃圾收集是一个概括性的概念用于描述 k8s 各种机制下的集群资源清理。例如：</p>
+<ul>
+<li>失败的 pods</li>
+<li>完成的 jobs</li>
+<li>没有属主的对象</li>
+<li>无用的容器以及容器的镜像</li>
+<li>动态制备的，StorageClass 回收策略为 Delete 的 持久化卷 （PersistentVolumes）</li>
+<li>失效或者过期的证书登录请求 CertificateSigningRequests CSRs</li>
+<li>以下场景下删除的节点：
+<ul>
+<li>在云上的集群使用云控制管理</li>
+<li>本地集群使用一个类似于云控制器的插件</li>
+</ul>
+</li>
+<li>节点租约对象</li>
+</ul>
+<h3 id="shu-zhu-yu-yi-lai">属主与依赖</h3>
+<p>k8s 的很多对象通过<em>属主引用 owner references</em>来连接彼此。属主引用告诉控制面哪些对象依赖其它对象。k8s 通过属主引用给予了控制面以及其他 API 客户端用于在删除一个对象之前清理其相关资源的能力。多数情况下，k8s 会自动管理自身的引用。</p>
+<p>一些资源同样也会使用异于标签和选择器机制的所有权。例如假设一个服务创建了 <code>EndpointSlice</code> 对象，使用了<em>标签</em>允许控制面来决定哪个 <code>EndpointSlice</code> 对象服务于该服务。除了标签，每个被服务托管的 <code>EndpointSlice</code> 对象还有一个属主引用属性。属主引用帮助 k8s 中的不同组件避免干预并非由它们控制的对象。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>在设计上，跨命名空间的属主引用是不被允许的。命名空间的依赖可以指定集群作用域或者命名空间作用域的属主。命名空间作用域的属主<em>必须</em>存在于依赖对象所在的同一命名空间。如果没有，属主引用则被视为缺失，当检查发现属主不存在时，依赖对象则会被删除。</p>
+
+</blockquote>
+<h3 id="ji-lian-shan-chu">级联删除</h3>
+<p>k8s 检查并删除不再拥有属主引用的对象，像是删除一个 ReplicaSet 后留下的 pods。当删除一个对象，可以通过一个称为<em>级联删除 cascading deletion</em>的步骤来控制 k8s 是否自动删除对象的依赖。有两种级联删除的方式：</p>
+<ul>
+<li>前台级联删除</li>
+<li>后台级联删除</li>
+</ul>
+<p>同样的也可以控制垃圾收集如何与何时删除拥有属主引用的资源。</p>
+<h4 id="qian-tai-ji-lian-shan-chu">前台级联删除</h4>
+<p>在前台级联删除中，删除属主对象时会进入一个<em>正在删除</em>的状态。这个状态下，在属主对象上会出现：</p>
+<ul>
+<li>k8s API 服务设置对象的 <code>metadata.deletionTimestamp</code> 字段为对象要删除的时间点。</li>
+<li>k8s API 服务同样设置 <code>metadata.finalizers</code> 字段成 <code>foregroundDeletion</code>。</li>
+<li>通过 k8s API，对象一直保持可见，直到删除过程完成。</li>
+</ul>
+<p>在属主对象进入正在删除的状态之后，控制器会删除其依赖。删除完所有的依赖对象后，控制器删除属主对象。这时，对象在 k8s API 上不再可见。</p>
+<p>在前台级联删除时，唯一会阻塞属主删除的依赖都会拥有 <code>ownerReference.blockOwnerDeletion=true</code> 字段。</p>
+<h4 id="hou-tai-ji-lian-shan-chu">后台级联删除</h4>
+<p>在后台级联删除中，k8s API 服务会立刻删除属主对象，接着管理器在后台清除其依赖对象。默认情况下，k8s 使用后台级联删除，除非用户手动使用前台删除或者选择孤儿化依赖对象。</p>
+<h4 id="gu-er-yi-lai">孤儿依赖</h4>
+<p>当 k8s 删除一个属主对象，被留下的依赖被称为<em>孤儿</em>对象。默认情况下，k8s 会删除依赖对象。</p>
+<h3 id="wei-shi-yong-de-jing-xiang-he-la-ji-shou-ji">未使用的镜像和垃圾收集</h3>
+<p>kubelet 会每五分钟在未使用的镜像上以及每一分钟在未使用的容器上执行垃圾收集。用户应当避免使用外部的垃圾收集工具，这将会破坏 kubelet 的行为，移除理应保留的容器。</p>
+<p>要配置对未使用容器和镜像的垃圾收集选项，可以使用一个配置文件，给予 <code>KubeletConfiguration</code> 资源类型来调整与垃圾收集相关的 kubelet 行为。</p>
+<h4 id="rong-qi-jing-xiang-sheng-ming-zhou-qi">容器镜像生命周期</h4>
+<p>k8s 通过<em>镜像管理器</em>来管理所有镜像的生命周期。镜像管理器作为 kubelet 的一部分，工作时与 cadvisor 协同。kubelet 在做出垃圾收集的决定时会考虑到磁盘使用的约束：</p>
+<ul>
+<li><code>HighThresholdPercent</code></li>
+<li><code>LowThresholdPercent</code></li>
+</ul>
+<p>磁盘使用超过配置 <code>HighThresholdPercent</code> 值时会触发垃圾收集，垃圾收集器会基根据镜像上次被使用的时间进行顺序删除，首先删除最老的镜像。kubelet 会持续删除镜像，直到磁盘使用到达 <code>LowThresholdPercent</code> 值。</p>
+<h4 id="rong-qi-la-ji-shou-ji">容器垃圾收集</h4>
+<p>kubelet 会根据以下用户可以定义的变量来进行对未使用的容器垃圾收集：</p>
+<ul>
+<li><code>MinAge</code>：kubelet 可以垃圾收集某个容器时该容器的最小时长。设置 <code>0</code> 标识禁止使用此规则。</li>
+<li><code>MaxPerPodContainer</code>：每个 Pod 可以包含的已死亡的容器个数上线。设置小于 <code>0</code> 的值禁止使用此规则。</li>
+<li><code>MaxContainers</code>：集群中可以存在的已死亡的容器个数上限。设置小于 <code>0</code> 的值禁止使用此规则。</li>
+</ul>
+<p>除了上述变量，kubelet 垃圾收集无标识以及被删除的容器，通常由最老的开始。</p>
+<p>当保持每个 Pod 的最大数量容器（<code>MaxPerPodContainer</code>）会使全局的已死亡容器个数超出上限（<code>MaxContainers</code>）时，<code>MaxPerPodContainer</code> 与 <code>MaxContainers</code> 可能存在潜在的冲突。这种情况下，kubelet 会调整 <code>MaxPerPodContainer</code> 来解决冲突。最坏的情况是将 <code>MaxPerPodContainer</code> 降为 <code>1</code>，并驱逐最老的容器。此外，当属于某已删除的 Pod 的容器的年龄超过 <code>MinAge</code> 时，它们也会被删除。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>kubelet 仅会回收由它管理的容器。</p>
+
+</blockquote>
+<h3 id="pei-zhi-la-ji-shou-ji">配置垃圾收集</h3>
+<p>用户可以通过配置特定于管理资源的控制器来调整资源的垃圾收集行为：</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/use-cascading-deletion/">配置 k8s 对象的级联删除</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/">配置完成 job 的清理</a></li>
+</ul>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-jie-dian"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#jie-dian"
+							>
+								节点
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-jie-dian-guan-li"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#jie-dian-guan-li"
+									>
+										节点管理
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-jie-dian-zhuang-tai"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#jie-dian-zhuang-tai"
+									>
+										节点状态
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-xin-tiao"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#xin-tiao"
+									>
+										心跳
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-jie-dian-kong-zhi-qi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#jie-dian-kong-zhi-qi"
+									>
+										节点控制器
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-zi-yuan-rong-liang-zhui-zong"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#zi-yuan-rong-liang-zhui-zong"
+									>
+										资源容量追踪
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-jie-dian-de-you-ya-guan-bi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#jie-dian-de-you-ya-guan-bi"
+									>
+										节点的优雅关闭
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-jie-dian-de-fei-you-ya-guan-bi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#jie-dian-de-fei-you-ya-guan-bi"
+									>
+										节点的非优雅关闭
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-nei-cun-jiao-huan-guan-li"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#nei-cun-jiao-huan-guan-li"
+									>
+										内存交换管理
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-jie-dian-yu-kong-zhi-mian-de-tong-xin"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#jie-dian-yu-kong-zhi-mian-de-tong-xin"
+							>
+								节点与控制面的通信
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-jie-dian-dao-kong-zhi-mian"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#jie-dian-dao-kong-zhi-mian"
+									>
+										节点到控制面
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-kong-zhi-mian-dao-jie-dian"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#kong-zhi-mian-dao-jie-dian"
+									>
+										控制面到节点
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-kong-zhi-qi"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#kong-zhi-qi"
+							>
+								控制器
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-kong-zhi-qi-mo-shi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#kong-zhi-qi-mo-shi"
+									>
+										控制器模式
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-qi-wang-zhuang-tai-yu-dang-qian-zhuang-tai"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#qi-wang-zhuang-tai-yu-dang-qian-zhuang-tai"
+									>
+										期望状态与当前状态
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-she-ji"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#she-ji"
+									>
+										设计
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-yun-xing-kong-zhi-qi-de-fang-fa"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#yun-xing-kong-zhi-qi-de-fang-fa"
+									>
+										运行控制器的方法
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-rong-qi-yun-xing-shi-jie-kou"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#rong-qi-yun-xing-shi-jie-kou"
+							>
+								容器运行时接口
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-api"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#api"
+									>
+										API
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-sheng-ji"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#sheng-ji"
+									>
+										升级
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-la-ji-shou-ji"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#la-ji-shou-ji"
+							>
+								垃圾收集
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-shu-zhu-yu-yi-lai"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#shu-zhu-yu-yi-lai"
+									>
+										属主与依赖
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-ji-lian-shan-chu"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#ji-lian-shan-chu"
+									>
+										级联删除
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-wei-shi-yong-de-jing-xiang-he-la-ji-shou-ji"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#wei-shi-yong-de-jing-xiang-he-la-ji-shou-ji"
+									>
+										未使用的镜像和垃圾收集
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-pei-zhi-la-ji-shou-ji"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-12-k8s-notes-ii/#pei-zhi-la-ji-shou-ji"
+									>
+										配置垃圾收集
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

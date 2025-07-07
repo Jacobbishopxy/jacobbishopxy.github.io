@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | Rust 组合子 </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Rust 组合子</h1>
+					<p class="subtitle">学习笔记</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2021-07-11">July 11, 2021</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>47 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>9352 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/read/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Read</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/rust/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Rust</span>
+    </span>
+  </a>
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/fp/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>FP</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><p><strong>学习笔记：<a href="https://bodil.lol/parser-combinators/">通过 Rust 学习组合子</a></strong></p>
+<p>组合子的概念在函数式编程中广为人知。而作为系统级的编程语言，Rust 更像是一门面向过程式的语言。因此在 Rust 上使用 FP 技巧并不如天生的那些 FP 语言有优势（大名鼎鼎 Haskell，以及 Scala 等）。例如缺少高阶类型 higher kinded type 支持等。</p>
+<p>本文性质为阅读原文的笔记，其实更像是精简后的翻译。阅读原文前需要掌握一定的 FP 技巧，以及熟悉 Rust 语言。</p>
+<p><strong>目录：</strong></p>
+<ul>
+<li><a href="#XML 风格的标记语言">XML 风格的标记语言</a></li>
+<li><a href="#定义 Parser">定义 Parser</a></li>
+<li><a href="#第一个 Parser">第一个 Parser</a></li>
+<li><a href="#一个 Parser 构造器">一个 Parser 构造器</a></li>
+<li><a href="#测试 Parser">测试 Parser</a></li>
+<li><a href="#泛用性更高的 Parser">泛用性更高的 Parser</a></li>
+<li><a href="#组合子 Combinators">组合子 Combinators</a></li>
+<li><a href="#函子 Functor">函子 Functor</a></li>
+<li><a href="#Trait 出场">Trait 出场</a></li>
+<li><a href="#Left 和 Right">Left 和 Right</a></li>
+<li><a href="#One Or More">One Or More</a></li>
+<li><a href="#谓语组合子 Predicate combinator">谓语组合子 Predicate combinator</a></li>
+<li><a href="#引用字符串">引用字符串</a></li>
+<li><a href="#解析属性">解析属性</a></li>
+<li><a href="#很接近了">很接近了</a></li>
+<li><a href="#超越无限 To Infinity And Beyond">超越无限 To Infinity And Beyond</a></li>
+<li><a href="#展示自己的机会 BoxedParser">展示自己的机会 BoxedParser</a></li>
+<li><a href="#带子元素的情况">带子元素的情况</a></li>
+<li><a href="#是你讲那个 M 词还是由我来讲呢">是你讲那个 M 词还是由我来讲呢</a></li>
+<li><a href="#空格 Redux">空格 Redux</a></li>
+<li><a href="#终于完成了">终于完成了</a></li>
+<li><a href="#额外的资源">额外的资源</a></li>
+</ul>
+<div id="XML 风格的标记语言"/>
+<h2 id="xml-feng-ge-de-biao-ji-yu-yan">XML 风格的标记语言</h2>
+<p>以下一个简单版本的 XML：</p>
+<pre data-lang="xml" style="background-color:#2b303b;color:#c0c5ce;" class="language-xml "><code class="language-xml" data-lang="xml"><span>&lt;</span><span style="color:#bf616a;">parent-element</span><span>&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">single-element </span><span style="color:#d08770;">attribute</span><span>=&quot;</span><span style="color:#a3be8c;">value</span><span>&quot; /&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">parent-element</span><span>&gt;
+</span></code></pre>
+<p>在 Rust 中可以构造以下的结构体用于描述 XML：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">derive</span><span>(Clone, Debug, PartialEq, Eq)]
+</span><span style="color:#b48ead;">struct </span><span>Element {
+</span><span>    </span><span style="color:#bf616a;">name</span><span>: String,
+</span><span>    </span><span style="color:#bf616a;">attributes</span><span>: Vec&lt;(String, String)&gt;,
+</span><span>    </span><span style="color:#bf616a;">children</span><span>: Vec&lt;Element&gt;,
+</span><span>}
+</span></code></pre>
+<div id="定义 Parser"/>
+<h2 id="ding-yi-parser">定义 Parser</h2>
+<p>Parsing 意为从流数据中获取结构的一个过程。Parser 则是梳理该结构的工具。</p>
+<p>以函数的方式表达 Parser 就像这样：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>Fn(Input) -&gt; Result&lt;(Input, Output), Error&gt;
+</span></code></pre>
+<p>而我们的例子可以具体描述成这样：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>Fn(&amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, Element), &amp;</span><span style="color:#b48ead;">str</span><span>&gt;
+</span></code></pre>
+<p>在这里使用字符串切片，是因为它是一个高效的字符串指针。我们可以根据需要来进一步切分它，通过切分掉已解析的部分，并返回剩余的部分作为结果。</p>
+<p>使用 <code>&amp;[u8]</code>（字节切片，如果只使用 ASCII 码可视为字符）作为输入类型，可能会更加的简洁。尤其是因为字符串切片与其他类型切片大有不同 -- 特别是你不可以通过类似 <code>input[0]</code> 这样下标的方式来索引，而是需要使用另一个切片 <code>input[0..1]</code>。另一方面使用字节切片来解析字符串会少了很多有效的方法。</p>
+<div id="第一个 Parser"/>
+<h2 id="di-yi-ge-parser">第一个 Parser</h2>
+<p>编写一个字母 <code>a</code> 的 Parser。该 Parser 解析字符串切片的首元素，若为 'a' 则结果为 'a' 之后的所有切片的成功返回，反之则是包含自身的错误返回。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">the_letter_a</span><span>(</span><span style="color:#bf616a;">input</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, ()), &amp;</span><span style="color:#b48ead;">str</span><span>&gt; {
+</span><span>    </span><span style="color:#b48ead;">match</span><span> input.</span><span style="color:#96b5b4;">chars</span><span>().</span><span style="color:#96b5b4;">next</span><span>() {
+</span><span>        Some(&#39;</span><span style="color:#a3be8c;">a</span><span>&#39;) =&gt; Ok((&amp;input[&#39;</span><span style="color:#a3be8c;">a</span><span>&#39;.</span><span style="color:#96b5b4;">len_utf8</span><span>()..], ())),
+</span><span>        _ =&gt; Err(input),
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<div id="一个 Parser 构造器"/>
+<h2 id="yi-ge-parser-gou-zao-qi">一个 Parser 构造器</h2>
+<p>现在编写一个函数用于生产 Parser，其作用于任何长度的静态字符串而不是仅作用于单个字符。该函数作为高阶函数 HOF（higher order function），返回一个闭包用作于解析。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">match_literal</span><span>(</span><span style="color:#bf616a;">expected</span><span>: &amp;</span><span style="color:#b48ead;">&#39;static str</span><span>) -&gt;
+</span><span>    impl Fn(&amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, ()), &amp;</span><span style="color:#b48ead;">str</span><span>&gt;
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| </span><span style="color:#b48ead;">match</span><span> input.</span><span style="color:#96b5b4;">get</span><span>(</span><span style="color:#d08770;">0</span><span>..expected.</span><span style="color:#96b5b4;">len</span><span>()) {
+</span><span>        Some(next) </span><span style="color:#b48ead;">if</span><span> next == expected =&gt; {
+</span><span>            Ok((&amp;input[expected.</span><span style="color:#96b5b4;">len</span><span>()..], ()))
+</span><span>        }
+</span><span>        _ =&gt; Err(input),
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<div id="测试 Parser"/>
+<h2 id="ce-shi-parser">测试 Parser</h2>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">literal_parser</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> parse_joe = </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">Hello Joe!</span><span>&quot;);
+</span><span>    assert_eq!(Ok((&quot;&quot;, ())), </span><span style="color:#96b5b4;">parse_joe</span><span>(&quot;</span><span style="color:#a3be8c;">Hello Joe!</span><span>&quot;));
+</span><span>    assert_eq!(
+</span><span>        Ok((&quot;</span><span style="color:#a3be8c;"> Hello Robert!</span><span>&quot;, ())),
+</span><span>        </span><span style="color:#96b5b4;">parse_joe</span><span>(&quot;</span><span style="color:#a3be8c;">Hello Joe! Hello Robert!</span><span>&quot;)
+</span><span>    );
+</span><span>    assert_eq!(Err(&quot;</span><span style="color:#a3be8c;">Hello Mike!</span><span>&quot;), </span><span style="color:#96b5b4;">parse_joe</span><span>(&quot;</span><span style="color:#a3be8c;">Hello Mike!</span><span>&quot;));
+</span><span>}
+</span></code></pre>
+<div id="泛用性更高的 Parser"/>
+<h2 id="fan-yong-xing-geng-gao-de-parser">泛用性更高的 Parser</h2>
+<p>现在让我们解析 <code>&lt;</code>，<code>&gt;</code>，<code>=</code>，以及 <code>&lt;/</code> 与 <code>/&gt;</code>。使用正则表达式的 crate 来解决问题固然简单，但实际上我们并不需要这么做。让我们尝试只用 Rust 标准库来完成这个任务。回忆一下鉴别元素名的规则：一个字母字符，紧接着是零或是更多的字母字符，一个数字，或者一个破折号 <code>-</code>。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">identifier</span><span>(</span><span style="color:#bf616a;">input</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, String), &amp;</span><span style="color:#b48ead;">str</span><span>&gt; {
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> matched = String::new();
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> chars = input.</span><span style="color:#96b5b4;">chars</span><span>();
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">match</span><span> chars.</span><span style="color:#96b5b4;">next</span><span>() {
+</span><span>        Some(next) </span><span style="color:#b48ead;">if</span><span> next.</span><span style="color:#96b5b4;">is_alphabetic</span><span>() =&gt; matched.</span><span style="color:#96b5b4;">push</span><span>(next),
+</span><span>        _ =&gt; </span><span style="color:#b48ead;">return </span><span>Err(input),
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">while let </span><span>Some(next) = chars.</span><span style="color:#96b5b4;">next</span><span>() {
+</span><span>        </span><span style="color:#b48ead;">if</span><span> next.</span><span style="color:#96b5b4;">is_alphabetic</span><span>() || next == &#39;</span><span style="color:#a3be8c;">-</span><span>&#39; {
+</span><span>            matched.</span><span style="color:#96b5b4;">push</span><span>(next);
+</span><span>        } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>            </span><span style="color:#b48ead;">break</span><span>;
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> next_index = matched.</span><span style="color:#96b5b4;">len</span><span>();
+</span><span>    Ok((&amp;input[next_index..], matched))
+</span><span>}
+</span></code></pre>
+<p>按照惯例，我们首先查看类型。这次我们编写的不再是一个用于构建 Parser 的函数，而是 Parser 本身，与第一个例子类似。它们最大的差别在于这次的返回类型不再是 <code>()</code>，而是一个 <code>String</code>。该 <code>String</code> 则包含了被解析过后的 identifier。</p>
+<p><code>matched</code> 作为返回值的一部分被初始化。<code>chars</code> 的类型为 <code>Chars</code>，是一个字符的迭代器。</p>
+<p>第一步，解析第一个字符（<code>.is_alphabetic</code> 由标准库提供），如果是字母则放入 <code>matched</code>，否则直接返回错误。</p>
+<p>第二步，持续提取 chars 的字符，如果为字母或者 <code>-</code> 便放入 <code>matched</code>，否则退出迭代。换言之，当第一次遇到不匹配的情形也就意味着我们结束解析，那么最后的返回值便是解析的剩余部分与已解析部分的元组。</p>
+<p>这里值得注意的是，当我们匹配到不是字母或 <code>-</code> 时，我们并不返回一个错误。</p>
+<p>接下来是测试：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">identifier_parser</span><span>() {
+</span><span>    assert_eq!(
+</span><span>        Ok((&quot;&quot;, &quot;</span><span style="color:#a3be8c;">i-am-an-identifier</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>())),
+</span><span>        </span><span style="color:#96b5b4;">identifier</span><span>(&quot;</span><span style="color:#a3be8c;">i-am-an-identifier</span><span>&quot;)
+</span><span>    );
+</span><span>    assert_eq!(
+</span><span>        Ok((&quot;</span><span style="color:#a3be8c;"> entirely an identifier</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">not</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>())),
+</span><span>        </span><span style="color:#96b5b4;">identifier</span><span>(&quot;</span><span style="color:#a3be8c;">not entirely an identifier</span><span>&quot;)
+</span><span>    );
+</span><span>    assert_eq!(
+</span><span>        Err(&quot;</span><span style="color:#a3be8c;">!not at all an identifier</span><span>&quot;),
+</span><span>        </span><span style="color:#96b5b4;">identifier</span><span>(&quot;</span><span style="color:#a3be8c;">!not at all an identifier</span><span>&quot;)
+</span><span>    );
+</span><span>}
+</span></code></pre>
+<div id="组合子 Combinators"/>
+<h2 id="zu-he-zi-combinators">组合子 Combinators</h2>
+<p>现在我们可以解析初始字符 <code>&lt;</code>，同样也可以解析之后的 identifier，但是我们需要有序的解析。因此下一步就是编写另一个 parser 构造函数，不同的是接收两个 parser 作为输入并返回一个新的 parser，其功能是有序的进行解析。换言之，一个 parser combinator，因为它组合两个 parser 称为一个新的 parser。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">pair</span><span>&lt;P1, P2, R1, R2&gt;(
+</span><span>    </span><span style="color:#bf616a;">parser1</span><span>: P1,
+</span><span>    </span><span style="color:#bf616a;">parser2</span><span>: P2,
+</span><span>) -&gt; impl Fn(&amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, (R1, R2)), &amp;</span><span style="color:#b48ead;">str</span><span>&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P1: Fn(&amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, R1), &amp;</span><span style="color:#b48ead;">str</span><span>&gt;,
+</span><span>    P2: Fn(&amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, R2), &amp;</span><span style="color:#b48ead;">str</span><span>&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| </span><span style="color:#b48ead;">match </span><span style="color:#96b5b4;">parser1</span><span>(input) {
+</span><span>        Ok((next_input, result1)) =&gt; </span><span style="color:#b48ead;">match </span><span style="color:#96b5b4;">parser2</span><span>(next_input) {
+</span><span>            Ok((final_input, result2)) =&gt; Ok((final_input, (result1, result2))),
+</span><span>            Err(err) =&gt; Err(err),
+</span><span>        },
+</span><span>        Err(err) =&gt; Err(err),
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>这里变得稍微有点复杂了，但是一如既往，首先开始观察类型。</p>
+<p>首先是四个类型变量：<code>P1</code>，<code>P2</code>，<code>P1</code> 和 <code>P2</code>，即 Parser 1，Parser 2，Result 1 和 Result 2。<code>P1</code> 和 <code>P2</code> 作为函数，可以观察到它们遵从 parser 函数的模式：<code>&amp;str</code> 作为输入，并返回一个包含解析的剩余部分与已解析部分的元组 <code>Result</code>，或是一个错误。</p>
+<p>再观察每个函数的返回类型：<code>P1</code> 是一个 parser 成功时返回 <code>R1</code>，同样的 <code>P2</code> 生产 <code>R2</code>。以及最终的 parser 的返回 -- 即由函数所返回的函数 -- 为 <code>(R1, R2)</code>。因此该 parser 的任务便是首先运行 <code>P1</code>，保留其结果，接着用 <code>P1</code> 的返回值作为输入运行 <code>P2</code>，如果它们都没有错误，我们结合两个返回成为一个元组 <code>(R1, R2)</code>。</p>
+<p>按照这样的方式，我们就可以结合之前写的两个 parser 了，<code>match_literal</code> 和 <code>identifier</code>。现在先看看测试：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">pair_combinator</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> tag_opener = </span><span style="color:#96b5b4;">pair</span><span>(</span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">&lt;</span><span>&quot;), identifier);
+</span><span>
+</span><span>    assert_eq!(
+</span><span>        Ok((&quot;</span><span style="color:#a3be8c;">/&gt;</span><span>&quot;, ((), &quot;</span><span style="color:#a3be8c;">my-first-element</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>()))),
+</span><span>        </span><span style="color:#96b5b4;">tag_opener</span><span>(&quot;</span><span style="color:#a3be8c;">&lt;my-first-element/&gt;</span><span>&quot;)
+</span><span>    );
+</span><span>    assert_eq!(Err(&quot;</span><span style="color:#a3be8c;">oops</span><span>&quot;), </span><span style="color:#96b5b4;">tag_opener</span><span>(&quot;</span><span style="color:#a3be8c;">oops</span><span>&quot;));
+</span><span>    assert_eq!(Err(&quot;</span><span style="color:#a3be8c;">!oops</span><span>&quot;), </span><span style="color:#96b5b4;">tag_opener</span><span>(&quot;</span><span style="color:#a3be8c;">&lt;!oops</span><span>&quot;));
+</span><span>}
+</span></code></pre>
+<p>它看起来没问题！但是再看看返回类型：<code>((), String)</code>。很明显我们只关注到了返回右边的值，即 <code>String</code>。这种情况很常见 —— 有些解析器只匹配输入中的模式，而不产生值，因此可以安全地忽略它们的输出。为了适应这种模式，我们将要使用 <code>pair</code> 组合子来编写两个其它的组合子：<code>left</code>，它丢弃第一个 parser 的返回并仅返回第二个 parser 的结果，与之相反的是 <code>right</code>，它是以上例子所希望使用的类型而不是 <code>pair</code> -- 即丢弃了左值 <code>()</code> 并保留 <code>String</code>。</p>
+<div id="函子 Functor"/>
+<h2 id="han-zi-functor">函子 Functor</h2>
+<p>进一步的研究之前，介绍一下另一个组合子，它可以使编写变得更轻松：<code>map</code>。</p>
+<p>这个组合子有一个目的：转变结果的类型。举个例子，如果有一个 parser 返回的是 <code>((), String)</code>，你希望转换其成为 <code>String</code>。</p>
+<p>为了达到这个目的，我们需要传入一个知道如何转换类型的函数。我们的例子需要的是：<code>|(_left, right)| right</code>。抽象来说，它跟像是 <code>Fn(A) -&gt; B</code>，其中 <code>A</code> 是 parser 生产的原始类型，而 <code>B</code> 则是新的类型。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">_map</span><span>&lt;P, F, A, B&gt;(</span><span style="color:#bf616a;">parser</span><span>: P, </span><span style="color:#bf616a;">map_fn</span><span>: F) -&gt;
+</span><span>    impl Fn(&amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, B), &amp;</span><span style="color:#b48ead;">str</span><span>&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P: Fn(&amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, A), &amp;</span><span style="color:#b48ead;">str</span><span>&gt;,
+</span><span>    F: Fn(A) -&gt; B,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| </span><span style="color:#b48ead;">match </span><span style="color:#96b5b4;">parser</span><span>(input) {
+</span><span>        Ok((next_input, result)) =&gt; Ok((next_input, </span><span style="color:#96b5b4;">map_fn</span><span>(result))),
+</span><span>        Err(err) =&gt; Err(err),
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>那么类型告诉了我们什么呢？<code>P</code> 是我们的 parser，成功时它返回 <code>A</code>。<code>F</code> 作为函数将被用作于映射（map） <code>P</code> 的返回值，即转化 <code>A</code> 成为 <code>B</code>。</p>
+<p>实际上，我们可以简化一下该函数，因为 <code>map</code> 其实是一个通用模式，它已经被 <code>Result</code> 实现过了：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">map</span><span>&lt;P, F, A, B&gt;(</span><span style="color:#bf616a;">parser</span><span>: P, </span><span style="color:#bf616a;">map_fn</span><span>: F) -&gt;
+</span><span>    impl Fn(&amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, B), &amp;</span><span style="color:#b48ead;">str</span><span>&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P: Fn(&amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; Result&lt;(&amp;</span><span style="color:#b48ead;">str</span><span>, A), &amp;</span><span style="color:#b48ead;">str</span><span>&gt;,
+</span><span>    F: Fn(A) -&gt; B,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| </span><span style="color:#96b5b4;">parser</span><span>(input)
+</span><span>        .</span><span style="color:#96b5b4;">map</span><span>(|(</span><span style="color:#bf616a;">next_input</span><span>, </span><span style="color:#bf616a;">result</span><span>)| (next_input, </span><span style="color:#96b5b4;">map_fn</span><span>(result)))
+</span><span>}
+</span></code></pre>
+<p>这种模式在 Haskell 中被称之为一个“函子” functor，同时它拥有数学上的兄弟，范畴论 category theory。如果有一个类型 <code>A</code>，以及一个 <code>map</code> 函数可以接收一个 <code>A</code> 转换为 <code>B</code> 的函数，那么这便是一个函子。在 Rust 中可以经常见到它，例如 <code>Option</code>，<code>Result</code>，<code>Iterator</code> 甚至是 <code>Future</code>，只不过它们没有被显式的被称为函子。原因也很简单：你不能如同 Rust 的类型系统那样，真正的去表达一个函子，因为 Rust 缺少高阶类型 Higher kinded types，不过这就是另一件事儿了。</p>
+<div id="Trait 出场"/>
+<h2 id="trait-chu-chang">Trait 出场</h2>
+<p>你或许注意到了迄今为止我们一直重复提到的 parser 类型签名：<code>Fn(&amp;str) -&gt; Result&lt;(&amp;str, Output), &amp;str&gt;</code>。用 trait 可以提高可读性，但是首先我们可以为返回值加上一个类型别名：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">type </span><span>ParseResult&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; = Result&lt;(&amp;</span><span style="color:#b48ead;">&#39;a str</span><span>, Output), &amp;</span><span style="color:#b48ead;">&#39;a str</span><span>&gt;;
+</span></code></pre>
+<p>这里的生命周期 <code>'a</code>，具体指的是输入的生命周期。</p>
+<p>现在定义 trait。我们需要把生命周期也放入 trait 中，当你使用 trait 时，都需要这个生命周期。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">trait </span><span>Parser&lt;&#39;a, Output&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parse</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">input</span><span>: &amp;</span><span style="color:#b48ead;">&#39;a str</span><span>) -&gt; ParseResult&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt;;
+</span><span>}
+</span></code></pre>
+<p>该 trait 现在暂时只有一个方法：<code>parse()</code>，正如我们之前 parser 的函数签名那样。为了让事情变得更加简单，我们可以为任何匹配该签名的 parser 函数来实现这个 trait。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">impl</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, F, Output&gt; Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; </span><span style="color:#b48ead;">for </span><span>F
+</span><span style="color:#b48ead;">where
+</span><span>    F: Fn(&amp;</span><span style="color:#b48ead;">&#39;a str</span><span>) -&gt; ParseResult&lt;Output&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parse</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">input</span><span>: &amp;</span><span style="color:#b48ead;">&#39;a str</span><span>) -&gt; ParseResult&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; {
+</span><span>        </span><span style="color:#96b5b4;">self</span><span>(input)
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>通过这种方式，我们不仅可以自有的使用实现了 Parser trait 的函数，还打开了其它的可能性，即使用其它作为 parser 的类型。</p>
+<p>但是更重要的是，它节省了重复编写函数签名的时间。现在让我们重写 <code>map</code> 函数：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">map</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P, F, A, B&gt;(</span><span style="color:#bf616a;">parser</span><span>: P, </span><span style="color:#bf616a;">map_fn</span><span>: F) -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, B&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;,
+</span><span>    F: Fn(A) -&gt; B,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| {
+</span><span>        parser
+</span><span>            .</span><span style="color:#96b5b4;">parse</span><span>(input)
+</span><span>            .</span><span style="color:#96b5b4;">map</span><span>(|(</span><span style="color:#bf616a;">next_input</span><span>, </span><span style="color:#bf616a;">result</span><span>)| (next_input, </span><span style="color:#96b5b4;">map_fn</span><span>(result)))
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>这里特别需要注意的是：不再直接作为一个函数来调用 parser，我们现在需要 <code>parser.parse(input)</code>，因为我们不知道 <code>P</code> 是否为一个函数，仅仅是知道它实现了 <code>Parser</code>，因此我们需要使用 <code>Parser</code> 接口所提供的函数。这么做的话，函数体会看起来完全一样，同时类型看起来更为简洁。这里虽然有生命周期 <code>'a</code> 这个噪音，但是整体上有一个很大的提升。</p>
+<p>那么现在让我们重写 <code>pair</code> 函数，现在它看起来更加的简洁了：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">pair</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P1, P2, R1, R2&gt;(</span><span style="color:#bf616a;">parser1</span><span>: P1, </span><span style="color:#bf616a;">parser2</span><span>: P2) -&gt;
+</span><span>    impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, (R1, R2)&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P1: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R1&gt;,
+</span><span>    P2: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R2&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| </span><span style="color:#b48ead;">match</span><span> parser1.</span><span style="color:#96b5b4;">parse</span><span>(input) {
+</span><span>        Ok((next_input, result1)) =&gt; </span><span style="color:#b48ead;">match</span><span> parser2.</span><span style="color:#96b5b4;">parse</span><span>(next_input) {
+</span><span>            Ok((final_input, result2)) =&gt; Ok((final_input, (result1, result2))),
+</span><span>            Err(err) =&gt; Err(err),
+</span><span>        },
+</span><span>        Err(_) =&gt; todo!(),
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>同样的：仅有改变的地方是类型签名更加整洁以及使用的是 <code>parser.parse(input)</code> 而不是 <code>parser(input)</code>。</p>
+<p>实际上我们还可以进一步简化函数：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">pair</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P1, P2, R1, R2&gt;(</span><span style="color:#bf616a;">parser1</span><span>: P1, </span><span style="color:#bf616a;">parser2</span><span>: P2) -&gt;
+</span><span>    impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, (R1, R2)&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P1: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R1&gt;,
+</span><span>    P2: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R2&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| {
+</span><span>        parser1.</span><span style="color:#96b5b4;">parse</span><span>(input).</span><span style="color:#96b5b4;">and_then</span><span>(|(</span><span style="color:#bf616a;">next_input</span><span>, </span><span style="color:#bf616a;">result1</span><span>)| {
+</span><span>            parser2
+</span><span>                .</span><span style="color:#96b5b4;">parse</span><span>(next_input)
+</span><span>                .</span><span style="color:#96b5b4;">map</span><span>(|(</span><span style="color:#bf616a;">last_input</span><span>, </span><span style="color:#bf616a;">result2</span><span>)| (last_input, (result1, result2)))
+</span><span>        })
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p><code>Result</code> 的 <code>and_then</code> 方法与 <code>map</code> 类似，不同的是该映射函数不返回新的类型传入 <code>Result</code>，而是一个新结合好的 <code>Result</code>。之后会再讲 <code>and_then</code>，现在让我们看看 <code>left</code> 和 <code>right</code> 的组合子如何实现。</p>
+<div id="Left 和 Right"/>
+<h2 id="left-he-right">Left 和 Right</h2>
+<p><code>pair</code> 与 <code>map</code> 实现了后再写 <code>left</code> 和 <code>right</code> 就简单多了：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">left</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P1, P2, R1, R2&gt;(</span><span style="color:#bf616a;">parser1</span><span>: P1, </span><span style="color:#bf616a;">parser2</span><span>: P2) -&gt;
+</span><span>    impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R1&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P1: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R1&gt;,
+</span><span>    P2: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R2&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#96b5b4;">map</span><span>(</span><span style="color:#96b5b4;">pair</span><span>(parser1, parser2), |(</span><span style="color:#bf616a;">left</span><span>, _)| left)
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">right</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P1, P2, R1, R2&gt;(</span><span style="color:#bf616a;">parser1</span><span>: P1, </span><span style="color:#bf616a;">parser2</span><span>: P2) -&gt;
+</span><span>    impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R2&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P1: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R1&gt;,
+</span><span>    P2: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R2&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#96b5b4;">map</span><span>(</span><span style="color:#96b5b4;">pair</span><span>(parser1, parser2), |(_, </span><span style="color:#bf616a;">right</span><span>)| right)
+</span><span>}
+</span></code></pre>
+<p>我们使用 <code>pair</code> 组合子来组合两个 parser 成为一个返回两者元组的 parser，接着我们使用 <code>map</code> 组合子从元组中来选择所期望的值。</p>
+<p>重写<code>match_literal</code>：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">match_literal</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;(</span><span style="color:#bf616a;">expected</span><span>: &amp;</span><span style="color:#b48ead;">&#39;static str</span><span>) -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, ()&gt; {
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input: &amp;</span><span style="color:#b48ead;">&#39;a str</span><span>| </span><span style="color:#b48ead;">match</span><span> input.</span><span style="color:#96b5b4;">get</span><span>(</span><span style="color:#d08770;">0</span><span>..expected.</span><span style="color:#96b5b4;">len</span><span>()) {
+</span><span>        Some(next) </span><span style="color:#b48ead;">if</span><span> next == expected =&gt; Ok((&amp;input[expected.</span><span style="color:#96b5b4;">len</span><span>()..], ())),
+</span><span>        _ =&gt; Err(input),
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>对于闭包的入参而言，我们需要显式声明 <code>&amp;'a str</code>。对于 <code>identifier</code> 而言，我们只需要用 <code>ParserResult&lt;String&gt;</code> 替换函数签名的返回类型。</p>
+<p>现在的测试，不再需要毫无必要的 <code>()</code> 结果了：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">right_combinator</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> tag_opener = </span><span style="color:#96b5b4;">right</span><span>(</span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">&lt;</span><span>&quot;), identifier);
+</span><span>
+</span><span>    assert_eq!(
+</span><span>        Ok((&quot;</span><span style="color:#a3be8c;">/&gt;</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">my-first-element</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>())),
+</span><span>        tag_opener.</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">&lt;my-first-element/&gt;</span><span>&quot;)
+</span><span>    );
+</span><span>    assert_eq!(Err(&quot;</span><span style="color:#a3be8c;">oops</span><span>&quot;), tag_opener.</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">oops</span><span>&quot;));
+</span><span>    assert_eq!(Err(&quot;</span><span style="color:#a3be8c;">!oops</span><span>&quot;), tag_opener.</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">&lt;!oops</span><span>&quot;));
+</span><span>}
+</span></code></pre>
+<div id="One Or More"/>
+<h2 id="one-or-more">One Or More</h2>
+<p>现在我们有了 <code>&lt;</code>，有了 identifier，接下来需要什么呢？one or more 的 parser（为了应付一个或多个空格等正确的语法结构）！</p>
+<p>其实我们在 <code>identifier</code> parser 已经做过这样的处理了，但是都是手动实现的。不必惊讶，通用性的实现并不困难。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">one_or_more</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P, A&gt;(</span><span style="color:#bf616a;">parser</span><span>: P) -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Vec&lt;A&gt;&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|</span><span style="color:#b48ead;">mut</span><span> input| {
+</span><span>        </span><span style="color:#b48ead;">let mut</span><span> result = Vec::new();
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">if let </span><span>Ok((next_input, first_item)) = parser.</span><span style="color:#96b5b4;">parse</span><span>(input) {
+</span><span>            input = next_input;
+</span><span>            result.</span><span style="color:#96b5b4;">push</span><span>(first_item);
+</span><span>        } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>            </span><span style="color:#b48ead;">return </span><span>Err(input);
+</span><span>        }
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">while let </span><span>Ok((next_input, next_item)) = parser.</span><span style="color:#96b5b4;">parse</span><span>(input) {
+</span><span>            input = next_input;
+</span><span>            result.</span><span style="color:#96b5b4;">push</span><span>(next_item);
+</span><span>        }
+</span><span>
+</span><span>        Ok((input, result))
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>首先，我们构建的解析器的返回类型是 A，组合 parser 的返回类型是 Vec -- 任意数量的 A。</p>
+<p>代码看起来确实很像 <code>identifier</code>。首先我们解析第一个元素，如果不成功返回一个错误。接着我们解析尽可能多的元素，直到解析错误，返回已收集的元素。</p>
+<p>那么 zero or more 呢？我们只需要移除第一个元素的解析：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">zero_or_more</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P, A&gt;(</span><span style="color:#bf616a;">parser</span><span>: P) -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Vec&lt;A&gt;&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|</span><span style="color:#b48ead;">mut</span><span> input| {
+</span><span>        </span><span style="color:#b48ead;">let mut</span><span> result = Vec::new();
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">while let </span><span>Ok((next_input, next_item)) = parser.</span><span style="color:#96b5b4;">parse</span><span>(input) {
+</span><span>            input = next_input;
+</span><span>            result.</span><span style="color:#96b5b4;">push</span><span>(next_item);
+</span><span>        }
+</span><span>
+</span><span>        Ok((input, result))
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>接下来是测试：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">one_or_more_combinator</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> parser = </span><span style="color:#96b5b4;">one_or_more</span><span>(</span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">ha</span><span>&quot;));
+</span><span>    assert_eq!(Ok((&quot;&quot;, vec![(), (), ()])), parser.</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">hahaha</span><span>&quot;));
+</span><span>    assert_eq!(Err(&quot;</span><span style="color:#a3be8c;">ahah</span><span>&quot;), parser.</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">ahah</span><span>&quot;));
+</span><span>    assert_eq!(Err(&quot;&quot;), parser.</span><span style="color:#96b5b4;">parse</span><span>(&quot;&quot;));
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">zero_or_more_combinator</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> parser = </span><span style="color:#96b5b4;">zero_or_more</span><span>(</span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">ha</span><span>&quot;));
+</span><span>    assert_eq!(Ok((&quot;&quot;, vec![(), (), ()])), parser.</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">hahaha</span><span>&quot;));
+</span><span>    assert_eq!(Ok((&quot;</span><span style="color:#a3be8c;">ahah</span><span>&quot;, vec![])), parser.</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">ahah</span><span>&quot;));
+</span><span>    assert_eq!(Ok((&quot;&quot;, vec![])), parser.</span><span style="color:#96b5b4;">parse</span><span>(&quot;&quot;));
+</span><span>}
+</span></code></pre>
+<p>注意它们两者的区别：对于 <code>one_or_more</code>，查找一个空字符串是错误的，因为它需要为其 sub-parser 查看至少一个元素，而对于 <code>zero_or_more</code>，空字符串意味着零状况，也就不是一个错误。</p>
+<p>此刻我们有理由开始思考如何抽象这两个函数，因为一个函数完全是另一个函数的拷贝，仅仅只是去掉了一小部分。</p>
+<div id="谓语组合子 Predicate combinator"/>
+<h2 id="wei-yu-zu-he-zi-predicate-combinator">谓语组合子 Predicate combinator</h2>
+<p>我们现在有了解析空格的 <code>one_or_more</code> 以及解析属性对 attribute pairs 的 <code>zero_or_more</code>。</p>
+<p>实际上我们并不是真的像解析空格再解析属性。试想一下，如果没有属性，那么空格便成为了可选的，这样我们将会立刻遇到 <code>&gt;</code> 或是 <code>/&gt;</code>。如果有一个属性，那么就必须要现有空格。幸运的是如果有多个属性，每个属性之间也必须为空格，因此我们这里真正考察的是一系列的 <em>zero or more</em> 出现 <em>one or more</em> 空格，再紧跟着的是属性。</p>
+<p>我们首先需要一个 parser 用于解析单个空格。这里有三种方法。</p>
+<p>第一，我们可以笨拙的使用 <code>match_literal</code> parser 带有一个字符串仅包含单个空格。为什么笨拙呢？因为空格也代表着换行，tabs，以及很多奇怪的 Unicode 字符渲染而成空格。我们将再次依赖 Rust 标准库，因为 <code>char</code> 拥有一个 <code>is_whitespace</code> 方法正如 <code>is_alphabetic</code> 与 <code>is_alphanumeric</code>。</p>
+<p>第二，我们可以编写一个 parser 用于消费任何数量的空格字符，通过 <code>is_whitespace</code> 谓语的方式更像是早期写的 <code>identifier</code> 那样。</p>
+<p>第三，我们可以编写一个 parser 名为 <code>any_char</code>，只要输入中不再剩余，它返回就单个 <code>char</code>。以及一个组合子 <code>pred</code>，它接收一个 parser 以及一个谓语函数，并像是这样把它们组合起来：<code>pred(any_char, |c| c.is_whitespace())</code>。这样拥有了额外的好处，使得编写最终的 parser 变得简单：属性值的引用字符串。</p>
+<p><code>any_char</code> parser 简单直接，但是我们需要注意的是那些 UTF-8 陷阱：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">any_char</span><span>(</span><span style="color:#bf616a;">input</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>) -&gt; ParseResult&lt;</span><span style="color:#b48ead;">char</span><span>&gt; {
+</span><span>    </span><span style="color:#b48ead;">match</span><span> input.</span><span style="color:#96b5b4;">chars</span><span>().</span><span style="color:#96b5b4;">next</span><span>() {
+</span><span>        Some(next) =&gt; Ok((&amp;input[next.</span><span style="color:#96b5b4;">len_utf8</span><span>()..], next)),
+</span><span>        _ =&gt; Err(input)
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p><code>pred</code> 组合子同样也不复杂。唤起 <code>parser</code>，如果解析成功则对该值调用谓语函数，只有当返回 true 时，我们才真正返回 <code>success</code>，否则我们将返回与 parser 失败一样的错误。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">pred</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P, A, F&gt;(</span><span style="color:#bf616a;">parser</span><span>: P, </span><span style="color:#bf616a;">predicate</span><span>: F) -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;,
+</span><span>    F: Fn(&amp;A) -&gt; </span><span style="color:#b48ead;">bool</span><span>,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| {
+</span><span>        </span><span style="color:#b48ead;">if let </span><span>Ok((next_input, value)) = parser.</span><span style="color:#96b5b4;">parse</span><span>(input) {
+</span><span>            </span><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">predicate</span><span>(&amp;value) {
+</span><span>                </span><span style="color:#b48ead;">return </span><span>Ok((next_input, value));
+</span><span>            }
+</span><span>        }
+</span><span>        Err(input)
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>接着是测试：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">predicate_combinator</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> parser = </span><span style="color:#96b5b4;">pred</span><span>(any_char, |</span><span style="color:#bf616a;">c</span><span>| *c == &#39;</span><span style="color:#a3be8c;">o</span><span>&#39;);
+</span><span>    assert_eq!(Ok((&quot;</span><span style="color:#a3be8c;">mg</span><span>&quot;, &#39;</span><span style="color:#a3be8c;">o</span><span>&#39;)), parser.</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">omg</span><span>&quot;));
+</span><span>    assert_eq!(Err(&quot;</span><span style="color:#a3be8c;">lol</span><span>&quot;), parser.</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">lol</span><span>&quot;));
+</span><span>}
+</span></code></pre>
+<p>现在 <code>parser</code> 和 <code>pred</code> 都准备好了，我们可以编写 <code>whitespace_char</code> parser 了：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">whitespace_char</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, </span><span style="color:#b48ead;">char</span><span>&gt; {
+</span><span>    </span><span style="color:#96b5b4;">pred</span><span>(any_char, |</span><span style="color:#bf616a;">c</span><span>| c.</span><span style="color:#96b5b4;">is_whitespace</span><span>())
+</span><span>}
+</span></code></pre>
+<p>有了 <code>whitespace_char</code> 以后我们便可以表达 <em>one or more</em> 空格，以及它的姊妹概念，<em>zero or more</em> 空格：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">space1</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Vec&lt;</span><span style="color:#b48ead;">char</span><span>&gt;&gt; {
+</span><span>    </span><span style="color:#96b5b4;">one_or_more</span><span>(</span><span style="color:#96b5b4;">whitespace_char</span><span>())
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">space0</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Vec&lt;</span><span style="color:#b48ead;">char</span><span>&gt;&gt; {
+</span><span>    </span><span style="color:#96b5b4;">zero_or_more</span><span>(</span><span style="color:#96b5b4;">whitespace_char</span><span>())
+</span><span>}
+</span></code></pre>
+<div id="引用字符串"/>
+<h2 id="yin-yong-zi-fu-chuan">引用字符串</h2>
+<p>做了那么多准备工作后，现在是否至少能解析属性呢？当然没问题，我们仅需要确保拥有了所有独立的 parser。处理属性名称的 <code>identifier</code> 有了，处理 <code>=</code> 号的 <code>match_literal(&quot;=&quot;)</code> 也有了。现在还缺少一个字符串 parser。幸运的是我们已经拥有了所有的组合子：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">quoted_string</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, String&gt; {
+</span><span>    </span><span style="color:#96b5b4;">map</span><span>(
+</span><span>        </span><span style="color:#96b5b4;">right</span><span>(
+</span><span>            </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#96b5b4;">\&quot;</span><span>&quot;),
+</span><span>            </span><span style="color:#96b5b4;">left</span><span>(
+</span><span>                </span><span style="color:#96b5b4;">zero_or_more</span><span>(</span><span style="color:#96b5b4;">pred</span><span>(any_char, |</span><span style="color:#bf616a;">c</span><span>| *c != &#39;</span><span style="color:#a3be8c;">&quot;</span><span>&#39;)),
+</span><span>                </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#96b5b4;">\&quot;</span><span>&quot;),
+</span><span>            ),
+</span><span>        ),
+</span><span>        |</span><span style="color:#bf616a;">chars</span><span>| chars.</span><span style="color:#96b5b4;">into_iter</span><span>().</span><span style="color:#96b5b4;">collect</span><span>(),
+</span><span>    )
+</span><span>}
+</span></code></pre>
+<p>组合子的嵌套看起来会有点讨厌，不过之后我们将重构它。现在让我们关注函数的本身。</p>
+<p>最外层的组合子为 <code>map</code>，而它真实开始的地方是第一个引用字符。<code>map</code> 包含了一个 <code>right</code>，<code>right</code> 的第一部分即是我们所寻找的：<code>match_literal(&quot;\&quot;&quot;)</code>，即引用的开头。</p>
+<p><code>right</code> 的第二部分则是字符串剩余的部分。它们被放入 <code>left</code> 中，我们很快就可以发现 <code>left</code> 的 <em>right</em> 参数使我们一直忽视的另一个 <code>match_literal(&quot;\&quot;&quot;)</code> -- 即引号结束。因此 <em>left</em> 才是我们引用的字符串。</p>
+<p>使用新的 pred 和 any_char 来获取一个接受除去另一个引号的任何内容的 parser，并将其放入 zero_or_more 中，因此实现如下：</p>
+<ul>
+<li>一个引号</li>
+<li>紧接着是零个或多个元素，它们都不为引号</li>
+<li>紧接着是另一个引号</li>
+</ul>
+<p>在 <code>right</code> 和 <code>left</code> 之间，我们丢弃结果值中的引号，并获得引用的字符串。</p>
+<p>这个返回并不是一个字符串。还记得 <code>zero_or_more</code> 的返回么？是一个 <code>Vec&lt;A&gt;</code>，其中 <code>A</code> 是内部 parser 的返回值的类型。对于 <code>any_char</code> 而言则是 <code>char</code>。因此这里我们拿到的是 <code>Vec&lt;char&gt;</code>。这便是 <code>map</code> 所带来的：它将一个 <code>Vec&lt;Char&gt;</code> 转换成一个 <code>String</code>，借由 <code>Iterator&lt;Item = char&gt;</code> 迭代器所构建出 <code>String</code>，因此我们可以简单的使用上 <code>vec_of_chars.into_iter().collect()</code>，以及感谢类型接口的力量，我们拥有了 <code>String</code>。</p>
+<p>接下来编写测试：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">quoted_string_parser</span><span>() {
+</span><span>    assert_eq!(
+</span><span>        Ok((&quot;&quot;, &quot;</span><span style="color:#a3be8c;">Hello Joe!</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>())),
+</span><span>        </span><span style="color:#96b5b4;">quoted_string</span><span>().</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">Hello Joe!</span><span style="color:#96b5b4;">\&quot;</span><span>&quot;)
+</span><span>    );
+</span><span>}
+</span></code></pre>
+<p>这下子终于可以解析属性了。</p>
+<div id="解析属性"/>
+<h2 id="jie-xi-shu-xing">解析属性</h2>
+<p>我们现在可以解析空格，标识符，<code>=</code> 号以及引用字符串。终于集齐了所有的 parser 了。</p>
+<p>首先，让我们为一对属性编写一个 parser。我们将要以 <code>Vec&lt;(String, String)&gt;</code> 存储它们，这很像是需要 <code>(String, String)</code> 输入 <code>zero_or_more</code> 组合子的一个 parser。让我们看一下如何构建它。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">attribute_pair</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, (String, String)&gt; {
+</span><span>    </span><span style="color:#96b5b4;">pair</span><span>(identifier, </span><span style="color:#96b5b4;">right</span><span>(</span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">=</span><span>&quot;), </span><span style="color:#96b5b4;">quoted_string</span><span>()))
+</span><span>}
+</span></code></pre>
+<p>总结一下：我们已经拥有了处理一对值的 parser，<code>pair</code>，因此我们通过 <code>identifier</code> parser 生产一个 <code>String</code>，以及一个带有 <code>=</code> 号的 <code>right</code>，用于处理不需要保留的值，然后用 <code>quoted_string</code> parser，获取另一个 <code>String</code>。</p>
+<p>现在让我们结合 <code>zero_or_more</code> 来构建 vector -- 不过也不要忘记它们之间的空格。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">attributes</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Vec&lt;(String, String)&gt;&gt; {
+</span><span>    </span><span style="color:#96b5b4;">zero_or_more</span><span>(</span><span style="color:#96b5b4;">right</span><span>(</span><span style="color:#96b5b4;">space1</span><span>(), </span><span style="color:#96b5b4;">attribute_pair</span><span>()))
+</span><span>}
+</span></code></pre>
+<p>zero or more 出现在这些情况：one or more 空格字符，接着一个属性对（attribute pair）。使用 <code>right</code> 来丢弃空格并保存属性对。</p>
+<p>测试一下：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">attribute_parser</span><span>() {
+</span><span>    assert_eq!(
+</span><span>        Ok((
+</span><span>            &quot;&quot;,
+</span><span>            vec![
+</span><span>                (&quot;</span><span style="color:#a3be8c;">one</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(), &quot;</span><span style="color:#a3be8c;">1</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>()),
+</span><span>                (&quot;</span><span style="color:#a3be8c;">two</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(), &quot;</span><span style="color:#a3be8c;">2</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>())
+</span><span>            ]
+</span><span>        )),
+</span><span>        </span><span style="color:#96b5b4;">attributes</span><span>().</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;"> one=</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">1</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;"> two=</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">2</span><span style="color:#96b5b4;">\&quot;</span><span>&quot;)
+</span><span>    );
+</span><span>}
+</span></code></pre>
+<div id="很接近了"/>
+<h2 id="hen-jie-jin-liao">很接近了</h2>
+<p>现在已经很接近我们的目标了，因为我们的类型也快速的接近了 NP 完整性。我们现在仅需要处理两种类型的元素标签：单个元素，和父子元素。</p>
+<p>现在让我们从单个元素开始，看一下我们是否可以通过一些组合子的结合来获取 <code>(String, Vec&lt;(String, String)&gt;)</code> 类型的答案。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">element_start</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, (String, Vec&lt;(String, String)&gt;)&gt; {
+</span><span>    </span><span style="color:#96b5b4;">right</span><span>(</span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">&lt;</span><span>&quot;), </span><span style="color:#96b5b4;">pair</span><span>(identifier, </span><span style="color:#96b5b4;">attributes</span><span>()))
+</span><span>}
+</span></code></pre>
+<p>有了它我们便可以为单个元素编写一个 parser 了。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">single_element</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Element&gt; {
+</span><span>    </span><span style="color:#96b5b4;">map</span><span>(
+</span><span>        </span><span style="color:#96b5b4;">left</span><span>(</span><span style="color:#96b5b4;">element_start</span><span>(), </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">/&gt;</span><span>&quot;)),
+</span><span>        |(</span><span style="color:#bf616a;">name</span><span>, </span><span style="color:#bf616a;">attributes</span><span>)| Element {
+</span><span>            name,
+</span><span>            attributes,
+</span><span>            children: vec![],
+</span><span>        },
+</span><span>    )
+</span><span>}
+</span></code></pre>
+<p>测试：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">single_element_parser</span><span>() {
+</span><span>    assert_eq!(
+</span><span>        Ok((
+</span><span>            &quot;&quot;,
+</span><span>            Element {
+</span><span>                name: &quot;</span><span style="color:#a3be8c;">div</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(),
+</span><span>                attributes: vec![(&quot;</span><span style="color:#a3be8c;">class</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(), &quot;</span><span style="color:#a3be8c;">float</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>())],
+</span><span>                children: vec![]
+</span><span>            }
+</span><span>        )),
+</span><span>        </span><span style="color:#96b5b4;">single_element</span><span>().</span><span style="color:#96b5b4;">parse</span><span>(&quot;</span><span style="color:#a3be8c;">&lt;div class=</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">float</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">/&gt;</span><span>&quot;)
+</span><span>    );
+</span><span>}
+</span></code></pre>
+<p><code>single_element</code> 的返回类型太复杂了，以至于编译器要处理很长时间。我们现在不能再忽略这个问题了。</p>
+<div id="超越无限 To Infinity And Beyond"/>
+<h2 id="chao-yue-wu-xian-to-infinity-and-beyond">超越无限 To Infinity And Beyond</h2>
+<p>如果你尝试过在 Rust 中编写一个递归类型，你或许就直到这个小问题的答案了。</p>
+<p>一个类似这样的枚举：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">enum </span><span>List&lt;A&gt; {
+</span><span>    Cons(A, List&lt;A&gt;),
+</span><span>    Nil,
+</span><span>}
+</span></code></pre>
+<p>rustc 会很敏感的告诉你递归类型 <code>List&lt;A&gt;</code> 是无限大的，因此我们需要为这个无线大的数组分配内存。</p>
+<p>很多语言中，对于类型系统而言，无限大的数组并不是一个问题。而 Rust 中，我们需要分配内存，或者说是在构建类型是就必须决定它们的大小，因此当类型无限大时，因为这大小也是无限的。</p>
+<p>解决方案会有一点不直接。因为我们知道指针的大小，因此无论指针指向哪里，我们的 <code>List::Cons</code> 都是固定大小的。为此我们需要让值分配在堆上，Rust 里使用 <code>Box</code>：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">enum </span><span>List&lt;A&gt; {
+</span><span>    Cons(A, Box&lt;List&lt;A&gt;&gt;),
+</span><span>    Nil,
+</span><span>}
+</span></code></pre>
+<p><code>Box</code> 另一个有趣的特性是其包含的类型都是抽象的。这就意味着不再需要复杂的 parser 函数类型，而是通过非常简洁的 <code>Box&lt;dyn Parser&lt;'a, A&gt;&gt;</code> 来处理类型。</p>
+<p>听起来很棒，那么这样做的坏处呢？我们可能会因为必须遵循该指针而失去一两个指令周期，也可能让编译器失去了一些优化 parser 的机会。</p>
+<p>现在让我们用 <em>boxed</em> 来实现 <code>Parser</code> 函数：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">struct </span><span>BoxedParser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; {
+</span><span>    </span><span style="color:#bf616a;">parser</span><span>: Box&lt;dyn Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; + </span><span style="color:#b48ead;">&#39;a</span><span>&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; BoxedParser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span>&lt;P&gt;(</span><span style="color:#bf616a;">parser</span><span>: P) -&gt; </span><span style="color:#b48ead;">Self
+</span><span>    </span><span style="color:#b48ead;">where
+</span><span>        P: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; + </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>    {
+</span><span>        BoxedParser {
+</span><span>            parser: Box::new(parser),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; </span><span style="color:#b48ead;">for </span><span>BoxedParser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parse</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">input</span><span>: &amp;</span><span style="color:#b48ead;">&#39;a str</span><span>) -&gt; ParseResult&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt; {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.parser.</span><span style="color:#96b5b4;">parse</span><span>(input)
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>我们创造了新的类型 <code>BoxedParser</code> 用于存储 parser 函数。那么正如之前所说的，这就意味着把 parser 放置进堆上，用解引用的方式获取它，这可能会花费我们几个宝贵的纳秒，所以实际上可能需要推迟使用 <code>box</code>。只需将一些更常用的组合子放进 <code>box</code> 就足够了。</p>
+<div id="展示自己的机会 BoxedParser"/>
+<h2 id="zhan-shi-zi-ji-de-ji-hui-boxedparser">展示自己的机会 BoxedParser</h2>
+<p>等一下，这么做很可能会带来另外的问题。因为组合子是独立的函数，当我们嵌套的数量比较多时，代码的可读性就会变差。回忆一下 <code>quoted_string</code> parser：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">quoted_string</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, String&gt; {
+</span><span>    </span><span style="color:#96b5b4;">map</span><span>(
+</span><span>        </span><span style="color:#96b5b4;">right</span><span>(
+</span><span>            </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#96b5b4;">\&quot;</span><span>&quot;),
+</span><span>            </span><span style="color:#96b5b4;">left</span><span>(
+</span><span>                </span><span style="color:#96b5b4;">zero_or_more</span><span>(</span><span style="color:#96b5b4;">pred</span><span>(any_char, |</span><span style="color:#bf616a;">c</span><span>| *c != &#39;</span><span style="color:#a3be8c;">&quot;</span><span>&#39;)),
+</span><span>                </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#96b5b4;">\&quot;</span><span>&quot;),
+</span><span>            ),
+</span><span>        ),
+</span><span>        |</span><span style="color:#bf616a;">chars</span><span>| chars.</span><span style="color:#96b5b4;">into_iter</span><span>().</span><span style="color:#96b5b4;">collect</span><span>(),
+</span><span>    )
+</span><span>}
+</span></code></pre>
+<p>如果将这些组合子的方法在 parser 上使用而不是使用这样的独立函数，那么可读性就会变得更好。如果我们在 <code>Parser</code> trait 上以方法的形式声明我们的组合子呢？</p>
+<p>这样做的问题在于我们会丢失返回类型使用 <code>impl Trait</code> 的能力，因为 <code>impl Trait</code> 不能在 trait 中声明（Rust 2018 版次不行，听说下一个版次就可以了？）。</p>
+<p>而现在的 <code>BoxedParser</code>，虽然不能声明一个 trait 方法并返回 <code>impl Parser&lt;'a, A&gt;</code>，但是完全可以声明一个返回 <code>BoxedParser&lt;'a, A&gt;</code> 的 trait。</p>
+<p>最棒的地方在于甚至可以声明带有默认实现的 trait，因此我们不需要为每个已经实现了 <code>Parser</code> 的类型，再次去实现所有的组合子。</p>
+<p>让我们通过拓展 <code>Parser</code> trait 来尝试一下 <code>map</code> 组合子：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">trait </span><span>Parser&lt;&#39;a, Output&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parse</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">input</span><span>: &amp;</span><span style="color:#b48ead;">&#39;a str</span><span>) -&gt; ParseResult&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Output&gt;;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">map</span><span>&lt;F, NewOutput&gt;(</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">map_fn</span><span>: F) -&gt; BoxedParser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, NewOutput&gt;
+</span><span>    </span><span style="color:#b48ead;">where
+</span><span>        </span><span style="color:#b48ead;">Self</span><span>: Sized + </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>        Output: </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>        NewOutput: </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>        F: Fn(Output) -&gt; NewOutput + </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>    {
+</span><span>        BoxedParser::new(</span><span style="color:#96b5b4;">map</span><span>(</span><span style="color:#bf616a;">self</span><span>, map_fn))
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>一大堆的 <code>'a</code>，但是唉，它们都是必须的。幸运的是我们仍然可以复用旧的组合子函数，同时作为额外的好处，我们不仅仅获得了更棒的语法，通过自动的打包它们，我们同样的也去除了暴露的 <code>impl Trait</code> 类型。</p>
+<p>现在让我们稍微增强一下我们的 <code>quoted_string</code> parser：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">quoted_string</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, String&gt; {
+</span><span>    </span><span style="color:#96b5b4;">right</span><span>(
+</span><span>        </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#96b5b4;">\&quot;</span><span>&quot;),
+</span><span>        </span><span style="color:#96b5b4;">left</span><span>(
+</span><span>            </span><span style="color:#96b5b4;">zero_or_more</span><span>(</span><span style="color:#96b5b4;">pred</span><span>(any_char, |</span><span style="color:#bf616a;">c</span><span>| *c != &#39;</span><span style="color:#a3be8c;">&quot;</span><span>&#39;)),
+</span><span>            </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#96b5b4;">\&quot;</span><span>&quot;),
+</span><span>        ),
+</span><span>    )
+</span><span>    .</span><span style="color:#96b5b4;">map</span><span>(|</span><span style="color:#bf616a;">chars</span><span>| chars.</span><span style="color:#96b5b4;">into_iter</span><span>().</span><span style="color:#96b5b4;">collect</span><span>())
+</span><span>}
+</span></code></pre>
+<p>可以很明显的看到在 <code>right()</code> 上调用了 <code>.map()</code>。 我们也可以以同样的方式处理 <code>pair</code>， <code>left</code> 和 <code>right</code>，但是这三个我认为作为函数保留它们会更好一些，因为它们反映了 <code>pair</code> 输出类型的结构。当然了你完全也可以把它们全部加入 trait 中。</p>
+<p>另一个候选者是 <code>pred</code>。让我们在 <code>Parser</code> trait 中添加这个定义。</p>
+<p>那么 <code>quoted_string</code> 中的 <code>pred</code> 调用就可以这么改写：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#96b5b4;">zero_or_more</span><span>(any_char.</span><span style="color:#96b5b4;">pred</span><span>(|</span><span style="color:#bf616a;">c</span><span>| *c != &#39;</span><span style="color:#a3be8c;">&quot;</span><span>&#39;)),
+</span></code></pre>
+<p>可读性变强了，而对于 <code>zero_or_more</code> 而言，保留原有写法更好一些，因为它读起来就像谓语那样“零个或多个 <code>any_char</code> 应用了以下的 predicate”。当然了如果你愿意的话不管是 <code>zero_or_more</code> 还是 <code>one_or_more</code> 都可以放进 trait 中。</p>
+<p>除了重写 <code>quoted_string</code>，让我们把 <code>single_element</code> 中的 <code>map</code> 也修改一下：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">single_element</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Element&gt; {
+</span><span>    </span><span style="color:#96b5b4;">left</span><span>(</span><span style="color:#96b5b4;">element_start</span><span>(), </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">/&gt;</span><span>&quot;))
+</span><span>        .</span><span style="color:#96b5b4;">map</span><span>(|(</span><span style="color:#bf616a;">name</span><span>, </span><span style="color:#bf616a;">attributes</span><span>)| Element {
+</span><span>            name,
+</span><span>            attributes,
+</span><span>            children: vec![],
+</span><span>        })
+</span><span>}
+</span></code></pre>
+<p>这样我们就打包好了 <code>map</code> 和 <code>pred</code> 方法 -- 并且我们获取了更好的语法！</p>
+<div id="带子元素的情况"/>
+<h2 id="dai-zi-yuan-su-de-qing-kuang">带子元素的情况</h2>
+<p>现在让我们编写父子元素的 parser。基本与 <code>single_element</code> 一致，除了结尾用的是一个 <code>&gt;</code> 而不是 <code>/&gt;</code>。它同样遵从 <em>zero or more</em> 子元素以及一个关闭标签，但是我们首先需要解析真实的起始标签：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">open_element</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Element&gt; {
+</span><span>    </span><span style="color:#96b5b4;">left</span><span>(</span><span style="color:#96b5b4;">element_start</span><span>(), </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">&gt;</span><span>&quot;))
+</span><span>        .</span><span style="color:#96b5b4;">map</span><span>(|(</span><span style="color:#bf616a;">name</span><span>, </span><span style="color:#bf616a;">attributes</span><span>)| Element {
+</span><span>            name,
+</span><span>            attributes,
+</span><span>            children: vec![],
+</span><span>        })
+</span><span>}
+</span></code></pre>
+<p>现在那么我们怎么获取子元素呢？它们既可以是单元素也可以是另一个父子元素，并且有 <em>zero or more</em> 个它们。我们又 <code>zero_or_more</code> 组合子，但是我们如何使用它呢？有一个还未解决的是多选项（multiple choice）parser：一个既可以处理单元素又可以处理父子元素的 parser。</p>
+<p>为了达到这个目标，我们需要一个组合子可以顺序的尝试两种 parser：如果第一个 parser 成功，便使用它并返回其结果；如果失败并不返回错误而是带着输入去尝试第二个 parser，如果还是失败了那么返回错误，这就意味着两个 parser 都失败了。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">either</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P1, P2, A&gt;(</span><span style="color:#bf616a;">parser1</span><span>: P1, </span><span style="color:#bf616a;">parser2</span><span>: P2) -&gt;
+</span><span>    impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P1: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;,
+</span><span>    P2: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| </span><span style="color:#b48ead;">match</span><span> parser1.</span><span style="color:#96b5b4;">parse</span><span>(input) {
+</span><span>        ok @ Ok(_) =&gt; ok,
+</span><span>        Err(_) =&gt; parser2.</span><span style="color:#96b5b4;">parse</span><span>(input),
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>这便允许我们声明一个 parser <code>element</code> 作用于匹配一个单元素或一个父子元素（暂时还是使用 <code>open_element</code> 来表示它，我们将在拥有 <code>element</code> 后处理子元素）。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">element</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Element&gt; {
+</span><span>    </span><span style="color:#96b5b4;">either</span><span>(</span><span style="color:#96b5b4;">single_element</span><span>(), </span><span style="color:#96b5b4;">open_element</span><span>())
+</span><span>}
+</span></code></pre>
+<p>现在让我们为关闭标签添加一个 parser。它拥有一个有意思的性质是需要匹配起始标签，这就意味着 parser 需要知道起始标签的名称。这不就正是函数参数的用处吗？</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">close_element</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;(</span><span style="color:#bf616a;">expected_name</span><span>: String) -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, String&gt; {
+</span><span>    </span><span style="color:#96b5b4;">right</span><span>(</span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">&lt;/</span><span>&quot;), </span><span style="color:#96b5b4;">left</span><span>(identifier, </span><span style="color:#96b5b4;">match_literal</span><span>(&quot;</span><span style="color:#a3be8c;">&gt;</span><span>&quot;)))
+</span><span>        .</span><span style="color:#96b5b4;">pred</span><span>(</span><span style="color:#b48ead;">move </span><span>|name| name == &amp;expected_name)
+</span><span>}
+</span></code></pre>
+<p>现在让我们把它们都组合一下：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">parent_element</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Element&gt; {
+</span><span>    </span><span style="color:#96b5b4;">pair</span><span>(
+</span><span>        </span><span style="color:#96b5b4;">open_element</span><span>(),
+</span><span>        </span><span style="color:#96b5b4;">left</span><span>(</span><span style="color:#96b5b4;">zero_or_more</span><span>(</span><span style="color:#96b5b4;">element</span><span>()), </span><span style="color:#96b5b4;">close_element</span><span>(…oops)),
+</span><span>    )
+</span><span>}
+</span></code></pre>
+<p>啊我们怎么给 <code>close_element</code> 传参呢？我认为还缺少最后一种组合子。</p>
+<p>很接近了。一旦我们解决完了最后一个问题使得 <code>parent_element</code> 可以正常工作，我们便可以用崭新的 <code>parent_element</code> 来替换掉 <code>element</code> parser 的 <code>open_element</code>，这样我们就有了完整的 XML 解析器了。</p>
+<p>还记得之前说过的之后再回到 <code>and_then</code> 吗？就是这里！这个 <code>and_then</code> 组合子实际上就是我们需要的：它是一个对当前 parser 接受其返回并生产一个新 parser 的函数。它有点像 <code>pair</code>，除了不是仅仅接收两个返回值于一个元组中，我们通过一个函数把他们串联起来。我们知道 <code>and_then</code> 可以作用于 <code>Result</code> 以及 <code>Option</code> 上，但是它们仅仅维护一些数据，因为它们并没有做额外的事情。</p>
+<p>那么现在我们来实现它：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">and_then</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P, F, A, B, NextP&gt;(</span><span style="color:#bf616a;">parser</span><span>: P, </span><span style="color:#bf616a;">f</span><span>: F) -&gt;
+</span><span>    impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, B&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;,
+</span><span>    NextP: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, B&gt;,
+</span><span>    F: Fn(A) -&gt; NextP,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">move </span><span>|input| </span><span style="color:#b48ead;">match</span><span> parser.</span><span style="color:#96b5b4;">parse</span><span>(input) {
+</span><span>        Ok((next_input, result)) =&gt; </span><span style="color:#96b5b4;">f</span><span>(result).</span><span style="color:#96b5b4;">parse</span><span>(next_input),
+</span><span>        Err(err) =&gt; Err(err),
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>检查类型，这里有大量的类型变量，不过我们知道 <code>P</code>，作为输入的 parser，其返回值类型为 <code>A</code>。而函数 <code>F</code>，<code>map</code> 函数是 <code>A</code> 至 <code>B</code> 的映射，它们最大的区别就是输入 <code>and_then</code> 的函数是一个从 <code>A</code> 至新 parser <code>NextP</code> 的映射，其返回的类型是 <code>B</code>。最终返回的类型是 <code>B</code>，因此我们可以假设任何从 <code>NextP</code> 出来的结果都是最终结果。</p>
+<p>代码有一点点复杂：起始时运行 input parser，如果它失败了，那么便结束，如果成功我们就对其结果（类型 <code>A</code>）调用 <code>f</code> 函数，其输出为 <code>f(result)</code> 即一个新的 parser，并带有类型 <code>B</code> 的返回值。接着我们再次运行这个 parser 就可以直接返回结果了。如果失败了，那么便在此失败，如果成功了我们便会得到类型 <code>B</code> 的结果。</p>
+<p>让我们把 <code>and_then</code> 也加在 <code>Parser</code> trait 上，因为它与 <code>map</code> 类似，完全提高了可读性。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">and_then</span><span>&lt;F, NextParser, NewOutput&gt;(</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">f</span><span>: F) -&gt;
+</span><span>    BoxedParser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, NewOutput&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    </span><span style="color:#b48ead;">Self</span><span>: Sized + </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>    Output: </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>    NewOutput: </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>    NextParser: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, NewOutput&gt; + </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>    F: Fn(Output) -&gt; NextParser + </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>{
+</span><span>    BoxedParser::new(</span><span style="color:#96b5b4;">and_then</span><span>(</span><span style="color:#bf616a;">self</span><span>, f))
+</span><span>}
+</span></code></pre>
+<p>那么改写一下 <code>pair</code>：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">pair</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P1, P2, R1, R2&gt;(</span><span style="color:#bf616a;">parser1</span><span>: P1, </span><span style="color:#bf616a;">parser2</span><span>: P2) -&gt;
+</span><span>    impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, (R1, R2)&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P1: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R1&gt; + </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>    P2: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, R2&gt; + </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>    R1: </span><span style="color:#b48ead;">&#39;a</span><span> + Clone,
+</span><span>    R2: </span><span style="color:#b48ead;">&#39;a</span><span>,
+</span><span>{
+</span><span>    parser1.</span><span style="color:#96b5b4;">and_then</span><span>(
+</span><span>        </span><span style="color:#b48ead;">move </span><span>|result1| parser2
+</span><span>            .</span><span style="color:#96b5b4;">map</span><span>(</span><span style="color:#b48ead;">move </span><span>|result2| (result1.</span><span style="color:#96b5b4;">clone</span><span>(), result2))
+</span><span>    )
+</span><span>}
+</span></code></pre>
+<p>这看起来很简洁，但是有一个问题：<code>parser2.map()</code> 消费了 <code>parser2</code> 来创建被包裹的 parser，而该函数是一个 <code>Fn</code>，不是 <code>FnOnce</code>，所以它不被允许去消费 <code>parser2</code>，仅仅只能获取引用。</p>
+<p>在 Rust 中我们所能做的就是使用函数来惰性（lazily）生成 right 的 <code>close_element</code> parser。</p>
+<p>使用 <code>and_then</code> 可以构建 right 版本的 <code>close_element</code>。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">parent_element</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Element&gt; {
+</span><span>    </span><span style="color:#96b5b4;">open_element</span><span>().</span><span style="color:#96b5b4;">and_then</span><span>(|</span><span style="color:#bf616a;">el</span><span>| {
+</span><span>        </span><span style="color:#96b5b4;">left</span><span>(</span><span style="color:#96b5b4;">zero_or_more</span><span>(</span><span style="color:#96b5b4;">element</span><span>()), </span><span style="color:#96b5b4;">close_element</span><span>(el.name.</span><span style="color:#96b5b4;">clone</span><span>()))
+</span><span>            .</span><span style="color:#96b5b4;">map</span><span>(</span><span style="color:#b48ead;">move </span><span>|children| {
+</span><span>                </span><span style="color:#b48ead;">let mut</span><span> el = el.</span><span style="color:#96b5b4;">clone</span><span>();
+</span><span>                el.children = children;
+</span><span>                el
+</span><span>            })
+</span><span>    })
+</span><span>}
+</span></code></pre>
+<p>现在看起来变得更加复杂了，因为 <code>and_then</code> 必须跟在 <code>open_element()</code> 之后，也就是我们找到元素名字的地方并使其进入 <code>close_element</code>。这就意味着在 <code>open_element</code> 之后的所有 parser 必须在 <code>and_then</code> 闭包之中进行构建。此外因为闭包现在是 <code>open_element</code> 的 <code>Element</code> 结果的唯一接收者，我们返回的 parser 也必须将信息一直向前传递。</p>
+<p>在里面的闭包中，也就是我们 <code>map</code> 生成 parser 的闭包，带有一个从外部闭包 <code>Element</code> 的引用（<code>el</code>）。我们必须 <code>clone()</code> 它，因为我们是在一个 <code>Fn</code> 内部因此只有一个它的引用。我们拿着内部 parser（<code>Vec&lt;Element&gt;</code> 子元素）的结果并将它们添加至拷贝的 <code>Element</code> 中，作为我们最终的返回。</p>
+<p>现在我们需要做的是返回 <code>element</code> parser 并确保我们把 <code>open_element</code> 替换成 <code>parent_element</code>，这样它就可以解析整个元素结构了！</p>
+<div id="是你讲那个 M 词还是由我来讲呢"/>
+<h2 id="shi-ni-jiang-na-ge-m-ci-huan-shi-you-wo-lai-jiang-ni">是你讲那个 M 词还是由我来讲呢？</h2>
+<p>还记得我们谈过的 <code>map</code> 模式在 Haskell 中是被称之为一个函子 functor 吗？</p>
+<p><code>and_then</code> 模式是另一个在 Rust 中常见的模式，通常来说与 <code>map</code> 伴生。在 <code>Iterator</code> 上它被称为 <code>flat_map</code>，而其实它与 <code>and_then</code> 是一样的。</p>
+<p>这个美丽的单词就是“单子（monad）”。如果你拥有一个 <code>Thing&lt;A&gt;</code>，那么你的一个 <code>and_then</code> 函数就允许你传递一个从 <code>A</code> 转换至 <code>Thing&lt;B&gt;</code> 的函数，因此你就拥有了一个新的 <code>Thing&lt;B&gt;</code>，这便是单子 monad。</p>
+<p>这个函数可能会被立马调用，正如当你有一个 <code>Option&lt;A&gt;</code>，我们已经知道了它是一个 <code>Some(A)</code> 或是一个 <code>None</code>，因此直接应用此函数的话，如果是一个 <code>Some(A)</code>，那么返回的便是 <code>Some(B)</code>。</p>
+<p>这个函数也可以被惰性的调用。例如如果你有一个 <code>Future&lt;A&gt;</code>，它在等待结果，<code>and_then</code> 不是立刻调用函数并创建 <code>Future&lt;B&gt;</code>，而是创建一个 <code>Future&lt;B&gt;</code> 其中包含了 <code>Future&lt;A&gt;</code> 以及等待 <code>Future&lt;A&gt;</code> 结束的函数。</p>
+<p>尽管拥有函子 functor，Rust 的类型系统展示还没有能力来表达单子 monad，所以我们只需要知道这个模式被称为 monad 即可。</p>
+<div id="空格 Redux"/>
+<h2 id="kong-ge-redux">空格 Redux</h2>
+<p>最后一件事。我们需要一个 parser 能够解析一些 XML，但是在处理空格方面还是不太让人满意。随机的空格是被允许在标签之间，这样就可以随意的在标签插入分行。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">whitespace_wrap</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, P, A&gt;(</span><span style="color:#bf616a;">parser</span><span>: P) -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;
+</span><span style="color:#b48ead;">where
+</span><span>    P: Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, A&gt;,
+</span><span>{
+</span><span>    </span><span style="color:#96b5b4;">right</span><span>(</span><span style="color:#96b5b4;">space0</span><span>(), </span><span style="color:#96b5b4;">left</span><span>(parser, </span><span style="color:#96b5b4;">space0</span><span>()))
+</span><span>}
+</span></code></pre>
+<p>如果我们包裹了 <code>element</code>，它会忽略所有在 <code>element</code> 周围的空格，这就意味着我们可以随意的添加任意行数与缩进了。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">element</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;() -&gt; impl Parser&lt;</span><span style="color:#b48ead;">&#39;a</span><span>, Element&gt; {
+</span><span>    </span><span style="color:#96b5b4;">whitespace_wrap</span><span>(</span><span style="color:#96b5b4;">either</span><span>(</span><span style="color:#96b5b4;">single_element</span><span>(), </span><span style="color:#96b5b4;">parent_element</span><span>()))
+</span><span>}
+</span></code></pre>
+<div id="终于完成了"/>
+<h2 id="zhong-yu-wan-cheng-liao">终于完成了</h2>
+<p>我认为我们做到了！最后再写一个综合测试来庆祝一下。</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">xml_parser</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> doc = </span><span style="color:#b48ead;">r</span><span>#&quot;
+</span><span style="color:#a3be8c;">        &lt;top label=&quot;Top&quot;&gt;
+</span><span style="color:#a3be8c;">            &lt;semi-bottom label=&quot;Bottom&quot;/&gt;
+</span><span style="color:#a3be8c;">            &lt;middle&gt;
+</span><span style="color:#a3be8c;">                &lt;bottom label=&quot;Another bottom&quot;/&gt;
+</span><span style="color:#a3be8c;">            &lt;/middle&gt;
+</span><span style="color:#a3be8c;">        &lt;/top&gt;</span><span>&quot;#;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> parsed_doc = Element {
+</span><span>        name: &quot;</span><span style="color:#a3be8c;">top</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(),
+</span><span>        attributes: vec![(&quot;</span><span style="color:#a3be8c;">label</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(), &quot;</span><span style="color:#a3be8c;">Top</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>())],
+</span><span>        children: vec![
+</span><span>            Element {
+</span><span>                name: &quot;</span><span style="color:#a3be8c;">semi-bottom</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(),
+</span><span>                attributes: vec![
+</span><span>                    (&quot;</span><span style="color:#a3be8c;">label</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(), &quot;</span><span style="color:#a3be8c;">Bottom</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>())
+</span><span>                ],
+</span><span>                children: vec![],
+</span><span>            },
+</span><span>            Element {
+</span><span>                name: &quot;</span><span style="color:#a3be8c;">middle</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(),
+</span><span>                attributes: vec![],
+</span><span>                children: vec![Element {
+</span><span>                    name: &quot;</span><span style="color:#a3be8c;">bottom</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(),
+</span><span>                    attributes: vec![
+</span><span>                        (&quot;</span><span style="color:#a3be8c;">label</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>(), &quot;</span><span style="color:#a3be8c;">Another bottom</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>())
+</span><span>                    ],
+</span><span>                    children: vec![],
+</span><span>                }],
+</span><span>            },
+</span><span>        ],
+</span><span>    };
+</span><span>    assert_eq!(Ok((&quot;&quot;, parsed_doc)), </span><span style="color:#96b5b4;">element</span><span>().</span><span style="color:#96b5b4;">parse</span><span>(doc));
+</span><span>}
+</span></code></pre>
+<p>以及一个错误匹配了闭合标记的错误测试：</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">test</span><span>]
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">mismatched_closing_tag</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> doc = </span><span style="color:#b48ead;">r</span><span>#&quot;
+</span><span style="color:#a3be8c;">        &lt;top&gt;
+</span><span style="color:#a3be8c;">            &lt;bottom/&gt;
+</span><span style="color:#a3be8c;">        &lt;/middle&gt;</span><span>&quot;#;
+</span><span>    assert_eq!(Err(&quot;</span><span style="color:#a3be8c;">&lt;/middle&gt;</span><span>&quot;), </span><span style="color:#96b5b4;">element</span><span>().</span><span style="color:#96b5b4;">parse</span><span>(doc));
+</span><span>}
+</span></code></pre>
+<p>好消息是它返回了不匹配的闭合标签作为错误结果。坏消息是它没有真正的提到问题是因为不匹配的闭合标签，仅仅只有错误的地点。不过比什么都没有好，平心而论即使有了错误信息，它还是糟糕的。转换它成为一个能提供优秀信息的错误可能需要另一篇文章来解决了。</p>
+<p>还是让我们聚焦好消息：我们通过 parser 组合子的方式编写一个解析器！我们知道了一个 parser 既可以构成函子又可以构成单子，所以现在的你就可以用令人畏惧的范畴论知识在聚会上给人留下深刻印象了！</p>
+<p>最重要的是，我们现在知道解析器组合子是如何从头开始工作的。 现在没有人能阻止我们！</p>
+<div id="额外的资源"/>
+<h2 id="e-wai-de-zi-yuan">额外的资源</h2>
+<p><a href="https://github.com/Geal/nom">nom</a></p>
+<p><a href="https://github.com/Marwes/combine">combine</a></p>
+<p><a href="http://www.cs.nott.ac.uk/~pszgmh/pih.html">Programming in Haskell</a></p>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-xml-feng-ge-de-biao-ji-yu-yan"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#xml-feng-ge-de-biao-ji-yu-yan"
+							>
+								XML 风格的标记语言
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-ding-yi-parser"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#ding-yi-parser"
+							>
+								定义 Parser
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-di-yi-ge-parser"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#di-yi-ge-parser"
+							>
+								第一个 Parser
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-yi-ge-parser-gou-zao-qi"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#yi-ge-parser-gou-zao-qi"
+							>
+								一个 Parser 构造器
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-ce-shi-parser"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#ce-shi-parser"
+							>
+								测试 Parser
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-fan-yong-xing-geng-gao-de-parser"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#fan-yong-xing-geng-gao-de-parser"
+							>
+								泛用性更高的 Parser
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-zu-he-zi-combinators"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#zu-he-zi-combinators"
+							>
+								组合子 Combinators
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-han-zi-functor"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#han-zi-functor"
+							>
+								函子 Functor
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-trait-chu-chang"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#trait-chu-chang"
+							>
+								Trait 出场
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-left-he-right"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#left-he-right"
+							>
+								Left 和 Right
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-one-or-more"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#one-or-more"
+							>
+								One Or More
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-wei-yu-zu-he-zi-predicate-combinator"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#wei-yu-zu-he-zi-predicate-combinator"
+							>
+								谓语组合子 Predicate combinator
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-yin-yong-zi-fu-chuan"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#yin-yong-zi-fu-chuan"
+							>
+								引用字符串
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-jie-xi-shu-xing"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#jie-xi-shu-xing"
+							>
+								解析属性
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-hen-jie-jin-liao"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#hen-jie-jin-liao"
+							>
+								很接近了
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-chao-yue-wu-xian-to-infinity-and-beyond"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#chao-yue-wu-xian-to-infinity-and-beyond"
+							>
+								超越无限 To Infinity And Beyond
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-zhan-shi-zi-ji-de-ji-hui-boxedparser"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#zhan-shi-zi-ji-de-ji-hui-boxedparser"
+							>
+								展示自己的机会 BoxedParser
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-dai-zi-yuan-su-de-qing-kuang"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#dai-zi-yuan-su-de-qing-kuang"
+							>
+								带子元素的情况
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-shi-ni-jiang-na-ge-m-ci-huan-shi-you-wo-lai-jiang-ni"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#shi-ni-jiang-na-ge-m-ci-huan-shi-you-wo-lai-jiang-ni"
+							>
+								是你讲那个 M 词还是由我来讲呢？
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-kong-ge-redux"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#kong-ge-redux"
+							>
+								空格 Redux
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-zhong-yu-wan-cheng-liao"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#zhong-yu-wan-cheng-liao"
+							>
+								终于完成了
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-e-wai-de-zi-yuan"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2021-7-11-rust-parser-combinators/#e-wai-de-zi-yuan"
+							>
+								额外的资源
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>
