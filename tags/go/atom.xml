@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Jacob&#x27;s Domain - Go</title>
+    <subtitle>Sharing interesting things</subtitle>
+    <link href="https://jacobbishopxy.github.io/tags/go/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://jacobbishopxy.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-12-24T00:00:00+00:00</updated>
+    <id>https://jacobbishopxy.github.io/tags/go/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Toy Note</title>
+        <published>2021-12-24T00:00:00+00:00</published>
+        <updated>2021-12-24T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://jacobbishopxy.github.io/posts/toy-note/" type="text/html"/>
+        <id>https://jacobbishopxy.github.io/posts/toy-note/</id>
+        
+        <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;For convenience sake, as a full-stack developer I&#x27;ve been working with NodeJS for a long while. Using NodeJS as backend service obviously gives coders a lot of flexibility, such as mature open-source libraries, same frontend &amp;amp; backend language, etc. However, in some cases, for example in a concurrency scenario, NodeJS is no more feasible. After a short time of survey, Golang turns out to be an alternative option for me to build up my backend service. And here I wrote a simple toy project to record my study progress. Check the full source code on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Jacobbishopxy&#x2F;toy-note&quot;&gt;Github&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;structure&quot;&gt;Structure&lt;&#x2F;h2&gt;
+&lt;p&gt;The project structure is simple enough to understand:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;txt&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-txt &quot;&gt;&lt;code class=&quot;language-txt&quot; data-lang=&quot;txt&quot;&gt;&lt;span&gt;toy-note
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── api
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── controller
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── note.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── query.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── response.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── entity
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── affiliate.entity.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── post.entity.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── tag.entity.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── common.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── persistence
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── mongo_test.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── mongo.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── postgres_test.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── postgres.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── service
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── note.service_test.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── note.service.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── repository.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── util
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   ├── config_test.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   │   └── config.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |   |
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── api.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── cmd
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── app
+&lt;&#x2F;span&gt;&lt;span&gt;    │       └── main.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── docs
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── docs.go
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── swagger.json
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── swagger.yaml
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── env
+&lt;&#x2F;span&gt;&lt;span&gt;    │   ├── dev.env
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── prod.env
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── logger
+&lt;&#x2F;span&gt;&lt;span&gt;    │   └── logger.go
+&lt;&#x2F;span&gt;&lt;span&gt;    |
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── go.mod
+&lt;&#x2F;span&gt;&lt;span&gt;    ├── go.sum
+&lt;&#x2F;span&gt;&lt;span&gt;    └── Makefile
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;to be continued...&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Microservice Preparation</title>
+        <published>2021-07-22T00:00:00+00:00</published>
+        <updated>2021-07-22T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://jacobbishopxy.github.io/posts/2021-7-22-microservice-preparation/" type="text/html"/>
+        <id>https://jacobbishopxy.github.io/posts/2021-7-22-microservice-preparation/</id>
+        
+        <content type="html">&lt;div class=&quot;content__image&quot;&gt;
+  &lt;img src=&quot;&amp;#x2F;images&amp;#x2F;rustgo.jpg&quot; alt=&quot;Rust + Go&quot;  height=&quot;250px&quot;   &#x2F;&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;Hello everyone 👋, today I&#x27;m going to start a new project demonstrating how to build a microservices system. &lt;code&gt;React&lt;&#x2F;code&gt;, &lt;code&gt;Golang&lt;&#x2F;code&gt;, &lt;code&gt;Grpc&lt;&#x2F;code&gt;, &lt;code&gt;Rust&lt;&#x2F;code&gt;, &lt;code&gt;Redis&lt;&#x2F;code&gt;, &lt;code&gt;Mongo&lt;&#x2F;code&gt; and maybe more will be used in this scenario. The reason why I choose these tech stacks is because I really like Golang and Rust, and I wish I can use them to enhance my projects in the real work, which is done by &lt;code&gt;Python&lt;&#x2F;code&gt; and &lt;code&gt;NodeJs&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Obviously, for quick production&#x27;s sake, &lt;code&gt;Python&lt;&#x2F;code&gt; and &lt;code&gt;NodeJs&lt;&#x2F;code&gt; are very friendly and easy to use, but as the time goes when the whole system is getting larger and larger, it starts getting out of control. There are many reasons I have to refactor my project, such as single threaded backend services, loose project management, weak language type and etc, but for now these issuses are not what we ought to concern. Let&#x27;s go back to our topic and before we get our hands wet, there are few prerequisites that we need to notice.&lt;&#x2F;p&gt;
+&lt;p&gt;Before we start, I have to mention that due to my job requirement, which is always dealing with Office softwares, I have to use Windows as my working environment. Therefore, choosing &lt;code&gt;WSL2(Ubuntu) + Windows Docker Desktop + VsCode&lt;&#x2F;code&gt; as my dev env can eliminate cross-platform headache.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;wsl&quot;&gt;WSL&lt;&#x2F;h3&gt;
+&lt;p&gt;Please check &lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs&#x2F;2021-7-2-wsl-setup&#x2F;&quot;&gt;my previous post&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;vscode&quot;&gt;VsCode&lt;&#x2F;h3&gt;
+&lt;p&gt;Extensions:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;eslint&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Integrates ESLint into VS Code&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;go&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The VS Code Go extension provides rich language support for the Go programming language.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;rust-analyzer&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Provides support for rust-analyzer: novel LSP server for the Rust programming language.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;clang-format&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Clang-Format is a tool to format C&#x2F;C++&#x2F;Java&#x2F;JavaScript&#x2F;Objective-C&#x2F;Objective-C++&#x2F;Protobuf code. It can be configured with a config file within the working folder or a parent folder.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;And don&#x27;t forget to install &lt;code&gt;clang-format&lt;&#x2F;code&gt; in your operation system:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get install clang-format
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;vscode-proto3&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Protobuf 3 support for Visual Studio Code&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;npm-or-yarn&quot;&gt;NPM or Yarn&lt;&#x2F;h3&gt;
+&lt;p&gt;Prerequisite for JavaScript&#x2F;TypeScript is very simple and no pitfall.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt update
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt upgrade&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get install curl
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl -sL&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_16.x | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo -E&lt;&#x2F;span&gt;&lt;span&gt; bash -
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get install nodejs
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install npm
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; npm i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -g&lt;&#x2F;span&gt;&lt;span&gt; npm
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; npm i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -g&lt;&#x2F;span&gt;&lt;span&gt; yarn
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;rustc-and-cargo&quot;&gt;Rustc and Cargo&lt;&#x2F;h3&gt;
+&lt;p&gt;Here is my favorite part: the simplest installation ever! Decent and tidy!&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;sh.rustup.rs&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -sSf &lt;&#x2F;span&gt;&lt;span&gt;| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sh
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;source &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;HOME&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;.cargo&#x2F;env
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And that&#x27;s it! You can check rustup, rustc and cargo version by:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rustup --version
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rustc --version
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cargo --version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;go&quot;&gt;Go&lt;&#x2F;h3&gt;
+&lt;p&gt;A little bit tricky here, because for some part of the real world, proxy is a must.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl -O&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;storage.googleapis.com&#x2F;golang&#x2F;go1.17.linux-amd64.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tar -xvf&lt;&#x2F;span&gt;&lt;span&gt; go1.17.linux-amd64.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# optional, if you have a previous installed version
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; rm&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -rf&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;usr&#x2F;local&#x2F;go
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; mv go &#x2F;usr&#x2F;local
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rm&lt;&#x2F;span&gt;&lt;span&gt; go1.17.linux-amd64.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# optional, if you have already added GOPATH to `.bashrc`
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; vim &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;.bashrc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And add these two lines at the end of the file:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;.bashrc&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-.bashrc &quot;&gt;&lt;code class=&quot;language-.bashrc&quot; data-lang=&quot;.bashrc&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;export &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;GOPATH&lt;&#x2F;span&gt;&lt;span&gt;=$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;HOME&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;go
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;export &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PATH&lt;&#x2F;span&gt;&lt;span&gt;=$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;:&#x2F;usr&#x2F;local&#x2F;go&#x2F;bin:&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;GOPATH&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;bin
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Then:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;source &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;.bashrc
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;go&lt;&#x2F;span&gt;&lt;span&gt; version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Set proxy:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;go&lt;&#x2F;span&gt;&lt;span&gt; env&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -w&lt;&#x2F;span&gt;&lt;span&gt; GOPROXY=https:&#x2F;&#x2F;goproxy.io,direct
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;After VsCode &lt;strong&gt;go&lt;&#x2F;strong&gt; extension installed, &lt;code&gt;ctrl + shift + p&lt;&#x2F;code&gt; open commands and type &lt;code&gt;go: install&#x2F;update tools&lt;&#x2F;code&gt;. Select all and update.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;grpc&quot;&gt;GRPC&lt;&#x2F;h3&gt;
+&lt;p&gt;The trickiest part now comes. We need a code generate tool called &lt;code&gt;protoc&lt;&#x2F;code&gt;, which will be used to generate our Golang code.&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks to &lt;a href=&quot;http:&#x2F;&#x2F;google.github.io&#x2F;proto-lens&#x2F;installing-protoc.html&quot;&gt;google.github.io&#x2F;proto-lens&lt;&#x2F;a&gt;, who makes the whole process way easier. By simply using &lt;code&gt;sudo apt install -y protobuf-compiler&lt;&#x2F;code&gt; command, we can not install the latest version. And moreover, it could drive you crazy, because later on you would find that dependencies like &lt;code&gt;import &amp;quot;google&#x2F;protobuf&#x2F;timestamp.proto&amp;quot;;&lt;&#x2F;code&gt; cannot be found!. This is because the default folder is not in the right position.&lt;&#x2F;p&gt;
+&lt;p&gt;To install &lt;code&gt;protoc&lt;&#x2F;code&gt; cli, visit &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;protocolbuffers&#x2F;protobuf&quot;&gt;protobuf release page&lt;&#x2F;a&gt; and choose the latest one (the current latest ver. is &lt;code&gt;3.17.3&lt;&#x2F;code&gt;), then:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROTOC_ZIP&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;protoc-3.17.3-linux-x86_64.zip
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl -OL&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;github.com&#x2F;protocolbuffers&#x2F;protobuf&#x2F;releases&#x2F;download&#x2F;v3.17.3&#x2F;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROTOC_ZIP
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; unzip&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -o &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROTOC_ZIP -d&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;usr&#x2F;local bin&#x2F;protoc
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; unzip&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -o &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROTOC_ZIP -d&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;usr&#x2F;local &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;include&#x2F;*&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rm -f &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROTOC_ZIP
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; chown&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -R &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;USER&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;usr&#x2F;local&#x2F;include&#x2F;google&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;protoc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Notice the last two lines may not be required, but in case of &lt;code&gt;permission denied&lt;&#x2F;code&gt; occurred, please use them.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;docker&quot;&gt;Docker&lt;&#x2F;h3&gt;
+&lt;p&gt;In order to quickly setup dev tools, such as Redis, MongoDB, Mongo Express and etc, we choose to use Docker desktop. Its&#x27; installation is also simple and neat: just follow &lt;a href=&quot;https:&#x2F;&#x2F;www.docker.com&#x2F;products&#x2F;docker-desktop&quot;&gt;the official website&lt;&#x2F;a&gt; you can get a WSL based docker desktop on Windows.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;Ok, I think we have done a lot today and I hope you like it. The next section will be the design of this project. See you soon ❤️&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
