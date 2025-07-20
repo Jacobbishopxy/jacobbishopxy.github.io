@@ -1,20 +1,20 @@
 +++
-title="Ubuntu22 CMake3.28 and GCC14"
-description="Install CMake3.28 & GCC14 on Ubuntu22"
+title="Ubuntu22 CMake3.31 and GCC14"
+description="Install CMake3.31 & GCC14 on Ubuntu22"
 date=2025-07-07
 
 [taxonomies]
 categories = ["Doc"]
 +++
 
-## CMake 3.28
+## CMake 3.31
 
 ```sh
 sudo apt remove --purge --auto-remove cmake
 sudo apt update
 sudo apt install build-essential libtool autoconf unzip wget
 
-version=3.28
+version=3.31
 build=1
 mkdir ~/temp
 cd ~/temp
@@ -41,7 +41,12 @@ cd gcc-14.3.0
 make
 sudo make install
 
+# soft link
+sudo ln -l /usr/local/gcc-14.3.0/bin/g++-14.3.0 /usr/bin/g++-14
+sudo ln -l /usr/local/gcc-14.3.0/bin/gcc-14.3.0 /usr/bin/gcc-14
+
+
 # Optional, make it the default
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/local/gcc-14.3.0/bin/g++14.3.0 14
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/local/gcc-14.3.0/bin/gcc14.3.0 14
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/local/gcc-14.3.0/bin/g++-14.3.0 14
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/local/gcc-14.3.0/bin/gcc-14.3.0 14
 ```
