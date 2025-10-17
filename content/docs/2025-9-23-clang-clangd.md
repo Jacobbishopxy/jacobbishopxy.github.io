@@ -2,6 +2,7 @@
 title="Ubuntu22 clang and clangd"
 description="Upgrade clang & clangd to 20"
 date=2025-09-23
+updated =2025-10-17
 
 [taxonomies]
 categories = ["Doc"]
@@ -45,4 +46,11 @@ sudo unzip clangd-linux-20.1.8.zip -d /opt/
     ],
     ...
 }
+```
+
+.clangd:
+
+```txt
+CompileFlags:
+  Add: [-std=c++23]
 ```
