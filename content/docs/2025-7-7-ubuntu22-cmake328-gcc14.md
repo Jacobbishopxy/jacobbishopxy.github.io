@@ -42,8 +42,8 @@ make
 sudo make install
 
 # soft link
-sudo ln -l /usr/local/gcc-14.3.0/bin/g++-14.3.0 /usr/bin/g++-14
-sudo ln -l /usr/local/gcc-14.3.0/bin/gcc-14.3.0 /usr/bin/gcc-14
+sudo ln -s /usr/local/gcc-14.3.0/bin/g++-14.3.0 /usr/bin/g++-14
+sudo ln -s /usr/local/gcc-14.3.0/bin/gcc-14.3.0 /usr/bin/gcc-14
 
 
 # Optional, make it the default
