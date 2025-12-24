@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | More Rust Type </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">More Rust Type</h1>
+					<p class="subtitle">Study note</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2021-08-16">August 16, 2021</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>18 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>3514 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/note/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Note</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/rust/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Rust</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><p>Study note from <a href="https://www.jakobmeier.ch/blogging/Untapped-Rust.html">Untapped potential in Rust's type system</a>.</p>
+<h2 id="warm-up">Warm up</h2>
+<blockquote>
+<p>Types are a very abstract concept.</p>
+</blockquote>
+<p>In most of the languages, types are things used to describe variables' form, and some languages like Haskell, types are elements which have been endowed by black magic. As the author mentioned, the whole Haskell program seems like written in the type system itself, and what I've learned from Scala functional programing has the same idea. Be short, it is basically implementing some functional trait for a type, for example a <code>F[_]</code> who implemented <code>def map</code> can be treaded as a Functor (actually more complected than this).</p>
+<p>Type has more meanings in Rust. With ownership system, we have immutable <code>&amp;</code> and mutable <code>&amp;mut</code> reference type, and we also have lifetime type such as <code>'static</code>. But these are types working in compile time, which is not enough for runtime.</p>
+<blockquote>
+<p>However, Rust offers ways to manually store type information which can be used also at runtime.</p>
+</blockquote>
+<p>Which is saying a fat pointer, who actually points to a vtable, and is called a trait object in Rust. Sadly, a trait object has its' limitation, because as <a href="https://doc.rust-lang.org/book">THE BOOK</a> taught, it should obey object safe rules. Be brief, defining a trait for trait object needs to specify its methods' input and output size (coming with <code>Sized</code> trait tag).</p>
+<p>Alright, here comes the part that is not taught in THE BOOK. The author introduces a crate from standard library, and it goes like:</p>
+<blockquote>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>core::any::{Any, TypeId};
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> one_hundred = </span><span style="color:#d08770;">100</span><span style="color:#b48ead;">u32</span><span>;
+</span><span>    </span><span style="color:#65737e;">// Get the type ID using a value of that type.
+</span><span>    </span><span style="color:#b48ead;">let</span><span> t0 = one_hundred.</span><span style="color:#96b5b4;">type_id</span><span>();
+</span><span>    </span><span style="color:#65737e;">// Get the type ID directly.
+</span><span>    </span><span style="color:#b48ead;">let</span><span> t1 = TypeId::of::&lt;</span><span style="color:#b48ead;">u32</span><span>&gt;();
+</span><span>
+</span><span>    assert_eq!(t0, t1);
+</span><span>}
+</span></code></pre>
+</blockquote>
+<p>A little bit curiosity comes from me when I print these variables:</p>
+<pre data-lang="t" style="background-color:#2b303b;color:#c0c5ce;" class="language-t "><code class="language-t" data-lang="t"><span>t0: </span><span style="color:#d08770;">TypeId </span><span>{ t: </span><span style="color:#d08770;">12849923012446332737 </span><span>}
+</span><span>t1: </span><span style="color:#d08770;">TypeId </span><span>{ t: </span><span style="color:#d08770;">12849923012446332737 </span><span>}
+</span></code></pre>
+<p>What exactly a <code>TypeId</code> is? Then I look into its definition:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#65737e;">/// A `TypeId` represents a globally unique identifier for a type.
+</span><span style="color:#65737e;">///
+</span><span style="color:#65737e;">/// Each `TypeId` is an opaque object which does not allow inspection of what&#39;s
+</span><span style="color:#65737e;">/// inside but does allow basic operations such as cloning, comparison,
+</span><span style="color:#65737e;">/// printing, and showing.
+</span><span style="color:#65737e;">///
+</span><span style="color:#65737e;">/// A `TypeId` is currently only available for types which ascribe to `&#39;static`,
+</span><span style="color:#65737e;">/// but this limitation may be removed in the future.
+</span><span style="color:#65737e;">///
+</span><span style="color:#65737e;">/// While `TypeId` implements `Hash`, `PartialOrd`, and `Ord`, it is worth
+</span><span style="color:#65737e;">/// noting that the hashes and ordering will vary between Rust releases. Beware
+</span><span style="color:#65737e;">/// of relying on them inside of your code!
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Debug, Hash)]
+</span><span>#[</span><span style="color:#bf616a;">stable</span><span>(feature = &quot;</span><span style="color:#a3be8c;">rust1</span><span>&quot;, since = &quot;</span><span style="color:#a3be8c;">1.0.0</span><span>&quot;)]
+</span><span style="color:#b48ead;">pub struct </span><span>TypeId {
+</span><span>    </span><span style="color:#bf616a;">t</span><span>: </span><span style="color:#b48ead;">u64</span><span>,
+</span><span>}
+</span></code></pre>
+<p>Well 🤔, it only works for <code>'static</code> right now, and I thought it could not help us for now. But the author amazed me by using <code>Box&lt;dyn&gt;</code> syntax to create trait objects, so that a type can be compared by <code>TypeId</code> (full code):</p>
+<blockquote>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>core::any::{Any, TypeId};
+</span><span style="color:#b48ead;">use </span><span>std::ops::Deref;
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>Rectangle;
+</span><span style="color:#b48ead;">struct </span><span>Triangle;
+</span><span>
+</span><span style="color:#b48ead;">trait </span><span>Shape: Any {}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Shape </span><span style="color:#b48ead;">for </span><span>Rectangle {}
+</span><span style="color:#b48ead;">impl </span><span>Shape </span><span style="color:#b48ead;">for </span><span>Triangle {}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>   </span><span style="color:#b48ead;">let</span><span> shapes: Vec&lt;Box&lt;dyn Shape&gt;&gt; =
+</span><span>       vec![Box::new(Rectangle), Box::new(Triangle), Box::new(Rectangle)];
+</span><span>   </span><span style="color:#b48ead;">let</span><span> n = </span><span style="color:#96b5b4;">count_rectangles</span><span>(&amp;shapes);
+</span><span>   assert_eq!(</span><span style="color:#d08770;">2</span><span>, n);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">count_rectangles</span><span>(</span><span style="color:#bf616a;">shapes</span><span>: &amp;[Box&lt;dyn Shape&gt;]) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>   </span><span style="color:#b48ead;">let mut</span><span> n = </span><span style="color:#d08770;">0</span><span>;
+</span><span>   </span><span style="color:#b48ead;">for</span><span> shape in shapes {
+</span><span>       </span><span style="color:#65737e;">// Need to derefernce once or we will get the type of the Box!
+</span><span>       </span><span style="color:#b48ead;">let</span><span> type_of_shape = shape.</span><span style="color:#96b5b4;">deref</span><span>().</span><span style="color:#96b5b4;">type_id</span><span>();
+</span><span>       </span><span style="color:#b48ead;">if</span><span> type_of_shape == TypeId::of::&lt;Rectangle&gt;() {
+</span><span>           n += </span><span style="color:#d08770;">1</span><span>;
+</span><span>       } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>           println!(&quot;</span><span style="color:#d08770;">{:?}</span><span style="color:#a3be8c;"> is not a Rectangle!</span><span>&quot;, type_of_shape);
+</span><span>       }
+</span><span>   }
+</span><span>   n
+</span><span>}
+</span></code></pre>
+</blockquote>
+<p>Here the <code>Any</code> trait provides a <code>type_id()</code> method, which is the key of identification. Similarly, the author provides another function that can be used for removing the first rectangle from a vector:</p>
+<blockquote>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>core::any::{Any, TypeId};
+</span><span style="color:#b48ead;">use </span><span>std::ops::Deref;
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>Rectangle;
+</span><span style="color:#b48ead;">struct </span><span>Triangle;
+</span><span>
+</span><span style="color:#b48ead;">trait </span><span>Shape: Any {}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Shape </span><span style="color:#b48ead;">for </span><span>Rectangle {}
+</span><span style="color:#b48ead;">impl </span><span>Shape </span><span style="color:#b48ead;">for </span><span>Triangle {}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>   </span><span style="color:#b48ead;">let mut</span><span> shapes: Vec&lt;Box&lt;dyn Any&gt;&gt; =
+</span><span>       vec![Box::new(Rectangle), Box::new(Triangle), Box::new(Rectangle)];
+</span><span>   </span><span style="color:#96b5b4;">remove_first_rectangle</span><span>(&amp;</span><span style="color:#b48ead;">mut</span><span> shapes).</span><span style="color:#96b5b4;">expect</span><span>(&quot;</span><span style="color:#a3be8c;">No rectangle found to be removed</span><span>&quot;);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">remove_first_rectangle</span><span>(</span><span style="color:#bf616a;">shapes</span><span>: &amp;</span><span style="color:#b48ead;">mut </span><span>Vec&lt;Box&lt;dyn Any&gt;&gt;) -&gt; Option&lt;Box&lt;Rectangle&gt;&gt; {
+</span><span>   </span><span style="color:#b48ead;">let</span><span> idx = shapes
+</span><span>       .</span><span style="color:#96b5b4;">iter</span><span>()
+</span><span>       .</span><span style="color:#96b5b4;">position</span><span>(|</span><span style="color:#bf616a;">shape</span><span>| shape.</span><span style="color:#96b5b4;">deref</span><span>().</span><span style="color:#96b5b4;">type_id</span><span>() == TypeId::of::&lt;Rectangle&gt;())?;
+</span><span>   </span><span style="color:#b48ead;">let</span><span> rectangle_as_unknown_shape = shapes.</span><span style="color:#96b5b4;">remove</span><span>(idx);
+</span><span>   rectangle_as_unknown_shape.</span><span style="color:#96b5b4;">downcast</span><span>().</span><span style="color:#96b5b4;">ok</span><span>()
+</span><span>}
+</span></code></pre>
+</blockquote>
+<p>The difference between these two functions <code>count_rectangles</code> and <code>remove_first_rectangle</code> is there input argument. Not only the type's mutability but also the <code>dyn</code> trait object. For the second function, we can't use <code>dyn Shape</code> to replace <code>dyn Any</code>, because <code>Shape</code> trait doesn't have <code>downcast</code> method.</p>
+<p>Here is the definition of <code>downcast</code>:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">impl</span><span>&lt;A: Allocator&gt; Box&lt;dyn Any, A&gt; {
+</span><span>    #[</span><span style="color:#bf616a;">inline</span><span>]
+</span><span>    #[</span><span style="color:#bf616a;">stable</span><span>(feature = &quot;</span><span style="color:#a3be8c;">rust1</span><span>&quot;, since = &quot;</span><span style="color:#a3be8c;">1.0.0</span><span>&quot;)]
+</span><span>    </span><span style="color:#65737e;">/// Attempt to downcast the box to a concrete type.
+</span><span>    </span><span style="color:#65737e;">///
+</span><span>    </span><span style="color:#65737e;">/// # Examples
+</span><span>    </span><span style="color:#65737e;">///
+</span><span>    </span><span style="color:#65737e;">/// ```
+</span><span>    </span><span style="color:#65737e;">/// use std::any::Any;
+</span><span>    </span><span style="color:#65737e;">///
+</span><span>    </span><span style="color:#65737e;">/// fn print_if_string(value: Box&lt;dyn Any&gt;) {
+</span><span>    </span><span style="color:#65737e;">///     if let Ok(string) = value.downcast::&lt;String&gt;() {
+</span><span>    </span><span style="color:#65737e;">///         println!(&quot;String ({}): {}&quot;, string.len(), string);
+</span><span>    </span><span style="color:#65737e;">///     }
+</span><span>    </span><span style="color:#65737e;">/// }
+</span><span>    </span><span style="color:#65737e;">///
+</span><span>    </span><span style="color:#65737e;">/// let my_string = &quot;Hello World&quot;.to_string();
+</span><span>    </span><span style="color:#65737e;">/// print_if_string(Box::new(my_string));
+</span><span>    </span><span style="color:#65737e;">/// print_if_string(Box::new(0i8));
+</span><span>    </span><span style="color:#65737e;">/// ```
+</span><span>    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">downcast</span><span>&lt;T: Any&gt;(</span><span style="color:#bf616a;">self</span><span>) -&gt; Result&lt;Box&lt;T, A&gt;, </span><span style="color:#b48ead;">Self</span><span>&gt; {
+</span><span>        </span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">self</span><span>.is::&lt;T&gt;() {
+</span><span>            </span><span style="color:#b48ead;">unsafe </span><span>{
+</span><span>                </span><span style="color:#b48ead;">let </span><span>(raw, alloc): (</span><span style="color:#b48ead;">*mut</span><span> dyn Any, _) = Box::into_raw_with_allocator(</span><span style="color:#bf616a;">self</span><span>);
+</span><span>                Ok(Box::from_raw_in(raw as </span><span style="color:#b48ead;">*mut</span><span> T, alloc))
+</span><span>            }
+</span><span>        } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>            Err(</span><span style="color:#bf616a;">self</span><span>)
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>That is to say, with <code>downcast</code>, we can 'transform' an <code>Any</code> type to some specific type.</p>
+<h2 id="heterogenous-collection">Heterogenous Collection</h2>
+<p>However, directly passing <code>Box&lt;dyn Any&gt;</code> around is not always a good idea.</p>
+<blockquote>
+<p>To avoid manual downcasting on the caller side, it can be hidden behind a generic function.</p>
+</blockquote>
+<p>And here is an example, in where I made some changes, from the author's original code:</p>
+<details>
+<summary>Click to expand</summary>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>std::{
+</span><span>    any::{Any, TypeId},
+</span><span>    collections::HashMap,
+</span><span>};
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#65737e;">// Before
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> collection = HeteroCollection::default();
+</span><span>    collection.</span><span style="color:#96b5b4;">set</span><span>(&quot;</span><span style="color:#a3be8c;">name</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">Jakob</span><span>&quot;);
+</span><span>    collection.</span><span style="color:#96b5b4;">set</span><span>(&quot;</span><span style="color:#a3be8c;">language</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">Rust</span><span>&quot;);
+</span><span>    collection.</span><span style="color:#96b5b4;">set</span><span>(&quot;</span><span style="color:#a3be8c;">dominant hand</span><span>&quot;, DominantHand::Right);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> _name = collection.get::&lt;&amp;</span><span style="color:#b48ead;">&#39;static str</span><span>&gt;(&quot;</span><span style="color:#a3be8c;">name</span><span>&quot;);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> _language = collection.get::&lt;&amp;</span><span style="color:#b48ead;">&#39;static str</span><span>&gt;(&quot;</span><span style="color:#a3be8c;">language</span><span>&quot;);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> _dominant_hand = collection.get::&lt;DominantHand&gt;(&quot;</span><span style="color:#a3be8c;">dominant hand</span><span>&quot;);
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:#?}</span><span>&quot;, collection);
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// After
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> collection = SingletonCollection::default();
+</span><span>    collection.</span><span style="color:#96b5b4;">set</span><span>(Name(&quot;</span><span style="color:#a3be8c;">Jakob</span><span>&quot;));
+</span><span>    collection.</span><span style="color:#96b5b4;">set</span><span>(Language(&quot;</span><span style="color:#a3be8c;">Rust</span><span>&quot;));
+</span><span>    collection.</span><span style="color:#96b5b4;">set</span><span>(DominantHand::Right);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> _name = collection.get::&lt;Name&gt;().</span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> _language = collection.get::&lt;Language&gt;().</span><span style="color:#d08770;">0</span><span>;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> _dominant_hand = collection.get::&lt;DominantHand&gt;();
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:#?}</span><span>&quot;, collection);
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// Use string as key
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Default, Debug)]
+</span><span style="color:#b48ead;">struct </span><span>HeteroCollection {
+</span><span>    </span><span style="color:#bf616a;">data</span><span>: HashMap&lt;&amp;</span><span style="color:#b48ead;">&#39;static str</span><span>, Box&lt;dyn Any&gt;&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>HeteroCollection {
+</span><span>    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">get</span><span>&lt;T: </span><span style="color:#b48ead;">&#39;static</span><span>&gt;(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">key</span><span>: &amp;</span><span style="color:#b48ead;">&#39;static str</span><span>) -&gt; Option&lt;&amp;T&gt; {
+</span><span>        </span><span style="color:#b48ead;">let</span><span> unknown_output: &amp;Box&lt;dyn Any&gt; = </span><span style="color:#bf616a;">self</span><span>.data.</span><span style="color:#96b5b4;">get</span><span>(key)?;
+</span><span>        unknown_output.</span><span style="color:#96b5b4;">downcast_ref</span><span>()
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">set</span><span>&lt;T: </span><span style="color:#b48ead;">&#39;static</span><span>&gt;(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">key</span><span>: &amp;</span><span style="color:#b48ead;">&#39;static str</span><span>, </span><span style="color:#bf616a;">value</span><span>: T) {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.data.</span><span style="color:#96b5b4;">insert</span><span>(key, Box::new(value));
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// Use `TypeId` as key
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Default, Debug)]
+</span><span style="color:#b48ead;">struct </span><span>SingletonCollection {
+</span><span>    </span><span style="color:#bf616a;">data</span><span>: HashMap&lt;TypeId, Box&lt;dyn Any&gt;&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>SingletonCollection {
+</span><span>    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">get</span><span>&lt;T: Any&gt;(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;T {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.data[&amp;TypeId::of::&lt;T&gt;()]
+</span><span>            .</span><span style="color:#96b5b4;">downcast_ref</span><span>()
+</span><span>            .</span><span style="color:#96b5b4;">as_ref</span><span>()
+</span><span>            .</span><span style="color:#96b5b4;">unwrap</span><span>()
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">set</span><span>&lt;T: Any&gt;(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">value</span><span>: T) {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.data.</span><span style="color:#96b5b4;">insert</span><span>(TypeId::of::&lt;T&gt;(), Box::new(value));
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// For completeness: Type Definitions
+</span><span style="color:#b48ead;">struct </span><span>Name(&amp;</span><span style="color:#b48ead;">&#39;static str</span><span>);
+</span><span style="color:#b48ead;">struct </span><span>Language(&amp;</span><span style="color:#b48ead;">&#39;static str</span><span>);
+</span><span style="color:#b48ead;">pub enum </span><span>DominantHand {
+</span><span>    Left,
+</span><span>    Right,
+</span><span>    Both,
+</span><span>    Neither,
+</span><span>    Unknown,
+</span><span>    Other,
+</span><span>}
+</span></code></pre>
+</details>
+</br>
+<p>The well printed result:</p>
+<pre data-lang="t" style="background-color:#2b303b;color:#c0c5ce;" class="language-t "><code class="language-t" data-lang="t"><span style="color:#d08770;">HeteroCollection </span><span>{
+</span><span>    data: {
+</span><span>        &quot;</span><span style="color:#a3be8c;">name</span><span>&quot;: </span><span style="color:#d08770;">Any </span><span>{ .. },
+</span><span>        &quot;</span><span style="color:#a3be8c;">dominant hand</span><span>&quot;: </span><span style="color:#d08770;">Any </span><span>{ .. },
+</span><span>        &quot;</span><span style="color:#a3be8c;">language</span><span>&quot;: </span><span style="color:#d08770;">Any </span><span>{ .. },
+</span><span>    },
+</span><span>}
+</span><span style="color:#d08770;">SingletonCollection </span><span>{
+</span><span>    data: {
+</span><span>        </span><span style="color:#d08770;">TypeId </span><span>{
+</span><span>            t: </span><span style="color:#d08770;">16692126412618073318</span><span>,
+</span><span>        }: </span><span style="color:#d08770;">Any </span><span>{ .. },
+</span><span>        </span><span style="color:#d08770;">TypeId </span><span>{
+</span><span>            t: </span><span style="color:#d08770;">13748357137106968353</span><span>,
+</span><span>        }: </span><span style="color:#d08770;">Any </span><span>{ .. },
+</span><span>        </span><span style="color:#d08770;">TypeId </span><span>{
+</span><span>            t: </span><span style="color:#d08770;">13740187421581971802</span><span>,
+</span><span>        }: </span><span style="color:#d08770;">Any </span><span>{ .. },
+</span><span>    },
+</span><span>}
+</span></code></pre>
+<p>Clearly, the difference between these two structs is hashmap's key type: one is string and the other is <code>TypeId</code>. However, they work quit differently:</p>
+<blockquote>
+<p>the type-key must be known at compile-time, whereas the string could be determined at runtime.</p>
+</blockquote>
+<p>Amazing, isn't it? Not until I read an article about <a href="https://en.wikipedia.org/wiki/Taxonomy">taxonomy</a>, I realize this is actually solving a classic categorization problem.</p>
+<p>In rust, there are three ways to achieve a categorizing design. The first one is to use Type &amp; Trait, and this is done before compile, which means first of all we describe concrete types, and use trait to conclude them. The second one is <code>Type&lt;T: Trait&gt;</code>, and the last one is using Enum.</p>
+<p>Let's look at the first method, and I use World of Warcrafts' role as an example:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#96b5b4;">attack_command</span><span>(Rogue);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>Rogue;
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>Warrior;
+</span><span>
+</span><span style="color:#b48ead;">pub trait </span><span>Melee {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">base_attack</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Melee </span><span style="color:#b48ead;">for </span><span>Rogue {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">base_attack</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>        </span><span style="color:#d08770;">5
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Melee </span><span style="color:#b48ead;">for </span><span>Warrior {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">base_attack</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>        </span><span style="color:#d08770;">10
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">attack_command</span><span>&lt;T: Melee&gt;(</span><span style="color:#bf616a;">role</span><span>: T) {
+</span><span>    println!(&quot;</span><span style="color:#a3be8c;">hit: </span><span style="color:#d08770;">{:?}</span><span style="color:#a3be8c;"> pts</span><span>&quot;, role.</span><span style="color:#96b5b4;">base_attack</span><span>())
+</span><span>}
+</span></code></pre>
+<p>The next demand is to implement <code>upcast</code> and <code>downcast</code>, which means a concrete type turns to a trait object and a trait object turns to a concrete type, respectively. A normal way to handle this problem is add <code>downcast</code> support to a trait, for example:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>std::any::Any;
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> foo = Warrior.</span><span style="color:#96b5b4;">as_any_ref</span><span>();
+</span><span>    </span><span style="color:#b48ead;">let</span><span> bar = foo.downcast_ref::&lt;Warrior&gt;();
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, bar);
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Debug)]
+</span><span style="color:#b48ead;">struct </span><span>Warrior;
+</span><span>
+</span><span style="color:#b48ead;">pub trait </span><span>Melee {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">base_attack</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_any_ref</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;dyn Any;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_any_mut</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">mut</span><span> dyn Any;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Melee </span><span style="color:#b48ead;">for </span><span>Warrior {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">base_attack</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>        </span><span style="color:#d08770;">10
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_any_ref</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;dyn Any {
+</span><span>        </span><span style="color:#bf616a;">self
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">as_any_mut</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">mut</span><span> dyn Any {
+</span><span>        </span><span style="color:#bf616a;">self
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Ta-da! Simple and strait forward! And what about the second method? What exactly is a <code>Type&lt;T: Trait&gt;</code>?</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> warrior = Warrior {
+</span><span>        role: Melee,
+</span><span>        attack: Box::new(Attack1),
+</span><span>    };
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, warrior.attack.</span><span style="color:#96b5b4;">base_attack</span><span>());
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> rogue = Rogue {
+</span><span>        role: Melee,
+</span><span>        attack: Attack2,
+</span><span>    };
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, rogue.attack.</span><span style="color:#96b5b4;">base_attack</span><span>());
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// Common parts
+</span><span style="color:#b48ead;">pub struct </span><span>Melee;
+</span><span>
+</span><span style="color:#b48ead;">pub trait </span><span>Attack {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">base_attack</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// Case #1:
+</span><span style="color:#b48ead;">pub struct </span><span>Warrior {
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">role</span><span>: Melee, </span><span style="color:#65737e;">// inherit from parent
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">attack</span><span>: Box&lt;dyn Attack&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// Case #2:
+</span><span style="color:#b48ead;">pub struct </span><span>Rogue&lt;T: Attack&gt; {
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">role</span><span>: Melee, </span><span style="color:#65737e;">// inherit from parent
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">attack</span><span>: T,
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// implementation of warrior&#39;s attack
+</span><span style="color:#b48ead;">struct </span><span>Attack1;
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Attack </span><span style="color:#b48ead;">for </span><span>Attack1 {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">base_attack</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>        </span><span style="color:#d08770;">10
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// implementation of rogue&#39;s attack
+</span><span style="color:#b48ead;">struct </span><span>Attack2;
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Attack </span><span style="color:#b48ead;">for </span><span>Attack2 {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">base_attack</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>        </span><span style="color:#d08770;">5
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>No doubt, with <code>Box</code> case #1 works for runtime, and case #2 only suitable before compile. For the third method using enum is quite the same as case #2, which means they are all <code>Sized</code> so that categorizing only works before compile. Anyway, let's move on and see what dynamic type can do for us.</p>
+<h2 id="type-oriented">Type-Oriented</h2>
+<p>Then we come to the second part, use these techs in the real world.</p>
+<blockquote>
+<p>What I’m going to show you could be described as object-oriented message passing with the twist that types are used as object addresses and also for dynamic dispatch.</p>
+</blockquote>
+<p>The purpose of using singleton objects with dynamic dispatch is to solve borrowing issue when a variable is sharable, especially sharable among threads. The normal way to handle this issue is to use <code>Rc&lt;RefCell&gt;</code> in sync env or <code>Arc&lt;RefCell&gt;</code> in async env.</p>
+<p>Let's take a look the full code the author provides us. A little bit too long, so I collapsed it here:</p>
+<details>
+<summary>Click to expand</summary>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">struct </span><span>MyObject {
+</span><span>   </span><span style="color:#bf616a;">counter</span><span>: </span><span style="color:#b48ead;">u32</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>MethodA;
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>MethodBWithArguments {
+</span><span>   </span><span style="color:#bf616a;">text</span><span>: String,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MyObject {
+</span><span>   </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">method_a</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">_arg</span><span>: MethodA) {
+</span><span>       </span><span style="color:#bf616a;">self</span><span>.counter += </span><span style="color:#d08770;">1</span><span>;
+</span><span>       println!(
+</span><span>           &quot;</span><span style="color:#a3be8c;">Object invoked a method </span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;"> times. This time without an argument.</span><span>&quot;,
+</span><span>           </span><span style="color:#bf616a;">self</span><span>.counter
+</span><span>       );
+</span><span>   }
+</span><span>
+</span><span>   </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">method_b</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">arg</span><span>: MethodBWithArguments) {
+</span><span>       </span><span style="color:#bf616a;">self</span><span>.counter += </span><span style="color:#d08770;">1</span><span>;
+</span><span>       println!(
+</span><span>           &quot;</span><span style="color:#a3be8c;">Object invoked a method </span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;"> times. This time with argument: </span><span style="color:#d08770;">{}</span><span>&quot;,
+</span><span>           </span><span style="color:#bf616a;">self</span><span>.counter, arg.text
+</span><span>       );
+</span><span>   }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>   </span><span style="color:#65737e;">/* registration */
+</span><span>   </span><span style="color:#b48ead;">let</span><span> obj = MyObject { counter: </span><span style="color:#d08770;">0 </span><span>};
+</span><span>   my_library::register_object(obj);
+</span><span>   my_library::register_method(MyObject::method_a);
+</span><span>   my_library::register_method(MyObject::method_b);
+</span><span>
+</span><span>   </span><span style="color:#65737e;">/* invocations */
+</span><span>   my_library::invoke::&lt;MyObject, _&gt;(MethodA);
+</span><span>   my_library::invoke::&lt;MyObject, _&gt;(MethodBWithArguments {
+</span><span>       text: &quot;</span><span style="color:#a3be8c;">Hello World!</span><span>&quot;.</span><span style="color:#96b5b4;">to_owned</span><span>(),
+</span><span>   });
+</span><span>
+</span><span>   </span><span style="color:#65737e;">/* Output */
+</span><span>   </span><span style="color:#65737e;">// ...
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">mod </span><span>my_library {
+</span><span>   </span><span style="color:#b48ead;">use </span><span>std::{
+</span><span>       any::{Any, TypeId},
+</span><span>       collections::HashMap,
+</span><span>   };
+</span><span>
+</span><span>   </span><span style="color:#65737e;">// Assume `register_object` and `register_method` are called on it
+</span><span>   </span><span style="color:#b48ead;">pub struct </span><span>Nut {
+</span><span>       </span><span style="color:#65737e;">// states
+</span><span>       </span><span style="color:#bf616a;">objects</span><span>: HashMap&lt;TypeId, Box&lt;dyn Any&gt;&gt;,
+</span><span>       </span><span style="color:#65737e;">// methods
+</span><span>       </span><span style="color:#bf616a;">methods</span><span>: HashMap&lt;(TypeId, TypeId), Box&lt;dyn FnMut(&amp;</span><span style="color:#b48ead;">mut </span><span>Box&lt;dyn Any&gt;, Box&lt;dyn Any&gt;)&gt;&gt;,
+</span><span>   }
+</span><span>
+</span><span>   </span><span style="color:#b48ead;">impl </span><span>Nut {
+</span><span>       </span><span style="color:#65737e;">// use for storing states
+</span><span>       </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">register_object</span><span>&lt;OBJECT&gt;(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">obj</span><span>: OBJECT)
+</span><span>       </span><span style="color:#b48ead;">where
+</span><span>           OBJECT: Any,
+</span><span>       {
+</span><span>           </span><span style="color:#b48ead;">let</span><span> key = TypeId::of::&lt;OBJECT&gt;();
+</span><span>           </span><span style="color:#b48ead;">let</span><span> boxed_obj = Box::new(obj);
+</span><span>           </span><span style="color:#bf616a;">self</span><span>.objects.</span><span style="color:#96b5b4;">insert</span><span>(key, boxed_obj);
+</span><span>       }
+</span><span>
+</span><span>       </span><span style="color:#65737e;">// 1. Look up the object.
+</span><span>       </span><span style="color:#65737e;">// 2. Look up the method.
+</span><span>       </span><span style="color:#65737e;">// 3. Call the method with the object and the invocation argument.
+</span><span>       </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">invoke</span><span>&lt;OBJECT, ARGUMENT&gt;(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">arg</span><span>: ARGUMENT)
+</span><span>       </span><span style="color:#b48ead;">where
+</span><span>           OBJECT: Any,
+</span><span>           ARGUMENT: Any,
+</span><span>       {
+</span><span>           </span><span style="color:#b48ead;">let</span><span> object_key = TypeId::of::&lt;OBJECT&gt;();
+</span><span>           </span><span style="color:#b48ead;">let</span><span> method_key = (TypeId::of::&lt;OBJECT&gt;(), TypeId::of::&lt;ARGUMENT&gt;());
+</span><span>           </span><span style="color:#b48ead;">if let </span><span>Some(obj) = </span><span style="color:#bf616a;">self</span><span>.objects.</span><span style="color:#96b5b4;">get_mut</span><span>(&amp;object_key) {
+</span><span>               </span><span style="color:#b48ead;">if let </span><span>Some(method) = </span><span style="color:#bf616a;">self</span><span>.methods.</span><span style="color:#96b5b4;">get_mut</span><span>(&amp;method_key) {
+</span><span>                   </span><span style="color:#96b5b4;">method</span><span>(obj, Box::new(arg));
+</span><span>               }
+</span><span>           }
+</span><span>       }
+</span><span>
+</span><span>       </span><span style="color:#65737e;">// use for storing objects&#39; methods
+</span><span>       </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">register_method</span><span>&lt;OBJECT, ARGUMENT, FUNCTION&gt;(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">method</span><span>: FUNCTION)
+</span><span>       </span><span style="color:#b48ead;">where
+</span><span>           FUNCTION: FnMut(&amp;</span><span style="color:#b48ead;">mut</span><span> OBJECT, ARGUMENT) + </span><span style="color:#b48ead;">&#39;static</span><span>,
+</span><span>           ARGUMENT: Any,
+</span><span>           OBJECT: Any,
+</span><span>       {
+</span><span>           </span><span style="color:#b48ead;">let</span><span> key = (TypeId::of::&lt;OBJECT&gt;(), TypeId::of::&lt;ARGUMENT&gt;());
+</span><span>           </span><span style="color:#b48ead;">let</span><span> wrapped_method =
+</span><span>               Box::new(</span><span style="color:#b48ead;">move </span><span>|any_obj: &amp;</span><span style="color:#b48ead;">mut </span><span>Box&lt;dyn Any&gt;, any_args: Box&lt;dyn Any&gt;| {
+</span><span>                   </span><span style="color:#b48ead;">let</span><span> obj: &amp;</span><span style="color:#b48ead;">mut </span><span style="color:#d08770;">OBJECT </span><span>= any_obj.</span><span style="color:#96b5b4;">downcast_mut</span><span>().</span><span style="color:#96b5b4;">expect</span><span>(&quot;</span><span style="color:#a3be8c;">Type conversion failed</span><span>&quot;);
+</span><span>                   </span><span style="color:#b48ead;">let</span><span> args: </span><span style="color:#d08770;">ARGUMENT </span><span>= *any_args.</span><span style="color:#96b5b4;">downcast</span><span>().</span><span style="color:#96b5b4;">expect</span><span>(&quot;</span><span style="color:#a3be8c;">Type conversion failed</span><span>&quot;);
+</span><span>                   </span><span style="color:#96b5b4;">method</span><span>(obj, args)
+</span><span>               });
+</span><span>           </span><span style="color:#bf616a;">self</span><span>.methods.</span><span style="color:#96b5b4;">insert</span><span>(key, wrapped_method);
+</span><span>       }
+</span><span>   }
+</span><span>
+</span><span>   </span><span style="color:#65737e;">// The real nuts code has absolutely no unsafe code.
+</span><span>   </span><span style="color:#65737e;">// But just for readability, global data is stored as mutable static in this example.
+</span><span>   </span><span style="color:#b48ead;">static mut </span><span style="color:#d08770;">NUT</span><span>: Option&lt;Nut&gt; = None;
+</span><span>   </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">get_nut</span><span>() -&gt; &amp;</span><span style="color:#b48ead;">&#39;static mut</span><span> Nut {
+</span><span>       </span><span style="color:#b48ead;">unsafe </span><span>{
+</span><span>           </span><span style="color:#d08770;">NUT</span><span>.</span><span style="color:#96b5b4;">get_or_insert_with</span><span>(|| Nut {
+</span><span>               objects: HashMap::new(),
+</span><span>               methods: HashMap::new(),
+</span><span>           })
+</span><span>       }
+</span><span>   }
+</span><span>
+</span><span>   </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">register_object</span><span>(</span><span style="color:#bf616a;">obj</span><span>: impl Any) {
+</span><span>       </span><span style="color:#96b5b4;">get_nut</span><span>().</span><span style="color:#96b5b4;">register_object</span><span>(obj);
+</span><span>   }
+</span><span>   </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">register_method</span><span>&lt;OBJECT, ARGUMENT, FUNCTION&gt;(</span><span style="color:#bf616a;">method</span><span>: FUNCTION)
+</span><span>   </span><span style="color:#b48ead;">where
+</span><span>       FUNCTION: FnMut(&amp;</span><span style="color:#b48ead;">mut</span><span> OBJECT, ARGUMENT) + </span><span style="color:#b48ead;">&#39;static</span><span>,
+</span><span>       ARGUMENT: Any,
+</span><span>       OBJECT: Any,
+</span><span>   {
+</span><span>       </span><span style="color:#96b5b4;">get_nut</span><span>().</span><span style="color:#96b5b4;">register_method</span><span>(method);
+</span><span>   }
+</span><span>   </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">invoke</span><span>&lt;OBJECT, ARGUMENT&gt;(</span><span style="color:#bf616a;">method_call</span><span>: ARGUMENT)
+</span><span>   </span><span style="color:#b48ead;">where
+</span><span>       OBJECT: Any,
+</span><span>       ARGUMENT: Any,
+</span><span>   {
+</span><span>       </span><span style="color:#96b5b4;">get_nut</span><span>().invoke::&lt;OBJECT, ARGUMENT&gt;(method_call);
+</span><span>   }
+</span><span>}
+</span></code></pre>
+</details>
+</br>
+<p>One thing that we should know before moving on is to be clear about a <code>'static</code> bound. According to <a href="https://stackoverflow.com/a/48018183/8163324">this post</a>:</p>
+<blockquote>
+<ol>
+<li>
+<p>If explicitly given, use that lifetime.</p>
+</li>
+<li>
+<p>Otherwise, it is inferred from the inner trait. For example, <code>Box&lt;Any&gt;</code> is <code>Box&lt;Any + 'static&gt;</code> because <code>Any: 'static</code>.</p>
+</li>
+<li>
+<p>If the trait doesn't have an appropriate lifetime, it is inferred from the outer type. For example, <code>&amp;'a &gt;Fn()</code> is <code>&amp;'a (Fn() + 'a)</code>.</p>
+</li>
+<li>
+<p>If that even failed, it falls back to <code>'static</code> (for a function signature) or an anonymous lifetime (for a function body).</p>
+</li>
+</ol>
+</blockquote>
+<p>If we don't have the <code>'static</code> bound right after the <code>FnMut</code>, we'll see a compile error as following:</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>   Compiling more-rust-type v0.1.0 (***)
+</span><span>error[E0310]: the parameter type `FUNCTION` may not live long enough
+</span><span>   --&gt; more-rust-type/src/bin/type_oriented.rs:102:38
+</span><span>    |
+</span><span>89  |         pub fn register_method&lt;OBJECT, ARGUMENT, FUNCTION&gt;(&amp;mut self, mut method: FUNCTION)
+</span><span>    |                                                  -------- help: consider adding an explicit lifetime bound...: `FUNCTION: &#39;static`
+</span><span>...
+</span><span>102 |             self.methods.insert(key, wrapped_method);
+</span><span>    |                                      ^^^^^^^^^^^^^^ ...so that the type `[closure@more-rust-type/src/bin/type_oriented.rs:97:26: 101:18]` will meet its required lifetime bounds
+</span><span>
+</span><span>For more information about this error, try `rustc --explain E0310`.
+</span><span>error: could not compile `more-rust-type` due to previous error
+</span><span>The terminal process &quot;cargo &#39;run&#39;, &#39;--package&#39;, &#39;more-rust-type&#39;, &#39;--bin&#39;, &#39;type_oriented&#39;&quot; failed to launch (exit code: 101).
+</span></code></pre>
+<p>Which is saying as a trait, <code>FUNCTION</code> should live longer than the whole <code>Nut</code> struct. It's actually a function who will be registered into a <code>Nut</code> instance, and this function is defined before compilation, so giving it a <code>'static</code> lifetime bound is therefore very appropriate.</p>
+<p>We can learn several things from the code.</p>
+<ul>
+<li>
+<p>First, <code>Nut</code> is a struct holds two <code>HashMap</code>, one for object instances, whose key is a unique <code>TypeId</code>, and if you register a same type of object twice, the first one will be overrode (which mentioned by the author: &quot;The global storage keeps only one object of each type.&quot;); another field is used for storing object's methods, so that we can invoke these methods by specifying object's type and their argument in the future. Moreover, each time invoking a method, object's type should be provided as type param to the <code>invoke</code> function. Otherwise, library would not know which object's method user is calling. This is quite like calling iterator <code>.collect()</code> method from the standard library (user should explicitly announce the type they wish to convert).</p>
+</li>
+<li>
+<p>Second, inside <code>methods</code> field, <code>Box&lt;dyn FnMut(&amp;mut Box&lt;dyn Any&gt;, Box&lt;dyn Any&gt;)&gt;</code> is used as method's signature. <code>FnMut</code> is more general than <code>Fn</code>, because it allows arguments' mutation. Furthermore, <code>&amp;mut Box&lt;dyn Any&gt;</code> is used as input argument type, and <code>Box&lt;dyn Any&gt;</code> as output. Notice, since input argument type is <code>&amp;mut Box&lt;dyn Any&gt;</code>, all the registered methods should be written as <code>fn method_x(&amp;mut self, arg: ...)</code>, and signature like <code>fn method_y(&amp;self, arg: ...)</code> is not allowed to registration.</p>
+</li>
+<li>
+<p>Last, the <code>invoke</code> function: using <code>OBJECT</code> type argument to find out the object instance, and finding out its registered method, then finally calling the method with object instance and argument instance.</p>
+</li>
+</ul>
+<p>Although the code solved general heterogenous storage and method calling at the time, it is still cumbersome and rough for a library crate. But no worry! Please learn more about the 'real' library <a href="https://github.com/jakmeier/nuts">Nuts</a> written by the author.</p>
+<h2 id="generalizing-typeid">Generalizing TypeId</h2>
+<p>In the previous two sections, the author has shown us how type IDs are useful within a single binary, and now we are going to seek things beyond the binary boundary, which means the type is totally not known at compile time.</p>
+<p>Wait a minute, so I know the <code>TypeId</code> is actually a private <code>u64</code>, and it's given by compiler, but what effects its generation? I made a test according to the article, which says:</p>
+<blockquote>
+<ul>
+<li>Renaming the struct</li>
+<li>Renaming fields</li>
+<li>Moving the definition to another module</li>
+<li>Syntax changes (e.g. <code>MyType{}</code> to <code>MyType</code>)</li>
+</ul>
+</blockquote>
+<p>And these changes will not change the <code>TypeId</code>:</p>
+<blockquote>
+<ul>
+<li>Changing the type of a field</li>
+<li>Adding methods in an <code>impl</code> block or through a <code>#[derice(...)]</code></li>
+</ul>
+</blockquote>
+<details>
+<summary>Click to expand the test code</summary>
+<ol>
+<li>
+<p>Renaming the struct</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>S1;
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S1&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 15705126685411935490 }
+</span><span>}
+</span></code></pre>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>S2;
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S3&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 8903374546367185742 }
+</span><span>}
+</span></code></pre>
+</li>
+<li>
+<p>Renaming fields</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>S {
+</span><span>        </span><span style="color:#bf616a;">_v1</span><span>: </span><span style="color:#b48ead;">usize</span><span>,
+</span><span>    }
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 5679131806921150377 }
+</span><span>}
+</span></code></pre>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>S {
+</span><span>        </span><span style="color:#bf616a;">_v2</span><span>: </span><span style="color:#b48ead;">usize</span><span>,
+</span><span>    }
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 18316776490602311238 }
+</span><span>}
+</span></code></pre>
+</li>
+<li>
+<p>Moving the definition to another module</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">mod </span><span>M1 {
+</span><span style="color:#b48ead;">pub struct </span><span>S;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">use </span><span style="color:#d08770;">M1</span><span>::S;
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 89908796858884930 }
+</span><span>}
+</span></code></pre>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">mod </span><span>M2 {
+</span><span style="color:#b48ead;">pub struct </span><span>S;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">use </span><span style="color:#d08770;">M1</span><span>::S;
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 17526344372340483910 }
+</span><span>}
+</span></code></pre>
+</li>
+<li>
+<p>Syntax changes</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>S;
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 17803636430605880271 }
+</span><span>}
+</span></code></pre>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">struct </span><span>S {};
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 6576500625851552798 }
+</span><span>}
+</span></code></pre>
+</li>
+<li>
+<p><strong>(NOT changing TypeId)</strong> Changing the type of a field:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">struct </span><span>S1 {
+</span><span>    </span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S1&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 3771603622093412445 }
+</span><span>}
+</span></code></pre>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">struct </span><span>S1 {
+</span><span>    </span><span style="color:#bf616a;">v</span><span>: String,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S1&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 3771603622093412445 }
+</span><span>}
+</span></code></pre>
+</li>
+<li>
+<p><strong>(NOT changing TypeId)</strong> Changing the type of a field:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">struct </span><span>S1;
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S1&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 6307292858813541705 }
+</span><span>}
+</span></code></pre>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">struct </span><span>S1;
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>S1 {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">f</span><span>() {
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">f()</span><span>&quot;)
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, TypeId::of::&lt;S1&gt;());
+</span><span>    </span><span style="color:#65737e;">// TypeId { t: 6307292858813541705 }
+</span><span>}
+</span></code></pre>
+</li>
+</ol>
+</details>
+</br>
+<p>According to the Rust official documentation:</p>
+<blockquote>
+<p>While TypeId implements Hash, PartialOrd, and Ord, it is worth noting
+that the hashes and ordering will vary between Rust releases.
+Beware of relying on them inside of your code!</p>
+</blockquote>
+<p>Apparently, <code>TypeId</code> isn't designed to be used sharing among many binaries. As the author's dream is to accomplish a networked dynamic publish-subscribe system, then implementing an own <code>TypeId</code> is therefore very necessary.</p>
+<p>So let's take a look on how to produce an Universal type Id.</p>
+<p>First create a trait called <code>UniversalType</code>, and any type that implement this trait will get a <code>UniversalTypeId</code> (same as <code>TypeId</code> for any type).</p>
+<p>Take a glance of <a href="https://github.com/jakmeier/universal-type-id/blob/06fcfb0e122fd32e4383750a17a76b50384c2e3b/uti/src/lib.rs#L10">the implementation</a>:</p>
+<blockquote>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">derive</span><span>(Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord, Debug)]
+</span><span>#[</span><span style="color:#bf616a;">cfg_attr</span><span>(feature = &quot;</span><span style="color:#a3be8c;">serde</span><span>&quot;, </span><span style="color:#bf616a;">derive</span><span>(Serialize, Deserialize))]
+</span><span style="color:#b48ead;">pub struct </span><span>UniversalTypeId {
+</span><span>    </span><span style="color:#bf616a;">bytes</span><span>: [</span><span style="color:#b48ead;">u8</span><span>; MAX_UTI_BYTES],
+</span><span>}
+</span><span style="color:#b48ead;">pub trait </span><span>UniversalType: Any {
+</span><span>    </span><span style="color:#65737e;">/// Raw bytes which are the result of the universal type hash
+</span><span>    </span><span style="color:#b48ead;">const </span><span style="color:#d08770;">UNIVERSAL_TYPE_ID_BYTES</span><span>: [</span><span style="color:#b48ead;">u8</span><span>; </span><span style="color:#d08770;">MAX_UTI_BYTES</span><span>];
+</span><span>
+</span><span>    </span><span style="color:#65737e;">/// A type id as  a hash over the type name and fields
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">universal_type_id</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; UniversalTypeId {
+</span><span>        UniversalTypeId::of::&lt;</span><span style="color:#b48ead;">Self</span><span>&gt;()
+</span><span>    }
+</span><span>}
+</span></code></pre>
+</blockquote>
+<p>After this, a procedure macro is written out for deriving. For more details please visit <a href="https://github.com/jakmeier/universal-type-id">the repo</a>.</p>
+<p>And the usage of this crate is pretty simple:</p>
+<blockquote>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">derive</span><span>(UniversalType)]
+</span><span style="color:#b48ead;">struct </span><span>Person {
+</span><span>   </span><span style="color:#bf616a;">name</span><span>: String,
+</span><span>   </span><span style="color:#bf616a;">year</span><span>: </span><span style="color:#b48ead;">i16</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>   </span><span style="color:#b48ead;">let</span><span> uid = UniversalTypeId::of::&lt;Person&gt;();
+</span><span>   println!(&quot;</span><span style="color:#a3be8c;">Numerical value of universal type ID: </span><span style="color:#d08770;">{}</span><span>&quot;, uid.</span><span style="color:#96b5b4;">as_u128</span><span>());
+</span><span>}
+</span></code></pre>
+</blockquote>
+<p>Apparently, comparing to the previous work, using this <code>UniversalTypeId</code> to replace <code>TypeId</code> from standard library will give us more accuracy on the expression, such as <code>HashMap&lt;UniversalTypeId, Box&lt;dyn Any&gt;&gt;</code> who has the same functionality as <code>HashMap&lt;TypeId, Box&lt;dyn Any&gt;&gt;</code>, but is capable to distinguish types deeper. The rest of the work is all about serialize and deserialize since the memory layout of Rust is not stable, and using serialize/deserialize can ensure memory safe.</p>
+<h2 id="my-thoughts">My Thoughts</h2>
+<p>After all I have read and done, I found that myself is getting closer to Rust type system. Previously, what I've learned from THE BOOK gives me a general picture of Rust type system. It introduces the type in static env, which only works for compile time, for example generic type turns to actual type after compiling, and trait object, a way to mimic same type in runtime, is unsized at compile time but with sized self annotation, so that compiler can allocate stack memory for it, and leave the rest of work on heap allocation by using a pointer. And now I've learned that Rust standard library provides us a tool to help us on dynamic type. In short, it allows us to downcast a <code>Any</code> type to a pre-defined trait object at runtime. Using such kind of technique can allow us to implement more creative thoughts, such as the code author shown us. I have to say, this is still a big class for me that deserves me to study type system all over again, systematically. Hopefully, I can write more articles about type system in a general way after some researches. Alright, being through a long day, I think I should probably end this, and until next time, happy coding 👋.</p>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-warm-up"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/posts/2021-8-16-more-rust-type/#warm-up"
+							>
+								Warm up
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-heterogenous-collection"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-8-16-more-rust-type/#heterogenous-collection"
+							>
+								Heterogenous Collection
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-type-oriented"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-8-16-more-rust-type/#type-oriented"
+							>
+								Type-Oriented
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-generalizing-typeid"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-8-16-more-rust-type/#generalizing-typeid"
+							>
+								Generalizing TypeId
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-my-thoughts"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-8-16-more-rust-type/#my-thoughts"
+							>
+								My Thoughts
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

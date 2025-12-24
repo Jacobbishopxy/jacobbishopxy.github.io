@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | K8s 笔记 (III) </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">K8s 笔记 (III)</h1>
+					<p class="subtitle">容器</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-07-26">July 26, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>20 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>3871 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/read/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Read</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/k8s/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="jian-jie">简介</h2>
+<p>每个运行的容器都是可重复的；包含依赖环境在内的标准意味着无论你在哪里运行它都会得到相同的行为。</p>
+<p>容器将引用程序从底层的主机设施中解耦。这使得在不同的云或者 OS 环境中部署更加容易。</p>
+<p>容器镜像是一个随时可以运行的软件包，包含运行引用程序的一切：代码以及其所需的所有运行时，应用程序和系统库，以及一些基本设置的默认值。</p>
+<p>在设计上，容器是不可变的：你不能更改已经运行的容器的代码。如果有一个容器化的应用程序需要修改，则需要构建包含更改的新镜像，然后基于新镜像重新运行容器</p>
+<p>容器运行时是扶着运行容器的软件。k8s 支持很多容器运行时，例如 Docker，containerd，CRI-O 以及 k8s CRI（容器运行环境接口）的其他任何实现。</p>
+<h2 id="jing-xiang">镜像</h2>
+<p>容器镜像代表封装了应用程序以及其所有的软件依赖的二进制数据。容器镜像是可以独立运行的可执行软件包，同时其所处的运行时环境具有良好状况的假设。</p>
+<p>用户通常创建一个容器镜像接着上传至仓库 Registry，然后在 Pod 中引用它。</p>
+<h3 id="jing-xiang-ming-cheng">镜像名称</h3>
+<p>容器镜像通常会命名类似于 <code>pause</code>，<code>example/mycontainer</code> 或 <code>kube-apiserver</code>。镜像可以包含仓库的主机名称；例如：<code>fictional.registry.example/imagename</code>，也可以添加端口；例如：<code>fictional.registry.example:10443/imagename</code>。</p>
+<p>如果用户不指定仓库主机名称，k8s 会假设使用的是 Docker 公有仓库。</p>
+<p>在镜像名称后用户可以添加一个<em>标记</em>（等同于使用 <code>docker</code> 或 <code>podman</code> 命令）。标签让用户鉴别同一个镜像的不同版本。</p>
+<p>镜像标签由大小写字母，数字，下划线（<code>_</code>），点（<code>.</code>）以及杠（<code>-</code>）组成。另外，可以放置分隔符（<code>_</code>，<code>-</code> 和 <code>.</code>）于镜像标签内。如果不指定标签，k8s 会认为是 <code>latest</code>。</p>
+<h3 id="geng-xin-jing-xiang">更新镜像</h3>
+<p>当第一次创建一个 Deployment，StatefulSet，Pod 或者其他包含临时 Pod 模版的对象时，如果不显式指定时，在 pod 中所有容器默认的拉取策略会被设置为 <code>IfNotPresent</code>。这个策略会导致 kubelet 拉取时跳过已有的镜像。</p>
+<h4 id="jing-xiang-la-qu-ce-lue">镜像拉取策略</h4>
+<p>容器的 <code>imagePullPolicy</code> 以及镜像标签会影响 kubelet 尝试拉取（下载）指定镜像。</p>
+<p>可以为 <code>imagePullPolicy</code> 设置以下的变量：</p>
+<ul>
+<li>
+<p><code>IfNotPresent</code>：镜像只会在本地不存在时拉取</p>
+</li>
+<li>
+<p><code>Always</code>：每次 kubelet 启动容器时，kubelet 查询容器镜像仓库，将名称解析为一个镜像摘要 image digest。如果 kubelet 有一个容器镜像，并且对应的摘要已在本地缓存，kubelet 就会使用其缓存的镜像；否则，kubelet 就会使用解析后的摘要拉取镜像，并使用该镜像来启动容器。</p>
+</li>
+<li>
+<p><code>Never</code>：kubelet 不会尝试拉取镜像。如果镜像已经以某种方式存在本地，kubelet 会尝试启动容器；否则，会启动失败。</p>
+</li>
+</ul>
+<p>底层镜像提供者的缓存语义可以使 <code>imagePullPolicy: Always</code> 高效，只要仓库能可靠的访问仓库。容器运行时可以观察到镜像层已经存在在节点上，这样就不需要再次下载。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>在生产环境中部署容器应当避免使用 <code>:latest</code> 标签，因为这很难追踪哪个版本的镜像在运行，同时很难正确的进行回滚操作。</p>
+<p>相反，应当指定一个有意义的标签例如 <code>v1.42.0</code>。</p>
+
+</blockquote>
+<p>为了确保 Pod 总是使用同一个版本的容器镜像，用户可以指定镜像的摘要；替换 <code>&lt;image-name&gt;:&lt;tag&gt;</code> 为 <code>&lt;image-name&gt;@&lt;digest&gt;</code>（例如，<code>image@sha256:45b23dee08af5e43a7fea6c4cf9c25ccf269ee113168c19722f87876677c5cb2</code>）。</p>
+<p>当使用镜像标签时，如果镜像仓库修改了代码所对应的镜像标签，可能会出现新旧代码混杂在 Pod 中运行的情况。镜像摘要唯一标识指定了镜像的版本，因此通过镜像名称和指定的摘要， k8s 在每次启动容器时都会运行同样的代码。通过摘要指定镜像可以固定运行的代码，这样镜像仓库的变化就不会导致版本的混乱。</p>
+<p>有些三方的准入控制器在创建时会修改 Pods （以及 pod 模板），因此正在运行的负载是根据镜像摘要定义的，而不是标签。镜像仓库上的标签发生变化，用户都可以确保所有的工作负载都运行相同的代码，那么指定镜像摘要会很有用。</p>
+<h5 id="mo-ren-jing-xiang-la-qu-ce-lue">默认镜像拉取策略</h5>
+<p>当用户（或者控制器）提交一个新的 Pod 至 API 服务，当满足指定条件时，集群会设置 <code>imagePullPolicy</code> 字段：</p>
+<ul>
+<li>
+<p>如果忽略 <code>imagePullPolicy</code> 字段，容器镜像的标签是 <code>:latest</code>，<code>imagePullPolicy</code> 则会被自动设置为 <code>Always</code>；</p>
+</li>
+<li>
+<p>如果忽略 <code>imagePullPolicy</code> 字段，同时不指定容器镜像的标签，<code>imagePullPolicy</code> 则会被自动设置为 <code>Always</code>；</p>
+</li>
+<li>
+<p>如果忽略 <code>imagePullPolicy</code> 字段，同时指定容器镜像的标签不为 <code>:latest</code>，<code>imagePullPolicy</code> 则会被自动设置为 <code>IfNotPresent</code>。</p>
+</li>
+</ul>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>容器 <code>imagePullPolicy</code> 的值总是在对象初次<em>创建</em>时被设置，而在之后镜像标签改变时不会被更新。</p>
+<p>例如，如果用户创建一个带有标签不为 <code>:latest</code> 镜像的 Deployment，之后更新 Deployment 的镜像标签为 <code>:latest</code>，<code>imagePullPolicy</code> 字段<em>不会</em>改为 <code>Always</code>。在初始化创建后，用户需要手动修改所有对象的拉取策略。</p>
+
+</blockquote>
+<h5 id="bi-yao-de-jing-xiang-la-qu">必要的镜像拉取</h5>
+<p>如果每次都强制拉取，用户可以采用以下一种方式：</p>
+<ul>
+<li>
+<p>设置容器的 <code>imagePullPolicy</code> 为 <code>Always</code>。</p>
+</li>
+<li>
+<p>忽略 <code>imagePullPolicy</code> 并使用 <code>:latest</code> 作为镜像的标签；在提交 Pod 时，k8s 将会设置策略为 <code>Always</code>。</p>
+</li>
+<li>
+<p>忽略 <code>imagePullPolicy</code> 以及镜像使用的标签；在提交 Pod 时， k8s 将会设置策略为 <code>Always</code>。</p>
+</li>
+<li>
+<p>开启 AlwaysPullImages 的准入控制器。</p>
+</li>
+</ul>
+<h4 id="imagepullbackoff">ImagePullBackOff</h4>
+<p>当 kubelet 使用容器运行时创建 Pod 时，容器可能因为 <code>ImagePullBackOff</code> 导致状态为 Waiting。</p>
+<p><code>ImagePullBackOff</code> 状态意味着容器无法启动，因为 k8s 无法拉取容器镜像（可能是包含无效的镜像名称，或者从私有仓库拉取而没有 <code>imagePullSecret</code>）。<code>BackOff</code> 部分标识 k8s 将继续尝试拉取镜像，并增加回退延迟。</p>
+<p>k8s 会增加每次尝试之间的延迟，直到达到变异限制，即 300 秒（5 分钟）。</p>
+<h3 id="dai-jing-xiang-suo-yin-de-duo-jia-gou-jing-xiang">带镜像索引的多架构镜像</h3>
+<p>在提供二进制镜像的同时，容器仓库也可以服务于容器镜像的索引。镜像索引可以根据特定于体系结构版本的容器指向若干镜像清单 image manifests。这里的关键点在于用户可以拥有一个镜像的名称并且允许不同的系统根据它们使用的机器架构来获取正确的二进制镜像</p>
+<p>k8s 自身通常在命名容器镜像时添加后缀 <code>~$(ARCH)</code>。为了向前兼容，请在生成较老的镜像时也提供后缀。这里的关键点是为某镜像（如 <code>pause</code>）生成针对所有平台都是用的清单时，生成 <code>pause-amd64</code> 这类镜像，使得较老的配置文件或者将镜像后缀硬编码到其中的 YAML 文件也可以兼容。</p>
+<h3 id="shi-yong-si-you-cang-ku">使用私有仓库</h3>
+<p>对于读取私有仓库的镜像可能需要钥匙，可以由以下几种方式做认证：</p>
+<ul>
+<li>配置节点的私有仓库鉴权
+<ul>
+<li>所有 pods 可以读取任何配置过的私有仓库</li>
+<li>需要通过集群管理者进行节点配置</li>
+</ul>
+</li>
+<li>预拉取镜像
+<ul>
+<li>所有 pods 可以使用在节点缓存的任意镜像</li>
+<li>需要通过根访问所有节点进行设置</li>
+</ul>
+</li>
+<li>在 Pod 上指定 ImagePullSecrets
+<ul>
+<li>只有当提供了自身要是的 pods 可以访问私有仓库</li>
+</ul>
+</li>
+<li>特定厂商或本地扩展
+<ul>
+<li>如果在使用定制的节点配置，用户（或云平台提供商）可以实现让节点向容器仓库认证的机制</li>
+</ul>
+</li>
+</ul>
+<!-- #### 配置节点的私有库认证 -->
+<!-- #### config.json 说明 -->
+<!-- #### 预拉取的镜像 -->
+<!-- #### Pod 上指定 ImagePullSecrets -->
+<h2 id="rong-qi-huan-jing">容器环境</h2>
+<p>k8s 容器环境提供了多种中药的资源给容器：</p>
+<ul>
+<li>文件系统，结合了镜像以及若干 volumes</li>
+<li>容器本身的信息</li>
+<li>其它集群中对象的信息</li>
+</ul>
+<h3 id="rong-qi-xin-xi">容器信息</h3>
+<p>容器的<em>主机名称</em>就是在容器中运行的 Pod 的名称。可以通过 <code>hostname</code> 命令或者调用 libc 中的 <code>gethostname</code> 函数来获取名称。</p>
+<p>Pod 名称以及命名空间可以作为环境变量通过 <a href="https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/">downward API</a> 来获取。</p>
+<p>用户在 Pod 上定义的环境变量同样可用于容器，它们也是容器镜像中被指定的静态环境变量。</p>
+<h3 id="ji-qun-xin-xi">集群信息</h3>
+<p>当一个容器被创建时，所有运行服务的列表可用作该容器的环境变量。这里的服务仅限于新容器的 Pod 所在的命名空间中的服务，以及 k8s 控制面的服务。</p>
+<p>一个名为<em>foo</em>的服务映射到名为<em>bar</em>的容器时，以下变量则会被定义：</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>FOO_SERVICE_HOST=&lt;the host the service is running on&gt;
+</span><span>FOO_SERVICE_PORT=&lt;the port the service is running on&gt;
+</span></code></pre>
+<p>服务具有专用的 IP 地址。如果启用了 DNS 插件， 可以在容器中通过 DNS 来访问服务。</p>
+<h2 id="yun-xing-shi-lei">运行时类</h2>
+<p><strong>特性状态</strong>：<code>v1.20 [stable]</code></p>
+<p>运行时类 RuntimeClass 是一个用于选择容器运行配置的特性。容器运行配置则用于运行 Pod 的容器。</p>
+<h3 id="dong-ji">动机</h3>
+<p>用户可以为不同的 Pods 设置不同的 RuntimeClass 提供性能与安全之间的平衡。例如，如果一部分的工作负载需要高等级的信息安全保障，用户可能需要选择调度这些 Pods 使它们运行在硬件虚拟化的容器运行时。这样用户将从这些不同运行时所提供的额外隔离中获益，代价是一些额外的开销。</p>
+<p>用户还可以使用 RuntimeClass 运行具有相同容器运行时但具有不同设置的 Pod。</p>
+<h3 id="she-zhi">设置</h3>
+<ol>
+<li>
+<p>在节点上配置 CRI 实现</p>
+</li>
+<li>
+<p>创建相关的 RuntimeClass 资源</p>
+</li>
+</ol>
+<h2 id="rong-qi-sheng-ming-zhou-qi-hui-diao">容器生命周期回调</h2>
+<h3 id="gai-shu">概述</h3>
+<p>类似于许多具有生命周期回调组件的编程语言框架，例如 Angular，k8s 为容器提供了生命周期回调。回调使得容器能够了解其管理生命周期中的事件，并在执行相应的生命周期回调时运行在处理程序中实现的代码。</p>
+<h3 id="rong-qi-hui-diao">容器回调</h3>
+<p>有两个回调暴露给容器：</p>
+<p><code>PostStart</code>：这个回调在容器被创建之后立即被执行。但是不能保证回调会在容器入口点（Entrypoint）之前执行。没有参数传递给处理程序。</p>
+<p><code>PreStop</code>：在容器因为 API 请求或者管理事件（例如存活探针，启动探针失败，资源抢占，资源竞争等）而被终止之前，此回调会被调用。如果容器已经处理已终止或者完成状态，则对 preStop 回调的调用将失败。在用来停止容器的 TERM 信号被发出之前，回调必须执行结束。Pod 的终止期限在 <code>PreStop</code> 回调被执行之前开始计数，所以无论回调函数的执行结果如何，容器最终都会在 Pod 终止期限内被终止。没有参数会被传递给处理程序。</p>
+<h4 id="hui-diao-chu-li-cheng-xu-de-shi-xian">回调处理程序的实现</h4>
+<p>容器可以通过实现和注册该回调的处理程序来访问该回调。针对容器，有两种类型的回调处理程序可供实现：</p>
+<ul>
+<li>Exec - 在容器的 cgroups 和名字空间中执行特定的命令（例如 <code>pre-stop.sh</code>）。命令所消耗的资源计入容器的资源消耗。</li>
+<li>HTTP - 对容器上的特定端点执行 HTTP 请求。</li>
+</ul>
+<h4 id="hui-diao-chu-li-cheng-xu-zhi-xing">回调处理程序执行</h4>
+<p>当调用容器生命周期管理回调时，k8s 管理系统根据回调动作执行其处理程序，<code>httpGet</code> 和 <code>tcpSocket</code> 在 kubelet 进程执行，而 <code>exec</code> 则由容器内执行。</p>
+<p>回调处理程序调用在包含容器的 Pod 上下文中是同步的。这意味着对于 <code>PostStart</code> 回调，容器入口点和回调异步触发。但是，如果回调运行或挂起的时间太长，则容器无法达到 <code>running</code> 状态。</p>
+<p><code>PreStop</code> 回调并不会与停止容器的信号处理程序异步执行；回调必须在可以发送信号之前完成执行。如果 <code>PreStop</code> 回调在执行期间停滞不前，Pod 的阶段会变成 <code>Terminating</code> 并且一直处于该状态，直到其 <code>terminationGracePeriodSeconds</code> 耗尽为止，这时 Pod 会被杀死。这一宽限期是针对 <code>PreStop</code> 回调的执行时间及容器正常停止时间的总和而言的。例如如果 <code>terminationGracePeriodSeconds</code> 是 60，回调函数换了 55 秒完成执行，而容器在收到信号后花了 10 秒来正常结束，那么容器会在其能够正常结束之前即被杀死，因为 <code>terminationGracePeriodSeconds</code> 的值小于后面两件事情所花费的总时间（55 + 10）。</p>
+<p>如果 <code>PostStart</code> 或 <code>PreStop</code> 回调失败，则会杀死容器。</p>
+<p>用户应该使他们的回调处理程序尽可能的轻量级。但也需要考虑长时间运行的命令也很有用的情况，比如在停止容器之前保存状态。</p>
+<h4 id="hui-diao-di-song-bao-zheng">回调递送保证</h4>
+<p>回调的递送应该是<strong>至少一次</strong>，这意味着对于任何给定的事件，例如 <code>PostStart</code> 或 <code>PreStop</code>，回调可以被调用多次。如何正确处理被多次调用的情况，是回调实现所需要考虑的问题。</p>
+<p>通常情况下，只会进行单次递送。例如，如果 HTTP 回调接收器宕机，无法接受流量，则不会尝试重新发送。然而偶尔也会发生重复递送的可能。例如 kubelet 在发送回调的过程中重新启动，回调可能会在 kubelet 回复后重新发送。</p>
+<h4 id="diao-shi-hui-diao-chu-li-cheng-xu">调试回调处理程序</h4>
+<p>回调处理程序的日志不会在 Pod 事件中公开。如果处理程序由于某种原因失败，它将播放一个事件。对于 <code>PostStart</code>，这是 <code>FailedPostStartHook</code> 事件，对于 <code>PreStop</code>，这是 <code>FailedPreStopHook</code> 事件。要自己生成失败的 <code>FailedPreStopHook</code> 事件，请修改 lifecycle-events.yaml 文件将 postStart 命令改为 &quot;badcommand&quot; 并应用它。以下是通过运行 <code>kubectl describe pod lifecycle-demo</code> 后你看到的一些结果事件的示例输出：</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Events:
+</span><span>  Type     Reason               Age              From               Message
+</span><span>  ----     ------               ----             ----               -------
+</span><span>  Normal   Scheduled            7s               default-scheduler  Successfully assigned default/lifecycle-demo to ip-XXX-XXX-XX-XX.us-east-2...
+</span><span>  Normal   Pulled               6s               kubelet            Successfully pulled image &quot;nginx&quot; in 229.604315ms
+</span><span>  Normal   Pulling              4s (x2 over 6s)  kubelet            Pulling image &quot;nginx&quot;
+</span><span>  Normal   Created              4s (x2 over 5s)  kubelet            Created container lifecycle-demo-container
+</span><span>  Normal   Started              4s (x2 over 5s)  kubelet            Started container lifecycle-demo-container
+</span><span>  Warning  FailedPostStartHook  4s (x2 over 5s)  kubelet            Exec lifecycle hook ([badcommand]) for Container &quot;lifecycle-demo-container&quot; in Pod &quot;lifecycle-demo_default(30229739-9651-4e5a-9a32-a8f1688862db)&quot; failed - error: command &#39;badcommand&#39; exited with 126: , message: &quot;OCI runtime exec failed: exec failed: container_linux.go:380: starting container process caused: exec: \&quot;badcommand\&quot;: executable file not found in $PATH: unknown\r\n&quot;
+</span><span>  Normal   Killing              4s (x2 over 5s)  kubelet            FailedPostStartHook
+</span><span>  Normal   Pulled               4s               kubelet            Successfully pulled image &quot;nginx&quot; in 215.66395ms
+</span><span>  Warning  BackOff              2s (x2 over 3s)  kubelet            Back-off restarting failed container
+</span></code></pre>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-jian-jie"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#jian-jie"
+							>
+								简介
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-jing-xiang"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#jing-xiang"
+							>
+								镜像
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-jing-xiang-ming-cheng"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#jing-xiang-ming-cheng"
+									>
+										镜像名称
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-geng-xin-jing-xiang"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#geng-xin-jing-xiang"
+									>
+										更新镜像
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-dai-jing-xiang-suo-yin-de-duo-jia-gou-jing-xiang"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#dai-jing-xiang-suo-yin-de-duo-jia-gou-jing-xiang"
+									>
+										带镜像索引的多架构镜像
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-shi-yong-si-you-cang-ku"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#shi-yong-si-you-cang-ku"
+									>
+										使用私有仓库
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-rong-qi-huan-jing"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#rong-qi-huan-jing"
+							>
+								容器环境
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-rong-qi-xin-xi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#rong-qi-xin-xi"
+									>
+										容器信息
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-ji-qun-xin-xi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#ji-qun-xin-xi"
+									>
+										集群信息
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-yun-xing-shi-lei"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#yun-xing-shi-lei"
+							>
+								运行时类
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-dong-ji"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#dong-ji"
+									>
+										动机
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-she-zhi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#she-zhi"
+									>
+										设置
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-rong-qi-sheng-ming-zhou-qi-hui-diao"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#rong-qi-sheng-ming-zhou-qi-hui-diao"
+							>
+								容器生命周期回调
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-gai-shu"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#gai-shu"
+									>
+										概述
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-rong-qi-hui-diao"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-7-26-k8s-notes-iii/#rong-qi-hui-diao"
+									>
+										容器回调
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

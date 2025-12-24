@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | WSL setup </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">WSL setup</h1>
+					<p class="subtitle">Setup WSL on Windows</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2021-07-02">July 02, 2021</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>3 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>564 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/doc/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Doc</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="wsl-and-ubuntu-download">WSL and Ubuntu download</h2>
+<p>One line command: <code>wsl --install</code>.</p>
+<p>For futher detailed info, visit <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">the official documentation</a>.</p>
+<h2 id="install-windows-terminal">Install Windows Terminal</h2>
+<p>Please follow <a href="https://learn.microsoft.com/en-us/windows/terminal/install">this step</a>.</p>
+<h2 id="move-ubuntu-to-another-driver">Move Ubuntu to another driver</h2>
+<p>This is an optional step, in case of C driver space insufficient (make sure you have already create directories as following):</p>
+<pre data-lang="cmd" style="background-color:#2b303b;color:#c0c5ce;" class="language-cmd "><code class="language-cmd" data-lang="cmd"><span>wsl --export Ubuntu-</span><span style="color:#d08770;">20</span><span>.</span><span style="color:#d08770;">04</span><span> d:\tmp\ubuntu.tar
+</span><span>wsl --unregister Ubuntu-</span><span style="color:#d08770;">20</span><span>.</span><span style="color:#d08770;">04
+</span><span>wsl --import Ubuntu-</span><span style="color:#d08770;">20</span><span>.</span><span style="color:#d08770;">04</span><span> d:\wsl\Ubuntu-</span><span style="color:#d08770;">20</span><span>.</span><span style="color:#d08770;">04</span><span> d:\tmp\ubuntu.tar
+</span></code></pre>
+<h2 id="modify-windows-settings-json">Modify Windows <code>settings.json</code></h2>
+<p>To modify Ubuntu's starting directory, we can open Windows terminal, and you'll see <strong>Open JSON file</strong> button, click it and add a new line called <code>startingDirectory</code> as below:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">commandline</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">wsl ~ -d Ubuntu</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">hidden</span><span>&quot;: </span><span style="color:#d08770;">false</span><span>,
+</span><span>    &quot;</span><span style="color:#a3be8c;">name</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">Ubuntu</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">source</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">Windows.Terminal.Wsl</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">startingDirectory</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">~</span><span>&quot;
+</span><span>}
+</span></code></pre>
+<h2 id="setup-wsl-conf">Setup <code>wsl.conf</code></h2>
+<ol>
+<li>
+<p>Create a new file called <code>wsl.conf</code>:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> vim /etc/wsl.conf
+</span></code></pre>
+</li>
+<li>
+<p>Inside your file (please modify the username):</p>
+<pre data-lang="conf" style="background-color:#2b303b;color:#c0c5ce;" class="language-conf "><code class="language-conf" data-lang="conf"><span style="color:#65737e;"># Set default user, otherwise sign as root
+</span><span style="color:#b48ead;">[user]
+</span><span style="color:#bf616a;">default</span><span>=&lt;username&gt;
+</span><span>
+</span><span style="color:#65737e;"># Let’s enable extra metadata options by default
+</span><span style="color:#b48ead;">[automount]
+</span><span style="color:#bf616a;">enabled </span><span>= </span><span style="color:#d08770;">true
+</span><span style="color:#bf616a;">root </span><span>= /mnt/
+</span><span style="color:#bf616a;">options </span><span>= </span><span style="color:#a3be8c;">&quot;metadata,umask=22,fmask=11&quot;
+</span><span style="color:#bf616a;">mountFsTab </span><span>= </span><span style="color:#d08770;">false
+</span><span>
+</span><span style="color:#65737e;">#Let’s enable DNS – even though these are turned on by default, we’ll specify here just to be explicit.
+</span><span style="color:#b48ead;">[network]
+</span><span style="color:#bf616a;">generateHosts </span><span>= </span><span style="color:#d08770;">true
+</span><span style="color:#bf616a;">generateResolvConf </span><span>= </span><span style="color:#d08770;">true
+</span><span>
+</span><span style="color:#65737e;">#All windows program shoulbe be normally run in wsl. great!
+</span><span style="color:#b48ead;">[interop]
+</span><span style="color:#bf616a;">enable </span><span>= </span><span style="color:#d08770;">true
+</span><span style="color:#bf616a;">appendWindowsPath </span><span>= </span><span style="color:#d08770;">true
+</span></code></pre>
+</li>
+<li>
+<p>Save your file and grant permission:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> chmod</span><span style="color:#bf616a;"> -R</span><span> 775 /etc/wsl.conf
+</span></code></pre>
+</li>
+</ol>
+<h2 id="new-user">New user</h2>
+<ol>
+<li>
+<p>Add user:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> adduser jacob
+</span></code></pre>
+<p>remove user:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> deluser jacob
+</span></code></pre>
+</li>
+<li>
+<p>Update sudoers</p>
+<!-- ```sh
+sudo -i
+vim /etc/sudoers
+```
+
+add a new line:
+
+```txt
+jacob ALL=(ALL) ALL
+``` -->
+<p>add user to sudo group</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">usermod -aG</span><span> sudo jacob
+</span></code></pre>
+</li>
+</ol>
+<h2 id="setup-git">Setup Git</h2>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">git</span><span> config</span><span style="color:#bf616a;"> --global</span><span> user.name &lt;Your name&gt;
+</span><span>
+</span><span style="color:#bf616a;">git</span><span> config</span><span style="color:#bf616a;"> --global</span><span> user.email &lt;Your email&gt;
+</span></code></pre>
+<p>If the following error occurred:</p>
+<blockquote>
+<p>Warning: Permanently added 'github.com,XX.XXX.XXX.XXX' (RSA) to the list of known hosts.</p>
+</blockquote>
+<p>Open the <code>hosts</code> file:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">vim</span><span> /etc/hosts
+</span></code></pre>
+<p>Add add the line:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">XX.XXX.XXX.XXX</span><span>  github.com
+</span></code></pre>
+<h2 id="generate-ssh-key-and-add-to-github">Generate SSH key and add to GitHub</h2>
+<p>Execute the following command:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">ssh-keygen -t</span><span> rsa
+</span></code></pre>
+<p>Copy the public key to your <a href="https://github.com/settings/keys">GitHub account</a>:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">cat ~</span><span>/.ssh/id_rsa.pub
+</span></code></pre>
+<h2 id="copy-ssh-key-and-add-to-remote-server">Copy SSH key and add to remote server</h2>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">cat ~</span><span>/.ssh/id_rsa.pub
+</span></code></pre>
+<p>Copy the public key to the remote server <code>~/.ssh/authorized_keys</code> (create one, if doesn't exist).
+If <code>authorized_keys</code> needs to be create, make sure its permissions are correct:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">chown -R </span><span>$</span><span style="color:#bf616a;">USER</span><span>:$</span><span style="color:#bf616a;">USER ~</span><span>/.ssh
+</span></code></pre>
+<h3 id="issues-may-occur">Issues may occur</h3>
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/21160774/github-error-key-already-in-use">GitHub Error: Key already in use</a></p>
+<p>for short:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">ssh -T -ai ~</span><span>/.ssh/id_rsa git@github.com
+</span></code></pre>
+</li>
+</ul>
+<h2 id="setup-github-cli-debian-ubuntu">Setup Github Cli (Debian/Ubuntu)</h2>
+<p>A shortcut:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> apt-key adv</span><span style="color:#bf616a;"> --keyserver</span><span> keyserver.ubuntu.com</span><span style="color:#bf616a;"> --recv-key</span><span> C99B11DEB97541F0
+</span><span style="color:#bf616a;">sudo</span><span> apt-add-repository https://cli.github.com/packages
+</span><span style="color:#bf616a;">sudo</span><span> apt update
+</span><span style="color:#bf616a;">sudo</span><span> apt install gh
+</span></code></pre>
+<p>Then authentication (follow up the indication provided by gh):</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">gh</span><span> auth login
+</span></code></pre>
+<p>Visit <a href="https://github.com/settings/tokens">Github Token page</a> and generate a new token. Copy this token to the terminal when <code>? Paste your authentication token:</code> occurs.</p>
+<h2 id="setup-github-cli-centos">Setup Github Cli (CentOS)</h2>
+<ol>
+<li>
+<p>Install <a href="https://opensource.com/article/18/8/guide-yum-dnf">DNF</a>:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> yum install epel-release
+</span><span style="color:#bf616a;">sudo</span><span> yum install dnf
+</span><span style="color:#bf616a;">dnf --version
+</span></code></pre>
+</li>
+<li>
+<p>Using DNF to install <code>gh</code>:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> dnf install &#39;</span><span style="color:#a3be8c;">dnf-command(config-manager)</span><span>&#39;
+</span><span style="color:#bf616a;">sudo</span><span> dnf config-manager</span><span style="color:#bf616a;"> --add-repo</span><span> https://cli.github.com/packages/rpm/gh-cli.repo
+</span><span style="color:#bf616a;">sudo</span><span> dnf install gh
+</span></code></pre>
+</li>
+<li>
+<p>Authentication:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">gh</span><span> auth login
+</span></code></pre>
+</li>
+</ol>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

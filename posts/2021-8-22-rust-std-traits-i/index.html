@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | Rust Std Traits (I) </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Rust Std Traits (I)</h1>
+					<p class="subtitle">Useful traits from the Rust standard library</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2021-08-22">August 22, 2021</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>17 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>3223 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/post/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Post</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/rust/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Rust</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="intro">Intro</h2>
+<p>Hello everyone 👋, today I'm going to list several useful and common traits from the Rust standard library. Using <a href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md">Tour of Rust's Standard Library Traits</a> as my reference, I'm not going through all of it, but to pick some of them that I believe is important, and to give some enhanced examples for better comprehension.</p>
+<h2 id="trait-basics">Trait Basics</h2>
+<h3 id="generic-types-vs-associated-types">Generic Types vs Associated Types</h3>
+<p>According to the article, the major difference between these two types is:</p>
+<blockquote>
+<p>The general rule-of-thumb is:</p>
+<ul>
+<li>Use associated types when there should only be a single impl of the trait per type.</li>
+<li>Use generic types when there can be many possible impls of the trait per type.</li>
+</ul>
+</blockquote>
+<p>That is to say, with associated types a type can only impl it once (otherwise causes compile error). These might be confusing, but don't worry, here is an example that is commonly occurred in my use case:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>std::str::Bytes;
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    unimplemented!();
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// T represents many possible impls
+</span><span style="color:#b48ead;">pub trait </span><span>Biz&lt;T&gt; {
+</span><span>    </span><span style="color:#65737e;">// Error represents only one possible impl
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Error;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">process</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; Result&lt;T, </span><span style="color:#b48ead;">Self::</span><span>Error&gt;;
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// ----- below are implementation
+</span><span>
+</span><span style="color:#65737e;">// Error is unique, we shall not have another type of error.
+</span><span style="color:#65737e;">// If we do require more error types, don&#39;t mess them up into a single business logic.
+</span><span style="color:#b48ead;">pub enum </span><span>BizError {
+</span><span>    ParseError(String),
+</span><span>    UnknownError,
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// Here is a concrete type of biz logic
+</span><span style="color:#b48ead;">pub struct </span><span>JSON;
+</span><span>
+</span><span style="color:#65737e;">// `String` has its own impl
+</span><span style="color:#b48ead;">impl </span><span>Biz&lt;String&gt; </span><span style="color:#b48ead;">for </span><span>JSON {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Error = BizError;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">process</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; Result&lt;String, </span><span style="color:#b48ead;">Self::</span><span>Error&gt; {
+</span><span>        todo!()
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// So does `Vec&lt;u8&gt;`
+</span><span style="color:#b48ead;">impl </span><span>Biz&lt;Vec&lt;</span><span style="color:#b48ead;">u8</span><span>&gt;&gt; </span><span style="color:#b48ead;">for </span><span>JSON {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Error = BizError;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">process</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; Result&lt;Vec&lt;</span><span style="color:#b48ead;">u8</span><span>&gt;, </span><span style="color:#b48ead;">Self::</span><span>Error&gt; {
+</span><span>        todo!()
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// Here is another concrete type of biz logic
+</span><span style="color:#b48ead;">pub struct </span><span>XML;
+</span><span>
+</span><span style="color:#65737e;">// Same as `Biz&lt;String&gt; for JSON`
+</span><span style="color:#b48ead;">impl </span><span>Biz&lt;String&gt; </span><span style="color:#b48ead;">for </span><span>XML {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Error = BizError;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">process</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; Result&lt;String, </span><span style="color:#b48ead;">Self::</span><span>Error&gt; {
+</span><span>        todo!()
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// But we can have another totally different type `Bytes&lt;&#39;a&gt;` from above
+</span><span style="color:#b48ead;">impl</span><span>&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt; Biz&lt;Bytes&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;&gt; </span><span style="color:#b48ead;">for </span><span>XML {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Error = BizError;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">process</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; Result&lt;Bytes&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;, </span><span style="color:#b48ead;">Self::</span><span>Error&gt; {
+</span><span>        todo!()
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Apparently, <code>BizError</code> should not use generic type, since it is the only possible 'Error' in the project, while <code>String</code>, <code>Vec&lt;u8&gt;</code> and <code>Bytes&lt;'a&gt;</code> should not belong to associate type, since they are highly related to business logic.</p>
+<h3 id="generic-blanket-impls">Generic Blanket Impls</h3>
+<blockquote>
+<p>A generic blanket impl is an impl on a generic type instead of a concrete type.</p>
+</blockquote>
+<p>To explain this, I made an example to illustrate how a general type can automatically grant the power of pre-defined trait (<code>CRUD</code> trait), solely implementing the <code>T</code> trait (<code>InnerMap</code>).</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>std::{collections::HashMap, hash::Hash, iter::FromIterator};
+</span><span>
+</span><span style="color:#b48ead;">trait </span><span>InnerMap&lt;K, V&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">store_mut</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">mut </span><span>HashMap&lt;K, V&gt;;
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">store_ref</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;HashMap&lt;K, V&gt;;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">trait </span><span>CRUD&lt;K, V&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">create</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">item</span><span>: HashMap&lt;K, V&gt;);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">key</span><span>: K) -&gt; Option&lt;V&gt;;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">update</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">item</span><span>: HashMap&lt;K, V&gt;);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">delete</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">key</span><span>: K);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl</span><span>&lt;T, K, V&gt; CRUD&lt;K, V&gt; </span><span style="color:#b48ead;">for </span><span>T
+</span><span style="color:#b48ead;">where
+</span><span>    T: InnerMap&lt;K, V&gt;,
+</span><span>    K: Eq + Hash,
+</span><span>    V: Clone,
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">create</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">item</span><span>: HashMap&lt;K, V&gt;) {
+</span><span>        item.</span><span style="color:#96b5b4;">into_iter</span><span>().</span><span style="color:#96b5b4;">for_each</span><span>(|(</span><span style="color:#bf616a;">k</span><span>, </span><span style="color:#bf616a;">v</span><span>)| {
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">store_mut</span><span>().</span><span style="color:#96b5b4;">insert</span><span>(k, v);
+</span><span>        })
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">key</span><span>: K) -&gt; Option&lt;V&gt; {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">store_ref</span><span>().</span><span style="color:#96b5b4;">get</span><span>(&amp;key).</span><span style="color:#96b5b4;">cloned</span><span>()
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">update</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">item</span><span>: HashMap&lt;K, V&gt;) {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">create</span><span>(item);
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">delete</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">key</span><span>: K) {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">store_mut</span><span>().</span><span style="color:#96b5b4;">remove</span><span>(&amp;key);
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// ----- below are implementation
+</span><span>
+</span><span style="color:#65737e;">// a concrete type with private field
+</span><span style="color:#b48ead;">pub struct </span><span>RedisStore {
+</span><span>    </span><span style="color:#bf616a;">store</span><span>: HashMap&lt;</span><span style="color:#b48ead;">usize</span><span>, String&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>RedisStore {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span>() -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        RedisStore {
+</span><span>            store: HashMap::new(),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// CRUD is automatically granted, since `RedisStore` now meets the requirement of `CRUD` trait:
+</span><span style="color:#65737e;">// where clause `T: InnerMap`
+</span><span style="color:#b48ead;">impl </span><span>InnerMap&lt;</span><span style="color:#b48ead;">usize</span><span>, String&gt; </span><span style="color:#b48ead;">for </span><span>RedisStore {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">store_mut</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;</span><span style="color:#b48ead;">mut </span><span>HashMap&lt;</span><span style="color:#b48ead;">usize</span><span>, String&gt; {
+</span><span>        &amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>.store
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">store_ref</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; &amp;HashMap&lt;</span><span style="color:#b48ead;">usize</span><span>, String&gt; {
+</span><span>        &amp;</span><span style="color:#bf616a;">self</span><span>.store
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> rs = RedisStore::new();
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> data = HashMap::from_iter(vec![(</span><span style="color:#d08770;">0</span><span>, &quot;</span><span style="color:#a3be8c;">Hello</span><span>&quot;.</span><span style="color:#96b5b4;">to_owned</span><span>()), (</span><span style="color:#d08770;">1</span><span>, &quot;</span><span style="color:#a3be8c;">World</span><span>&quot;.</span><span style="color:#96b5b4;">to_owned</span><span>())]);
+</span><span>
+</span><span>    rs.</span><span style="color:#96b5b4;">create</span><span>(data);
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, rs.</span><span style="color:#96b5b4;">read</span><span>(</span><span style="color:#d08770;">1</span><span>));
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> data = HashMap::from_iter(vec![(</span><span style="color:#d08770;">0</span><span>, &quot;</span><span style="color:#a3be8c;">Hi</span><span>&quot;.</span><span style="color:#96b5b4;">to_owned</span><span>()), (</span><span style="color:#d08770;">1</span><span>, &quot;</span><span style="color:#a3be8c;">Jacob</span><span>&quot;.</span><span style="color:#96b5b4;">to_owned</span><span>())]);
+</span><span>
+</span><span>    rs.</span><span style="color:#96b5b4;">update</span><span>(data);
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, rs.</span><span style="color:#96b5b4;">read</span><span>(</span><span style="color:#d08770;">1</span><span>));
+</span><span>
+</span><span>    rs.</span><span style="color:#96b5b4;">delete</span><span>(</span><span style="color:#d08770;">1</span><span>);
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, rs.</span><span style="color:#96b5b4;">read</span><span>(</span><span style="color:#d08770;">1</span><span>));
+</span><span>}
+</span></code></pre>
+<p>The only thing we should notice is that a generic type <code>T</code> cannot be impl twice or more, otherwise overlap will make compiler unhappy.</p>
+<h2 id="auto-traits">Auto Traits</h2>
+<p>Auto traits are an inevitable topic, as long as a programmer wants to compose low level codes rather than just calling APIs from other crates. According to the author:</p>
+<blockquote>
+<p>Prerequisites:</p>
+<ul>
+<li>Marker Traits: Marker traits are traits that have no trait items. Their job is to &quot;mark&quot; the implementing type as having some property which is otherwise not possible to represent using the type system.</li>
+<li>Auto Traits: Auto traits are traits that get automatically implemented for a type if all of its members also impl the trait. What &quot;members&quot; means depends on the type, for example: fields of a struct, variants of an enum, elements of an array, items of a tuple, and so on.</li>
+<li>Unsafe Traits: Traits can be marked unsafe to indicate that impling the trait might require unsafe code.</li>
+</ul>
+</blockquote>
+<p>Briefly, we can have one of conclusion as below:</p>
+<p>$$
+Marker Traits \in Auto Traits
+$$</p>
+<h3 id="send-sync">Send &amp; Sync</h3>
+<p>The book <a href="https://doc.rust-lang.org/nomicon/send-and-sync.html">The Rustonomicon</a> gives us a preciser explanation of Send &amp; Sync:</p>
+<blockquote>
+<ul>
+<li>A type is Send if it is safe to send it to another thread.</li>
+<li>A type is Sync if it is safe to share between threads (T is Sync if and only if &amp;T is Send).</li>
+</ul>
+</blockquote>
+<p>We know that almost all primitives are Send and Sync, but still there are exceptions:</p>
+<blockquote>
+<ul>
+<li>raw pointers are neither Send nor Sync (because they have no safety guards).</li>
+<li>UnsafeCell isn't Sync (and therefore Cell and RefCell aren't).</li>
+<li>Rc isn't Send or Sync (because the refcount is shared and unsynchronized).</li>
+</ul>
+</blockquote>
+<h3 id="sized">Sized</h3>
+<p>Alright here is another fundamental trait that builds up the Rust skyscraper, and it should be firmly mastered.</p>
+<blockquote>
+<p>If a type is Sized that means its size in bytes is known at compile-time and it's possible to put instances of the type on the stack.</p>
+</blockquote>
+<p>Studying Rust is somehow a history of fighting with <code>Sized</code>, because new programmer is always being resulted a compile error says &quot;xxx doesn't have size known at compile time&quot;. In order to have a completely comprehension on Sizedness, here is another <a href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/sizedness-in-rust.md">article</a> written by the author that explains it in detail.</p>
+<p>Since <code>Sized</code> is an auto trait, it is usually implicitly implemented. For example, see the desugar cases:</p>
+<blockquote>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#65737e;">// this generic function...
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">func</span><span>&lt;T&gt;(</span><span style="color:#bf616a;">t</span><span>: T) {}
+</span><span>
+</span><span style="color:#65737e;">// ...desugars to...
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">func</span><span>&lt;T: Sized&gt;(</span><span style="color:#bf616a;">t</span><span>: T) {}
+</span><span>
+</span><span style="color:#65737e;">// ...which doesn&#39;t compile since it doesn&#39;t have
+</span><span style="color:#65737e;">// a known size so we must put it behind a pointer...
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">func</span><span>&lt;T: </span><span style="background-color:#bf616a;color:#2b303b;">?</span><span>Sized&gt;(t: &amp;T) {}
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">func</span><span>&lt;T: </span><span style="background-color:#bf616a;color:#2b303b;">?</span><span>Sized&gt;(t: Box&lt;T&gt;) {}
+</span></code></pre>
+</blockquote>
+<p>Additionally, <code>?Sized</code> is treated as a type which can either be Sized or Unsized, and it is the only 'relaxed bound (rather than constrains the type parameter)' in Rust.</p>
+<h2 id="general-traits">General Traits</h2>
+<h3 id="any">Any</h3>
+<p>See <a href="https://jacobbishopxy.github.io/posts/2021-8-16-more-rust-type/">this early post</a> I made for studying <code>Any</code> trait. For instance, <code>Any</code> can be used with a <code>Box</code> pointer and <code>dyn</code> keyword to create a heterogenous collection, and later on we can use <code>downcast_mut</code> or <code>downcast_ref</code> to 'degreed' a <code>Any</code> trait object to a concrete object during runtime. Here is a brief example to illustrate what <code>Any</code> can do:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>std::any::Any;
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> vec: Vec&lt;Box&lt;dyn Any&gt;&gt; = vec![
+</span><span>        Box::new(</span><span style="color:#d08770;">0</span><span>),
+</span><span>        Box::new(String::from(&quot;</span><span style="color:#a3be8c;">0</span><span>&quot;)),
+</span><span>        Box::new(Point::default()),
+</span><span>    ];
+</span><span>
+</span><span>    vec = vec.</span><span style="color:#96b5b4;">into_iter</span><span>().</span><span style="color:#96b5b4;">map</span><span>(map_any).</span><span style="color:#96b5b4;">collect</span><span>();
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span> i in vec.</span><span style="color:#96b5b4;">iter</span><span>() {
+</span><span>        println!(&quot;</span><span style="color:#d08770;">{:#?}</span><span>&quot;, i.downcast_ref::&lt;</span><span style="color:#b48ead;">i32</span><span>&gt;());
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Default)]
+</span><span style="color:#b48ead;">struct </span><span>Point {
+</span><span>    </span><span style="color:#bf616a;">x</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>    </span><span style="color:#bf616a;">y</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Point {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">inc</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.x += </span><span style="color:#d08770;">1</span><span>;
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.y += </span><span style="color:#d08770;">1</span><span>;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">map_any</span><span>(</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">any</span><span>: Box&lt;dyn Any&gt;) -&gt; Box&lt;dyn Any&gt; {
+</span><span>    </span><span style="color:#b48ead;">if let </span><span>Some(num) = any.downcast_mut::&lt;</span><span style="color:#b48ead;">i32</span><span>&gt;() {
+</span><span>        *num += </span><span style="color:#d08770;">1</span><span>;
+</span><span>    } </span><span style="color:#b48ead;">else if let </span><span>Some(string) = any.downcast_mut::&lt;String&gt;() {
+</span><span>        *string += &quot;</span><span style="color:#a3be8c;">!</span><span>&quot;;
+</span><span>    } </span><span style="color:#b48ead;">else if let </span><span>Some(point) = any.downcast_mut::&lt;Point&gt;() {
+</span><span>        point.</span><span style="color:#96b5b4;">inc</span><span>();
+</span><span>    }
+</span><span>
+</span><span>    any
+</span><span>}
+</span></code></pre>
+<h2 id="formatting-traits">Formatting Traits</h2>
+<p>Take a glance at all formatting traits:</p>
+<blockquote>
+<table><thead><tr><th>Trait</th><th>Placeholder</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>Display</code></td><td><code>{}</code></td><td>display representation</td></tr>
+<tr><td><code>Debug</code></td><td><code>{:?}</code></td><td>debug representation</td></tr>
+<tr><td><code>Octal</code></td><td><code>{:o}</code></td><td>octal representation</td></tr>
+<tr><td><code>LowerHex</code></td><td><code>{:x}</code></td><td>lowercase hex representation</td></tr>
+<tr><td><code>UpperHex</code></td><td><code>{:X}</code></td><td>uppercase hex representation</td></tr>
+<tr><td><code>Pointer</code></td><td><code>{:p}</code></td><td>memory address</td></tr>
+<tr><td><code>Binary</code></td><td><code>{:b}</code></td><td>binary representation</td></tr>
+<tr><td><code>LowerExp</code></td><td><code>{:e}</code></td><td>lowercase exponential representation</td></tr>
+<tr><td><code>UpperExp</code></td><td><code>{:E}</code></td><td>uppercase exponential representation</td></tr>
+</tbody></table>
+</blockquote>
+<h3 id="display-tostring">Display &amp; ToString</h3>
+<p>In general, <code>std::fmt::Display</code> is to serialize a type into <code>String</code>, for example we can serialize a database connection information struct to a connection string:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>std::fmt::Display;
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#65737e;">// convert `ConnInfo` to sql connection string
+</span><span>    </span><span style="color:#b48ead;">let</span><span> ci = ConnInfo::new(
+</span><span>        Driver::Postgres,
+</span><span>        &quot;</span><span style="color:#a3be8c;">username</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">password</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#a3be8c;">localhost</span><span>&quot;,
+</span><span>        </span><span style="color:#d08770;">5432</span><span>,
+</span><span>        &quot;</span><span style="color:#a3be8c;">database</span><span>&quot;,
+</span><span>    );
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, ci.</span><span style="color:#96b5b4;">to_string</span><span>());
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// database type
+</span><span style="color:#b48ead;">pub enum </span><span>Driver {
+</span><span>    Postgres,
+</span><span>    Mysql,
+</span><span>    Sqlite,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Display </span><span style="color:#b48ead;">for </span><span>Driver {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">fmt</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">f</span><span>: &amp;</span><span style="color:#b48ead;">mut </span><span>std::fmt::Formatter&lt;&#39;_&gt;) -&gt; std::fmt::Result {
+</span><span>        </span><span style="color:#b48ead;">match </span><span>&amp;</span><span style="color:#bf616a;">self </span><span>{
+</span><span>            Driver::Postgres =&gt; write!(f, &quot;</span><span style="color:#a3be8c;">postgres</span><span>&quot;),
+</span><span>            Driver::Mysql =&gt; write!(f, &quot;</span><span style="color:#a3be8c;">mysql</span><span>&quot;),
+</span><span>            Driver::Sqlite =&gt; write!(f, &quot;</span><span style="color:#a3be8c;">sqlite</span><span>&quot;),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// connection info
+</span><span style="color:#b48ead;">pub struct </span><span>ConnInfo {
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">driver</span><span>: Driver,
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">username</span><span>: String,
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">password</span><span>: String,
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">host</span><span>: String,
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">port</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>    </span><span style="color:#b48ead;">pub </span><span style="color:#bf616a;">database</span><span>: String,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>ConnInfo {
+</span><span>    </span><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">new</span><span>(
+</span><span>        </span><span style="color:#bf616a;">driver</span><span>: Driver,
+</span><span>        </span><span style="color:#bf616a;">username</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>,
+</span><span>        </span><span style="color:#bf616a;">password</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>,
+</span><span>        </span><span style="color:#bf616a;">host</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>,
+</span><span>        </span><span style="color:#bf616a;">port</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>        </span><span style="color:#bf616a;">database</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>,
+</span><span>    ) -&gt; ConnInfo {
+</span><span>        ConnInfo {
+</span><span>            driver,
+</span><span>            username: username.</span><span style="color:#96b5b4;">to_owned</span><span>(),
+</span><span>            password: password.</span><span style="color:#96b5b4;">to_owned</span><span>(),
+</span><span>            host: host.</span><span style="color:#96b5b4;">to_owned</span><span>(),
+</span><span>            port,
+</span><span>            database: database.</span><span style="color:#96b5b4;">to_owned</span><span>(),
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Display </span><span style="color:#b48ead;">for </span><span>ConnInfo {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">fmt</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">f</span><span>: &amp;</span><span style="color:#b48ead;">mut </span><span>std::fmt::Formatter&lt;&#39;_&gt;) -&gt; std::fmt::Result {
+</span><span>        write!(
+</span><span>            f,
+</span><span>            &quot;</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">://</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">:</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">@</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">:</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">/</span><span style="color:#d08770;">{}</span><span>&quot;,
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.driver, </span><span style="color:#bf616a;">self</span><span>.username, </span><span style="color:#bf616a;">self</span><span>.password, </span><span style="color:#bf616a;">self</span><span>.host, </span><span style="color:#bf616a;">self</span><span>.port, </span><span style="color:#bf616a;">self</span><span>.database,
+</span><span>        )
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<h3 id="debug">Debug</h3>
+<p>A <code>Debug</code> trait is very useful while in development. Any type who has derived or implemented <code>Debug</code> can be printed in a well formatted form. Another benefit is using it as an accessory of <code>dbg!</code> macro. Notice the only drawback of using <code>dbg!</code> is that users need manually remove it while in production.</p>
+<blockquote>
+<p>Impling Debug for a type also allows it to be used within the dbg! macro which is superior to println! for quick and dirty print logging. Some of its advantages:</p>
+<ul>
+<li>dbg! prints to stderr instead of stdout so the debug logs are easy to separate from the actual stdout output of our program.</li>
+<li>dbg! prints the expression passed to it as well as the value the expression evaluated to.</li>
+<li>dbg! takes ownership of its arguments and returns them so you can use it within expressions.</li>
+</ul>
+</blockquote>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> foo = Dimension { x: </span><span style="color:#d08770;">1</span><span>, y: </span><span style="color:#d08770;">3</span><span>, z: </span><span style="color:#d08770;">5 </span><span>};
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, foo);
+</span><span>    dbg!(foo);
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Debug)]
+</span><span style="color:#b48ead;">struct </span><span>Dimension {
+</span><span>    </span><span style="color:#bf616a;">x</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>    </span><span style="color:#bf616a;">y</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>    </span><span style="color:#bf616a;">z</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>}
+</span></code></pre>
+<p>And resulting:</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Dimension { x: 1, y: 3, z: 5 }
+</span><span>[src/bin/dev.rs:4] foo = Dimension {
+</span><span>    x: 1,
+</span><span>    y: 3,
+</span><span>    z: 5,
+</span><span>}
+</span></code></pre>
+<h2 id="operator-traits">Operator Traits</h2>
+<p>Thx to the author for listing out all operator traits:</p>
+<blockquote>
+<table><thead><tr><th>Trait(s)</th><th>Category</th><th>Operator(s)</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>Eq</code>, <code>PartialEq</code></td><td>comparison</td><td><code>==</code></td><td>equality</td></tr>
+<tr><td><code>Ord</code>, <code>PartialOrd</code></td><td>comparison</td><td><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></td><td>comparison</td></tr>
+<tr><td><code>Add</code></td><td>arithmetic</td><td><code>+</code></td><td>addition</td></tr>
+<tr><td><code>AddAssign</code></td><td>arithmetic</td><td><code>+=</code></td><td>addition assignment</td></tr>
+<tr><td><code>BitAnd</code></td><td>arithmetic</td><td><code>&amp;</code></td><td>bitwise AND</td></tr>
+<tr><td><code>BitAndAssign</code></td><td>arithmetic</td><td><code>&amp;=</code></td><td>bitwise assignment</td></tr>
+<tr><td><code>BitXor</code></td><td>arithmetic</td><td><code>^</code></td><td>bitwise XOR</td></tr>
+<tr><td><code>BitXorAssign</code></td><td>arithmetic</td><td><code>^=</code></td><td>bitwise XOR assignment</td></tr>
+<tr><td><code>Div</code></td><td>arithmetic</td><td><code>/</code></td><td>division</td></tr>
+<tr><td><code>DivAssign</code></td><td>arithmetic</td><td><code>/=</code></td><td>division assignment</td></tr>
+<tr><td><code>Mul</code></td><td>arithmetic</td><td><code>\*</code></td><td>multiplication</td></tr>
+<tr><td><code>MulAssign</code></td><td>arithmetic</td><td><code>\*=</code></td><td>multiplication assignment</td></tr>
+<tr><td><code>Neg</code></td><td>arithmetic</td><td><code>-</code></td><td>unary negation</td></tr>
+<tr><td><code>Not</code></td><td>arithmetic</td><td><code>!</code></td><td>unary logical negation</td></tr>
+<tr><td><code>Rem</code></td><td>arithmetic</td><td><code>%</code></td><td>remainder</td></tr>
+<tr><td><code>RemAssign</code></td><td>arithmetic</td><td><code>%=</code></td><td>remainder assignment</td></tr>
+<tr><td><code>Shl</code></td><td>arithmetic</td><td><code>&lt;&lt;</code></td><td>left shift</td></tr>
+<tr><td><code>ShlAssign</code></td><td>arithmetic</td><td><code>&lt;&lt;=</code></td><td>left shift assignment</td></tr>
+<tr><td><code>Shr</code></td><td>arithmetic</td><td><code>&gt;&gt;</code></td><td>right shift</td></tr>
+<tr><td><code>ShrAssign</code></td><td>arithmetic</td><td><code>&gt;&gt;=</code></td><td>right shift assignment</td></tr>
+<tr><td><code>Sub</code></td><td>arithmetic</td><td><code>-</code></td><td>subtraction</td></tr>
+<tr><td><code>SubAssign</code></td><td>arithmetic</td><td><code>-=</code></td><td>subtraction assignment</td></tr>
+<tr><td><code>Fn</code></td><td>closure</td><td><code>(...args)</code></td><td>immutable closure invocation</td></tr>
+<tr><td><code>FnMut</code></td><td>closure</td><td><code>(...args)</code></td><td>mutable closure invocation</td></tr>
+<tr><td><code>FnOnce</code></td><td>closure</td><td><code>(...args)</code></td><td>one-time closure invocation</td></tr>
+<tr><td><code>Deref</code></td><td>other</td><td><code>\*</code></td><td>immutable dereference</td></tr>
+<tr><td><code>DerefMut</code></td><td>other</td><td><code>\*</code></td><td>mutable dereference</td></tr>
+<tr><td><code>Drop</code></td><td>other</td><td>-</td><td>type destructor</td></tr>
+<tr><td><code>Index</code></td><td>other</td><td><code>[]</code></td><td>immutable index</td></tr>
+<tr><td><code>IndexMut</code></td><td>other</td><td><code>[]</code></td><td>mutable index</td></tr>
+<tr><td><code>RangeBounds</code></td><td>other</td><td><code>..</code></td><td>range</td></tr>
+</tbody></table>
+</blockquote>
+<h3 id="comparison-traits">Comparison Traits</h3>
+<h4 id="PartialEqNEq">PartialEq &amp; Eq</h4>
+<p><code>#[derive(PartialEq)]</code> is a very common use case of <code>PartialEq</code>. Moreover, an advanced use case is to impl <code>PartialEq</code> between two type, in other words, comparison between two different types is achievable.</p>
+<blockquote>
+<p>Generally, we should only impl equality between different types if they contain the same kind of data and the only difference between the types is how they represent the data or how they allow interacting with the data.</p>
+</blockquote>
+<p>A simple example to illustrate comparison between two types -- comparing <code>area</code> between <code>Circle</code> and <code>Square</code>:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> foo = Square::new(</span><span style="color:#d08770;">4.0</span><span>, </span><span style="color:#d08770;">3.14</span><span>);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> bar = Circle::new(</span><span style="color:#d08770;">2.0</span><span>);
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, foo == bar);
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(PartialEq)]
+</span><span style="color:#b48ead;">struct </span><span>Circle {
+</span><span>    </span><span style="color:#bf616a;">radius</span><span>: </span><span style="color:#b48ead;">f32</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Circle {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span>(</span><span style="color:#bf616a;">r</span><span>: </span><span style="color:#b48ead;">f32</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        Circle { radius: r }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">area</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">f32 </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.radius * </span><span style="color:#bf616a;">self</span><span>.radius * </span><span style="color:#d08770;">3.14
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(PartialEq)]
+</span><span style="color:#b48ead;">struct </span><span>Square {
+</span><span>    </span><span style="color:#bf616a;">length</span><span>: </span><span style="color:#b48ead;">f32</span><span>,
+</span><span>    </span><span style="color:#bf616a;">width</span><span>: </span><span style="color:#b48ead;">f32</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Square {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span>(</span><span style="color:#bf616a;">l</span><span>: </span><span style="color:#b48ead;">f32</span><span>, </span><span style="color:#bf616a;">w</span><span>: </span><span style="color:#b48ead;">f32</span><span>) -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        Square {
+</span><span>            length: l,
+</span><span>            width: w,
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">area</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">f32 </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.length * </span><span style="color:#bf616a;">self</span><span>.width
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>PartialEq&lt;Circle&gt; </span><span style="color:#b48ead;">for </span><span>Square {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">eq</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;Circle) -&gt; </span><span style="color:#b48ead;">bool </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">area</span><span>() == other.</span><span style="color:#96b5b4;">area</span><span>()
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Pretty clear hah, so what about <code>Eq</code>?</p>
+<blockquote>
+<p><code>Eq</code> is a marker trait and a subtrait of <code>PartialEq&lt;Self&gt;</code>.</p>
+</blockquote>
+<p>Let's see another example under <code>Hash</code> topic that illustrates how <code>PartialEq</code>, <code>Eq</code> and <code>Hash</code> work together.</p>
+<h4 id="Hash">Hash</h4>
+<p>In order to having a customized &quot;Hashable&quot; struct, I made a verbose example that illustrates how to cling <code>PartialEq</code>, <code>Eq</code> and <code>Hash</code> together. Details in comments:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>std::{collections::HashSet, fmt::Debug, hash::Hash};
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> d1 = Dudu(</span><span style="color:#d08770;">1</span><span>);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> d2 = Dada { v: </span><span style="color:#d08770;">1 </span><span>};
+</span><span>    </span><span style="color:#b48ead;">let</span><span> d3 = Dada { v: </span><span style="color:#d08770;">2 </span><span>};
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> foo = Biz {
+</span><span>        key: </span><span style="color:#d08770;">0</span><span>,
+</span><span>        val: Box::new(d1), </span><span style="color:#65737e;">// Dudu
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> bar = Biz {
+</span><span>        key: </span><span style="color:#d08770;">0</span><span>,
+</span><span>        val: Box::new(d2), </span><span style="color:#65737e;">// Dada
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> quz = Biz {
+</span><span>        key: </span><span style="color:#d08770;">0</span><span>,
+</span><span>        val: Box::new(d3), </span><span style="color:#65737e;">// Dada
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> collection = HashSet::new();
+</span><span>
+</span><span>    collection.</span><span style="color:#96b5b4;">insert</span><span>(foo);
+</span><span>    collection.</span><span style="color:#96b5b4;">insert</span><span>(bar);
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// notice here, `foo` and `bar` are treated as a same value, since their val has
+</span><span>    </span><span style="color:#65737e;">// the same `.id()` result, so hashMap won&#39;t be updated
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, collection); </span><span style="color:#65737e;">// {Biz { key: 0, val: &gt; 1 &lt; }}
+</span><span>
+</span><span>    collection.</span><span style="color:#96b5b4;">insert</span><span>(quz);
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// hashMap has been updated, because `quz`&#39;s `val` has a different `.id()` result
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, collection); </span><span style="color:#65737e;">// {Biz { key: 0, val: &gt; 1 &lt; }, Biz { key: 0, val: &gt; 2 &lt; }}
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// mock trait, we will use it to create a trait object
+</span><span style="color:#b48ead;">trait </span><span>MockT {
+</span><span>    </span><span style="color:#65737e;">// the only way to identify a trait object is by this method (of cuz this is mocking)
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">id</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// impl `PartialEq`
+</span><span style="color:#b48ead;">impl </span><span>PartialEq </span><span style="color:#b48ead;">for </span><span>dyn MockT {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">eq</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;</span><span style="color:#b48ead;">Self</span><span>) -&gt; </span><span style="color:#b48ead;">bool </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">id</span><span>() == other.</span><span style="color:#96b5b4;">id</span><span>()
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// impl `Eq`, marker trait
+</span><span style="color:#b48ead;">impl </span><span>Eq </span><span style="color:#b48ead;">for </span><span>dyn MockT {}
+</span><span>
+</span><span style="color:#65737e;">// for println
+</span><span style="color:#b48ead;">impl </span><span>Debug </span><span style="color:#b48ead;">for </span><span>dyn MockT {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">fmt</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">f</span><span>: &amp;</span><span style="color:#b48ead;">mut </span><span>std::fmt::Formatter&lt;&#39;_&gt;) -&gt; std::fmt::Result {
+</span><span>        write!(f, &quot;</span><span style="color:#a3be8c;">&gt; </span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;"> &lt;</span><span>&quot;, </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">id</span><span>())
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// mocking a business logic struct, which consist of a key of `i32` and a val of trait object.
+</span><span>#[</span><span style="color:#bf616a;">derive</span><span>(Eq, Debug)]
+</span><span style="color:#b48ead;">struct </span><span>Biz {
+</span><span>    </span><span style="color:#bf616a;">key</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>    </span><span style="color:#bf616a;">val</span><span>: Box&lt;dyn MockT&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>PartialEq </span><span style="color:#b48ead;">for </span><span>Biz {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">eq</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;</span><span style="color:#b48ead;">Self</span><span>) -&gt; </span><span style="color:#b48ead;">bool </span><span>{
+</span><span>        </span><span style="color:#65737e;">// again, calling `.id()` method is the only way to discern trait objects
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.key == other.key &amp;&amp; </span><span style="color:#bf616a;">self</span><span>.val.</span><span style="color:#96b5b4;">id</span><span>() == other.val.</span><span style="color:#96b5b4;">id</span><span>()
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// impl `Hash` so that later on, we can use `Biz` in `HashMap` or `HashSet`
+</span><span style="color:#b48ead;">impl </span><span>Hash </span><span style="color:#b48ead;">for </span><span>Biz {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">hash</span><span>&lt;H: std::hash::Hasher&gt;(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">state</span><span>: &amp;</span><span style="color:#b48ead;">mut</span><span> H) {
+</span><span>        state.</span><span style="color:#96b5b4;">write_i32</span><span>(</span><span style="color:#bf616a;">self</span><span>.key);
+</span><span>        state.</span><span style="color:#96b5b4;">write_usize</span><span>(</span><span style="color:#bf616a;">self</span><span>.val.</span><span style="color:#96b5b4;">id</span><span>());
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// concrete struct #1 who impled `MockT`
+</span><span style="color:#b48ead;">struct </span><span>Dudu(</span><span style="color:#b48ead;">usize</span><span>);
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MockT </span><span style="color:#b48ead;">for </span><span>Dudu {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">id</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// concrete struct #2 who impled `MockT`
+</span><span style="color:#b48ead;">struct </span><span>Dada {
+</span><span>    </span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">usize</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MockT </span><span style="color:#b48ead;">for </span><span>Dada {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">id</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.v
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<h4 id="partialord-ord">PartialOrd &amp; Ord</h4>
+<p>Generally, <code>PartialOrd</code> is used for type comparison, whereas comparison between two different types is eligible as well. Let us first take a glimpse at the <code>PartialOrd</code> trait (simplified and documentations removed):</p>
+<blockquote>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">pub trait </span><span>PartialOrd&lt;Rhs: ?Sized = Self&gt;: PartialEq&lt;Rhs&gt; {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">partial_cmp</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;Rhs) -&gt; Option&lt;Ordering&gt;;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">lt</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;Rhs) -&gt; </span><span style="color:#b48ead;">bool</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">le</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;Rhs) -&gt; </span><span style="color:#b48ead;">bool</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">gt</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;Rhs) -&gt; </span><span style="color:#b48ead;">bool</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">ge</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;Rhs) -&gt; </span><span style="color:#b48ead;">bool</span><span>;
+</span><span>}
+</span></code></pre>
+</blockquote>
+<p>The <code>Rhs</code> generic type parameter, which denotes a short for &quot;right hand side&quot;, has a <code>?Sized</code> trait bound for the implementor type itself. Although directly deriving <code>PartialOrd</code> to a custom type is the common use case, we might want custom implementation occasionally. Take <code>Circle</code> and <code>Square</code> (defined in <a href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#PartialEqNEq">PartialEq &amp; Eq</a>) as an example to see comparison between two custom types:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>
+</span><span style="color:#65737e;">// ... `Circle` and `Square` are defined in &#39;PartialEq &amp; Eq&#39; section
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>PartialOrd&lt;Circle&gt; </span><span style="color:#b48ead;">for </span><span>Square {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">partial_cmp</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;Circle) -&gt; Option&lt;Ordering&gt; {
+</span><span>        </span><span style="color:#b48ead;">let</span><span> x = </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">area</span><span>();
+</span><span>        </span><span style="color:#b48ead;">let</span><span> y = other.</span><span style="color:#96b5b4;">area</span><span>();
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">if</span><span> x == y {
+</span><span>            </span><span style="color:#b48ead;">return </span><span>Some(Ordering::Equal);
+</span><span>        }
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">if</span><span> x &gt; y {
+</span><span>            Some(Ordering::Greater)
+</span><span>        } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>            Some(Ordering::Less)
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> foo = Square::new(</span><span style="color:#d08770;">4.0</span><span>, </span><span style="color:#d08770;">3.14</span><span>);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> bar = Circle::new(</span><span style="color:#d08770;">2.0</span><span>);
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, foo &gt; bar);    </span><span style="color:#65737e;">// false
+</span><span>}
+</span></code></pre>
+<p>Moving on to the <code>Ord</code> trait.</p>
+<blockquote>
+<p><code>Ord</code> is a subtrait of <code>Eq</code> and <code>PartialOrd&lt;Self&gt;</code>.</p>
+</blockquote>
+<p>The example I gave is then not suitable for <code>Ord</code>, because what we implemented is <code>impl PartialOrd&lt;Circle&gt; for Square</code>, which implies the generic type in <code>PartialOrd</code> is <code>Square</code> instead of <code>Circle</code> (as <code>Self</code>). Despite of this we can still use dynamic dispatching to write an example. Take <code>MockT</code> trait from above (<a href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#Hash">MockT</a>), here I simplified the code and add <code>impl PartialOrd</code> and <code>impl Ord</code> to <code>MockT</code> trait:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">use </span><span>std::{cmp::Ordering, fmt::Debug};
+</span><span>
+</span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> d1 = Dudu(</span><span style="color:#d08770;">2</span><span>);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> d2 = Dada { v: </span><span style="color:#d08770;">3 </span><span>};
+</span><span>    </span><span style="color:#b48ead;">let</span><span> d3 = Dada { v: </span><span style="color:#d08770;">1 </span><span>};
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> collection: Vec&lt;Box&lt;dyn MockT&gt;&gt; = vec![Box::new(d1), Box::new(d2), Box::new(d3)];
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, collection); </span><span style="color:#65737e;">// [&gt; 2 &lt;, &gt; 3 &lt;, &gt; 1 &lt;]
+</span><span>
+</span><span>    collection.</span><span style="color:#96b5b4;">sort</span><span>();
+</span><span>
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, collection); </span><span style="color:#65737e;">// [&gt; 1 &lt;, &gt; 2 &lt;, &gt; 3 &lt;]
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// mock trait, we will use it to create a trait object
+</span><span style="color:#b48ead;">trait </span><span>MockT {
+</span><span>    </span><span style="color:#65737e;">// the only way to identify a trait object is by this method (of cuz this is mocking)
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">id</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// impl `PartialEq`
+</span><span style="color:#b48ead;">impl </span><span>PartialEq </span><span style="color:#b48ead;">for </span><span>dyn MockT {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">eq</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;</span><span style="color:#b48ead;">Self</span><span>) -&gt; </span><span style="color:#b48ead;">bool </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">id</span><span>() == other.</span><span style="color:#96b5b4;">id</span><span>()
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// impl `PartialOrd`
+</span><span style="color:#b48ead;">impl </span><span>PartialOrd </span><span style="color:#b48ead;">for </span><span>dyn MockT {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">partial_cmp</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;</span><span style="color:#b48ead;">Self</span><span>) -&gt; Option&lt;Ordering&gt; {
+</span><span>        </span><span style="color:#b48ead;">let</span><span> x = </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">id</span><span>();
+</span><span>        </span><span style="color:#b48ead;">let</span><span> y = other.</span><span style="color:#96b5b4;">id</span><span>();
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">if</span><span> x == y {
+</span><span>            </span><span style="color:#b48ead;">return </span><span>Some(Ordering::Equal);
+</span><span>        }
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">if</span><span> x &gt; y {
+</span><span>            Some(Ordering::Greater)
+</span><span>        } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>            Some(Ordering::Less)
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// impl `Ord`
+</span><span style="color:#b48ead;">impl </span><span>Ord </span><span style="color:#b48ead;">for </span><span>dyn MockT {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">cmp</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">other</span><span>: &amp;</span><span style="color:#b48ead;">Self</span><span>) -&gt; std::cmp::Ordering {
+</span><span>        </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">id</span><span>().</span><span style="color:#96b5b4;">cmp</span><span>(&amp;other.</span><span style="color:#96b5b4;">id</span><span>()) {
+</span><span>            Ordering::Equal =&gt; </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">cmp</span><span>(other),
+</span><span>            ordering =&gt; ordering,
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// impl `Eq`, marker trait
+</span><span style="color:#b48ead;">impl </span><span>Eq </span><span style="color:#b48ead;">for </span><span>dyn MockT {}
+</span><span>
+</span><span style="color:#65737e;">// for println
+</span><span style="color:#b48ead;">impl </span><span>Debug </span><span style="color:#b48ead;">for </span><span>dyn MockT {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">fmt</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">f</span><span>: &amp;</span><span style="color:#b48ead;">mut </span><span>std::fmt::Formatter&lt;&#39;_&gt;) -&gt; std::fmt::Result {
+</span><span>        write!(f, &quot;</span><span style="color:#a3be8c;">&gt; </span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;"> &lt;</span><span>&quot;, </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">id</span><span>())
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// concrete struct #1 who impled `MockT`
+</span><span style="color:#b48ead;">struct </span><span>Dudu(</span><span style="color:#b48ead;">usize</span><span>);
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MockT </span><span style="color:#b48ead;">for </span><span>Dudu {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">id</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#d08770;">0
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// concrete struct #2 who impled `MockT`
+</span><span style="color:#b48ead;">struct </span><span>Dada {
+</span><span>    </span><span style="color:#bf616a;">v</span><span>: </span><span style="color:#b48ead;">usize</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>MockT </span><span style="color:#b48ead;">for </span><span>Dada {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">id</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) -&gt; </span><span style="color:#b48ead;">usize </span><span>{
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.v
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>Above we made a demo for trait object ordering, its main idea is to sort dynamic types in an array, such as <code>Vec</code> and <code>VecDeque</code>.</p>
+<h3 id="arithmetic-traits">Arithmetic Traits</h3>
+<p>Thx again:</p>
+<blockquote>
+<table><thead><tr><th>Trait(s)</th><th>Category</th><th>Operator(s)</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>Add</code></td><td>arithmetic</td><td><code>+</code></td><td>addition</td></tr>
+<tr><td><code>AddAssign</code></td><td>arithmetic</td><td><code>+=</code></td><td>addition assignment</td></tr>
+<tr><td><code>BitAnd</code></td><td>arithmetic</td><td><code>&amp;</code></td><td>bitwise AND</td></tr>
+<tr><td><code>BitAndAssign</code></td><td>arithmetic</td><td><code>&amp;=</code></td><td>bitwise assignment</td></tr>
+<tr><td><code>BitXor</code></td><td>arithmetic</td><td><code>^</code></td><td>bitwise XOR</td></tr>
+<tr><td><code>BitXorAssign</code></td><td>arithmetic</td><td><code>^=</code></td><td>bitwise XOR assignment</td></tr>
+<tr><td><code>Div</code></td><td>arithmetic</td><td><code>/</code></td><td>division</td></tr>
+<tr><td><code>DivAssign</code></td><td>arithmetic</td><td><code>/=</code></td><td>division assignment</td></tr>
+<tr><td><code>Mul</code></td><td>arithmetic</td><td><code>\*</code></td><td>multiplication</td></tr>
+<tr><td><code>MulAssign</code></td><td>arithmetic</td><td><code>\*=</code></td><td>multiplication assignment</td></tr>
+<tr><td><code>Neg</code></td><td>arithmetic</td><td><code>-</code></td><td>unary negation</td></tr>
+<tr><td><code>Not</code></td><td>arithmetic</td><td><code>!</code></td><td>unary logical negation</td></tr>
+<tr><td><code>Rem</code></td><td>arithmetic</td><td><code>%</code></td><td>remainder</td></tr>
+<tr><td><code>RemAssign</code></td><td>arithmetic</td><td><code>%=</code></td><td>remainder assignment</td></tr>
+<tr><td><code>Shl</code></td><td>arithmetic</td><td><code>&lt;&lt;</code></td><td>left shift</td></tr>
+<tr><td><code>ShlAssign</code></td><td>arithmetic</td><td><code>&lt;&lt;=</code></td><td>left shift assignment</td></tr>
+<tr><td><code>Shr</code></td><td>arithmetic</td><td><code>&gt;&gt;</code></td><td>right shift</td></tr>
+<tr><td><code>ShrAssign</code></td><td>arithmetic</td><td><code>&gt;&gt;=</code></td><td>right shift assignment</td></tr>
+<tr><td><code>Sub</code></td><td>arithmetic</td><td><code>-</code></td><td>subtraction</td></tr>
+<tr><td><code>SubAssign</code></td><td>arithmetic</td><td><code>-=</code></td><td>subtraction assignment</td></tr>
+</tbody></table>
+</blockquote>
+<p>Since all the arithmetic traits' implementation are alike to comparison traits, further elaboration is omitted here.</p>
+<h3 id="closure-traits">Closure Traits</h3>
+<blockquote>
+<table><thead><tr><th>Trait(s)</th><th>Category</th><th>Operator(s)</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>Fn</code></td><td>closure</td><td><code>(...args)</code></td><td>immutable closure invocation</td></tr>
+<tr><td><code>FnMut</code></td><td>closure</td><td><code>(...args)</code></td><td>mutable closure invocation</td></tr>
+<tr><td><code>FnOnce</code></td><td>closure</td><td><code>(...args)</code></td><td>one-time closure invocation</td></tr>
+</tbody></table>
+</blockquote>
+<p>As mentioned:</p>
+<blockquote>
+<p>The only types we can create which impl these traits are closures.</p>
+</blockquote>
+<p>And as THE BOOK says:</p>
+<blockquote>
+<p>Things that impl <code>FnOnce</code> can mutate and consume (take ownership of) the values they close over when they run, and so can only be run once.
+Things that impl <code>FnMut</code> can mutate the values they close over when they run, but not consume them.
+Things that impl <code>Fn</code> can only immutably borrow variables when they run.</p>
+</blockquote>
+<p>TODO: example</p>
+<h3 id="other-traits">Other Traits</h3>
+<table><thead><tr><th>Trait(s)</th><th>Category</th><th>Operator(s)</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>Deref</code></td><td>other</td><td><code>\*</code></td><td>immutable dereference</td></tr>
+<tr><td><code>DerefMut</code></td><td>other</td><td><code>\*</code></td><td>mutable dereference</td></tr>
+<tr><td><code>Drop</code></td><td>other</td><td>-</td><td>type destructor</td></tr>
+<tr><td><code>Index</code></td><td>other</td><td><code>[]</code></td><td>immutable index</td></tr>
+<tr><td><code>IndexMut</code></td><td>other</td><td><code>[]</code></td><td>mutable index</td></tr>
+<tr><td><code>RangeBounds</code></td><td>other</td><td><code>..</code></td><td>range</td></tr>
+</tbody></table>
+<p>Due to the limited space, I've split this post into two parts. Please click the link below to see the second part.</p>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-intro"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#intro"
+							>
+								Intro
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-trait-basics"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#trait-basics"
+							>
+								Trait Basics
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-generic-types-vs-associated-types"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#generic-types-vs-associated-types"
+									>
+										Generic Types vs Associated Types
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-generic-blanket-impls"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#generic-blanket-impls"
+									>
+										Generic Blanket Impls
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-auto-traits"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#auto-traits"
+							>
+								Auto Traits
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-send-sync"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#send-sync"
+									>
+										Send &amp; Sync
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-sized"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#sized"
+									>
+										Sized
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-general-traits"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#general-traits"
+							>
+								General Traits
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-any"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#any"
+									>
+										Any
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-formatting-traits"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#formatting-traits"
+							>
+								Formatting Traits
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-display-tostring"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#display-tostring"
+									>
+										Display &amp; ToString
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-debug"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#debug"
+									>
+										Debug
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-operator-traits"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#operator-traits"
+							>
+								Operator Traits
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-comparison-traits"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#comparison-traits"
+									>
+										Comparison Traits
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-arithmetic-traits"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#arithmetic-traits"
+									>
+										Arithmetic Traits
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-closure-traits"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#closure-traits"
+									>
+										Closure Traits
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-other-traits"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2021-8-22-rust-std-traits-i/#other-traits"
+									>
+										Other Traits
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Jacob&#x27;s Domain - Scala</title>
+    <subtitle>Sharing interesting things</subtitle>
+    <link href="https://jacobbishopxy.github.io/tags/scala/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://jacobbishopxy.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-08-17T00:00:00+00:00</updated>
+    <id>https://jacobbishopxy.github.io/tags/scala/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Scala 3</title>
+        <published>2021-08-17T00:00:00+00:00</published>
+        <updated>2021-08-17T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://jacobbishopxy.github.io/docs/2021-8-17-scala3/" type="text/html"/>
+        <id>https://jacobbishopxy.github.io/docs/2021-8-17-scala3/</id>
+        
+        <content type="html">&lt;h2 id=&quot;scala-3&quot;&gt;Scala 3&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;JDK 11&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get install openjdk-11-jdk
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;make sure &lt;code&gt;$JAVA_HOME&lt;&#x2F;code&gt; is set in &lt;code&gt;~&#x2F;.bashrc&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;.bashrc&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-.bashrc &quot;&gt;&lt;code class=&quot;language-.bashrc&quot; data-lang=&quot;.bashrc&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;export &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;JAVA_HOME&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;java-11-openjdk-amd64
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;SBT&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;deb https:&#x2F;&#x2F;repo.scala-sbt.org&#x2F;scalasbt&#x2F;debian all main&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; tee &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;sbt.list
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;deb https:&#x2F;&#x2F;repo.scala-sbt.org&#x2F;scalasbt&#x2F;debian &#x2F;&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; tee &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;sbt_old.list
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl -sL &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;https:&#x2F;&#x2F;keyserver.ubuntu.com&#x2F;pks&#x2F;lookup?op=get&amp;amp;search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-key add
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get update
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get install sbt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;(Optional) Set sbt mirror&lt;&#x2F;p&gt;
+&lt;p&gt;create &lt;code&gt;repositories&lt;&#x2F;code&gt; (huawei mirror) under &lt;code&gt;~&#x2F;.sbt&#x2F;&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;txt&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-txt &quot;&gt;&lt;code class=&quot;language-txt&quot; data-lang=&quot;txt&quot;&gt;&lt;span&gt;[repositories]
+&lt;&#x2F;span&gt;&lt;span&gt;local
+&lt;&#x2F;span&gt;&lt;span&gt;huaweicloud-maven: https:&#x2F;&#x2F;repo.huaweicloud.com&#x2F;repository&#x2F;maven&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;maven-central: https:&#x2F;&#x2F;repo1.maven.org&#x2F;maven2&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;sbt-plugin-repo: https:&#x2F;&#x2F;repo.scala-sbt.org&#x2F;scalasbt&#x2F;sbt-plugin-releases, [organization]&#x2F;[module]&#x2F;(scala_[scalaVersion]&#x2F;)(sbt_[sbtVersion]&#x2F;)[revision]&#x2F;[type]s&#x2F;[artifact](-[classifier]).[ext]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;(Optional) Set global repo for all projects (rather than each project holds its own repo)&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;etc&#x2F;sbt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;then &lt;code&gt;sudo vim sbtopts&lt;&#x2F;code&gt; add one line at the bottom:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;txt&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-txt &quot;&gt;&lt;code class=&quot;language-txt&quot; data-lang=&quot;txt&quot;&gt;&lt;span&gt;-Dsbt.override.build.repos=true
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Check everything, first by executing &lt;code&gt;sbt&lt;&#x2F;code&gt; and enter to &lt;em&gt;sbt shell&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;check sbt version:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sbt&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sbt &quot;&gt;&lt;code class=&quot;language-sbt&quot; data-lang=&quot;sbt&quot;&gt;&lt;span&gt;sbtVersion
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;check global repo if override:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sbt&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sbt &quot;&gt;&lt;code class=&quot;language-sbt&quot; data-lang=&quot;sbt&quot;&gt;&lt;span&gt;show overrideBuildResolvers
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;show resolvers:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sbt&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sbt &quot;&gt;&lt;code class=&quot;language-sbt&quot; data-lang=&quot;sbt&quot;&gt;&lt;span&gt;show fullResolvers
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a new scala3 project&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sbt&lt;&#x2F;span&gt;&lt;span&gt; new scala&#x2F;scala3.g8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;(Optional) vs-code extension &lt;code&gt;Metals&lt;&#x2F;code&gt;, again please make sure that &lt;code&gt;$JAVA_HOME&lt;&#x2F;code&gt; is set.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+</feed>

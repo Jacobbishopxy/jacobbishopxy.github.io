@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | Microservice Preparation </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Microservice Preparation</h1>
+					<p class="subtitle">React + Golang + Grpc + Rust + Redis + Mongo</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2021-07-22">July 22, 2021</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>828 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/post/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Post</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/js/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Js</span>
+    </span>
+  </a>
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/go/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Go</span>
+    </span>
+  </a>
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/grpc/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Grpc</span>
+    </span>
+  </a>
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/rust/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Rust</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><div class="content__image">
+  <img src="&#x2F;images&#x2F;rustgo.jpg" alt="Rust + Go"  height="250px"   />
+</div>
+<p>Hello everyone 👋, today I'm going to start a new project demonstrating how to build a microservices system. <code>React</code>, <code>Golang</code>, <code>Grpc</code>, <code>Rust</code>, <code>Redis</code>, <code>Mongo</code> and maybe more will be used in this scenario. The reason why I choose these tech stacks is because I really like Golang and Rust, and I wish I can use them to enhance my projects in the real work, which is done by <code>Python</code> and <code>NodeJs</code>.</p>
+<p>Obviously, for quick production's sake, <code>Python</code> and <code>NodeJs</code> are very friendly and easy to use, but as the time goes when the whole system is getting larger and larger, it starts getting out of control. There are many reasons I have to refactor my project, such as single threaded backend services, loose project management, weak language type and etc, but for now these issuses are not what we ought to concern. Let's go back to our topic and before we get our hands wet, there are few prerequisites that we need to notice.</p>
+<p>Before we start, I have to mention that due to my job requirement, which is always dealing with Office softwares, I have to use Windows as my working environment. Therefore, choosing <code>WSL2(Ubuntu) + Windows Docker Desktop + VsCode</code> as my dev env can eliminate cross-platform headache.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<h3 id="wsl">WSL</h3>
+<p>Please check <a href="https://jacobbishopxy.github.io/docs/2021-7-2-wsl-setup/">my previous post</a>.</p>
+<h3 id="vscode">VsCode</h3>
+<p>Extensions:</p>
+<p><strong>eslint</strong>:</p>
+<blockquote>
+<p>Integrates ESLint into VS Code</p>
+</blockquote>
+<p><strong>go</strong>:</p>
+<blockquote>
+<p>The VS Code Go extension provides rich language support for the Go programming language.</p>
+</blockquote>
+<p><strong>rust-analyzer</strong>:</p>
+<blockquote>
+<p>Provides support for rust-analyzer: novel LSP server for the Rust programming language.</p>
+</blockquote>
+<p><strong>clang-format</strong>:</p>
+<blockquote>
+<p>Clang-Format is a tool to format C/C++/Java/JavaScript/Objective-C/Objective-C++/Protobuf code. It can be configured with a config file within the working folder or a parent folder.</p>
+</blockquote>
+<p>And don't forget to install <code>clang-format</code> in your operation system:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> apt-get install clang-format
+</span></code></pre>
+<p><strong>vscode-proto3</strong>:</p>
+<blockquote>
+<p>Protobuf 3 support for Visual Studio Code</p>
+</blockquote>
+<h3 id="npm-or-yarn">NPM or Yarn</h3>
+<p>Prerequisite for JavaScript/TypeScript is very simple and no pitfall.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> apt update
+</span><span style="color:#bf616a;">sudo</span><span> apt upgrade</span><span style="color:#bf616a;"> -y
+</span><span style="color:#bf616a;">sudo</span><span> apt-get install curl
+</span><span style="color:#bf616a;">curl -sL</span><span> https://deb.nodesource.com/setup_16.x | </span><span style="color:#bf616a;">sudo -E</span><span> bash -
+</span><span style="color:#bf616a;">sudo</span><span> apt-get install nodejs
+</span><span style="color:#bf616a;">sudo</span><span> apt install npm
+</span><span style="color:#bf616a;">sudo</span><span> npm i</span><span style="color:#bf616a;"> -g</span><span> npm
+</span><span style="color:#bf616a;">sudo</span><span> npm i</span><span style="color:#bf616a;"> -g</span><span> yarn
+</span></code></pre>
+<h3 id="rustc-and-cargo">Rustc and Cargo</h3>
+<p>Here is my favorite part: the simplest installation ever! Decent and tidy!</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">curl</span><span> https://sh.rustup.rs</span><span style="color:#bf616a;"> -sSf </span><span>| </span><span style="color:#bf616a;">sh
+</span><span>
+</span><span style="color:#96b5b4;">source </span><span>$</span><span style="color:#bf616a;">HOME</span><span>/.cargo/env
+</span></code></pre>
+<p>And that's it! You can check rustup, rustc and cargo version by:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">rustup --version
+</span><span>
+</span><span style="color:#bf616a;">rustc --version
+</span><span>
+</span><span style="color:#bf616a;">cargo --version
+</span></code></pre>
+<h3 id="go">Go</h3>
+<p>A little bit tricky here, because for some part of the real world, proxy is a must.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">curl -O</span><span> https://storage.googleapis.com/golang/go1.17.linux-amd64.tar.gz
+</span><span>
+</span><span style="color:#bf616a;">tar -xvf</span><span> go1.17.linux-amd64.tar.gz
+</span><span>
+</span><span style="color:#65737e;"># optional, if you have a previous installed version
+</span><span style="color:#bf616a;">sudo</span><span> rm</span><span style="color:#bf616a;"> -rf</span><span> /usr/local/go
+</span><span>
+</span><span style="color:#bf616a;">sudo</span><span> mv go /usr/local
+</span><span>
+</span><span style="color:#bf616a;">rm</span><span> go1.17.linux-amd64.tar.gz
+</span><span>
+</span><span style="color:#65737e;"># optional, if you have already added GOPATH to `.bashrc`
+</span><span style="color:#bf616a;">sudo</span><span> vim </span><span style="color:#bf616a;">~</span><span>/.bashrc
+</span></code></pre>
+<p>And add these two lines at the end of the file:</p>
+<pre data-lang=".bashrc" style="background-color:#2b303b;color:#c0c5ce;" class="language-.bashrc "><code class="language-.bashrc" data-lang=".bashrc"><span style="color:#b48ead;">export </span><span style="color:#bf616a;">GOPATH</span><span>=$</span><span style="color:#bf616a;">HOME</span><span style="color:#a3be8c;">/go
+</span><span style="color:#b48ead;">export </span><span style="color:#bf616a;">PATH</span><span>=$</span><span style="color:#bf616a;">PATH</span><span style="color:#a3be8c;">:/usr/local/go/bin:</span><span>$</span><span style="color:#bf616a;">GOPATH</span><span style="color:#a3be8c;">/bin
+</span></code></pre>
+<p>Then:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#96b5b4;">source </span><span style="color:#bf616a;">~</span><span>/.bashrc
+</span><span>
+</span><span style="color:#bf616a;">go</span><span> version
+</span></code></pre>
+<p>Set proxy:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">go</span><span> env</span><span style="color:#bf616a;"> -w</span><span> GOPROXY=https://goproxy.io,direct
+</span></code></pre>
+<p>After VsCode <strong>go</strong> extension installed, <code>ctrl + shift + p</code> open commands and type <code>go: install/update tools</code>. Select all and update.</p>
+<h3 id="grpc">GRPC</h3>
+<p>The trickiest part now comes. We need a code generate tool called <code>protoc</code>, which will be used to generate our Golang code.</p>
+<p>Thanks to <a href="http://google.github.io/proto-lens/installing-protoc.html">google.github.io/proto-lens</a>, who makes the whole process way easier. By simply using <code>sudo apt install -y protobuf-compiler</code> command, we can not install the latest version. And moreover, it could drive you crazy, because later on you would find that dependencies like <code>import &quot;google/protobuf/timestamp.proto&quot;;</code> cannot be found!. This is because the default folder is not in the right position.</p>
+<p>To install <code>protoc</code> cli, visit <a href="https://github.com/protocolbuffers/protobuf">protobuf release page</a> and choose the latest one (the current latest ver. is <code>3.17.3</code>), then:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">PROTOC_ZIP</span><span>=</span><span style="color:#a3be8c;">protoc-3.17.3-linux-x86_64.zip
+</span><span>
+</span><span style="color:#bf616a;">curl -OL</span><span> https://github.com/protocolbuffers/protobuf/releases/download/v3.17.3/$</span><span style="color:#bf616a;">PROTOC_ZIP
+</span><span>
+</span><span style="color:#bf616a;">sudo</span><span> unzip</span><span style="color:#bf616a;"> -o </span><span>$</span><span style="color:#bf616a;">PROTOC_ZIP -d</span><span> /usr/local bin/protoc
+</span><span>
+</span><span style="color:#bf616a;">sudo</span><span> unzip</span><span style="color:#bf616a;"> -o </span><span>$</span><span style="color:#bf616a;">PROTOC_ZIP -d</span><span> /usr/local &#39;</span><span style="color:#a3be8c;">include/*</span><span>&#39;
+</span><span>
+</span><span style="color:#bf616a;">rm -f </span><span>$</span><span style="color:#bf616a;">PROTOC_ZIP
+</span><span>
+</span><span style="color:#bf616a;">sudo</span><span> chown</span><span style="color:#bf616a;"> -R </span><span>$</span><span style="color:#bf616a;">USER</span><span> /usr/local/include/google/
+</span><span>
+</span><span style="color:#bf616a;">sudo</span><span> chmod +x /usr/local/bin/protoc
+</span></code></pre>
+<p>Notice the last two lines may not be required, but in case of <code>permission denied</code> occurred, please use them.</p>
+<h3 id="docker">Docker</h3>
+<p>In order to quickly setup dev tools, such as Redis, MongoDB, Mongo Express and etc, we choose to use Docker desktop. Its' installation is also simple and neat: just follow <a href="https://www.docker.com/products/docker-desktop">the official website</a> you can get a WSL based docker desktop on Windows.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Ok, I think we have done a lot today and I hope you like it. The next section will be the design of this project. See you soon ❤️</p>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>
