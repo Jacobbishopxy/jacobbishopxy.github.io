@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | Scala 3 </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Scala 3</h1>
+					<p class="subtitle">Scala 3 setup</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2021-08-17">August 17, 2021</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>2 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>214 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/doc/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Doc</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/scala/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>Scala</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="scala-3">Scala 3</h2>
+<ul>
+<li>
+<p>JDK 11</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> apt-get install openjdk-11-jdk
+</span></code></pre>
+<p>make sure <code>$JAVA_HOME</code> is set in <code>~/.bashrc</code>:</p>
+<pre data-lang=".bashrc" style="background-color:#2b303b;color:#c0c5ce;" class="language-.bashrc "><code class="language-.bashrc" data-lang=".bashrc"><span style="color:#b48ead;">export </span><span style="color:#bf616a;">JAVA_HOME</span><span>=</span><span style="color:#a3be8c;">/usr/lib/jvm/java-11-openjdk-amd64
+</span></code></pre>
+</li>
+<li>
+<p>SBT</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">deb https://repo.scala-sbt.org/scalasbt/debian all main</span><span>&quot; | </span><span style="color:#bf616a;">sudo</span><span> tee /etc/apt/sources.list.d/sbt.list
+</span><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">deb https://repo.scala-sbt.org/scalasbt/debian /</span><span>&quot; | </span><span style="color:#bf616a;">sudo</span><span> tee /etc/apt/sources.list.d/sbt_old.list
+</span><span style="color:#bf616a;">curl -sL </span><span>&quot;</span><span style="color:#a3be8c;">https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823</span><span>&quot; | </span><span style="color:#bf616a;">sudo</span><span> apt-key add
+</span><span style="color:#bf616a;">sudo</span><span> apt-get update
+</span><span style="color:#bf616a;">sudo</span><span> apt-get install sbt
+</span></code></pre>
+</li>
+<li>
+<p>(Optional) Set sbt mirror</p>
+<p>create <code>repositories</code> (huawei mirror) under <code>~/.sbt/</code>:</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>[repositories]
+</span><span>local
+</span><span>huaweicloud-maven: https://repo.huaweicloud.com/repository/maven/
+</span><span>maven-central: https://repo1.maven.org/maven2/
+</span><span>sbt-plugin-repo: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+</span></code></pre>
+</li>
+<li>
+<p>(Optional) Set global repo for all projects (rather than each project holds its own repo)</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#96b5b4;">cd</span><span> /etc/sbt
+</span></code></pre>
+<p>then <code>sudo vim sbtopts</code> add one line at the bottom:</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>-Dsbt.override.build.repos=true
+</span></code></pre>
+</li>
+<li>
+<p>Check everything, first by executing <code>sbt</code> and enter to <em>sbt shell</em></p>
+<p>check sbt version:</p>
+<pre data-lang="sbt" style="background-color:#2b303b;color:#c0c5ce;" class="language-sbt "><code class="language-sbt" data-lang="sbt"><span>sbtVersion
+</span></code></pre>
+<p>check global repo if override:</p>
+<pre data-lang="sbt" style="background-color:#2b303b;color:#c0c5ce;" class="language-sbt "><code class="language-sbt" data-lang="sbt"><span>show overrideBuildResolvers
+</span></code></pre>
+<p>show resolvers:</p>
+<pre data-lang="sbt" style="background-color:#2b303b;color:#c0c5ce;" class="language-sbt "><code class="language-sbt" data-lang="sbt"><span>show fullResolvers
+</span></code></pre>
+</li>
+<li>
+<p>Create a new scala3 project</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sbt</span><span> new scala/scala3.g8
+</span></code></pre>
+</li>
+<li>
+<p>(Optional) vs-code extension <code>Metals</code>, again please make sure that <code>$JAVA_HOME</code> is set.</p>
+</li>
+</ul>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | K8s 笔记 (V) </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">K8s 笔记 (V)</h1>
+					<p class="subtitle">服务，负载均衡和网络</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-09-01">September 01, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>47 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>9255 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/read/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Read</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/k8s/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="jian-jie">简介</h2>
+<h3 id="k8s-wang-luo-mo-xing">K8s 网络模型</h3>
+<p>每个在集群里的 <code>Pod</code> 都有其唯一的 IP 地址。这就意味着用户不需要显式的创建 <code>Pods</code> 直接的连接，同时几乎不用处理容器端口与主机端口的映射。这就创建了一个干净的，向后兼容的模型，从端口分配，命名，服务发现，负载均衡，应用配置和迁移的角度来看，<code>Pods</code> 可以被视为 VMs 或者物理主机。</p>
+<p>对任何网络设施，k8s 强制要求下列基础需求（使得排除掉有意隔离网络的策略）：</p>
+<ul>
+<li>Pod 能够与其他节点上的 Pod 通信，且不需要网络地址转译（NAT）</li>
+<li>节点上的代理（比如：系统守护进程，kubelet）可以和节点上的所有 Pod 通信</li>
+</ul>
+<p>注意：这些支持 <code>Pods</code> 运行在主机网络（例如 Linux）的平台，当 pods 连接到一个节点的主机网络，它们仍然可以不使用 NAT 与其他所有节点的 pods 通信。</p>
+<p>这个模型不仅不复杂，而且还和 k8s 的实现从虚拟机向容器平滑迁移的初衷相符，如果任务开始是在虚拟机中运行的，虚拟机有一个 IP，可以和项目中其他虚拟机通信。这里的模型是基本相同的。</p>
+<p>k8s 的 IP 地址存在于 <code>Pod</code> 范围内 -- 容器共享它们的网络命名空间 -- 包括它们的 IP 地址和 MAC 地址。这就意味着 <code>Pod</code> 内的容器都可以通过 <code>localhost</code> 到达对方端口。这也就意味着 <code>Pod</code> 内的容器需要相互协调端口的使用，这和虚拟机中的进程相同，因此也被称为”一个 Pod 一个 IP“模型。</p>
+<p>如何实现上述需求是使用的特定容器运行时的细节。</p>
+<p>也可以在 <code>Node</code> 本身请求端口，并用这类端口转发到用户的 <code>Pod</code>（称之为主机端口），但这是一个很特殊的操作。转发方式如何实现也是容器运行时的细节。<code>Pod</code> 自己并不知道这些主机端口的存在。</p>
+<p>k8s 网络解决四方面的问题：</p>
+<ul>
+<li>一个 Pod 中的容器之间通过本地回路（loopback）通信。</li>
+<li>集群网络在不同 pod 之间提供通信。</li>
+<li>服务资源允许用户向外暴露 Pods 中运行的应用，用来支持来自于集群外部的访问。</li>
+<li>可以使用服务来发布仅供集群内部使用的服务。</li>
+</ul>
+<h2 id="ServicesLoadBalancingAndNetworking-Service">服务 Service</h2>
+<p>将运行在一组 Pods 上的应用程序公开为网络服务的抽象方法。</p>
+<p>使用 k8s，用户无需修改应用程序即可使用不熟悉的服务发现机制。k8s 为 Pod 提供自己的 IP 地址，并为一组 Pod 提供相同的 DNS 名，并且可以在它们之间进行负载均衡。</p>
+<h3 id="dong-ji">动机</h3>
+<p>k8s Pods 的创建与销毁用于匹配集群的期望状态。Pod 是非永久性的资源。如果使用 Deployment 来运行应用程序，则可以动态创建和销毁 Pod。</p>
+<p>每个 Pod 都有自己的 IP 地址，但是在 Deployment 中，在同一时刻运行的 Pod 集合可能会稍后运行该应用程序的 Pod 集合不同。</p>
+<p>这导致了一个问题：如果一组 Pod（称为“后端”）为集群内的其他 Pod（称为“前端”）提供功能，那么前端如何找出并跟踪要连接的 IP 地址，以便前端可以使用提供工作负载的后端部分？</p>
+<p>进入<em>Services</em>。</p>
+<h3 id="service-zi-yuan">Service 资源</h3>
+<p>k8s 中 Service 定义了这样一种抽象：逻辑上的一组 Pod，一种可以访问它们的策略 -- 通常称为微服务。Service 所针对的 Pod 集合通常是通过选择算符来确定的。</p>
+<p>例如，一个图片处理后端，运行了 3 个副本。这些副本是可以互换的 -- 前端不需要关心它们调用了哪个后端副本。然而组成这一组后端程序的 Pod 实际上可能会发生变化，前端客户端不应该也不需要直到，而且也不需要跟踪这一组后端的状态。</p>
+<p>Service 定义的抽象能够解耦这种关联。</p>
+<h3 id="ding-yi-service">定义 Service</h3>
+<p>k8s 中的 Service 是一个 REST 对象，类似于 Pod。像是所有 REST 对象那样，用户可以 <code>POST</code> 一个 Service 的定义至 API 服务用于创建新的实例。Service 对象的名称必须是合法的 RFC 1035 标签名称。</p>
+<p>例如一组 Pod，它们对外暴露了 9376 端口，同时还被打上 <code>app=MyApp</code> 标签：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Service
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">my-service
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">selector</span><span>:
+</span><span>    </span><span style="color:#bf616a;">app.kubernetes.io/name</span><span>: </span><span style="color:#a3be8c;">MyApp
+</span><span>  </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">protocol</span><span>: </span><span style="color:#a3be8c;">TCP
+</span><span>      </span><span style="color:#bf616a;">port</span><span>: </span><span style="color:#d08770;">80
+</span><span>      </span><span style="color:#bf616a;">targetPort</span><span>: </span><span style="color:#d08770;">9376
+</span></code></pre>
+<p>上述规范创建了一个新的名为 “my-service” 的 Service 对象，其代理 TCP 端口 9376 并且具有标签 <code>app=MyApp</code> 的 Pod 上。</p>
+<p>k8s 为该服务分配一个 IP 地址（有时称为“集群 IP”），该 IP 地址由服务代理使用（详见下述 <a href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#VirtualIPsAndServiceProxies">VIP 和 Service 代理</a>）。</p>
+<p>Service 选择算符的控制器持续扫描匹配选择算符的 Pods，然后 POSTs 更新至一个名为“my-service”的端点对象。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>一个 Service 可以将接收 port 映射到任意的 targetPort。默认情况下，targetPort 将被设置为与 port 字段相同的值。</p>
+
+</blockquote>
+<p>Pods 中定义的 port 拥有名称，用户可以在 Service 的 <code>targetPort</code> 属性中引用这些名称。例如，用户可以如下绑定 Service 的 <code>targetPort</code> 给 Pod：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Pod
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span>  </span><span style="color:#bf616a;">labels</span><span>:
+</span><span>    </span><span style="color:#bf616a;">app.kubernetes.io/name</span><span>: </span><span style="color:#a3be8c;">proxy
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">containers</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span>      </span><span style="color:#bf616a;">image</span><span>: </span><span style="color:#a3be8c;">nginx:stable
+</span><span>      </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>        - </span><span style="color:#bf616a;">containerPort</span><span>: </span><span style="color:#d08770;">80
+</span><span>          </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">http-web-svc
+</span><span>
+</span><span>---
+</span><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Service
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx-service
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">selector</span><span>:
+</span><span>    </span><span style="color:#bf616a;">app.kubernetes.io/name</span><span>: </span><span style="color:#a3be8c;">proxy
+</span><span>  </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">name-of-service-port
+</span><span>      </span><span style="color:#bf616a;">protocol</span><span>: </span><span style="color:#a3be8c;">TCP
+</span><span>      </span><span style="color:#bf616a;">port</span><span>: </span><span style="color:#d08770;">80
+</span><span>      </span><span style="color:#bf616a;">targetPort</span><span>: </span><span style="color:#a3be8c;">http-web-svc
+</span></code></pre>
+<p>即使 Service 中使用同一配置名称混合使用多个 Pod，各 Pod 通过不同的端口号支持相同的网络协议，该功能同样适用。这为 Service 的部署和演化提供了很大的灵活性。例如用户可以在新版本中更改 Pod 中后端软件公开的端口号，而不会破坏客户端。</p>
+<p>服务的默认协议是 TCP；用户还可以使用任何其他受支持的协议。</p>
+<p>由于许多服务需要公开多个端口，因此 k8s 在服务对象上支持多个端口定义。每个端口定义可以具有相同的 <code>protocol</code>，也可以具有不同的协议。</p>
+<h4 id="mei-you-xuan-ze-suan-fu-de-service">没有选择算符的 Service</h4>
+<p>因为选择算符的关系 Services 通常抽象了 k8s 的访问，但是当使用相关的端点对象同时没有选择算符时，Service 可以抽象其他类型的后端，包括运算在集群外的。例如：</p>
+<ul>
+<li>用户希望在生产环境下拥有一个外部的数据库集群，但是在测试环境下使用自身的数据库。</li>
+<li>用户希望 Service 指向另一个不同命名空间的 Service 或是在另一集群里的。</li>
+<li>用户希望迁移工作负载至 k8s。当评估该方法时，仅在 k8s 中运行一部分后端。</li>
+</ul>
+<p>任何这些场景，都能定义没有选择算符的 Service。例如</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Service
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">my-service
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">protocol</span><span>: </span><span style="color:#a3be8c;">TCP
+</span><span>      </span><span style="color:#bf616a;">port</span><span>: </span><span style="color:#d08770;">80
+</span><span>      </span><span style="color:#bf616a;">targetPort</span><span>: </span><span style="color:#d08770;">9376
+</span></code></pre>
+<p>由于此服务没有选择算符，因此不会自动创建相应的端点对象。用户可以通过手动添加端点对象，将服务手动映射到运行该服务的网络地址和端口：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Endpoints
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#65737e;"># 这里的 name 要与 Service 的名字相同
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">my-service
+</span><span style="color:#bf616a;">subsets</span><span>:
+</span><span>  - </span><span style="color:#bf616a;">addresses</span><span>:
+</span><span>      - </span><span style="color:#bf616a;">ip</span><span>: </span><span style="color:#d08770;">192.0.2.42
+</span><span>    </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>      - </span><span style="color:#bf616a;">port</span><span>: </span><span style="color:#d08770;">9376
+</span></code></pre>
+<p>Endpoints 对象的名称必须是合法的 DNS 子域名。</p>
+<p>当用户为某 Service 创建一个端点对象时，用户需要将新对象的名称设置为与 Service 的名称相同。</p>
+<h4 id="chao-chu-rong-liang-de-endpoints">超出容量的 Endpoints</h4>
+<p>WIP</p>
+<h4 id="endpointslices">EndpointSlices</h4>
+<p>WIP</p>
+<h4 id="ying-yong-xie-yi">应用协议</h4>
+<p>WIP</p>
+<h3 id="VirtualIPsAndServiceProxies">虚拟 IP 和 Service 代理</h3>
+<p>在 k8s 集群中，每个节点运行一个 <code>kube-proxy</code> 进程。<code>kube-proxy</code> 负载为 Service 实现了一种 VIP（虚拟 IP）的形式，而不是 <code>ExternalName</code> 的形式。</p>
+<h4 id="wei-shi-yao-bu-shi-yong-dns-lun-xun">为什么不使用 DNS 轮询</h4>
+<p>有人会问为什么 k8s 依赖代理将入站流量转发到后端，使用其他方法呢？例如是否可以配置具有多个 A 值（或 IPv6 为 AAAA）的 DNS 记录，并依靠轮询名称解析？</p>
+<p>使用服务代理有以下几个原因：</p>
+<ul>
+<li>DNS 实现的历史很久，它不遵守记录 TTL，并且在名称查找结构到期后对其进行缓存。</li>
+<li>有些应用程序仅执行一次 DNS 查找，并无限期的缓存结果。</li>
+<li>即使应用和库进行了适当的重新解析，DNS 记录上的 TTL 值低或为零也可能会给 DNS 带来高负载，从而使管理变得困难。</li>
+</ul>
+<h4 id="userspace-dai-li-mo-shi">userspace 代理模式</h4>
+<p>WIP</p>
+<h4 id="iptables-dai-li-mo-shi">iptables 代理模式</h4>
+<p>WIP</p>
+<h4 id="ipvs-dai-li-mo-shi">IPVS 代理模式</h4>
+<p>WIP</p>
+<h3 id="duo-duan-kou-service">多端口 Service</h3>
+<p>有些服务用户需要公开多个端口。k8s 允许在 Service 对象上配置多个端口定义。为服务使用多个端口时，必须提供所有端口名称消除歧义。例如：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Service
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">my-service
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">selector</span><span>:
+</span><span>    </span><span style="color:#bf616a;">app</span><span>: </span><span style="color:#a3be8c;">MyApp
+</span><span>  </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">http
+</span><span>      </span><span style="color:#bf616a;">protocol</span><span>: </span><span style="color:#a3be8c;">TCP
+</span><span>      </span><span style="color:#bf616a;">port</span><span>: </span><span style="color:#d08770;">80
+</span><span>      </span><span style="color:#bf616a;">targetPort</span><span>: </span><span style="color:#d08770;">9376
+</span><span>    - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">https
+</span><span>      </span><span style="color:#bf616a;">protocol</span><span>: </span><span style="color:#a3be8c;">TCP
+</span><span>      </span><span style="color:#bf616a;">port</span><span>: </span><span style="color:#d08770;">443
+</span><span>      </span><span style="color:#bf616a;">targetPort</span><span>: </span><span style="color:#d08770;">9377
+</span></code></pre>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>与一般的 k8s 名称一样，端口名称只能包含小写字母数字字符和 <code>-</code>。端口名称还必须以字母数字字符开头和结尾。</p>
+<p>例如，名称 <code>123-abc</code> 和 <code>web</code> 有效，但是 <code>123_abc</code> 和 <code>-web</code> 无效。</p>
+
+</blockquote>
+<h3 id="xuan-ze-zi-ji-de-ip-di-zhi">选择自己的 IP 地址</h3>
+<p>在 <code>Service</code> 创建的请求中，可以通过设置 <code>spec.clusterIP</code> 字段来指定自己的集群 IP 地址。比如，希望替换一个已经存在的 DNS 条目，或者遗留系统已经配置了一个固定的 IP 且很难重新配置。</p>
+<p>用户选择的 IP 地址必须合法，并且这个 IP 地址在 <code>service-cluster-ip-range</code> CIDR 范围内，这对 API 服务器来说是通过一个标识来指定的。如果 IP 地址不合法，API 服务器会返回 HTTP 状态码 422，表示值不合法。</p>
+<h3 id="liu-liang-ce-lue">流量策略</h3>
+<h4 id="wai-bu-liu-liang-ce-lue">外部流量策略</h4>
+<p>WIP</p>
+<h4 id="nei-bu-liu-liang-ce-lue">内部流量策略</h4>
+<p>WIP</p>
+<h3 id="fu-wu-fa-xian">服务发现</h3>
+<p>k8s 支持两种基本的服务发现模式 -- 环境变量和 DNS。</p>
+<h4 id="huan-jing-bian-liang">环境变量</h4>
+<p>WIP</p>
+<h4 id="dns">DNS</h4>
+<p>WIP</p>
+<h3 id="wu-tou-fu-wu">无头服务</h3>
+<p>WIP</p>
+<h3 id="Service-PublishingServices">发布服务（服务类型）</h3>
+<p>WIP</p>
+<h4 id="Service-PublishingServices-TypeNodePort">NodePort 类型</h4>
+<p>WIP</p>
+<h4 id="Service-PublishingServices-TypeLoadBalancer">LoadBalancer 类型</h4>
+<p>WIP</p>
+<h4 id="Service-PublishingServices-TypeExternalName">ExternalName 类型</h4>
+<p>WIP</p>
+<h4 id="wai-bu-ip">外部 IP</h4>
+<p>WIP</p>
+<h3 id="bu-zu">不足</h3>
+<p>WIP</p>
+<h3 id="xu-ni-ip-shi-shi">虚拟 IP 实施</h3>
+<p>WIP</p>
+<h3 id="api-dui-xiang">API 对象</h3>
+<p>WIP</p>
+<h2 id="pod-yu-service-de-dns">Pod 与 Service 的 DNS</h2>
+<p>k8s 为 Service 和 Pod 创建 DNS 记录。用户可以使用一致的 DNS 名称而非 IP 地址访问 Service。</p>
+<h3 id="PodsAndDNSForServices-Introduction">介绍</h3>
+<p>k8s DNS 除了在集群上调度 DNS Pod 和 Service，同时也配置 kubelet 告知各个容器使用 DNS Service 的 IP 来解析 DNS 名称。</p>
+<p>集群中定义的每个 Service（包括 DNS 服务器自身）都会被给予一个 DNS 名称。默认情况下，客户端 Pod 的 DNS 搜索列表会包含 Pod 自身的命名空间和集群的默认域。</p>
+<h4 id="service-de-ming-ming-kong-jian">Service 的命名空间</h4>
+<p>WIP</p>
+<h4 id="dns-ji-lu">DNS 记录</h4>
+<p>WIP</p>
+<h4 id="PodsAndDNSForServices-Introduction-Services">Services</h4>
+<p>WIP</p>
+<h3 id="PodsAndDNSForServices-Pods">Pods</h3>
+<p>WIP</p>
+<h2 id="shi-yong-fu-wu-lian-jie-dao-ying-yong">使用服务连接到应用</h2>
+<h3 id="k8s-lian-jie-rong-qi-de-mo-xing">k8s 连接容器的模型</h3>
+<p>既然有了一个持续运行，可复制的应用，用户就可以将它暴露到网络上。</p>
+<p>k8s 假设 Pod 可与其他 Pod 通信，无论它们在哪个主机上。k8s 给每个 Pod 分配一个集群私有 IP 地址，所以没必要再 Pod 与 Pod 之间创建连接或将容器的端口映射到主机端口。这以为着同一个 Pod 内的所有容器能通过 localhost 上的端口互相联通，集群中的所有 Pod 也不需要通过 NAT 转换就能够互相看到。</p>
+<p>本指南使用一个简单的 Nginx 服务器来演示概念验证原型。</p>
+<h3 id="zai-ji-qun-zhong-bao-lu-pod">在集群中暴露 Pod</h3>
+<p>在之前的示例中已经试过了，但是现在以网络连接的视角在重做一遍。创建一个 Nginx Pod，注意其中包含一个容器端口的规约（<code>service/networking/run-my-nginx.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">apps/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Deployment
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">my-nginx
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">selector</span><span>:
+</span><span>    </span><span style="color:#bf616a;">matchLabels</span><span>:
+</span><span>      </span><span style="color:#bf616a;">run</span><span>: </span><span style="color:#a3be8c;">my-nginx
+</span><span>  </span><span style="color:#bf616a;">replicas</span><span>: </span><span style="color:#d08770;">2
+</span><span>  </span><span style="color:#bf616a;">template</span><span>:
+</span><span>    </span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>      </span><span style="color:#bf616a;">labels</span><span>:
+</span><span>        </span><span style="color:#bf616a;">run</span><span>: </span><span style="color:#a3be8c;">my-nginx
+</span><span>    </span><span style="color:#bf616a;">spec</span><span>:
+</span><span>      </span><span style="color:#bf616a;">containers</span><span>:
+</span><span>        - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">my-nginx
+</span><span>          </span><span style="color:#bf616a;">image</span><span>: </span><span style="color:#a3be8c;">nginx
+</span><span>          </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>            - </span><span style="color:#bf616a;">containerPort</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<p>这使得可以从集群中任何一个节点来访问它。检查节点，该 Pod 正在运行：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> apply</span><span style="color:#bf616a;"> -f</span><span> ./run-my-nginx.yaml
+</span><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> -l</span><span> run=my-nginx</span><span style="color:#bf616a;"> -o</span><span> wide
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>NAME                        READY     STATUS    RESTARTS   AGE       IP            NODE
+</span><span>my-nginx-3800858182-jr4a2   1/1       Running   0          13s       10.244.3.4    kubernetes-minion-905m
+</span><span>my-nginx-3800858182-kna2y   1/1       Running   0          13s       10.244.2.5    kubernetes-minion-ljyd
+</span></code></pre>
+<p>检查 Pod 的 IP 地址：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> -l</span><span> run=my-nginx</span><span style="color:#bf616a;"> -o</span><span> yaml | </span><span style="color:#bf616a;">grep</span><span> podIP
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>podIP: 10.244.3.4
+</span><span>podIP: 10.244.2.5
+</span></code></pre>
+<p>用户应该能够通过 ssh 登录到集群中的任何一个节点上，并使用 <code>curl</code> 等工具向着两个 IP 地址发出查询请求。值得注意的是，容器不会使用该节点上的 80 端口，也不会使用任何特定的 NAT 规则去路由流量到 Pod 上。这意味着可以在同一个节点上运行多个 Nginx Pod，使用相同的 <code>containerPort</code>，并且可以从集群中任何其他的 Pod 或节点上使用 IP 的方式访问它们。</p>
+<h3 id="chuang-jian-service">创建 Service</h3>
+<p>现在有一组在一个扁平的，集群范围的地址空间中运行 Nginx 服务的 Pod。理论上，用户可以直接连接到这些 Pod，单如果某个节点死掉了会发生什么呢？Pod 会终止，Deployment 将创建新的 Pod，且使用不同的 IP。这正式 Service 要解决的问题。</p>
+<p>k8s Service 是集群中提供相同功能的一组 Pod 的抽象表达。当每个 Service 创建时，会被分配一个唯一的 IP 地址（也称为 clusterIP）。这个 IP 地址与 Service 的生命周期绑定在一起，只要 Service 存在，它就不会改变。可以配置 Pod 使它与 Service 进行通信，Pod 知道与 Service 通信将被自动的负载均衡到该 Service 中的某些 Pod 上。</p>
+<p>可以使用 <code>kubectl expose</code> 命令为 2 个 Nginx 副本创建一个 Service：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> expose deployment/my-nginx
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>service/my-nginx exposed
+</span></code></pre>
+<p>这等价于使用 <code>kubectl create -f</code> 命令以及以下的 yaml 文件创建（<code>service/networking/nginx-svc.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Service
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">my-nginx
+</span><span>  </span><span style="color:#bf616a;">labels</span><span>:
+</span><span>    </span><span style="color:#bf616a;">run</span><span>: </span><span style="color:#a3be8c;">my-nginx
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">ports</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">port</span><span>: </span><span style="color:#d08770;">80
+</span><span>      </span><span style="color:#bf616a;">protocol</span><span>: </span><span style="color:#a3be8c;">TCP
+</span><span>  </span><span style="color:#bf616a;">selector</span><span>:
+</span><span>    </span><span style="color:#bf616a;">run</span><span>: </span><span style="color:#a3be8c;">my-nginx
+</span></code></pre>
+<p>上述规约将创建一个 Service，其会将所有具有标签 <code>run: my-nginx</code> 的 Pod 的 TCP 80 端口暴露到一个抽象的 Service 端口上（<code>targetPort</code>：容器接收流量的端口；<code>port</code>：可任意取值的抽象的 Service 端口，其他 Pod 通过端口访问 Service）。查看 Service 资源：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get svc my-nginx
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>NAME       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+</span><span>my-nginx   ClusterIP   10.0.162.149   &lt;none&gt;        80/TCP    21s
+</span></code></pre>
+<p>如前面提到的，一个 Service 由一组 Pod 提供支撑。这些 Pod 通过 <code>endpoints</code> 暴露出来。Service Selector 将持续评估，结果被 POST 到一个名为 <code>my-nginx</code> 的端点对象上。当 Pod 终止后，它会自动从端点中移除，新的匹配上 Service Selector 的 Pod 将自动被添加到端点中。检查端点，注意到 IP 地址与在第一步创建的 Pod 是相同的。</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> describe svc my-nginx
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Name:                my-nginx
+</span><span>Namespace:           default
+</span><span>Labels:              run=my-nginx
+</span><span>Annotations:         &lt;none&gt;
+</span><span>Selector:            run=my-nginx
+</span><span>Type:                ClusterIP
+</span><span>IP:                  10.0.162.149
+</span><span>Port:                &lt;unset&gt; 80/TCP
+</span><span>Endpoints:           10.244.2.5:80,10.244.3.4:80
+</span><span>Session Affinity:    None
+</span><span>Events:              &lt;none&gt;
+</span></code></pre>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get ep my-nginx
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>NAME       ENDPOINTS                     AGE
+</span><span>my-nginx   10.244.2.5:80,10.244.3.4:80   1m
+</span></code></pre>
+<p>现在用户应该可以从集群中任意节点上使用 curl 命令向 <code>&lt;CLUSTER-IP&gt;:&lt;PORT&gt;</code> 发送请求以访问 Nginx Service。注意 Service IP 完全是虚拟的，它从来没有走过网络，如果对它如何工作的原理好奇，可以进一步阅读<a href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#ServicesLoadBalancingAndNetworking-Service">服务代理</a>的内容。</p>
+<h3 id="fang-wen-service">访问 Service</h3>
+<p>k8s 支持两种查找服务的主要模式：环境变量和 DNS。前者可以直接使用，后者需要 CoreDNS 集群插件。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>如果不需要服务环境变量（因为可能与预期的程序冲突，可能要处理的变量太多，或者仅使用 DNS 等），则可以通过在 pod spec 上将 enableServiceLinks 标志设置为 false 来禁用此模式。</p>
+
+</blockquote>
+<h4 id="ConnectingApplicationsWithServices-AccessingTheService-EnvironmentVariables">环境变量</h4>
+<p>当 Pod 在节点上运行时，kubelet 会针对每个活跃的 Service 为 Pod 添加一组环境变量。这就引入了一个顺序的问题。为解释这个问题，先检查正在运行的 Nginx Pod 的环境变量（用户的环境中的 Pod 名称将会与下面示例命令中的不同）：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> exec my-nginx-3800858182-jr4a2 -- printenv | </span><span style="color:#bf616a;">grep</span><span> SERVICE
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>KUBERNETES_SERVICE_HOST=10.0.0.1
+</span><span>KUBERNETES_SERVICE_PORT=443
+</span><span>KUBERNETES_SERVICE_PORT_HTTPS=443
+</span></code></pre>
+<p>能看到环境变量中并没有用户创建的 Service 相关的值。这时因为副本的创建先于 Service。这样做的另一个缺点是，调度器可能会将所有 Pod 部署到同一台机器上，若果该机器宕机则整个 Service 都会离线。要改正的话，我们可以先终止这两个 Pod，然后等待 Deployment 去重新创建它们。这次 Service 会<em>先于</em>副本存在。这将实现调度器级别的 Pod 按 Service 分布（假定所有的节点都具有相同的容量），并提供正确的环境变量：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> scale deployment my-nginx</span><span style="color:#bf616a;"> --replicas</span><span>=0; </span><span style="color:#bf616a;">kubectl</span><span> scale deployment my-nginx</span><span style="color:#bf616a;"> --replicas</span><span>=2;
+</span><span>
+</span><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> -l</span><span> run=my-nginx</span><span style="color:#bf616a;"> -o</span><span> wide
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>NAME                        READY     STATUS    RESTARTS   AGE     IP            NODE
+</span><span>my-nginx-3800858182-e9ihh   1/1       Running   0          5s      10.244.2.7    kubernetes-minion-ljyd
+</span><span>my-nginx-3800858182-j4rm4   1/1       Running   0          5s      10.244.3.8    kubernetes-minion-905m
+</span></code></pre>
+<p>注意 Pod 具有不同的名称，这时因为它们是被重新创建的。</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> exec my-nginx-3800858182-e9ihh -- printenv | </span><span style="color:#bf616a;">grep</span><span> SERVICE
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>KUBERNETES_SERVICE_PORT=443
+</span><span>MY_NGINX_SERVICE_HOST=10.0.162.149
+</span><span>KUBERNETES_SERVICE_HOST=10.0.0.1
+</span><span>MY_NGINX_SERVICE_PORT=80
+</span><span>KUBERNETES_SERVICE_PORT_HTTPS=443
+</span></code></pre>
+<h4 id="ConnectingApplicationsWithServices-AccessingTheService-DNS">DNS</h4>
+<p>k8s 提供了一个自动为其他 Service 分配 DNS 名字的 DNS 插件 Service。用户可以通过如下命令检查它是否在工作：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get services kube-dns</span><span style="color:#bf616a;"> --namespace</span><span>=kube-system
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE
+</span><span>kube-dns   ClusterIP   10.0.0.10    &lt;none&gt;        53/UDP,53/TCP   8m
+</span></code></pre>
+<p>本段剩余的内容假设用户已经拥有持久 IP 地址的 Service（my-nginx），以及一个为其 IP 分配名称的 DNS 服务器。这里使用 CoreDNS 集群插件（应用名为 <code>kube-dns</code>），所以在集群中的任何 Pod 中，用户都可以使用标准方法（如 <code>gethostbyname()</code>）与该 Service 通信。如果 CoreDNS 没有在运行，可以参照 CoreDNS README 或者安装 CoreDNS 来启动它。运行另一个 curl 应用来进行测试：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> run curl</span><span style="color:#bf616a;"> --image</span><span>=radial/busyboxplus:curl</span><span style="color:#bf616a;"> -i --tty
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Waiting for pod default/curl-131556218-9fnch to be running, status is Pending, pod ready: false
+</span><span>Hit enter for command prompt
+</span></code></pre>
+<p>然后，按回车并执行命令 <code>nslookup my-nginx</code>：</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>[ root@curl-131556218-9fnch:/ ]$ nslookup my-nginx
+</span><span>Server:    10.0.0.10
+</span><span>Address 1: 10.0.0.10
+</span><span>
+</span><span>Name:      my-nginx
+</span><span>Address 1: 10.0.162.149
+</span></code></pre>
+<h3 id="bao-hu-service">保护 Service</h3>
+<p>到现在为止只在集群内部访问了 Nginx 服务器。在将 Service 暴露到因特网之前，希望确保通信信道是安全的。为了实现这个模板，需要：</p>
+<ul>
+<li>用于 HTTPS 的自签名证书（除非已经用了一个身份证书）</li>
+<li>使用证书配置的 Nginx 服务器</li>
+<li>使 Pod 可以访问证书的 Secret</li>
+</ul>
+<p>WIP</p>
+<h3 id="bao-lu-service">暴露 Service</h3>
+<p>WIP</p>
+<h2 id="ingress">Ingress</h2>
+<p><strong>特性状态</strong>：<code>v1.19 [stable]</code></p>
+<p>Ingress 时对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。</p>
+<p>Ingress 可以提供负载均衡，SSL 终结和基于名称的虚拟托管。</p>
+<h3 id="zhu-yu">术语</h3>
+<p>为了表达更加清晰，定义以下术语：</p>
+<ul>
+<li>节点（Node）：k8s 集群中的一台工作机器，是集群的一部分。</li>
+<li>集群（Cluster）：一组运行由 k8s 管理的容器化应用程序的节点。在此示例和在大多数常见的 k8s 部署环境中，集群中的节点都不在公共网络中。</li>
+<li>边缘路由器（Edge Router）：在集群中强制执行防火墙策略的路由器。可以是由云提供商管理的网关，也可以是物理硬件。</li>
+<li>集群网络（Cluster Network）：一组逻辑的或物理的连接，根据 k8s 网络模型在集群内实现通信。</li>
+<li>服务（Service）：k8s 服务（Service），使用标签选择器（selectors）辨认一组 Pod。除非另有说明，否则假定服务只具有在集群网络中可路由的虚拟 IP。</li>
+</ul>
+<h3 id="ingress-shi-shi-yao">Ingress 是什么</h3>
+<p>Ingress 公开从集群外部到集群内服务的 HTTP 和 HTTPS 路由。流量路由由 Ingress 资源上定义的规则控制。</p>
+<p>下面是一个将所有流量都发送到同一 Service 的简单 Ingress 示例：</p>
+<div class="content__image">
+  <img src="&#x2F;images&#x2F;ingress.svg" alt="ingress"   />
+</div>
+<p>Ingress 可为 Service 提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及基于名称的虚拟托管。Ingress 控制器通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。</p>
+<p>Ingress 不会公开任意端口或协议。将 HTTP 和 HTTPS 以外的服务公开到 Internet 时，通常使用 Service.Type=NodePort 或 Service.Type=LoadBalancer 类型的 Service。</p>
+<h3 id="huan-jing-zhun-bei">环境准备</h3>
+<p>用户必须拥有一个 Ingress 控制器才能满足 Ingress 的要求。仅创建 Ingress 资源本身没有任何效果。</p>
+<p>用户可能需要部署 Ingress 控制器，例如 ingress-nginx。可以从许多 Ingress 控制器中进行选择。</p>
+<p>理想情况下，所有 Ingress 控制器都应符合参考规范。但是实际上不同的 Ingress 控制器操作略有不同。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>确保查看了 Ingress 控制器的文档，以了解选择它的注意事项。</p>
+
+</blockquote>
+<h3 id="ingress-zi-yuan">Ingress 资源</h3>
+<p>一个最小的 Ingress 资源示例（<code>service/networking/minimal-ingress.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Ingress
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">minimal-ingress
+</span><span>  </span><span style="color:#bf616a;">annotations</span><span>:
+</span><span>    </span><span style="color:#bf616a;">nginx.ingress.kubernetes.io/rewrite-target</span><span>: </span><span style="color:#a3be8c;">/
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">ingressClassName</span><span>: </span><span style="color:#a3be8c;">nginx-example
+</span><span>  </span><span style="color:#bf616a;">rules</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">path</span><span>: </span><span style="color:#a3be8c;">/testpath
+</span><span>            </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">test
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<p>Ingress 需要指定 <code>apiVersion</code>，<code>kind</code>，<code>metadata</code> 和 <code>spec</code> 字段。Ingress 对象的命名必须是合法的 DNS 子域名名称。关于如何使用配置文件，请参见<a href="https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/">部署应用</a>，<a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/">配置容器</a>与<a href="https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/">资源管理</a>。Ingress 经常使用注解（annotations）来配置一些选项，具体取决于 Ingress 控制器，例如重写目标注解。不同的 Ingress 控制器支持不同的注解。查看所选的 Ingress 控制器文档，以了解其支持哪些注解。</p>
+<p>Ingress 规约提供了配置负载均衡器或者代理服务器所需的所有信息。最重要的是，其中包含与所有传入请求匹配的规则列表。Ingress 资源仅支持用于转发 HTTP(S) 流量的规则。</p>
+<p>如果 <code>ingressClassName</code> 被省略，那么用户应该定义一个默认 Ingress 类。</p>
+<p>有一些 Ingress 控制器不需要定义默认的 <code>IngressClass</code>。比如：Ingress-NGINX 控制器可以通过参数 <code>--watch-ingress-without-class</code> 来配置。不过仍然推荐按下文所示来设置默认的 <code>IngressClass</code>。</p>
+<h4 id="ingress-gui-ze">Ingress 规则</h4>
+<p>每个 HTTP 规则都包含以下信息：</p>
+<ul>
+<li>可选的 <code>host</code>。在此示例中，未指定 <code>host</code>，因此该规则适用于通过指定 IP 地址的入站 HTTP 通信。如果提供 <code>host</code>（例如 foo.bar.com），则 <code>rules</code> 适用于该 <code>host</code>。</li>
+<li>路径列表 paths（例如 <code>/testpath</code>），每个路径都有一个由 <code>serviceName</code> 和 <code>servicePort</code> 定义的关联后端。在负载均衡器将流量定向到引用的服务之前，主机和路径都必须匹配传入请求的内容。</li>
+<li><code>backend</code>（后端）是 Service 文档中所述的服务和端口名称的组合。与规则的 <code>host</code> 和 <code>path</code> 匹配的对 Ingress 的 HTTP(S) 请求将发送到列出的 <code>backend</code>。</li>
+</ul>
+<p>通常在 Ingress 控制器中会配置 <code>defaultBackend</code>（默认后端），以服务于无法与规约中 <code>path</code> 匹配的所有请求。</p>
+<h4 id="mo-ren-hou-duan">默认后端</h4>
+<p>没有设置规则的 Ingress 将所有流量发送到同一个默认后端，而 <code>.spec.defaultBackend</code> 则是在这种情况下处理请求的那个默认后端。<code>defaultBackend</code> 通常是 Ingress 控制器的匹配选项，而非在 Ingress 资源中指定。如果未设置任何的 <code>.spec.rules</code>，那么必须指定 <code>.spec.defaultBackend</code>。如果未设置 <code>defaultBackend</code>，那么如何处理所有与规则不匹配的流量将交由 Ingress 控制器决定（参考所选的 Ingress 控制器文档以了解它是如何处理那些流量的）。</p>
+<p>如果没有 <code>hosts</code> 或 <code>paths</code> 与 Ingress 对象中的 HTTP 请求匹配，则流量将被路由到默认后端。</p>
+<h4 id="zi-yuan-hou-duan">资源后端</h4>
+<p><code>Resource</code> 后端是一个引用，指向同一命名空间的另一个 k8s 资源，将其作为 Ingress 对象。<code>Resource</code> 后端与 Service 后端是互斥的，在二者均被设置时会无法通过合法性检查。<code>Resource</code> 后端的一种常见用法是将所有入站数据导向带有静态资产的对象存储后端。例如（<code>service/networking/ingress-resource-backend.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Ingress
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">ingress-resource-backend
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">defaultBackend</span><span>:
+</span><span>    </span><span style="color:#bf616a;">resource</span><span>:
+</span><span>      </span><span style="color:#bf616a;">apiGroup</span><span>: </span><span style="color:#a3be8c;">k8s.example.com
+</span><span>      </span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">StorageBucket
+</span><span>      </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">static-assets
+</span><span>  </span><span style="color:#bf616a;">rules</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">path</span><span>: </span><span style="color:#a3be8c;">/icons
+</span><span>            </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">ImplementationSpecific
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">resource</span><span>:
+</span><span>                </span><span style="color:#bf616a;">apiGroup</span><span>: </span><span style="color:#a3be8c;">k8s.example.com
+</span><span>                </span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">StorageBucket
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">icon-assets
+</span></code></pre>
+<p>创建了以上 Ingress 之后，用户可以使用下面的命令查看它：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> describe ingress ingress-resource-backend
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Name:             ingress-resource-backend
+</span><span>Namespace:        default
+</span><span>Address:
+</span><span>Default backend:  APIGroup: k8s.example.com, Kind: StorageBucket, Name: static-assets
+</span><span>Rules:
+</span><span>  Host        Path  Backends
+</span><span>  ----        ----  --------
+</span><span>  *
+</span><span>              /icons   APIGroup: k8s.example.com, Kind: StorageBucket, Name: icon-assets
+</span><span>Annotations:  &lt;none&gt;
+</span><span>Events:       &lt;none&gt;
+</span></code></pre>
+<h4 id="lu-jing-lei-xing">路径类型</h4>
+<p>Ingress 中的每个路径都需要有对应的路径类型（Path Type）。未明确设置 <code>pathType</code> 的路径无法通过合法性检查。当前支持的路径类型有三种：</p>
+<ul>
+<li><code>ImplementationSpecific</code>：对于这种路径类型，匹配方法取决于 IngressClass。具体实现可以将其作为单独的 <code>pathType</code> 处理或者与 <code>Prefix</code> 或 <code>Exact</code> 类型作相同处理。</li>
+<li><code>Exact</code>：精确匹配 URL 路径，且区分大小写。</li>
+<li><code>Prefix</code>：基于以 <code>/</code> 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。路径元素指的是由 <code>/</code> 分隔符分隔的路径中的标签列表。如果每个 p 都是请求路径 p 的元素前缀，则请求与路径 p 匹配。</li>
+</ul>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>如果路径的最后一个元素使请求路径中最后一个元素的子字符串，则不会匹配（例如：<code>/foo/bar</code> 匹配 <code>/foo/bar/baz</code>，但不匹配 <code>/foo/barbaz</code>）。</p>
+
+</blockquote>
+<h4 id="Ingress-TheIngressResource-Examples">示例</h4>
+<table><thead><tr><th>类型</th><th>路径</th><th>请求路径</th><th>匹配与否？</th></tr></thead><tbody>
+<tr><td>Prefix</td><td><code>/</code></td><td>（所有路径）</td><td>是</td></tr>
+<tr><td>Exact</td><td><code>/foo</code></td><td><code>/foo</code></td><td>是</td></tr>
+<tr><td>Exact</td><td><code>/foo</code></td><td><code>/bar</code></td><td>否</td></tr>
+<tr><td>Exact</td><td><code>/foo</code></td><td><code>/foo/</code></td><td>否</td></tr>
+<tr><td>Exact</td><td><code>/foo/</code></td><td><code>/foo</code></td><td>否</td></tr>
+<tr><td>Prefix</td><td><code>/foo</code></td><td><code>/foo</code>, <code>/foo/</code></td><td>是</td></tr>
+<tr><td>Prefix</td><td><code>/foo/</code></td><td><code>/foo</code>, <code>/foo/</code></td><td>是</td></tr>
+<tr><td>Prefix</td><td><code>/aaa/bb</code></td><td><code>/aaa/bbb</code></td><td>否</td></tr>
+<tr><td>Prefix</td><td><code>/aaa/bbb</code></td><td><code>/aaa/bbb</code></td><td>是</td></tr>
+<tr><td>Prefix</td><td><code>/aaa/bbb/</code></td><td><code>/aaa/bbb</code></td><td>是，忽略尾部斜线</td></tr>
+<tr><td>Prefix</td><td><code>/aaa/bbb</code></td><td><code>/aaa/bbb/</code></td><td>是，匹配尾部斜线</td></tr>
+<tr><td>Prefix</td><td><code>/aaa/bbb</code></td><td><code>/aaa/bbb/ccc</code></td><td>是，匹配子路径</td></tr>
+<tr><td>Prefix</td><td><code>/aaa/bbb</code></td><td><code>/aaa/bbbxyz</code></td><td>否，字符串前缀不匹配</td></tr>
+<tr><td>Prefix</td><td><code>/</code>, <code>/aaa</code></td><td><code>/aaa/ccc</code></td><td>是，匹配 /aaa 前缀</td></tr>
+<tr><td>Prefix</td><td><code>/</code>, <code>/aaa</code>, <code>/aaa/bbb</code></td><td><code>/aaa/bbb</code></td><td>是，匹配 /aaa/bbb 前缀</td></tr>
+<tr><td>Prefix</td><td><code>/</code>, <code>/aaa</code>, <code>/aaa/bbb</code></td><td><code>/ccc</code></td><td>是，匹配 / 前缀</td></tr>
+<tr><td>Prefix</td><td><code>/aaa</code></td><td><code>/ccc</code></td><td>否，使用默认后端</td></tr>
+<tr><td>混合</td><td><code>/foo (Prefix)</code>, <code>/foo (Exact)</code></td><td><code>/foo</code></td><td>是，优选 Exact 类型</td></tr>
+</tbody></table>
+<h5 id="duo-zhong-pi-pei">多重匹配</h5>
+<p>在某些情况下，Ingress 中的多条路径会匹配同一个请求。这种情况下最长的匹配路径优先。如果仍然有两条同等的匹配路径，则精确路径类型优于前缀路径类型。</p>
+<h3 id="zhu-ji-ming-tong-pei-fu">主机名通配符</h3>
+<table><thead><tr><th>主机</th><th>host 头部</th><th>匹配与否？</th></tr></thead><tbody>
+<tr><td><code>*.foo.com</code></td><td><code>bar.foo.com</code></td><td>基于相同的后缀匹配</td></tr>
+<tr><td><code>*.foo.com</code></td><td><code>baz.bar.foo.com</code></td><td>不匹配，通配符仅覆盖了一个 DNS 标签</td></tr>
+<tr><td><code>*.foo.com</code></td><td><code>foo.com</code></td><td>不匹配，通配符仅覆盖了一个 DNS 标签</td></tr>
+</tbody></table>
+<p>例如（<code>service/networking/ingress-wildcard-host.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Ingress
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">ingress-wildcard-host
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">rules</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">host</span><span>: &quot;</span><span style="color:#a3be8c;">foo.bar.com</span><span>&quot;
+</span><span>      </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">path</span><span>: &quot;</span><span style="color:#a3be8c;">/bar</span><span>&quot;
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">service1
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">80
+</span><span>    - </span><span style="color:#bf616a;">host</span><span>: &quot;</span><span style="color:#a3be8c;">*.foo.com</span><span>&quot;
+</span><span>      </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">path</span><span>: &quot;</span><span style="color:#a3be8c;">/foo</span><span>&quot;
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">service2
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<h3 id="ingress-lei">Ingress 类</h3>
+<p>Ingress 可以由不同的控制器实现，通常使用不同的配置。每个 Ingress 应当指定一个类，也就是一个对 IngressClass 资源的引用。IngressClass 资源包含额外的配置，其中包括应当实现类的控制器名称。例如（<code>service/networking/external-lb.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">IngressClass
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">external-lb
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">controller</span><span>: </span><span style="color:#a3be8c;">example.com/ingress-controller
+</span><span>  </span><span style="color:#bf616a;">parameters</span><span>:
+</span><span>    </span><span style="color:#bf616a;">apiGroup</span><span>: </span><span style="color:#a3be8c;">k8s.example.com
+</span><span>    </span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">IngressParameters
+</span><span>    </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">external-lb
+</span></code></pre>
+<p>IngressClass 中的 <code>.spec.parameters</code> 字段可用于引用其他资源以提供额外的相关配置。</p>
+<p>参数（<code>parameters</code>）的具体类型取决于用户在 <code>.spec.controller</code> 字段中指定的 Ingress 控制器。</p>
+<h4 id="ingressclass-de-zuo-yong-yu">IngressClass 的作用域</h4>
+<p>取决于用户的 Ingress 控制器，用户可能可以使用集群范围设置的参数或某个命名空间范围的参数。</p>
+<h5 id="ji-qun-zuo-yong-yu">集群作用域</h5>
+<p>IngressClass 的参数默认是集群范围的。</p>
+<p>如果设置了 <code>.spec.parameters</code> 字段且未设置 <code>.spec.parameters.scope</code> 字段，或是将 <code>.spec.parameters.scope</code> 字段设为 <code>Cluster</code>，那么该 IngressClass 所指代的即是一个集群作用域的资源。参数 <code>kind</code>（和 <code>apiGroup</code> 一起）指向一个集群作用域的 API（可能是一个定制资源 Custom Resource），而它的 <code>name</code> 则为此 API 确定了一个具体的集群作用域的资源。</p>
+<p>示例：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span>---
+</span><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">IngressClass
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">external-lb-1
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">controller</span><span>: </span><span style="color:#a3be8c;">example.com/ingress-controller
+</span><span>  </span><span style="color:#bf616a;">parameters</span><span>:
+</span><span>    </span><span style="color:#65737e;"># 此 IngressClass 的配置定义在一个名为 “external-config-1” 的
+</span><span>    </span><span style="color:#65737e;"># ClusterIngressParameter（API 组为 k8s.example.net）资源中。
+</span><span>    </span><span style="color:#65737e;"># 这项定义告诉 Kubernetes 去寻找一个集群作用域的参数资源。
+</span><span>    </span><span style="color:#bf616a;">scope</span><span>: </span><span style="color:#a3be8c;">Cluster
+</span><span>    </span><span style="color:#bf616a;">apiGroup</span><span>: </span><span style="color:#a3be8c;">k8s.example.net
+</span><span>    </span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">ClusterIngressParameter
+</span><span>    </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">external-config-1
+</span></code></pre>
+<h5 id="ming-ming-kong-jian-zuo-yong-yu">命名空间作用域</h5>
+<p><strong>特性状态</strong>：<code>v1.23 [stable]</code></p>
+<p>如果用户设置了 <code>.spec.parameters</code> 字段且将 <code>.spec.parameters.scope</code> 字段设为了 <code>Namespace</code>，那么该 IngressClass 将会引用一个命名空间作用域的资源。<code>.spec.parameters.namespace</code> 必须和此资源所处的命名空间相同。</p>
+<p>参数 <code>kind</code>（和 <code>apiGroup</code> 一起）指向一个命名空间作用域的 API（例如 ConfigMap），而它的 <code>name</code> 则确定了一个位于用户指定的命名空间中的具体资源。</p>
+<p>命名空间作用域的参数帮助集群操作者将控制细分到用于工作负载的各种配置中（比如：负载均衡设置，API 网关定义）。如果用户使用集群作用域的参数，那么就必须从以下两项中选择一项执行：</p>
+<ul>
+<li>每次修改配置，集群操作团队需要批准其他团队的修改。</li>
+<li>集群操作团队定义具体的准入控制，比如 RBAC 角色与角色绑定，以使得应用程序团队可以修改集群作用域的配置参数资源。</li>
+</ul>
+<p>IngressClass API 本身是集群作用域的。</p>
+<p>以下是一个引用命名空间作用域的配置参数的 IngressClass 示例：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span>---
+</span><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">IngressClass
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">external-lb-2
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">controller</span><span>: </span><span style="color:#a3be8c;">example.com/ingress-controller
+</span><span>  </span><span style="color:#bf616a;">parameters</span><span>:
+</span><span>    </span><span style="color:#65737e;"># 此 IngressClass 的配置定义在一个名为 “external-config” 的
+</span><span>    </span><span style="color:#65737e;"># IngressParameter（API 组为 k8s.example.com）资源中，
+</span><span>    </span><span style="color:#65737e;"># 该资源位于 “external-configuration” 命名空间中。
+</span><span>    </span><span style="color:#bf616a;">scope</span><span>: </span><span style="color:#a3be8c;">Namespace
+</span><span>    </span><span style="color:#bf616a;">apiGroup</span><span>: </span><span style="color:#a3be8c;">k8s.example.com
+</span><span>    </span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">IngressParameter
+</span><span>    </span><span style="color:#bf616a;">namespace</span><span>: </span><span style="color:#a3be8c;">external-configuration
+</span><span>    </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">external-config
+</span></code></pre>
+<h4 id="mo-ren-ingress-lei">默认 Ingress 类</h4>
+<p>用户可以将一个特定的 IngressClass 标记为集群默认 Ingress 类。讲一个 IngressClass 资源的 <code>ingressclass.kubernetes.io/is-default-class</code> 注解设置为 <code>true</code> 将确保新的未指定 <code>ingressClassName</code> 字段的 Ingress 能够分配为这个默认的 IngressClass。</p>
+<p>{% blockquote_warn%}
+如果集群中又多个 IngressClass 被标记为默认，准入控制器将阻止创建新的未指定 <code>ingressClassName</code> 的 Ingress 对象。解决这个问题只需要确保集群中最多只能有一个 IngressClass 被标记为默认。
+{% end %}</p>
+<p>有一些 Ingress 控制器不需要定义默认的 <code>IngressClass</code>。比如 Ingress-NGINX 控制器可以通过参数 <code>--watch-ingress-without-class</code> 来配置。不过仍然推荐设置默认的 <code>IngressClass</code>。例如（<code>service/networking/default-ingressclass.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">IngressClass
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">labels</span><span>:
+</span><span>    </span><span style="color:#bf616a;">app.kubernetes.io/component</span><span>: </span><span style="color:#a3be8c;">controller
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">nginx-example
+</span><span>  </span><span style="color:#bf616a;">annotations</span><span>:
+</span><span>    </span><span style="color:#bf616a;">ingressclass.kubernetes.io/is-default-class</span><span>: &quot;</span><span style="color:#a3be8c;">true</span><span>&quot;
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">controller</span><span>: </span><span style="color:#a3be8c;">k8s.io/ingress-nginx
+</span></code></pre>
+<h3 id="Ingress-TypesOfIngress">Ingress 类型</h3>
+<h4 id="you-dan-ge-service-lai-wan-cheng-de-ingress">由单个 Service 来完成的 Ingress</h4>
+<p>现有的 k8s 概念允许用户暴露单个 Service（参见<a href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#Ingress-Alternatives">代替方案</a>）。也可以通过指定无规则的<em>默认后端</em>来对 Ingress 进行此操作。例如（<code>service/networking/test-ingress.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Ingress
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">test-ingress
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">defaultBackend</span><span>:
+</span><span>    </span><span style="color:#bf616a;">service</span><span>:
+</span><span>      </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">test
+</span><span>      </span><span style="color:#bf616a;">port</span><span>:
+</span><span>        </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<p>如果使用 <code>kubectl apply -f</code> 创建此 Ingress，则应该能够查看刚刚添加的 Ingress 的状态：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get ingress test-ingress
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>NAME           CLASS         HOSTS   ADDRESS         PORTS   AGE
+</span><span>test-ingress   external-lb   *       203.0.113.123   80      59s
+</span></code></pre>
+<p>其中 <code>203.0.113.123</code> 是由 Ingress 控制器分配以满足该 Ingress 的 IP。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>入口控制器和负载平衡器可能需要一两分钟才能分配 IP 地址。在此之前，用户通常会看到地址字段的值被设定为 <code>&lt;pending&gt;</code>。</p>
+
+</blockquote>
+<h4 id="jian-dan-shan-chu">简单扇出</h4>
+<p>一个扇出（fanout）配置根据请求的 HTTP URI 将来自同一 IP 地址的流量路由到多个 Service。Ingress 允许用户将负责均衡器的数量将至最低。例如这样的配置：</p>
+<div class="content__image">
+  <img src="&#x2F;images&#x2F;ingress-fanout.svg" alt="ingress fanout"   />
+</div>
+<p>将需要一个如下所示的 Ingress（<code>service/networking/simple-fanout-example.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Ingress
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">simple-fanout-example
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">rules</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">host</span><span>: </span><span style="color:#a3be8c;">foo.bar.com
+</span><span>      </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">path</span><span>: </span><span style="color:#a3be8c;">/foo
+</span><span>            </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">service1
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">4200
+</span><span>          - </span><span style="color:#bf616a;">path</span><span>: </span><span style="color:#a3be8c;">/bar
+</span><span>            </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">service2
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">8080
+</span></code></pre>
+<p>当使用 <code>kubectl apply -f</code> 创建 Ingress 时：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> describe ingress simple-fanout-example
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Name:             simple-fanout-example
+</span><span>Namespace:        default
+</span><span>Address:          178.91.123.132
+</span><span>Default backend:  default-http-backend:80 (10.8.2.3:8080)
+</span><span>Rules:
+</span><span>  Host         Path  Backends
+</span><span>  ----         ----  --------
+</span><span>  foo.bar.com
+</span><span>               /foo   service1:4200 (10.8.0.90:4200)
+</span><span>               /bar   service2:8080 (10.8.0.91:8080)
+</span><span>Annotations:
+</span><span>  nginx.ingress.kubernetes.io/rewrite-target:  /
+</span><span>Events:
+</span><span>  Type     Reason  Age                From                     Message
+</span><span>  ----     ------  ----               ----                     -------
+</span><span>  Normal   ADD     22s                loadbalancer-controller  default/test
+</span></code></pre>
+<p>Ingress 控制器将提供实现特定的负载均衡器来满足 Ingress，只要 Service（<code>service1</code>，<code>service2</code>）存在。当它这样做时，用户会在 Address 字段看到负载均衡器的地址。</p>
+<blockquote class="blockquote-note">
+	<p class="font-bold">说明：</p>
+	<p>取决于用户所使用的 Ingress 控制器，用户可能需要创建默认 HTTP 后端服务。</p>
+
+</blockquote>
+<h4 id="ji-yu-ming-cheng-de-xu-ni-tuo-guan">基于名称的虚拟托管</h4>
+<p>基于名称的虚拟主机支持将针对多个主机名的 HTTP 流量路由到同一 IP 地址上。</p>
+<div class="content__image">
+  <img src="&#x2F;images&#x2F;ingress-name-based.svg" alt="ingress name based"   />
+</div>
+<p>以下 Ingress 让后台负载均衡器基于 host 头部字段来路由请求（<code>service/networking/name-virtual-host-ingress.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Ingress
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">name-virtual-host-ingress
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">rules</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">host</span><span>: </span><span style="color:#a3be8c;">foo.bar.com
+</span><span>      </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">path</span><span>: &quot;</span><span style="color:#a3be8c;">/</span><span>&quot;
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">service1
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">80
+</span><span>    - </span><span style="color:#bf616a;">host</span><span>: </span><span style="color:#a3be8c;">bar.foo.com
+</span><span>      </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">path</span><span>: &quot;</span><span style="color:#a3be8c;">/</span><span>&quot;
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">service2
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<p>如果用户创建的 Ingress 资源没有在 <code>rules</code> 中定义任何 <code>hosts</code>，则可以匹配指向 Ingress 控制器 IP 地址的任何网络流量，而无需基于名称的虚拟主机。</p>
+<p>例如，以下 Ingress 会将请求 <code>first.bar.com</code> 的流量路由到 <code>service1</code>，将请求 <code>second.bar.com</code> 的流量路由到 <code>service2</code>，而所有其他流量都会被路由到 <code>service3</code>（<code>service/networking/name-virtual-host-ingress-no-third-host.yaml</code>）：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">networking.k8s.io/v1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">Ingress
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">name-virtual-host-ingress-no-third-host
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">rules</span><span>:
+</span><span>    - </span><span style="color:#bf616a;">host</span><span>: </span><span style="color:#a3be8c;">first.bar.com
+</span><span>      </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">path</span><span>: &quot;</span><span style="color:#a3be8c;">/</span><span>&quot;
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">service1
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">80
+</span><span>    - </span><span style="color:#bf616a;">host</span><span>: </span><span style="color:#a3be8c;">second.bar.com
+</span><span>      </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">path</span><span>: &quot;</span><span style="color:#a3be8c;">/</span><span>&quot;
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">service2
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">80
+</span><span>    - </span><span style="color:#bf616a;">http</span><span>:
+</span><span>        </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>          - </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>            </span><span style="color:#bf616a;">path</span><span>: &quot;</span><span style="color:#a3be8c;">/</span><span>&quot;
+</span><span>            </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>              </span><span style="color:#bf616a;">service</span><span>:
+</span><span>                </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">service3
+</span><span>                </span><span style="color:#bf616a;">port</span><span>:
+</span><span>                  </span><span style="color:#bf616a;">number</span><span>: </span><span style="color:#d08770;">80
+</span></code></pre>
+<h4 id="Ingress-TypesOfIngress-TLS">TLS</h4>
+<p>WIP</p>
+<h4 id="Ingress-TypesOfIngress-LoadBalancing">负载均衡</h4>
+<p>Ingress 控制器启动引导时使用一些适用于所有 Ingress 的负载均衡策略设置，例如负载均衡算法，后端权重方案等。更高级的负载均衡概念（例如持久会话，动态权重）尚未通过 Ingress 公开。童虎可以通过用于服务的负责均衡器来获取这些功能。</p>
+<p>值得注意的是，尽管健康检查不是通过 Ingress 直接暴露的，在 k8s 中存在并行的概念，比如就绪检查，允许用户实现相同的目的。请检查特定控制器的说明文档（nginx，GCE）以了解它们是怎样处理健康检查的。</p>
+<h3 id="geng-xin-ingress">更新 Ingress</h3>
+<p>要更新现有的 Ingress 以添加新的 Host，可以通过编辑资源来对其进行更新：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> describe ingress test
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Name:             test
+</span><span>Namespace:        default
+</span><span>Address:          178.91.123.132
+</span><span>Default backend:  default-http-backend:80 (10.8.2.3:8080)
+</span><span>Rules:
+</span><span>  Host         Path  Backends
+</span><span>  ----         ----  --------
+</span><span>  foo.bar.com
+</span><span>               /foo   service1:80 (10.8.0.90:80)
+</span><span>Annotations:
+</span><span>  nginx.ingress.kubernetes.io/rewrite-target:  /
+</span><span>Events:
+</span><span>  Type     Reason  Age                From                     Message
+</span><span>  ----     ------  ----               ----                     -------
+</span><span>  Normal   ADD     35s                loadbalancer-controller  default/test
+</span></code></pre>
+<p>通过以下命令打开编辑器，允许用户以 YAML 格式编辑现有配置。修改它来增加新的主机：</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#bf616a;">rules</span><span>:
+</span><span>  - </span><span style="color:#bf616a;">host</span><span>: </span><span style="color:#a3be8c;">foo.bar.com
+</span><span>    </span><span style="color:#bf616a;">http</span><span>:
+</span><span>      </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>      - </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>          </span><span style="color:#bf616a;">serviceName</span><span>: </span><span style="color:#a3be8c;">service1
+</span><span>          </span><span style="color:#bf616a;">servicePort</span><span>: </span><span style="color:#d08770;">80
+</span><span>        </span><span style="color:#bf616a;">path</span><span>: </span><span style="color:#a3be8c;">/foo
+</span><span>        </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span>  - </span><span style="color:#bf616a;">host</span><span>: </span><span style="color:#a3be8c;">bar.baz.com
+</span><span>    </span><span style="color:#bf616a;">http</span><span>:
+</span><span>      </span><span style="color:#bf616a;">paths</span><span>:
+</span><span>      - </span><span style="color:#bf616a;">backend</span><span>:
+</span><span>          </span><span style="color:#bf616a;">serviceName</span><span>: </span><span style="color:#a3be8c;">service2
+</span><span>          </span><span style="color:#bf616a;">servicePort</span><span>: </span><span style="color:#d08770;">80
+</span><span>        </span><span style="color:#bf616a;">path</span><span>: </span><span style="color:#a3be8c;">/foo
+</span><span>        </span><span style="color:#bf616a;">pathType</span><span>: </span><span style="color:#a3be8c;">Prefix
+</span><span style="color:#d08770;">..
+</span></code></pre>
+<p>保存更改后，kubectl 将更新 API 服务器中的资源，该资源将告诉 Ingress 控制器重新配置负责均衡器，验证：</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> describe ingress test
+</span></code></pre>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Name:             test
+</span><span>Namespace:        default
+</span><span>Address:          178.91.123.132
+</span><span>Default backend:  default-http-backend:80 (10.8.2.3:8080)
+</span><span>Rules:
+</span><span>  Host         Path  Backends
+</span><span>  ----         ----  --------
+</span><span>  foo.bar.com
+</span><span>               /foo   service1:80 (10.8.0.90:80)
+</span><span>  bar.baz.com
+</span><span>               /foo   service2:80 (10.8.0.91:80)
+</span><span>Annotations:
+</span><span>  nginx.ingress.kubernetes.io/rewrite-target:  /
+</span><span>Events:
+</span><span>  Type     Reason  Age                From                     Message
+</span><span>  ----     ------  ----               ----                     -------
+</span><span>  Normal   ADD     45s                loadbalancer-controller  default/test
+</span></code></pre>
+<p>用户也可以通过 <code>kubectl replace -f</code> 命令调用修改后的 Ingress yaml 文件来获得同样的结果。</p>
+<h3 id="Ingress-Alternatives">替代方案</h3>
+<ul>
+<li>使用 <a href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#Service-PublishingServices-TypeLoadBalancer">Service.Type=LoadBalancer</a></li>
+<li>使用 <a href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#Service-PublishingServices-TypeNodePort">Service.Type=NodePort</a></li>
+</ul>
+<h2 id="ingress-kong-zhi-qi">Ingress 控制器</h2>
+<p>为了使 Ingress 资源工作，集群必须拥有一个运行的 ingress 控制器。</p>
+<p>有别于其它作为 <code>kube-controller-manager</code> 二进制部分运行的控制器，Ingress 控制器不会被集群自动启动。</p>
+<p>Kubernetes 作为一个项目，目前支持和维护 AWS、 GCE 和 Nginx Ingress 控制器。</p>
+<h2 id="EndpointSlices">端点切片</h2>
+<p><strong>特性状态</strong>：<code>v1.21 [stable]</code></p>
+<p><em>端点切片 EndpointSlices</em>提供了一个简单的方法用于追踪 k8s 集群中的网络端点。它们提供一种可扩缩和可拓展的代替方案。</p>
+<h3 id="EndpointSlices-Motivation">动机</h3>
+<p>WIP</p>
+<h2 id="fu-wu-nei-bu-liu-liang-ce-lue">服务内部流量策略</h2>
+<p>WIP</p>
+<h2 id="tuo-bu-gan-zhi-ti-shi">拓扑感知提示</h2>
+<p>WIP</p>
+<h2 id="wang-luo-ce-lue">网络策略</h2>
+<p>WIP</p>
+<h2 id="ipv4-ipv6-shuang-xie-yi-zhan">IPv4/IPv6 双协议栈</h2>
+<p>WIP</p>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-jian-jie"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#jian-jie"
+							>
+								简介
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-k8s-wang-luo-mo-xing"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#k8s-wang-luo-mo-xing"
+									>
+										K8s 网络模型
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-ServicesLoadBalancingAndNetworking-Service"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#ServicesLoadBalancingAndNetworking-Service"
+							>
+								服务 Service
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-dong-ji"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#dong-ji"
+									>
+										动机
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-service-zi-yuan"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#service-zi-yuan"
+									>
+										Service 资源
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-ding-yi-service"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#ding-yi-service"
+									>
+										定义 Service
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-VirtualIPsAndServiceProxies"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#VirtualIPsAndServiceProxies"
+									>
+										虚拟 IP 和 Service 代理
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-duo-duan-kou-service"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#duo-duan-kou-service"
+									>
+										多端口 Service
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-xuan-ze-zi-ji-de-ip-di-zhi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#xuan-ze-zi-ji-de-ip-di-zhi"
+									>
+										选择自己的 IP 地址
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-liu-liang-ce-lue"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#liu-liang-ce-lue"
+									>
+										流量策略
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-fu-wu-fa-xian"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#fu-wu-fa-xian"
+									>
+										服务发现
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-wu-tou-fu-wu"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#wu-tou-fu-wu"
+									>
+										无头服务
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-Service-PublishingServices"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#Service-PublishingServices"
+									>
+										发布服务（服务类型）
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-bu-zu"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#bu-zu"
+									>
+										不足
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-xu-ni-ip-shi-shi"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#xu-ni-ip-shi-shi"
+									>
+										虚拟 IP 实施
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-api-dui-xiang"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#api-dui-xiang"
+									>
+										API 对象
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-pod-yu-service-de-dns"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#pod-yu-service-de-dns"
+							>
+								Pod 与 Service 的 DNS
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-PodsAndDNSForServices-Introduction"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#PodsAndDNSForServices-Introduction"
+									>
+										介绍
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-PodsAndDNSForServices-Pods"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#PodsAndDNSForServices-Pods"
+									>
+										Pods
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-shi-yong-fu-wu-lian-jie-dao-ying-yong"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#shi-yong-fu-wu-lian-jie-dao-ying-yong"
+							>
+								使用服务连接到应用
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-k8s-lian-jie-rong-qi-de-mo-xing"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#k8s-lian-jie-rong-qi-de-mo-xing"
+									>
+										k8s 连接容器的模型
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-zai-ji-qun-zhong-bao-lu-pod"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#zai-ji-qun-zhong-bao-lu-pod"
+									>
+										在集群中暴露 Pod
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-chuang-jian-service"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#chuang-jian-service"
+									>
+										创建 Service
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-fang-wen-service"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#fang-wen-service"
+									>
+										访问 Service
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-bao-hu-service"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#bao-hu-service"
+									>
+										保护 Service
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-bao-lu-service"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#bao-lu-service"
+									>
+										暴露 Service
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-ingress"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#ingress"
+							>
+								Ingress
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-zhu-yu"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#zhu-yu"
+									>
+										术语
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-ingress-shi-shi-yao"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#ingress-shi-shi-yao"
+									>
+										Ingress 是什么
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-huan-jing-zhun-bei"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#huan-jing-zhun-bei"
+									>
+										环境准备
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-ingress-zi-yuan"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#ingress-zi-yuan"
+									>
+										Ingress 资源
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-zhu-ji-ming-tong-pei-fu"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#zhu-ji-ming-tong-pei-fu"
+									>
+										主机名通配符
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-ingress-lei"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#ingress-lei"
+									>
+										Ingress 类
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-Ingress-TypesOfIngress"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#Ingress-TypesOfIngress"
+									>
+										Ingress 类型
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-geng-xin-ingress"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#geng-xin-ingress"
+									>
+										更新 Ingress
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-Ingress-Alternatives"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#Ingress-Alternatives"
+									>
+										替代方案
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-ingress-kong-zhi-qi"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#ingress-kong-zhi-qi"
+							>
+								Ingress 控制器
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-EndpointSlices"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#EndpointSlices"
+							>
+								端点切片
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-EndpointSlices-Motivation"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#EndpointSlices-Motivation"
+									>
+										动机
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-fu-wu-nei-bu-liu-liang-ce-lue"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#fu-wu-nei-bu-liu-liang-ce-lue"
+							>
+								服务内部流量策略
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-tuo-bu-gan-zhi-ti-shi"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#tuo-bu-gan-zhi-ti-shi"
+							>
+								拓扑感知提示
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-wang-luo-ce-lue"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#wang-luo-ce-lue"
+							>
+								网络策略
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-ipv4-ipv6-shuang-xie-yi-zhan"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/reads/2022-9-1-k8s-notes-v/#ipv4-ipv6-shuang-xie-yi-zhan"
+							>
+								IPv4&#x2F;IPv6 双协议栈
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

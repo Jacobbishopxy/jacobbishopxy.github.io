@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | Cpp Concept-based Interface with ADL-based Customization Point </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Cpp Concept-based Interface with ADL-based Customization Point</h1>
+					<p class="subtitle"></p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2025-10-22">October 22, 2025</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>3 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>425 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/post/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Post</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/c/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>C++</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><p>First of all, we need a well defined Cpp20 concept <code>BitserySerializable</code>, which is used for restricting <code>toBytes</code> and <code>fromBytes</code> type
+parameter. In other words, this is trying to tell the compiler who only has the function <code>serialize</code> and satisfies the function signature
+is allowed to use <code>toBytes</code> and <code>fromBytes</code>. And this is done by Cpp20 concept-based interface.</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">using </span><span>Bytes = std::vector&lt;std::byte&gt;;
+</span><span>
+</span><span style="color:#b48ead;">template</span><span>&lt;</span><span style="color:#b48ead;">typename</span><span> T&gt;
+</span><span>concept BitserySerializable = </span><span style="color:#bf616a;">requires</span><span>(T obj,
+</span><span>    bitsery::Serializer&lt;bitsery::OutputBufferAdapter&lt;Bytes&gt;&gt;&amp; ser,
+</span><span>    bitsery::Deserializer&lt;bitsery::InputBufferAdapter&lt;Bytes&gt;&gt;&amp; des) {
+</span><span>    { </span><span style="color:#bf616a;">serialize</span><span>(ser, obj) } -&gt; </span><span style="color:#bf616a;">std</span><span>::</span><span style="color:#bf616a;">same_as</span><span>&lt;</span><span style="color:#b48ead;">void</span><span>&gt;;
+</span><span>    { </span><span style="color:#bf616a;">serialize</span><span>(des, obj) } -&gt; </span><span style="color:#bf616a;">std</span><span>::</span><span style="color:#bf616a;">same_as</span><span>&lt;</span><span style="color:#b48ead;">void</span><span>&gt;;
+</span><span>};
+</span></code></pre>
+<p>And then is our template function <code>toBytes</code> and <code>fromBytes</code>:</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">template</span><span>&lt;BitserySerializable T&gt;
+</span><span>[[nodiscard]] Bytes </span><span style="color:#bf616a;">toBytes</span><span>(</span><span style="color:#b48ead;">const</span><span> T&amp; value) {
+</span><span>    Bytes buffer;
+</span><span>    </span><span style="color:#b48ead;">auto</span><span> writtenSize = bitsery::</span><span style="color:#bf616a;">quickSerialization</span><span>&lt;bitsery::OutputBufferAdapter&lt;Bytes&gt;&gt;(
+</span><span>        buffer, const_cast&lt;T&amp;&gt;(value)); </span><span style="color:#65737e;">// bitsery requires non-const
+</span><span>    buffer.</span><span style="color:#bf616a;">resize</span><span>(writtenSize); </span><span style="color:#65737e;">// trim to exact used size
+</span><span>    </span><span style="color:#b48ead;">return</span><span> buffer;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">template</span><span>&lt;BitserySerializable T&gt;
+</span><span>[[nodiscard]] T </span><span style="color:#bf616a;">fromBytes</span><span>(</span><span style="color:#b48ead;">const</span><span> Bytes&amp; buffer) {
+</span><span>    T </span><span style="color:#bf616a;">value</span><span>{};
+</span><span>    </span><span style="color:#b48ead;">auto</span><span> result = bitsery::</span><span style="color:#bf616a;">quickDeserialization</span><span>&lt;bitsery::InputBufferAdapter&lt;Bytes&gt;&gt;(
+</span><span>        {buffer.</span><span style="color:#bf616a;">begin</span><span>(), buffer.</span><span style="color:#bf616a;">end</span><span>()}, value);
+</span><span>    </span><span style="color:#b48ead;">if </span><span>(result.</span><span style="color:#bf616a;">first </span><span>!= bitsery::ReaderError::NoError)
+</span><span>        </span><span style="color:#b48ead;">throw </span><span>std::</span><span style="color:#bf616a;">runtime_error</span><span>(&quot;</span><span style="color:#a3be8c;">Deserialization error: bad data format.</span><span>&quot;);
+</span><span>    </span><span style="color:#b48ead;">if </span><span>(!result.</span><span style="color:#bf616a;">second</span><span>)
+</span><span>        </span><span style="color:#b48ead;">throw </span><span>std::</span><span style="color:#bf616a;">runtime_error</span><span>(&quot;</span><span style="color:#a3be8c;">Deserialization error: incomplete read.</span><span>&quot;);
+</span><span>    </span><span style="color:#b48ead;">return</span><span> value;
+</span><span>}
+</span></code></pre>
+<p>The use case is simple as well. For example, we got a schema:</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">enum class </span><span>Cat : </span><span style="color:#a3be8c;">uint16_t
+</span><span>{
+</span><span>    V1,
+</span><span>    V2,
+</span><span>    V3
+</span><span>};
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>User
+</span><span>{
+</span><span>    std::string name;
+</span><span>    std::vector&lt;std::string&gt; tags;
+</span><span>    Cat category;
+</span><span>    uint age;
+</span><span>};
+</span><span>
+</span></code></pre>
+<p>Next user defines his own <code>void serialize(S&amp; s, User&amp; user)</code>. When bitsery calls <code>serialize(ser, obj)</code>, it looks for:</p>
+<ol>
+<li>In the same namespace as 'obj' (<code>User</code>);</li>
+<li>Via ADL (Argument-Dependent Lookup) in associated namespaces.</li>
+</ol>
+<p>Custom <code>serialize</code> function:</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">template </span><span>&lt;</span><span style="color:#b48ead;">typename</span><span> S&gt;
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">serialize</span><span>(S&amp; </span><span style="color:#bf616a;">s</span><span>, User&amp; </span><span style="color:#bf616a;">user</span><span>)
+</span><span>{
+</span><span>    s.</span><span style="color:#bf616a;">text1b</span><span>(user.</span><span style="color:#bf616a;">name</span><span>, </span><span style="color:#d08770;">100</span><span>);
+</span><span>    s.</span><span style="color:#bf616a;">container</span><span>(user.</span><span style="color:#bf616a;">tags</span><span>, </span><span style="color:#d08770;">10</span><span>, [](</span><span style="color:#b48ead;">auto</span><span>&amp; s, std::string&amp; str)
+</span><span>                { s.</span><span style="color:#bf616a;">text1b</span><span>(str, </span><span style="color:#d08770;">50</span><span>); });
+</span><span>    s.</span><span style="color:#bf616a;">value2b</span><span>(user.</span><span style="color:#bf616a;">category</span><span>);
+</span><span>    s.</span><span style="color:#bf616a;">value4b</span><span>(user.</span><span style="color:#bf616a;">age</span><span>);
+</span><span>}
+</span></code></pre>
+<p>Finally, the test case:</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#65737e;">// Usage
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    User </span><span style="color:#bf616a;">u</span><span>{&quot;</span><span style="color:#a3be8c;">Alice</span><span>&quot;, {&quot;</span><span style="color:#a3be8c;">dev</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">cpp</span><span>&quot;}, Cat::V2, </span><span style="color:#d08770;">30</span><span>};
+</span><span>
+</span><span>    Bytes bytes = </span><span style="color:#bf616a;">toBytes</span><span>(u);
+</span><span>    User restored = </span><span style="color:#bf616a;">fromBytes</span><span>&lt;User&gt;(bytes);
+</span><span>
+</span><span>    std::cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">Restored: </span><span>&quot; &lt;&lt; restored.</span><span style="color:#bf616a;">name </span><span>&lt;&lt; &quot;</span><span style="color:#a3be8c;">, age </span><span>&quot; &lt;&lt; restored.</span><span style="color:#bf616a;">age </span><span>&lt;&lt; &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;;
+</span><span>}
+</span></code></pre>
+<p>Oh, don't forget our import:</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">bitsery/adapter/buffer.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">bitsery/bitsery.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">bitsery/traits/string.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">bitsery/traits/vector.h</span><span>&gt;
+</span><span>
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">concepts</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">stdexcept</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">string</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span></code></pre>
+<p>Above all, we've used Cpp20 concept-based interface and ADL-based customization point to create an external serialization example.
+To sum up, the benefits of this approach:</p>
+<ul>
+<li>Non-intrusive: Don't need to modify existing classes;</li>
+<li>Separation of concerns: Serialization logic separate from business logic;</li>
+<li>Flexibility: Can provide different serialization strategies for the same type;</li>
+<li>Template-friendly: Works well with generic code;</li>
+<li>No inheritance required: Works with value types, third-party types, etc.</li>
+</ul>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

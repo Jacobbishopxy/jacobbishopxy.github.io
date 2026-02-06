@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="#ffffff" name="theme-color" />
+		<meta content="#da532c" name="msapplication-TileColor" />
+
+		
+		<link href="&#x2F;icons&#x2F;site.webmanifest" rel="manifest" />
+		 
+		<link
+			color="#5bbad5"
+			href="&#x2F;icons&#x2F;safari-pinned-tab.svg"
+			rel="mask-icon"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		 
+		<link
+			href="&#x2F;icons&#x2F;apple-touch-icon.png"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		  
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css"
+			integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+			integrity="sha256-rTpdO0HXBCNpreAHcu6tB2Ppg515Vo+5GtYSsnNLz+8="
+			crossorigin="anonymous"
+		/>
+		<link href="https://jacobbishopxy.github.io/deep-thought.css" rel="stylesheet" />
+		<link href="https://jacobbishopxy.github.io/custom.css" rel="stylesheet" />
+		 
+
+		<title> Jacob&#x27;s Domain | Rancher k8s cluster setup </title>
+
+		   
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+			integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+			crossorigin="anonymous"
+		/>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+			integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js"
+			integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT"
+			crossorigin="anonymous"
+		></script>
+		
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+			integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+			crossorigin="anonymous"
+		></script>
+		 
+	</head>
+
+	<body class="has-background-white">
+		<nav
+			aria-label="section navigation"
+			class="navbar is-light"
+			role="navigation"
+		>
+			<div class="container">
+				<div class="navbar-brand">
+					<a
+						class="navbar-item is-size-5 has-text-weight-bold"
+						href="https:&#x2F;&#x2F;jacobbishopxy.github.io"
+						>Jacob&#x27;s Domain</a
+					>
+					<a
+						aria-expanded="false"
+						aria-label="menu"
+						class="navbar-burger burger"
+						data-target="navMenu"
+						role="button"
+					>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+				<div class="navbar-menu" id="navMenu">
+					<div class="navbar-end has-text-centered">
+						  
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;"
+						>
+							Home
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts"
+						>
+							Posts
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;docs"
+						>
+							Docs
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;reads"
+						>
+							Reads
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;archives"
+						>
+							Archives
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;tags"
+						>
+							Tags
+						</a>
+						
+						<a
+							class="navbar-item has-text-weight-semibold"
+							href="https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;categories"
+						>
+							Categories
+						</a>
+						  
+						<a
+							class="navbar-item"
+							id="nav-search"
+							title="Search"
+							data-target="#search-modal"
+						>
+							<span class="icon">
+								<i class="fas fa-search"></i>
+							</span>
+						</a>
+						<a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+							<span class="icon">
+								<i class="fas fa-adjust"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		  
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<article class="box">
+					<h1 class="title">Rancher k8s cluster setup</h1>
+					<p class="subtitle">An experimental record</p>
+					<div class="columns is-multiline is-gapless">
+						<div class="column is-8">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Jacob Xie published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2022-07-18">July 18, 2022</time></span>
+</span>
+
+						</div>
+						<div class="column is-4 has-text-right-desktop">
+							
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>12 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>2374 words</span>
+</span>
+
+						</div>
+						<div class="column">
+							 
+<p>
+  Categories:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/categories/post/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-cube"></i>
+      </span>
+      <span>Post</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+						<div class="column has-text-right-desktop">
+							 
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://jacobbishopxy.github.io/tags/k8s/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+</p>
+ 
+						</div>
+					</div>
+					<div class="content mt-2"><h2 id="clarification">Clarification</h2>
+<h3 id="production">Production</h3>
+<p>Production checklist:</p>
+<ul>
+<li><a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Prerequisites">Prerequisites</a></li>
+<li><a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#RKE2">RKE2</a></li>
+<li><a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Helm">Helm</a></li>
+<li><a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Rancher">Rancher</a></li>
+</ul>
+<h3 id="development">Development</h3>
+<p>Development checklist:</p>
+<ul>
+<li><a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Prerequisites">Prerequisites</a></li>
+<li><a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Kubectl">Kubectl</a></li>
+<li><a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Docker">Docker</a></li>
+<li><a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Helm">Helm</a></li>
+<li><a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Rancher">Rancher</a></li>
+</ul>
+<h2 id="Prerequisites">Prerequisites</h2>
+<ol>
+<li>
+<p><strong>[IMPORTANT]</strong> Config machine name (optional):</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#65737e;">## master
+</span><span style="color:#bf616a;">sudo</span><span> hostnamectl set-hostname &quot;</span><span style="color:#a3be8c;">k8s-master</span><span>&quot;
+</span><span style="color:#96b5b4;">exec</span><span> bash
+</span><span>
+</span><span style="color:#65737e;">## node1
+</span><span style="color:#bf616a;">sudo</span><span> hostnamectl set-hostname &quot;</span><span style="color:#a3be8c;">k8s-node1</span><span>&quot;
+</span><span style="color:#96b5b4;">exec</span><span> bash
+</span><span>
+</span><span style="color:#65737e;">## node2
+</span><span style="color:#bf616a;">sudo</span><span> hostnamectl set-hostname &quot;</span><span style="color:#a3be8c;">k8s-node2</span><span>&quot;
+</span><span style="color:#96b5b4;">exec</span><span> bash
+</span><span>
+</span><span style="color:#65737e;">## node3
+</span><span style="color:#bf616a;">sudo</span><span> hostnamectl set-hostname &quot;</span><span style="color:#a3be8c;">k8s-node3</span><span>&quot;
+</span><span style="color:#96b5b4;">exec</span><span> bash
+</span></code></pre>
+</li>
+<li>
+<p><strong>[IMPORTANT]</strong> Config <code>/etc/hosts</code> by adding master &amp; workers' IP addresses (optional). Here we use four machines for demonstration (master for etcd &amp; control plane, and the rest for worker. Visit <a href="https://rancher.com/docs/rancher/v2.6/en/cluster-provisioning/production/">Checklist for Production-Ready Clusters</a> for more information):</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>192.168.50.140 k8s-master
+</span><span>192.168.50.141 k8s-node1
+</span><span>192.168.50.142 k8s-node2
+</span><span>192.168.50.143 k8s-node3
+</span><span>192.168.50.144 k8s-node4
+</span></code></pre>
+</li>
+<li>
+<p>Set timezone:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> timedatectl set-timezone Asia/Shanghai
+</span></code></pre>
+</li>
+<li>
+<p>Turn off swap:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> swapoff</span><span style="color:#bf616a;"> -a
+</span></code></pre>
+</li>
+</ol>
+<h2 id="Kubectl">Kubectl</h2>
+<p><strong>Skip this step if using RKE2 &amp; Rancher</strong>, directly goto <a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#RKE2">RKE2</a>.</p>
+<p>Install these packages on all of your machines:</p>
+<ul>
+<li><del><code>kubeadm</code>: the command to bootstrap the cluster</del></li>
+<li><del><code>kubelet</code>: the component that runs on all of the machines in your cluster and does things like starting pods and containers</del></li>
+<li><code>kubectl</code>: the command line util to talk to your cluster</li>
+</ul>
+<ol>
+<li>
+<p>Import gpg key. This step is very import especially lacking of a proxy server:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> curl</span><span style="color:#bf616a;"> -fsSLo</span><span> /usr/share/keyrings/kubernetes-archive-keyring.gpg  https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg
+</span></code></pre>
+<p>or by using tuna source:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> curl</span><span style="color:#bf616a;"> -fsSLo</span><span> /usr/share/keyrings/kubernetes-archive-keyring.gpg  https://mirrors.tuna.tsinghua.edu.cn/kubernetes/apt/doc/apt-key.gpg
+</span></code></pre>
+</li>
+<li>
+<p>Create <code>/etc/apt/sources.list.d/kubernetes.list</code>. Another important step of setting up mirrors:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">deb </span><span style="color:#b48ead;">[</span><span>signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg</span><span style="color:#b48ead;">]</span><span> https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
+</span></code></pre>
+<p>or by using tuna source:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">deb </span><span style="color:#b48ead;">[</span><span>signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg</span><span style="color:#b48ead;">]</span><span> https://mirrors.tuna.tsinghua.edu.cn/kubernetes/apt kubernetes-xenial main
+</span></code></pre>
+</li>
+<li>
+<p>Installation:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> apt-get update
+</span><span style="color:#65737e;"># (instead of using Rancher, manual setup cluster by kubeadm)
+</span><span style="color:#65737e;"># sudo apt-get install -y kubelet kubeadm kubectl
+</span><span style="color:#bf616a;">sudo</span><span> apt-get install</span><span style="color:#bf616a;"> -y</span><span> kubectl
+</span></code></pre>
+</li>
+</ol>
+<h2 id="Docker">Docker</h2>
+<p><strong>Skip this step if using RKE2 &amp; Rancher</strong>, directly goto <a href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#RKE2">RKE2</a>.</p>
+<p>Container runtime.</p>
+<ol>
+<li>
+<p>Uninstall old versions</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> apt-get remove docker docker-engine docker.io containerd runc
+</span></code></pre>
+</li>
+<li>
+<p>Update the apt package index and install packages to allow apt to use a repository over HTTPS</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> apt-get update
+</span><span style="color:#bf616a;">sudo</span><span> apt-get install \
+</span><span>  ca-certificates \
+</span><span>  curl \
+</span><span>  gnupg \
+</span><span>  lsb-release
+</span></code></pre>
+</li>
+<li>
+<p>Add Docker’s official GPG key</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> mkdir</span><span style="color:#bf616a;"> -p</span><span> /etc/apt/keyrings
+</span><span style="color:#bf616a;">curl -fsSL</span><span> https://download.docker.com/linux/ubuntu/gpg | </span><span style="color:#bf616a;">sudo</span><span> gpg \
+</span><span style="color:#bf616a;">   --dearmor -o</span><span> /etc/apt/keyrings/docker.gpg
+</span></code></pre>
+</li>
+<li>
+<p>Set up the repository</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#96b5b4;">echo </span><span>\
+</span><span> &quot;</span><span style="color:#a3be8c;">deb [arch=</span><span>$</span><span style="color:#a3be8c;">(</span><span style="color:#bf616a;">dpkg --print-architecture</span><span style="color:#a3be8c;">) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu </span><span style="color:#96b5b4;">\
+</span><span style="color:#a3be8c;"> </span><span>$</span><span style="color:#a3be8c;">(</span><span style="color:#bf616a;">lsb_release -cs</span><span style="color:#a3be8c;">) stable</span><span>&quot; | </span><span style="color:#bf616a;">sudo</span><span> tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</span></code></pre>
+</li>
+<li>
+<p>Install docker engine</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> apt-get update
+</span><span style="color:#bf616a;">sudo</span><span> apt-get install docker-ce \
+</span><span>   docker-ce-cli \
+</span><span>   containerd.io \
+</span><span>   docker-compose-plugin
+</span></code></pre>
+</li>
+<li>
+<p>Create the docker group if it does not exist</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> groupadd docker
+</span></code></pre>
+</li>
+<li>
+<p>Add your user to the docker group.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> usermod</span><span style="color:#bf616a;"> -aG</span><span> docker $</span><span style="color:#bf616a;">USER
+</span></code></pre>
+</li>
+<li>
+<p>Run the following command or Logout and login again and run (that doesn't work you may need to reboot your machine first)</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">newgrp</span><span> docker
+</span></code></pre>
+</li>
+<li>
+<p>Enable docker start on boot</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> systemctl enable docker.service
+</span><span style="color:#bf616a;">sudo</span><span> systemctl enable containerd.service
+</span></code></pre>
+<p>or disable:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> systemctl disable docker.service
+</span><span style="color:#bf616a;">sudo</span><span> systemctl disable containerd.service
+</span></code></pre>
+</li>
+<li>
+<p>Check if docker can be run without root</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">docker</span><span> run hello-world
+</span></code></pre>
+</li>
+</ol>
+<h2 id="RKE2">RKE2</h2>
+<blockquote>
+<p>RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution.</p>
+<p>It is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.</p>
+<p>To meet these goals, RKE2 does the following:</p>
+<ul>
+<li>Provides defaults and configuration options that allow clusters to pass the CIS Kubernetes Benchmark v1.6 with minimal operator intervention</li>
+<li>Enables FIPS 140-2 compliance</li>
+<li>Regularly scans components for CVEs using trivy in our build pipeline</li>
+</ul>
+</blockquote>
+<h3 id="note">Note</h3>
+<ul>
+<li>
+<p><a href="https://docs.rke2.io/install/quickstart/">quick start</a></p>
+</li>
+<li>
+<p><a href="https://docs.rke2.io/install/requirements/">requirements</a></p>
+</li>
+<li>
+<p><strong>[Ubuntu user skip this step]</strong> If using CentOS instead of Ubuntu: According to <a href="https://docs.rke2.io/known_issues/#networkmanager">a known issue</a>, config NetworkManager before install RKE2 (otherwise reboot first):</p>
+<p>Create a config file called <code>rke2-canal.conf</code> in <code>/etc/NetworkManger/conf.d</code>:</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>[keyfile]
+</span><span>unmanaged-devices=interface-name:cali*;interface-name:flannel*
+</span></code></pre>
+<p>then reload:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">systemctl</span><span> reload NetworkManager
+</span></code></pre>
+</li>
+</ul>
+<h3 id="RKE2ServerNodeInstallation">Server Node</h3>
+<ol>
+<li>
+<p>Switch to root user.</p>
+</li>
+<li>
+<p>Run the installer: <code>curl -sfL https://get.rke2.io | sh -</code></p>
+</li>
+<li>
+<p>Enable the rke2-server service: <code>systemctl enable rke2-server.service</code></p>
+</li>
+<li>
+<p>Start the service: <code>systemctl start rke2-server.service</code></p>
+</li>
+<li>
+<p>Follow the logs (optional): <code>journalctl -u rke2-server -f</code></p>
+</li>
+</ol>
+<blockquote class="blockquote-note"><p><strong>IMPORTANT!</strong></p>
+<p>After running this installation:</p>
+<ul>
+<li>The <code>rke2-server</code> service will be installed. The <code>rke2-server</code> service will be configured to automatically restart after node reboots or if the process crashes or is killed.</li>
+<li>Additional utilities will be installed at <code>/var/lib/rancher/rke2/bin/</code>. They include: <code>kubectl</code>, <code>crictl</code>, and <code>ctr</code>. Note that these are not on your path by default.</li>
+<li>Two cleanup scripts will be installed to the path at <code>/usr/local/bin/rke2</code>. They are: <code>rke2-killall.sh</code> and <code>rke2-uninstall.sh</code>.</li>
+<li>A kubeconfig file will be written to <code>/etc/rancher/rke2/rke2.yaml</code>.</li>
+<li>A token that can be used to register other server or agent nodes will be created at <code>/var/lib/rancher/rke2/server/node-token</code></li>
+</ul>
+</blockquote>
+<h3 id="RKE2AgentNodeInstallation">Agent Node</h3>
+<ol>
+<li>
+<p>Switch to root user.</p>
+</li>
+<li>
+<p>Run the installer: <code>curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE=&quot;agent&quot; sh -</code></p>
+</li>
+<li>
+<p>Enable the rke2-agent service: <code>systemctl enable rke2-agent.service</code></p>
+</li>
+<li>
+<p>Configure the rke2-agent service:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">mkdir -p</span><span> /etc/rancher/rke2/
+</span><span style="color:#bf616a;">vim</span><span> /etc/rancher/rke2/config.yaml
+</span></code></pre>
+<p>Content:</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">server</span><span>: </span><span style="color:#a3be8c;">https://&lt;server&gt;:9345
+</span><span style="color:#bf616a;">token</span><span>: </span><span style="color:#a3be8c;">&lt;token from server node&gt;
+</span></code></pre>
+</li>
+<li>
+<p>Start the service: <code>systemctl start rke2-agent.service</code></p>
+</li>
+<li>
+<p>Follow the logs (optional): <code>journalctl -u rke2-agent -f</code></p>
+</li>
+</ol>
+<h3 id="cluster-access">Cluster Access</h3>
+<ol>
+<li>
+<p>Switch out from root user.</p>
+</li>
+<li>
+<p>Copy kubeconfig by: <code>cp /etc/rancher/rke2/rke2.yaml ~/.kube/config</code>. This works on remote machine as well, all we have to do is to modify <code>server</code> field with real IP address.</p>
+</li>
+<li>
+<p>Remove group-readable &amp; world-readable WARNING:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">chmod</span><span> g-rw </span><span style="color:#bf616a;">~</span><span>/.kube/config
+</span><span style="color:#bf616a;">chmod</span><span> o-r </span><span style="color:#bf616a;">~</span><span>/.kube/config
+</span></code></pre>
+</li>
+<li>
+<p>Export environment variable by <code>vim ~/.profile</code>:</p>
+<pre data-lang="txt" style="background-color:#2b303b;color:#c0c5ce;" class="language-txt "><code class="language-txt" data-lang="txt"><span>export PATH=$PATH:/var/lib/rancher/rke2/bin/
+</span><span>export KUBECONFIG=~/.kube/config
+</span></code></pre>
+<p>and <code>source ~/.profile</code></p>
+</li>
+<li>
+<p>Check accession:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> --all-namespaces
+</span><span style="color:#bf616a;">helm</span><span> ls</span><span style="color:#bf616a;"> --all-namespaces
+</span></code></pre>
+<p>Or specify the location of the kubeconfig file in the command:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl --kubeconfig</span><span> /etc/rancher/rke2/rke2.yaml get pods</span><span style="color:#bf616a;"> --all-namespaces
+</span><span style="color:#bf616a;">helm --kubeconfig</span><span> /etc/rancher/rke2/rke2.yaml ls</span><span style="color:#bf616a;"> --all-namespaces
+</span></code></pre>
+</li>
+<li>
+<p>Accessing the Cluster from Outside with kubectl:</p>
+<p>Copy <code>/etc/rancher/rke2/rke2.yaml</code> on your machine located outside the cluster as <code>~/.kube/config</code>. Then replace <code>127.0.0.1</code> with the IP or hostname of your RKE2 server. <code>kubectl</code> can now manage your RKE2 cluster.</p>
+</li>
+</ol>
+<h2 id="Helm">Helm</h2>
+<blockquote>
+<p>Helm is a tool for managing packages of pre-configured Kubernetes resources. These packages are known as Helm charts.</p>
+<p>Use Helm to:</p>
+<ul>
+<li>Find and use popular software packaged as Kubernetes charts</li>
+<li>Share your own applications as Kubernetes charts</li>
+<li>Create reproducible builds of your Kubernetes applications</li>
+<li>Intelligently manage your Kubernetes manifest files</li>
+<li>Manage releases of Helm packages</li>
+</ul>
+</blockquote>
+<p>Official Helm <a href="https://helm.sh/docs/">document</a> and Rancher's Helm <a href="https://rancher.com/docs/k3s/latest/en/helm/">document</a>.</p>
+<h3 id="installation">Installation</h3>
+<ol>
+<li>
+<p>Install by script (needs a proxy server):</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">curl -fsSL -o</span><span> get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+</span><span style="color:#bf616a;">chmod</span><span> 700 get_helm.sh
+</span><span style="color:#bf616a;">./get_helm.sh
+</span></code></pre>
+<p>otherwise, install from released source (check the latest version):</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">wget</span><span> https://get.helm.sh/helm-v3.9.2-linux-amd64.tar.gz
+</span></code></pre>
+<p>Unzip and move:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">tar -zxvf</span><span> helm-v3.9.2-linux-amd64.tar.gz
+</span><span style="color:#bf616a;">mv</span><span> linux-amd64/helm /usr/local/bin/
+</span></code></pre>
+</li>
+<li>
+<p>Initialize a Helm Chart Repository:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">helm</span><span> repo add bitnami https://charts.bitnami.com/bitnami
+</span></code></pre>
+<p>then we can list the charts we can install:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">helm</span><span> search repo bitnami
+</span></code></pre>
+</li>
+</ol>
+<h2 id="Rancher">Rancher</h2>
+<blockquote>
+<p><strong>Why Rancher?</strong></p>
+<p>Rancher is a complete software stack for teams adopting containers. It addresses the operational and security challenges of managing multiple Kubernetes clusters across any infrastructure, while providing DevOps teams with integrated tools for running containerized workloads.</p>
+</blockquote>
+<h3 id="RancherProduction">Production</h3>
+<p><a href="https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/">Install by helm</a></p>
+<ol>
+<li>
+<p>Add the Helm chart repo: <code>helm repo add rancher-stable https://releases.rancher.com/server-charts/stable</code></p>
+</li>
+<li>
+<p>Create a namespace for Rancher: <code>kubectl create namespace cattle-system</code></p>
+</li>
+<li>
+<p>Install cert-manager (<strong>skip this if you have your own certificate</strong>):</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> apply</span><span style="color:#bf616a;"> -f</span><span> https://github.com/cert-manager/cert-manager/releases/download/v1.7.1/cert-manager.crds.yaml
+</span></code></pre>
+<p>Add the Jetstack Helm repository:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">helm</span><span> repo add jetstack https://charts.jetstack.io
+</span></code></pre>
+<p>Update your local Helm chart repository cache:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">helm</span><span> repo update
+</span></code></pre>
+<p>Install the cert-manager Helm chart:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">helm</span><span> install cert-manager jetstack/cert-manager \
+</span><span style="color:#bf616a;">   --namespace</span><span> cert-manager \
+</span><span style="color:#bf616a;">   --create-namespace </span><span>\
+</span><span style="color:#bf616a;">   --version</span><span> v1.7.1
+</span></code></pre>
+<p>Check cert-manager:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl</span><span> get pods</span><span style="color:#bf616a;"> --namespace</span><span> cert-manager
+</span></code></pre>
+</li>
+<li>
+<p><strong>[Option 1]</strong> Install Rancher without CA certificate (using cert-manager, add <code>--set tls=external</code>):</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">helm</span><span> install rancher rancher-stable/rancher \
+</span><span style="color:#bf616a;">   --namespace</span><span> cattle-system \
+</span><span style="color:#bf616a;">   --set</span><span> hostname=&lt;DNS name&gt; \
+</span><span style="color:#bf616a;">   --set</span><span> bootstrapPassword=&lt;your secret password&gt; \
+</span><span style="color:#bf616a;">   --set</span><span> tls=external
+</span></code></pre>
+</li>
+<li>
+<p><strong>[Option 2]</strong> Install Rancher with a CA certificate, which is recommended:</p>
+<p>Use <code>kubectl</code> with the <code>tls</code> secret type to create the secrets:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl -n</span><span> cattle-system create secret tls tls-rancher-ingress \
+</span><span style="color:#bf616a;">   --cert</span><span>=tls.crt \
+</span><span style="color:#bf616a;">   --key</span><span>=tls.key
+</span></code></pre>
+<p>Check <a href="https://rancher.com/docs/rancher/v2.6/en/installation/resources/tls-secrets/">this</a> for more detail, and <a href="https://rancher.com/docs/rancher/v2.6/en/installation/resources/update-rancher-cert/">updating the Rancher Certificate</a> if needed.</p>
+<p>Install Rancher:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">helm</span><span> install rancher rancher-stable/rancher \
+</span><span style="color:#bf616a;">   --namespace</span><span> cattle-system \
+</span><span style="color:#bf616a;">   --set</span><span> hostname=&lt;DNS name&gt; \
+</span><span style="color:#bf616a;">   --set</span><span> bootstrapPassword=&lt;your secret password&gt; \
+</span><span style="color:#bf616a;">   --set</span><span> ingress.tls.source=secret
+</span></code></pre>
+</li>
+<li>
+<p>Wait for Rancher to be rolled out:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl -n</span><span> cattle-system rollout status deploy/rancher
+</span></code></pre>
+</li>
+<li>
+<p>According to <a href="https://docs.rke2.io/networking/#nginx-ingress-controller">this</a>, modify RKE2 Nginx config <code>/var/lib/rancher/rke2/server/manifests/rke2-ingress-nginx-config.yaml</code>:</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span> </span><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">helm.cattle.io/v1
+</span><span> </span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">HelmChartConfig
+</span><span> </span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>   </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">rke2-ingress-nginx
+</span><span>   </span><span style="color:#bf616a;">namespace</span><span>: </span><span style="color:#a3be8c;">kube-system
+</span><span> </span><span style="color:#bf616a;">spec</span><span>:
+</span><span>   </span><span style="color:#bf616a;">valuesContent</span><span>: </span><span style="color:#b48ead;">|-
+</span><span style="color:#a3be8c;">     controller:
+</span><span style="color:#a3be8c;">       config:
+</span><span style="color:#a3be8c;">         use-forwarded-headers: &quot;true&quot;
+</span></code></pre>
+</li>
+<li>
+<p>Verify that the Rancher server is successfully deployed:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">kubectl -n</span><span> cattle-system rollout status deploy/rancher
+</span></code></pre>
+</li>
+</ol>
+<h3 id="RancherDevelopment">Development</h3>
+<p><strong>This case is only for development, do not use it in production.</strong></p>
+<ol>
+<li>
+<p>Start a rancher web server:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> docker run</span><span style="color:#bf616a;"> --privileged -d --restart</span><span>=unless-stopped</span><span style="color:#bf616a;"> -p</span><span> 80:80</span><span style="color:#bf616a;"> -p</span><span> 443:443 rancher/rancher:stable
+</span></code></pre>
+</li>
+<li>
+<p>Visit web <code>https://192.168.50.140</code> (according to the host IP)</p>
+</li>
+<li>
+<p>Copy <code>docker logs &lt;container ID&gt; 2&gt;&amp;1 | grep &quot;Bootstrap Password:&quot;</code> to terminal (get container ID by <code>docker ps</code>), by executing this command we will get <code>Bootstrap Password</code>, and paste password back to website</p>
+</li>
+<li>
+<p>Click <code>☰</code> button at the website's top-left, then <code>Cluster Management</code>, then <code>Create</code> button on the top-right, choose <code>Custom</code></p>
+</li>
+<li>
+<p>After enter your <code>Cluster Name</code>, keep everything default, click <code>Next</code> and in <code>Node Options</code>, select <code>etcd</code> and <code>Control Plane</code> for <code>140</code> and the rest <code>141</code>, <code>142</code> and <code>143</code> as <code>Worker</code>.</p>
+</li>
+</ol>
+<p>Accessing clusters with <code>kubectl</code>:</p>
+<ol>
+<li>Log into Rancher. From the Global view, open the cluster that you want to access with kubectl.</li>
+<li>Click <code>Copy KubeConfig to Clipboard</code> button.</li>
+<li>Paste the contents into a new file on your local computer. Move the file to ~/.kube/config. (Note: The default location that kubectl uses for the kubeconfig file is ~/.kube/config, but you can use any directory and specify it using the --kubeconfig flag, as in this command: kubectl --kubeconfig /custom/path/kube.config get pods)</li>
+<li>Set global config <code>echo &quot;export KUBECONFIG=~/.kube/config&quot; &gt;&gt; ~/.bash_profile</code> and <code>source ~/.bash_profile</code></li>
+<li>Now we can use <code>kubectl version</code> or <code>kubectl get nodes</code> to check whether configuration is successful or not</li>
+</ol>
+<h2 id="resolutions">Resolutions</h2>
+<ul>
+<li>
+<p>In case of no <code>root</code> user when installing RKE2, Ubuntu initialize <code>root</code> user:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#65737e;"># init
+</span><span style="color:#bf616a;">sudo</span><span> passwd root
+</span><span>
+</span><span style="color:#65737e;"># change password expire info
+</span><span style="color:#bf616a;">sudo</span><span> passwd</span><span style="color:#bf616a;"> -l</span><span> root
+</span><span>
+</span><span style="color:#65737e;"># switch
+</span><span style="color:#bf616a;">sudo -s -H
+</span></code></pre>
+</li>
+<li>
+<p>Docker images mirror (optional):</p>
+<p>execute <code>vim /etc/docker/daemon.json</code>, add:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{ &quot;</span><span style="color:#a3be8c;">registry-mirrors</span><span>&quot;: [&quot;</span><span style="color:#a3be8c;">https://docker.mirrors.ustc.edu.cn</span><span>&quot;] }
+</span></code></pre>
+<p>then reload services:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> systemctl daemon-reload
+</span><span style="color:#bf616a;">sudo</span><span> systemctl restart docker
+</span></code></pre>
+</li>
+<li>
+<p>Clear all containers and images when <a href="https://github.com/rancher/rancher/issues/21926">deployment failed</a>. <strong>Carefully</strong> use <code>sudo rm -rf ...</code> command if using RKE2 server/agent, because it will also unmount production services.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">docker</span><span> stop $(</span><span style="color:#bf616a;">docker</span><span> ps</span><span style="color:#bf616a;"> -aq</span><span>)
+</span><span style="color:#bf616a;">docker</span><span> rm $(</span><span style="color:#bf616a;">docker</span><span> ps</span><span style="color:#bf616a;"> -aq</span><span>)
+</span><span style="color:#bf616a;">docker</span><span> system prune</span><span style="color:#bf616a;"> -f
+</span><span style="color:#bf616a;">docker</span><span> volume rm $(</span><span style="color:#bf616a;">docker</span><span> volume ls</span><span style="color:#bf616a;"> -q</span><span>)
+</span><span style="color:#bf616a;">docker</span><span> image rm $(</span><span style="color:#bf616a;">docker</span><span> image ls</span><span style="color:#bf616a;"> -q</span><span>)
+</span><span style="color:#bf616a;">sudo</span><span> rm</span><span style="color:#bf616a;"> -rf</span><span> /etc/ceph \
+</span><span>      /etc/cni \
+</span><span>      /etc/kubernetes \
+</span><span>      /opt/cni \
+</span><span>      /opt/rke \
+</span><span>      /run/secrets/kubernetes.io \
+</span><span>      /run/calico \
+</span><span>      /run/flannel \
+</span><span>      /var/lib/calico \
+</span><span>      /var/lib/etcd \
+</span><span>      /var/lib/cni \
+</span><span>      /var/lib/kubelet \
+</span><span>      /var/lib/rancher/rke/log \
+</span><span>      /var/log/containers \
+</span><span>      /var/log/pods \
+</span><span>      /var/run/calico
+</span></code></pre>
+<p>Note that calling <code>rm -rf ...</code> is very useful, when encounter <code>etcd connection refused</code> problem. This usually happened when cached some previous cluster's residual files.</p>
+</li>
+<li>
+<p><code>rm: cannot remove '/var/lib/kubelet/pods/&lt;pods-id&gt;': Device or resource busy</code></p>
+<p>Simply by <code>umount</code> command:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">sudo</span><span> umount /var/lib/kubelet/pods/&lt;pods-id&gt;
+</span></code></pre>
+<p>Or <code>sudo reboot</code> then execute commands above</p>
+</li>
+<li>
+<p>Failed to bring up Etcd Plane: etcd cluster is unhealthy. <a href="https://blog.csdn.net/xtjatswc/article/details/108558156">solution</a></p>
+</li>
+<li>
+<p><code>node-role.kubernetes.io/controlplane=true:NoSchedule</code> means no pod will be able to schedule onto this node, unless it has a matching toleration. To remove this taint: <code>kubectl taint nodes node1 key1=value1:NoSchedule-</code>. In our case, this taint is normal on the master node, since we only setup one node for <code>etcd</code> and <code>control plane</code>. Hence, no need to remove this taint.</p>
+</li>
+<li>
+<p><code>node-role.kubernetes.io/etcd=true:NoExecute</code> same as above.</p>
+</li>
+<li>
+<p>Setting wrong variables during <code>helm install rancher</code>, by upgrading:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">helm</span><span> upgrade rancher rancher-stable/rancher \
+</span><span style="color:#bf616a;">   --namespace</span><span> cattle-system \
+</span><span style="color:#bf616a;">   --set</span><span> hostname=rancher.my.com \
+</span><span style="color:#bf616a;">   --set</span><span> bootstrapPassword=secret \
+</span><span style="color:#bf616a;">   --set</span><span> tls=external
+</span></code></pre>
+</li>
+<li>
+<p>To clean up Rancher, please use <a href="https://github.com/rancher/rancher-cleanup">rancher-cleanup</a>.</p>
+</li>
+</ul>
+</div>
+					
+<script
+	src="https://utteranc.es/client.js"
+	repo="jacobbishopxy/jacobbishopxy.github.io"
+	issue-term="title"
+	label="comments"
+	theme="github-light"
+	crossorigin="anonymous"
+	async
+></script>
+
+				</article>
+			</div>
+			
+			<div class="column is-2 is-hidden-mobile">
+				<aside class="menu" style="position: sticky; top: 48px">
+					<p class="heading has-text-weight-bold">Contents</p>
+					<ul class="menu-list">
+						
+						<li>
+							<a
+								id="link-clarification"
+								class="toc is-size-7 is-active"
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#clarification"
+							>
+								Clarification
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-production"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#production"
+									>
+										Production
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-development"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#development"
+									>
+										Development
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-Prerequisites"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Prerequisites"
+							>
+								Prerequisites
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-Kubectl"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Kubectl"
+							>
+								Kubectl
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-Docker"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Docker"
+							>
+								Docker
+							</a>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-RKE2"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#RKE2"
+							>
+								RKE2
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-note"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#note"
+									>
+										Note
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-RKE2ServerNodeInstallation"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#RKE2ServerNodeInstallation"
+									>
+										Server Node
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-RKE2AgentNodeInstallation"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#RKE2AgentNodeInstallation"
+									>
+										Agent Node
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-cluster-access"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#cluster-access"
+									>
+										Cluster Access
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-Helm"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Helm"
+							>
+								Helm
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-installation"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#installation"
+									>
+										Installation
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-Rancher"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#Rancher"
+							>
+								Rancher
+							</a>
+							
+							<ul>
+								
+								<li>
+									<a
+										id="link-RancherProduction"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#RancherProduction"
+									>
+										Production
+									</a>
+								</li>
+								
+								<li>
+									<a
+										id="link-RancherDevelopment"
+										class="toc is-size-7"
+										href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#RancherDevelopment"
+									>
+										Development
+									</a>
+								</li>
+								
+							</ul>
+							
+						</li>
+						
+						<li>
+							<a
+								id="link-resolutions"
+								class="toc is-size-7 "
+								href="https://jacobbishopxy.github.io/posts/2022-7-18-rancher-k8s-cluster-setup/#resolutions"
+							>
+								Resolutions
+							</a>
+							
+						</li>
+						
+					</ul>
+				</aside>
+			</div>
+			
+		</div>
+	</div>
+</section>
+ 
+		<section class="modal" id="search-modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Search</p>
+				</header>
+				<section class="modal-card-body">
+					<div class="field mb-2">
+						<div class="control">
+							<input
+								class="input"
+								id="search"
+								placeholder="Search this website."
+								type="search"
+							/>
+						</div>
+					</div>
+					<div class="search-results">
+						<div class="search-results__items"></div>
+					</div>
+				</section>
+			</div>
+			<button aria-label="close" class="modal-close is-large"></button>
+		</section>
+		      
+		<footer class="footer py-4">
+			<div class="content has-text-centered">
+				<p>Who drives me forward like fate? The myself striding on my back.</p>
+				<p>
+					Powered by
+					<span class="icon-text">
+						<span class="icon">
+							<i class="fas fa-power-off"></i>
+						</span>
+						<a href="https://www.getzola.org">zola</a>
+					</span>
+				</p>
+			</div>
+		</footer>
+		    
+		<script src="https://jacobbishopxy.github.io/elasticlunr.min.js"></script>
+		<script src="https://jacobbishopxy.github.io/search_index.en.js"></script><script src="https://jacobbishopxy.github.io/js/site.js"></script>
+
+		   
+	</body>
+</html>

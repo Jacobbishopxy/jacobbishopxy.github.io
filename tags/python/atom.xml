@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Jacob&#x27;s Domain - Python</title>
+    <subtitle>Sharing interesting things</subtitle>
+    <link href="https://jacobbishopxy.github.io/tags/python/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://jacobbishopxy.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-12-19T00:00:00+00:00</updated>
+    <id>https://jacobbishopxy.github.io/tags/python/atom.xml</id>
+    <entry xml:lang="en">
+        <title>How To Vibe Code Efficiently</title>
+        <published>2025-12-19T00:00:00+00:00</published>
+        <updated>2025-12-19T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://jacobbishopxy.github.io/posts/how-to-vibe-code-efficiently/" type="text/html"/>
+        <id>https://jacobbishopxy.github.io/posts/how-to-vibe-code-efficiently/</id>
+        
+        <content type="html">&lt;p&gt;Vibe coding is pairing with an LLM to ship code faster without losing clarity. It is a tool for completing tasks and a way to learn new
+stacks as you go.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-vibe-coding-can-do&quot;&gt;What vibe coding can do&lt;&#x2F;h2&gt;
+&lt;p&gt;Vibe coding is not only about completing a ticket. It is also a way to study: a coder can quickly explore new frameworks or libraries,
+and a researcher can dig into algorithms or math without getting stuck on boilerplate. With an open mindset, you expand your technical
+boundaries, handle more work in parallel, and free yourself from repetitive tasks so you can focus on design and research.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;user-guide&quot;&gt;User guide&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Clarify a direction&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Do one thing at a time so the model stays focused. In practice, ship one feature per branch.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Master Git&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Use branches for features, and revert early when the direction is wrong.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Choose a simple tech stack&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Fewer moving parts make it easier for the model to be accurate.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Maintain instructions and docs&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Record the steps you took; next time the model can start from that context without re-reading the whole codebase.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Give good prompts&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Be explicit about goals and constraints to save tokens and iterations.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Manage chat context&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Keep related work in the same thread so the model can reuse history.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ask for unit and integration tests&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Safety nets keep the session honest.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Debug in the right environment&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Run and inspect code locally so the model can reason with real outputs.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;use-case&quot;&gt;Use case&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Exploring a new library: ask the model for a minimal example, run it, then iterate with real errors and logs.&lt;&#x2F;li&gt;
+&lt;li&gt;Refactoring safely: outline the target shape, let the model draft changes, and enforce tests before merging.&lt;&#x2F;li&gt;
+&lt;li&gt;Research tasks: offload boilerplate data loading or plotting so you can focus on the math or model design.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+</feed>

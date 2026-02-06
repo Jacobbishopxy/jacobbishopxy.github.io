@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Jacob&#x27;s Domain - C++</title>
+    <subtitle>Sharing interesting things</subtitle>
+    <link href="https://jacobbishopxy.github.io/tags/c/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://jacobbishopxy.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-12-19T00:00:00+00:00</updated>
+    <id>https://jacobbishopxy.github.io/tags/c/atom.xml</id>
+    <entry xml:lang="en">
+        <title>How To Vibe Code Efficiently</title>
+        <published>2025-12-19T00:00:00+00:00</published>
+        <updated>2025-12-19T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://jacobbishopxy.github.io/posts/how-to-vibe-code-efficiently/" type="text/html"/>
+        <id>https://jacobbishopxy.github.io/posts/how-to-vibe-code-efficiently/</id>
+        
+        <content type="html">&lt;p&gt;Vibe coding is pairing with an LLM to ship code faster without losing clarity. It is a tool for completing tasks and a way to learn new
+stacks as you go.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-vibe-coding-can-do&quot;&gt;What vibe coding can do&lt;&#x2F;h2&gt;
+&lt;p&gt;Vibe coding is not only about completing a ticket. It is also a way to study: a coder can quickly explore new frameworks or libraries,
+and a researcher can dig into algorithms or math without getting stuck on boilerplate. With an open mindset, you expand your technical
+boundaries, handle more work in parallel, and free yourself from repetitive tasks so you can focus on design and research.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;user-guide&quot;&gt;User guide&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Clarify a direction&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Do one thing at a time so the model stays focused. In practice, ship one feature per branch.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Master Git&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Use branches for features, and revert early when the direction is wrong.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Choose a simple tech stack&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Fewer moving parts make it easier for the model to be accurate.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Maintain instructions and docs&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Record the steps you took; next time the model can start from that context without re-reading the whole codebase.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Give good prompts&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Be explicit about goals and constraints to save tokens and iterations.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Manage chat context&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Keep related work in the same thread so the model can reuse history.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ask for unit and integration tests&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Safety nets keep the session honest.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Debug in the right environment&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Run and inspect code locally so the model can reason with real outputs.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;use-case&quot;&gt;Use case&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Exploring a new library: ask the model for a minimal example, run it, then iterate with real errors and logs.&lt;&#x2F;li&gt;
+&lt;li&gt;Refactoring safely: outline the target shape, let the model draft changes, and enforce tests before merging.&lt;&#x2F;li&gt;
+&lt;li&gt;Research tasks: offload boilerplate data loading or plotting so you can focus on the math or model design.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Cpp Concept-based Interface with ADL-based Customization Point</title>
+        <published>2025-10-22T00:00:00+00:00</published>
+        <updated>2025-10-22T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://jacobbishopxy.github.io/posts/cpp-concept-based-interface-with-adl-based-customization-point/" type="text/html"/>
+        <id>https://jacobbishopxy.github.io/posts/cpp-concept-based-interface-with-adl-based-customization-point/</id>
+        
+        <content type="html">&lt;p&gt;First of all, we need a well defined Cpp20 concept &lt;code&gt;BitserySerializable&lt;&#x2F;code&gt;, which is used for restricting &lt;code&gt;toBytes&lt;&#x2F;code&gt; and &lt;code&gt;fromBytes&lt;&#x2F;code&gt; type
+parameter. In other words, this is trying to tell the compiler who only has the function &lt;code&gt;serialize&lt;&#x2F;code&gt; and satisfies the function signature
+is allowed to use &lt;code&gt;toBytes&lt;&#x2F;code&gt; and &lt;code&gt;fromBytes&lt;&#x2F;code&gt;. And this is done by Cpp20 concept-based interface.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;using &lt;&#x2F;span&gt;&lt;span&gt;Bytes = std::vector&amp;lt;std::byte&amp;gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;template&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;typename&lt;&#x2F;span&gt;&lt;span&gt; T&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;concept BitserySerializable = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;requires&lt;&#x2F;span&gt;&lt;span&gt;(T obj,
+&lt;&#x2F;span&gt;&lt;span&gt;    bitsery::Serializer&amp;lt;bitsery::OutputBufferAdapter&amp;lt;Bytes&amp;gt;&amp;gt;&amp;amp; ser,
+&lt;&#x2F;span&gt;&lt;span&gt;    bitsery::Deserializer&amp;lt;bitsery::InputBufferAdapter&amp;lt;Bytes&amp;gt;&amp;gt;&amp;amp; des) {
+&lt;&#x2F;span&gt;&lt;span&gt;    { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;serialize&lt;&#x2F;span&gt;&lt;span&gt;(ser, obj) } -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;std&lt;&#x2F;span&gt;&lt;span&gt;::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;same_as&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;serialize&lt;&#x2F;span&gt;&lt;span&gt;(des, obj) } -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;std&lt;&#x2F;span&gt;&lt;span&gt;::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;same_as&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And then is our template function &lt;code&gt;toBytes&lt;&#x2F;code&gt; and &lt;code&gt;fromBytes&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;template&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;BitserySerializable T&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;[[nodiscard]] Bytes &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;toBytes&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; T&amp;amp; value) {
+&lt;&#x2F;span&gt;&lt;span&gt;    Bytes buffer;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span&gt; writtenSize = bitsery::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;quickSerialization&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;bitsery::OutputBufferAdapter&amp;lt;Bytes&amp;gt;&amp;gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;        buffer, const_cast&amp;lt;T&amp;amp;&amp;gt;(value)); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; bitsery requires non-const
+&lt;&#x2F;span&gt;&lt;span&gt;    buffer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;resize&lt;&#x2F;span&gt;&lt;span&gt;(writtenSize); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; trim to exact used size
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; buffer;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;template&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;BitserySerializable T&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;[[nodiscard]] T &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fromBytes&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; Bytes&amp;amp; buffer) {
+&lt;&#x2F;span&gt;&lt;span&gt;    T &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span&gt;{};
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span&gt; result = bitsery::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;quickDeserialization&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;bitsery::InputBufferAdapter&amp;lt;Bytes&amp;gt;&amp;gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;        {buffer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;begin&lt;&#x2F;span&gt;&lt;span&gt;(), buffer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;()}, value);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(result.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;first &lt;&#x2F;span&gt;&lt;span&gt;!= bitsery::ReaderError::NoError)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;throw &lt;&#x2F;span&gt;&lt;span&gt;std::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;runtime_error&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Deserialization error: bad data format.&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(!result.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;second&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;throw &lt;&#x2F;span&gt;&lt;span&gt;std::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;runtime_error&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Deserialization error: incomplete read.&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; value;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The use case is simple as well. For example, we got a schema:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;enum class &lt;&#x2F;span&gt;&lt;span&gt;Cat : &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;uint16_t
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    V1,
+&lt;&#x2F;span&gt;&lt;span&gt;    V2,
+&lt;&#x2F;span&gt;&lt;span&gt;    V3
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;struct &lt;&#x2F;span&gt;&lt;span&gt;User
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    std::string name;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::vector&amp;lt;std::string&amp;gt; tags;
+&lt;&#x2F;span&gt;&lt;span&gt;    Cat category;
+&lt;&#x2F;span&gt;&lt;span&gt;    uint age;
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Next user defines his own &lt;code&gt;void serialize(S&amp;amp; s, User&amp;amp; user)&lt;&#x2F;code&gt;. When bitsery calls &lt;code&gt;serialize(ser, obj)&lt;&#x2F;code&gt;, it looks for:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;In the same namespace as &#x27;obj&#x27; (&lt;code&gt;User&lt;&#x2F;code&gt;);&lt;&#x2F;li&gt;
+&lt;li&gt;Via ADL (Argument-Dependent Lookup) in associated namespaces.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Custom &lt;code&gt;serialize&lt;&#x2F;code&gt; function:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;template &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;typename&lt;&#x2F;span&gt;&lt;span&gt; S&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;serialize&lt;&#x2F;span&gt;&lt;span&gt;(S&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;s&lt;&#x2F;span&gt;&lt;span&gt;, User&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;user&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    s.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;text1b&lt;&#x2F;span&gt;&lt;span&gt;(user.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;    s.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;container&lt;&#x2F;span&gt;&lt;span&gt;(user.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tags&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;, [](&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span&gt;&amp;amp; s, std::string&amp;amp; str)
+&lt;&#x2F;span&gt;&lt;span&gt;                { s.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;text1b&lt;&#x2F;span&gt;&lt;span&gt;(str, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;50&lt;&#x2F;span&gt;&lt;span&gt;); });
+&lt;&#x2F;span&gt;&lt;span&gt;    s.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;value2b&lt;&#x2F;span&gt;&lt;span&gt;(user.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;category&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;    s.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;value4b&lt;&#x2F;span&gt;&lt;span&gt;(user.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;age&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Finally, the test case:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Usage
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    User &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;u&lt;&#x2F;span&gt;&lt;span&gt;{&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Alice&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, {&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;dev&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;cpp&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;}, Cat::V2, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    Bytes bytes = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;toBytes&lt;&#x2F;span&gt;&lt;span&gt;(u);
+&lt;&#x2F;span&gt;&lt;span&gt;    User restored = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fromBytes&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;User&amp;gt;(bytes);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Restored: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; restored.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;, age &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; restored.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;age &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Oh, don&#x27;t forget our import:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;bitsery&#x2F;adapter&#x2F;buffer.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;bitsery&#x2F;bitsery.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;bitsery&#x2F;traits&#x2F;string.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;bitsery&#x2F;traits&#x2F;vector.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;concepts&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;iostream&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;stdexcept&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;vector&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Above all, we&#x27;ve used Cpp20 concept-based interface and ADL-based customization point to create an external serialization example.
+To sum up, the benefits of this approach:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Non-intrusive: Don&#x27;t need to modify existing classes;&lt;&#x2F;li&gt;
+&lt;li&gt;Separation of concerns: Serialization logic separate from business logic;&lt;&#x2F;li&gt;
+&lt;li&gt;Flexibility: Can provide different serialization strategies for the same type;&lt;&#x2F;li&gt;
+&lt;li&gt;Template-friendly: Works well with generic code;&lt;&#x2F;li&gt;
+&lt;li&gt;No inheritance required: Works with value types, third-party types, etc.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Lambda Comparison</title>
+        <published>2022-11-01T00:00:00+00:00</published>
+        <updated>2022-11-03T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://jacobbishopxy.github.io/posts/lambda-comparison/" type="text/html"/>
+        <id>https://jacobbishopxy.github.io/posts/lambda-comparison/</id>
+        
+        <content type="html">&lt;p&gt;While working on a trivial project, a simple idea hits on me: what&#x27;s the difference between C++&#x27;s lambda and Rust&#x27;s closure? Having an explicit listing may give me a better cognition.&lt;&#x2F;p&gt;
+&lt;p&gt;Here is a quick summary of today&#x27;s topic:&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;function&lt;&#x2F;th&gt;&lt;th&gt;C++&#x27;s Concept&lt;&#x2F;th&gt;&lt;th&gt;Rust&#x27;s Concept&lt;&#x2F;th&gt;&lt;th&gt;Major Variety&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#lambda_and_fn_ptr&quot;&gt;lambda_and_fn_ptr&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#simple_lambda&quot;&gt;simple_lambda&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#passing_lambda_to_fn&quot;&gt;passing_lambda_to_fn&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#generic_lambda&quot;&gt;generic_lambda&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#simple_capture&quot;&gt;simple_capture&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#mutable_capture&quot;&gt;mutable_capture&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#reference_capture&quot;&gt;reference_capture&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#ownership_capture&quot;&gt;ownership_capture&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#mixing_capture&quot;&gt;mixing_capture&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#default_value_capture&quot;&gt;default_value_capture&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#default_reference_capture&quot;&gt;default_reference_capture&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#default_mixing_capture&quot;&gt;default_mixing_capture&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#init_var_capture&quot;&gt;init_var_capture&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#copy_lambda&quot;&gt;copy_lambda&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jacobbishopxy.github.io&#x2F;posts&#x2F;lambda-comparison&#x2F;#copy_ref_lambda&quot;&gt;copy_ref_lambda&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;✔️&lt;&#x2F;td&gt;&lt;td&gt;❌&lt;&#x2F;td&gt;&lt;td&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;lambda_and_fn_ptr&quot;&gt;lambda_and_fn_ptr&lt;&#x2F;h2&gt;
+&lt;p&gt;Function pointer is not necessary a key difference, though they can be passed as a parameter to a function both in C++ and Rust. However, in C++, rather than using a function pointer to hold a non-capturing lambda (as its odd syntax), prefer using a list initialization with lambda syntax.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;lambda_and_fn_ptr&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;(*lbd)(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt;){[](&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i) { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; i * &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;; }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &amp;lt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;) &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &amp;lt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;) &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Unlike C++, no need to explicit declare a pointer with function type. Instead, a named variable with function pointer type is a pointer variable. Identically, C++&#x27;s function pointer only works for non-capturing lambda, and Rust function pointer type can only be created for non-capturing closures.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-rust&quot;&gt;&lt;p&gt;Rust&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;rs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rs &quot;&gt;&lt;code class=&quot;language-rs&quot; data-lang=&quot;rs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;lambda_and_fn_ptr&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;mul &lt;&#x2F;span&gt;&lt;span&gt;= |&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span&gt;| i * &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span&gt;M = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span&gt;) -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; lbd: M = mul;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;));
+&lt;&#x2F;span&gt;&lt;span&gt;    println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;));
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;simple_lambda&quot;&gt;simple_lambda&lt;&#x2F;h2&gt;
+&lt;p&gt;In both C++ and Rust, a simple lambda&#x2F;closure is non-capturing. Note that &lt;code&gt;simple_lambda2&lt;&#x2F;code&gt; in C++, instead of using &lt;code&gt;auto&lt;&#x2F;code&gt; keyword, use a type deduction for &lt;code&gt;std::function&lt;&#x2F;code&gt;, and prior C++17, explicit type &lt;code&gt;std::function&amp;lt;(int)&amp;gt;&lt;&#x2F;code&gt; is required.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;simple_lambda1&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;{[](&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i) { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; i * &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;; }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &amp;lt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;) &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;simple_lambda2&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  std::function &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;{[](&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i) { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; i * &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;; }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &amp;lt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;) &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;div class=&quot;color-rust&quot;&gt;&lt;p&gt;Rust&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;rs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rs &quot;&gt;&lt;code class=&quot;language-rs&quot; data-lang=&quot;rs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;simple_lambda1&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;lbd &lt;&#x2F;span&gt;&lt;span&gt;= |&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span&gt;| i * &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;));
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;passing_lambda_to_fn&quot;&gt;passing_lambda_to_fn&lt;&#x2F;h2&gt;
+&lt;p&gt;In C++, passing a function point who represents a lambda expression, whereas in Rust, passing a pointer function type variable.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;passing_lambda_to_fn&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; std::function&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt;)&amp;gt;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fn&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;constexpr int&lt;&#x2F;span&gt;&lt;span&gt; input = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &amp;lt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fn&lt;&#x2F;span&gt;&lt;span&gt;(input) &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;div class=&quot;color-rust&quot;&gt;&lt;p&gt;Rust&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;rs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rs &quot;&gt;&lt;code class=&quot;language-rs&quot; data-lang=&quot;rs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;passing_lambda_to_fn&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;f&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span&gt;) -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; input = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;f&lt;&#x2F;span&gt;&lt;span&gt;(input));
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;generic_lambda&quot;&gt;generic_lambda&lt;&#x2F;h2&gt;
+&lt;p&gt;In C++, there are either &lt;code&gt;auto&lt;&#x2F;code&gt; keyword or function template can serve generic lambda.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;generic_lambda0&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;{[](&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span&gt; v) { std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;value: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; v &amp;lt;&amp;lt; std::endl; }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(value);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;template &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;typename&lt;&#x2F;span&gt;&lt;span&gt; T&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;generic_lambda1&lt;&#x2F;span&gt;&lt;span&gt;(T &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;{[](T v) { std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;value: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; v &amp;lt;&amp;lt; std::endl; }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(value);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;div class=&quot;color-rust&quot;&gt;&lt;p&gt;Rust&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;rs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rs &quot;&gt;&lt;code class=&quot;language-rs&quot; data-lang=&quot;rs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;generic_lambda&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;T: Debug&amp;gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span&gt;: T) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;lbd &lt;&#x2F;span&gt;&lt;span&gt;= |&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;v&lt;&#x2F;span&gt;&lt;span&gt;| {
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;value: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{v:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;(value);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;simple_capture&quot;&gt;simple_capture&lt;&#x2F;h2&gt;
+&lt;p&gt;The first biggest difference happens while calling &lt;code&gt;simple_capture&lt;&#x2F;code&gt;: although it looks like the same when capturing a variable is actually clone this variable, Rust acts differently on account of &lt;code&gt;Copy&lt;&#x2F;code&gt;&#x2F;&lt;code&gt;Clone&lt;&#x2F;code&gt; trait implementation.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;simple_capture&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  std::string &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;{&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;halloween has come!&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rise_headless_horseman&lt;&#x2F;span&gt;&lt;span&gt;{[data](std::string_view str) { std::cout &amp;lt;&amp;lt; data &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt; str; }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; std::string_view &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;greet&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;      &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Prepare yourselves, the bells have tolled! Shelter your weak, your young and your old! Each &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;      &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;of you shall pay the final sum. Cry for mercy, the reckoning has come!&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rise_headless_horseman&lt;&#x2F;span&gt;&lt;span&gt;(greet);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;As shown below, the only difference between &lt;code&gt;simple_capture2&lt;&#x2F;code&gt; and &lt;code&gt;simple_capture3&lt;&#x2F;code&gt; is the &lt;code&gt;#[derive(Clone)]&lt;&#x2F;code&gt; on &lt;code&gt;struct MyStr(String);&lt;&#x2F;code&gt;. In short, a variable who does not implemented &lt;code&gt;copy&lt;&#x2F;code&gt; or &lt;code&gt;clone&lt;&#x2F;code&gt; trait will trigger move semantics, and its ownership will be passed into the closure who captured it.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-rust&quot;&gt;&lt;p&gt;Rust&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;rs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rs &quot;&gt;&lt;code class=&quot;language-rs&quot; data-lang=&quot;rs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;simple_capture1&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; data = String::from(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;halloween has come!&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;rise_headless_horseman &lt;&#x2F;span&gt;&lt;span&gt;= |&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;s&lt;&#x2F;span&gt;&lt;span&gt;| {
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{data:?} {s:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,);
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;GREET&lt;&#x2F;span&gt;&lt;span&gt;: &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;str &lt;&#x2F;span&gt;&lt;span&gt;= &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Prepare yourselves, the bells have tolled! Shelter your weak, your young and your old! Each of you shall pay the final sum. Cry for mercy, the reckoning has come!&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;rise_headless_horseman&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;GREET&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; _check_ownership = data.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;into_bytes&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;simple_capture2&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;struct &lt;&#x2F;span&gt;&lt;span&gt;MyStr(String);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;impl &lt;&#x2F;span&gt;&lt;span&gt;MyStr {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;turn&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;) -&amp;gt; String {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; data = MyStr(String::from(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;halloween coming soon&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;));
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;prepare_pumpkins &lt;&#x2F;span&gt;&lt;span&gt;= |&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;s&lt;&#x2F;span&gt;&lt;span&gt;| {
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{s}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, data.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; G: &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;str &lt;&#x2F;span&gt;&lt;span&gt;= &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Carving pumpkins&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;prepare_pumpkins&lt;&#x2F;span&gt;&lt;span&gt;(G);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; compile error here! since data has been moved into `prepare_pumpkins`
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; let _check_ownership = data.turn();
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;simple_capture3&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    #[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;derive&lt;&#x2F;span&gt;&lt;span&gt;(Clone)]
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;struct &lt;&#x2F;span&gt;&lt;span&gt;MyStr(String);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;impl &lt;&#x2F;span&gt;&lt;span&gt;MyStr {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;turn&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;) -&amp;gt; String {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; data = MyStr(String::from(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;halloween coming soon&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;));
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;prepare_pumpkins &lt;&#x2F;span&gt;&lt;span&gt;= |&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;s&lt;&#x2F;span&gt;&lt;span&gt;| {
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{s}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, data.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; G: &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;str &lt;&#x2F;span&gt;&lt;span&gt;= &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Carving pumpkins&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;prepare_pumpkins&lt;&#x2F;span&gt;&lt;span&gt;(G);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Ownership hasn&amp;#39;t been take until now.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Clone has been made while compiling `prepare_pumpkins` on account of `#[derive(Clone)]`
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; _check_ownership = data.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;turn&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;mutable_capture&quot;&gt;mutable_capture&lt;&#x2F;h2&gt;
+&lt;p&gt;The second mainly difference is right here: C++&#x27;s mutable capture (a &lt;code&gt;mutable&lt;&#x2F;code&gt; keyword after parentheses) means granting mutability to all captured variables (remove the default &lt;code&gt;const&lt;&#x2F;code&gt; capturing limitation), and in fact these variables are still cloned from their original statements; on the other hands, Rust&#x27;s mutable capture is done by mutable reference capture.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;mutable_capture&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;quiver&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;{[quiver]() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mutable &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    --quiver;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Arrows left: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; quiver &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;div class=&quot;color-rust&quot;&gt;&lt;p&gt;Rust&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;rs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rs &quot;&gt;&lt;code class=&quot;language-rs&quot; data-lang=&quot;rs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;mutable_capture1&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; quiver = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;shoot &lt;&#x2F;span&gt;&lt;span&gt;= || {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; let q = &amp;amp;mut quiver;
+&lt;&#x2F;span&gt;&lt;span&gt;        quiver -= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Arrows left &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{quiver:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Check the rest: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{quiver:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;mutable_capture2&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;struct &lt;&#x2F;span&gt;&lt;span&gt;Quiver(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;impl &lt;&#x2F;span&gt;&lt;span&gt;Quiver {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;-= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;check&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;) -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32 &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; quiver = Quiver(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;shoot &lt;&#x2F;span&gt;&lt;span&gt;= || {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; let q = &amp;amp;mut quiver;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; q.shoot();
+&lt;&#x2F;span&gt;&lt;span&gt;        quiver.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Arrows left &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, quiver.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;check&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Check the rest: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, quiver.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;check&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;reference_capture&quot;&gt;reference_capture&lt;&#x2F;h2&gt;
+&lt;p&gt;The third difference is about capturing by reference. Capture by reference in C++ is done by a &lt;code&gt;&amp;amp;&lt;&#x2F;code&gt; operator before captured variable, and since C++&#x27;s reference is mutable, it can be used for value change. Yet reference in Rust means immutable reference by default. Hence, value change manipulation can only done by a &lt;code&gt;Rc&amp;lt;RefCell&amp;lt;T&amp;gt;&amp;gt;&lt;&#x2F;code&gt; and etc.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;reference_capture&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;magazine&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;120&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fire&lt;&#x2F;span&gt;&lt;span&gt;{[&amp;amp;magazine]() {
+&lt;&#x2F;span&gt;&lt;span&gt;    magazine -= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Bullets left: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; magazine &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fire&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fire&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fire&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;div class=&quot;color-rust&quot;&gt;&lt;p&gt;Rust&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;rs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rs &quot;&gt;&lt;code class=&quot;language-rs&quot; data-lang=&quot;rs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;reference_capture1&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; let mut quiver = 8;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; quiver = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;check &lt;&#x2F;span&gt;&lt;span&gt;= || {
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Arrows check &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &amp;amp;quiver);
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;check&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; compile error: violate borrow checker
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; quiver -= 1;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; check();
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;reference_capture2&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;std::cell::RefCell;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;std::rc::Rc;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; quiver = Rc::new(RefCell::new(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;));
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;check &lt;&#x2F;span&gt;&lt;span&gt;= || {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Note: a `.clone()` on `Rc` only clones a memory address
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Arrows check &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, quiver.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;clone&lt;&#x2F;span&gt;&lt;span&gt;().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;borrow&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;check&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    *quiver.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;borrow_mut&lt;&#x2F;span&gt;&lt;span&gt;() -= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;check&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;ownership_capture&quot;&gt;ownership_capture&lt;&#x2F;h2&gt;
+&lt;p&gt;The fourth difference is the moving range: C++ is moved by specified variable and Rust is moved by all captured variables. C++ should &lt;code&gt;#include&amp;lt;memory&amp;gt;&lt;&#x2F;code&gt; first, then call by &lt;code&gt;std::move()&lt;&#x2F;code&gt;, and Rust use keyword &lt;code&gt;move&lt;&#x2F;code&gt; in front of closure.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;ownership_capture&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;quiver&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;{[q = std::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(quiver)]() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mutable &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; quiver has been moved
+&lt;&#x2F;span&gt;&lt;span&gt;    --q;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Arrows left: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; q &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;div class=&quot;color-rust&quot;&gt;&lt;p&gt;Rust&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;rs&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rs &quot;&gt;&lt;code class=&quot;language-rs&quot; data-lang=&quot;rs&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;ownership_capture1&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; quiver = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; shoot = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;move &lt;&#x2F;span&gt;&lt;span&gt;|| {
+&lt;&#x2F;span&gt;&lt;span&gt;        quiver -= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Arrows left &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{quiver:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; ⚠️ watch out! this still prints `8`, because all the primitive type in Rust has `Copy` implemented!
+&lt;&#x2F;span&gt;&lt;span&gt;    println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Check the rest &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{quiver:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;ownership_capture2&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;struct &lt;&#x2F;span&gt;&lt;span&gt;Quiver(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;impl &lt;&#x2F;span&gt;&lt;span&gt;Quiver {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;-= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;check&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;) -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;i32 &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; quiver = Quiver(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; shoot = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;move &lt;&#x2F;span&gt;&lt;span&gt;|| {
+&lt;&#x2F;span&gt;&lt;span&gt;        quiver.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Arrows left &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, quiver.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;check&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;shoot&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; compile error here! Since `quiver` has been captured by ownership,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; which in other words `quiver` is owned by the closure.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; println!(&amp;quot;Check the rest {:?}&amp;quot;, quiver.check());
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;mixing_capture&quot;&gt;mixing_capture&lt;&#x2F;h2&gt;
+&lt;p&gt;Mixing capture is not so that important in Rust, as its capturing mechanism is actually differed by &lt;code&gt;copy&lt;&#x2F;code&gt;&#x2F;&lt;code&gt;clone&lt;&#x2F;code&gt;, immutable&#x2F;mutable reference which is already shown above (hence Rust&#x27;s example is omitted in here).&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;mixing_capture&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; capture by reference, by this means, players aiming one single target
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boss&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; capture by value, by this means, represents different players
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;player&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;melee&lt;&#x2F;span&gt;&lt;span&gt;{[&amp;amp;boss, player](&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;bool&lt;&#x2F;span&gt;&lt;span&gt; offensive) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;static int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;{player};
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;char &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;direction&lt;&#x2F;span&gt;&lt;span&gt;{&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;};
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(offensive) {
+&lt;&#x2F;span&gt;&lt;span&gt;      boss -= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;      direction = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;    } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;      p -= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;      direction = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;boss[ &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; boss &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; ] &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; direction &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; melee[ &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; p &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; ]&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;range&lt;&#x2F;span&gt;&lt;span&gt;{[&amp;amp;boss, player](&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;bool&lt;&#x2F;span&gt;&lt;span&gt; offensive) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;static int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;{player};
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;char &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;direction&lt;&#x2F;span&gt;&lt;span&gt;{&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;};
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(offensive) {
+&lt;&#x2F;span&gt;&lt;span&gt;      boss -= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;      direction = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;    } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;      p -= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;      direction = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;boss[ &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; boss &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; ]  &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; direction &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;  range[ &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; p &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; ]&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;melee&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;melee&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;range&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;range&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;melee&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;range&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;default_value_capture&quot;&gt;default_value_capture&lt;&#x2F;h2&gt;
+&lt;p&gt;The fifth difference is about default value&#x2F;reference capture. There is no such kink of mechanism in Rust. The default value capture means &amp;quot;capture by value without explicit declaring captured variables&amp;quot;.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;default_value_capture&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;player&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;{[=]() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; buffed by a holy priest
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Player get buffed: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; player + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;5 &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;The original player: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; player &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;default_reference_capture&quot;&gt;default_reference_capture&lt;&#x2F;h2&gt;
+&lt;p&gt;The reference capture means &amp;quot;capture by reference without explicit declaring captured variables&amp;quot;.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;default_reference_capture&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boss&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;{[&amp;amp;]() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; attacked by a hunter&amp;#39;s aimed shot
+&lt;&#x2F;span&gt;&lt;span&gt;    boss -= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Boss get hit: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; boss &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lbd&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;The original boss: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; boss &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;default_mixing_capture&quot;&gt;default_mixing_capture&lt;&#x2F;h2&gt;
+&lt;p&gt;A short snippet that demonstrates default mixing capture:&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; value capture a &amp;amp; b, reference capture c
+&lt;&#x2F;span&gt;&lt;span&gt;[a, b, &amp;amp;c](){};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; reference capture c, value capture the rest
+&lt;&#x2F;span&gt;&lt;span&gt;[=, &amp;amp;c](){};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; value capture a, reference capture the rest
+&lt;&#x2F;span&gt;&lt;span&gt;[&amp;amp;, a](){};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; ⚠️ illegal, already reference captured all
+&lt;&#x2F;span&gt;&lt;span&gt;[&amp;amp;, &amp;amp;c](){};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; ⚠️ illegal, already value captured all
+&lt;&#x2F;span&gt;&lt;span&gt;[=, a](){};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; ⚠️ illegal, captured a twice
+&lt;&#x2F;span&gt;&lt;span&gt;[a, &amp;amp;b, &amp;amp;a](){};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; ⚠️ illegal, default capture should always at the first
+&lt;&#x2F;span&gt;&lt;span&gt;[armor, &amp;amp;](){};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; a full example
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;default_mixing_capture&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boss_health&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;player_health&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boss_dmg&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;player_dmg&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; boss -&amp;gt; player
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boss_player&lt;&#x2F;span&gt;&lt;span&gt;{[=, &amp;amp;player_health]() {
+&lt;&#x2F;span&gt;&lt;span&gt;    player_health -= boss_dmg;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;The boss has made &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; boss_dmg &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; to the player, and the player has left &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; player_health
+&lt;&#x2F;span&gt;&lt;span&gt;              &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; health!&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; player -&amp;gt; boss
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;player_boss&lt;&#x2F;span&gt;&lt;span&gt;{[&amp;amp;, player_dmg]() {
+&lt;&#x2F;span&gt;&lt;span&gt;    boss_health -= player_dmg;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;The play has made &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; player_dmg &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; to the boss, and the boss has left &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; boss_health
+&lt;&#x2F;span&gt;&lt;span&gt;              &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; health!&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boss_player&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;player_boss&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;player_boss&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;player_boss&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boss_player&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;player_boss&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;init_var_capture&quot;&gt;init_var_capture&lt;&#x2F;h2&gt;
+&lt;p&gt;The sixth difference. There is no such kink of mechanism in Rust.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;init_var_capture&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;life&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; &amp;amp;o is initialzed as life&amp;#39;s reference
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; d is initialzed from cloned life
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;double_life&lt;&#x2F;span&gt;&lt;span&gt;{[&amp;amp;o = life, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;d&lt;&#x2F;span&gt;&lt;span&gt;{life * &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;}]() {
+&lt;&#x2F;span&gt;&lt;span&gt;    o *= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1. Doubled life is &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; o &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2. Doubled life is &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; d &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; print 6, 6
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;double_life&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; print 12, 6
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; this is because `d{life * 2}` only initialzed once (when the first call is defined)
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;double_life&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 12, no doubt `o *= 2;` has been called twice
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;The original life has been changed to: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; life &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;copy_lambda&quot;&gt;copy_lambda&lt;&#x2F;h2&gt;
+&lt;p&gt;Additionally, in C++ lambda is a an object, which can be copy and modified. Although a &lt;code&gt;mutable&lt;&#x2F;code&gt; keyword has been used in here, &lt;code&gt;stage&lt;&#x2F;code&gt; is still captured by value (cloned). Hence, &lt;code&gt;stage&lt;&#x2F;code&gt; turns into a stateful variable who has been stored inside the lambda. It turns out, whenever a clone has been made upon &lt;code&gt;step_forward&lt;&#x2F;code&gt;, its state (&lt;code&gt;stage&lt;&#x2F;code&gt;) would have been cloned as well.&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;copy_lambda&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;step_forward&lt;&#x2F;span&gt;&lt;span&gt;{[stage]() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mutable &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    stage++;
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;step forward: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; stage &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;step_forward&lt;&#x2F;span&gt;&lt;span&gt;(); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; stage -&amp;gt; 1
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;another_sf&lt;&#x2F;span&gt;&lt;span&gt;{step_forward}; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; stage: 1
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;step_forward&lt;&#x2F;span&gt;&lt;span&gt;(); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; stage -&amp;gt; 2
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;another_sf&lt;&#x2F;span&gt;&lt;span&gt;();   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; stage -&amp;gt; 2
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; no doubt, stage is still `0` right here
+&lt;&#x2F;span&gt;&lt;span&gt;  std::cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;final stage: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; stage &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;copy_ref_lambda&quot;&gt;copy_ref_lambda&lt;&#x2F;h2&gt;
+&lt;p&gt;One more extra stuff:&lt;&#x2F;p&gt;
+&lt;div class=&quot;color-cpp&quot;&gt;&lt;p&gt;C++&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; `auto&amp;amp;` means type deduction of the argument must be a reference
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; by the later call, it turns out to be `std::function&amp;lt;void()&amp;gt;&amp;amp;`
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;copy_invoke&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const auto&lt;&#x2F;span&gt;&lt;span&gt;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fn&lt;&#x2F;span&gt;&lt;span&gt;) { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fn&lt;&#x2F;span&gt;&lt;span&gt;(); }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;**
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * @brief copy lambda by reference
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; *
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * type `std::reference_wrapper` created by `std::ref`
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; *&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;copy_ref_lambda&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;auto &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;step_forward&lt;&#x2F;span&gt;&lt;span&gt;{[stage]() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mutable &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; stage is modified
+&lt;&#x2F;span&gt;&lt;span&gt;    std::cout &amp;lt;&amp;lt; ++stage &amp;lt;&amp;lt; std::endl;
+&lt;&#x2F;span&gt;&lt;span&gt;  }};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;copy_invoke&lt;&#x2F;span&gt;&lt;span&gt;(std::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ref&lt;&#x2F;span&gt;&lt;span&gt;(step_forward)); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; stage -&amp;gt; 1
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;copy_invoke&lt;&#x2F;span&gt;&lt;span&gt;(std::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ref&lt;&#x2F;span&gt;&lt;span&gt;(step_forward)); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; stage -&amp;gt; 2
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;copy_invoke&lt;&#x2F;span&gt;&lt;span&gt;(std::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ref&lt;&#x2F;span&gt;&lt;span&gt;(step_forward)); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; stage -&amp;gt; 3
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Check my &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Jacobbishopxy&#x2F;jotting&#x2F;tree&#x2F;master&#x2F;lambda-comparison&quot;&gt;Github page&lt;&#x2F;a&gt; to see the code, and leave me a comment if you have any suggestion.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>C++ Setup</title>
+        <published>2021-12-26T00:00:00+00:00</published>
+        <updated>2024-07-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://jacobbishopxy.github.io/docs/cpp-setup/" type="text/html"/>
+        <id>https://jacobbishopxy.github.io/docs/cpp-setup/</id>
+        
+        <content type="html">&lt;h2 id=&quot;c-and-wsl&quot;&gt;C++ and WSL&lt;&#x2F;h2&gt;
+&lt;p&gt;These documentation is completely followed by &lt;a href=&quot;https:&#x2F;&#x2F;code.visualstudio.com&#x2F;docs&#x2F;cpp&#x2F;config-wsl&quot;&gt;the official VsCode document&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Using VsCode to edit source code, compiling the source code on Linux using the g++ compiler and debugging on Linux using GDB. They are not installed by default on Ubuntu.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;environment&quot;&gt;Environment&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;update sys dependencies:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get update
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;or download the latest versions of the system packages as well by:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get update &amp;amp;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get dist-upgrade
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;install GNU compiler tools and the GDB debugger:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get install build-essential gdb
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;verify g++ and gdb:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;whereis&lt;&#x2F;span&gt;&lt;span&gt; g++
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;whereis&lt;&#x2F;span&gt;&lt;span&gt; gdb
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;After setting up the environment, create a &lt;code&gt;.cpp&lt;&#x2F;code&gt; file and vscode will pop up a hint window to ask you to install C&#x2F;C++ extensions. Let&#x27;s omit this step and head forward to the next step.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;alternative&quot;&gt;Alternative&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install the desired version:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install gcc-10
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install g++-10
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Switch to the version:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; update-alternatives&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --install&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;usr&#x2F;bin&#x2F;gcc gcc &#x2F;usr&#x2F;bin&#x2F;gcc-10 10
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; update-alternatives&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --install&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;usr&#x2F;bin&#x2F;g++ g++ &#x2F;usr&#x2F;bin&#x2F;g++-10 10
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Test with:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gcc --version
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;g++ --version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;build&quot;&gt;Build&lt;&#x2F;h3&gt;
+&lt;p&gt;Choose &lt;code&gt;Terminal &amp;gt; Configure Default Build Task&lt;&#x2F;code&gt; and in the dropdown select &lt;code&gt;C&#x2F;C++: g++ build active file&lt;&#x2F;code&gt;. A &lt;code&gt;tasks.json&lt;&#x2F;code&gt; file should be created in the &lt;code&gt;.vscode&lt;&#x2F;code&gt; folder. Learn more &lt;code&gt;tasks.json&lt;&#x2F;code&gt; variables in the &lt;a href=&quot;https:&#x2F;&#x2F;code.visualstudio.com&#x2F;docs&#x2F;editor&#x2F;variables-reference&quot;&gt;variables reference&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;run&quot;&gt;Run&lt;&#x2F;h3&gt;
+&lt;p&gt;Choose &lt;code&gt;Tasks: Run Build Task&lt;&#x2F;code&gt; and will see an executable file after the build is done.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;debug&quot;&gt;Debug&lt;&#x2F;h3&gt;
+&lt;p&gt;Press &lt;code&gt;F5&lt;&#x2F;code&gt; and choose &lt;code&gt;C++ (GDB&#x2F;LLDB)&lt;&#x2F;code&gt;, then choose &lt;code&gt;g++ build and debug active file&lt;&#x2F;code&gt; from the dropdown. This will create a &lt;code&gt;launch.json&lt;&#x2F;code&gt; file in the &lt;code&gt;.vscode&lt;&#x2F;code&gt; folder. More details please visit &lt;a href=&quot;https:&#x2F;&#x2F;code.visualstudio.com&#x2F;docs&#x2F;cpp&#x2F;config-wsl#_debug-helloworldcpp&quot;&gt;debug-helloworldcpp&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;configurations&quot;&gt;Configurations&lt;&#x2F;h3&gt;
+&lt;p&gt;In order to get more control over the C&#x2F;C++ extension, we can create a &lt;code&gt;c_cpp_properties.json&lt;&#x2F;code&gt; file in &lt;code&gt;.vscode&lt;&#x2F;code&gt; folder via &lt;code&gt;C&#x2F;C++: Edit Configuration (UI)&lt;&#x2F;code&gt; command.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;cmake&quot;&gt;CMake&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;dependencies:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get install build-essential libssl-dev
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;check &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Kitware&#x2F;CMake&#x2F;releases&quot;&gt;the latest released version&lt;&#x2F;a&gt; and download:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;wget&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;github.com&#x2F;Kitware&#x2F;CMake&#x2F;releases&#x2F;download&#x2F;v3.25.1&#x2F;cmake-3.25.1.tar.gz
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;extract:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tar -zxvf&lt;&#x2F;span&gt;&lt;span&gt; cmake-*
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;install:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span&gt; cmake-3.25.1
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;.&#x2F;bootstrap
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;make and install:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;make
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; make install
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;check installed version:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cmake --version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;create-a-cmake-project&quot;&gt;Create a CMake project&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;code.visualstudio.com&#x2F;docs&#x2F;cpp&#x2F;cmake-linux&quot;&gt;reference&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;clangd&quot;&gt;Clangd&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;clangd.llvm.org&#x2F;installation.html&quot;&gt;Installation&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Check version: &lt;code&gt;clangd --version&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Clang-format:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;apt&lt;&#x2F;span&gt;&lt;span&gt; install clang-format
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;VsCode &lt;code&gt;settings.json&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;json&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-json &quot;&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;   &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;editor.formatOnSave&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;   &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;clangd.path&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;: &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;opt&#x2F;clangd_18.1.3&#x2F;bin&#x2F;clangd&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;   &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;clangd.arguments&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;: [
+&lt;&#x2F;span&gt;&lt;span&gt;      &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;--compile-commands-dir=${workspaceFolder}&#x2F;build&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;      &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;--completion-style=detailed&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;      &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;--header-insertion=never&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;   ],
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;useful-packages-tools&quot;&gt;Useful packages&#x2F;tools&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;catch2&quot;&gt;Catch2&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; clone https:&#x2F;&#x2F;github.com&#x2F;catchorg&#x2F;Catch2.git
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span&gt; Catch2
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cmake -Bbuild -H&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -DBUILD_TESTING&lt;&#x2F;span&gt;&lt;span&gt;=OFF
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; cmake&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --build&lt;&#x2F;span&gt;&lt;span&gt; build&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --target&lt;&#x2F;span&gt;&lt;span&gt; install
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;arrow&quot;&gt;Arrow&lt;&#x2F;h3&gt;
+&lt;p&gt;Check the &lt;a href=&quot;https:&#x2F;&#x2F;arrow.apache.org&#x2F;install&#x2F;&quot;&gt;official site&lt;&#x2F;a&gt; for detailed info.&lt;&#x2F;p&gt;
+&lt;p&gt;Ubuntu version:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt update
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; ca-certificates lsb-release wget
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;wget&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;apache.jfrog.io&#x2F;artifactory&#x2F;arrow&#x2F;$(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lsb_release --id --short &lt;&#x2F;span&gt;&lt;span&gt;| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tr &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;A-Z&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39; &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;a-z&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)&#x2F;apache-arrow-apt-source-latest-$(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lsb_release --codename --short&lt;&#x2F;span&gt;&lt;span&gt;).deb
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; .&#x2F;apache-arrow-apt-source-latest-$(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lsb_release --codename --short&lt;&#x2F;span&gt;&lt;span&gt;).deb
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt update
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libarrow-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For C++
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libarrow-glib-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For GLib (C)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libarrow-dataset-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Apache Arrow Dataset C++
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libarrow-dataset-glib-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Apache Arrow Dataset GLib (C)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libarrow-flight-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Apache Arrow Flight C++
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libarrow-flight-glib-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Apache Arrow Flight GLib (C)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Notes for Plasma related packages:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#   * You need to enable &amp;quot;non-free&amp;quot; component on Debian GNU&#x2F;Linux
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#   * You need to enable &amp;quot;multiverse&amp;quot; component on Ubuntu
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#   * You can use Plasma related packages only on amd64
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libplasma-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Plasma C++
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libplasma-glib-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Plasma GLib (C)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libgandiva-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Gandiva C++
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libgandiva-glib-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Gandiva GLib (C)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libparquet-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Apache Parquet C++
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -y -V&lt;&#x2F;span&gt;&lt;span&gt; libparquet-glib-dev &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# For Apache Parquet GLib (C)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>
